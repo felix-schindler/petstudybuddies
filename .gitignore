@@ -1,60 +1,60 @@
-/target/
-/.settings/
-.classpath
-.project
-dependency-reduced-pom.xml
-*.log
+Idea-Projekt/target/
+Idea-Projekt/.settings/
+Idea-Projekt/.classpath
+Idea-Projekt/.project
+Idea-Projekt/dependency-reduced-pom.xml
+Idea-Projekt/*.log
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 # Source: https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
 
 # User-specific stuff:
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/dictionaries
+Idea-Projekt/.idea/**/workspace.xml
+Idea-Projekt/.idea/**/tasks.xml
+Idea-Projekt/.idea/dictionaries
 
 # Sensitive or high-churn files:
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
+Idea-Projekt/.idea/**/dataSources/
+Idea-Projekt/.idea/**/dataSources.ids
+Idea-Projekt/.idea/**/dataSources.local.xml
+Idea-Projekt/.idea/**/sqlDataSources.xml
+Idea-Projekt/.idea/**/dynamic.xml
+Idea-Projekt/.idea/**/uiDesigner.xml
 
 # Gradle:
-.idea/**/gradle.xml
-.idea/**/libraries
+Idea-Projekt/.idea/**/gradle.xml
+Idea-Projekt/.idea/**/libraries
 
 # CMake
-cmake-build-debug/
-cmake-build-release/
+Idea-Projekt/cmake-build-debug/
+Idea-Projekt/cmake-build-release/
 
 # Mongo Explorer plugin:
-.idea/**/mongoSettings.xml
+Idea-Projekt/.idea/**/mongoSettings.xml
 
 ## File-based project format:
-*.iws
+Idea-Projekt/*.iws
 
 ## Plugin-specific files:
 
 # IntelliJ
-out/
+Idea-Projekt/out/
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+Idea-Projekt/.idea_modules/
 
 # JIRA plugin
-atlassian-ide-plugin.xml
+Idea-Projekt/atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-.idea/replstate.xml
+Idea-Projekt/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
+Idea-Projekt/com_crashlytics_export_strings.xml
+Idea-Projekt/crashlytics.properties
+Idea-Projekt/crashlytics-build.properties
+Idea-Projekt/fabric.properties
 
 # Operating systems
 [Dd]esktop.ini
