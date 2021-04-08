@@ -64,7 +64,7 @@
                 <version>0.0.4</version>
                 <configuration>
                     <launcher>PetStudyBuddiesdriver</launcher>
-                    <mainClass>de.hdm_stuttgart.mi.PetStudyBuddies.GuiDriver</mainClass>
+                    <mainClass>GuiDriver</mainClass>
                 </configuration>
             </plugin>
 

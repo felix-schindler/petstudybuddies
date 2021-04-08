@@ -9,5 +9,8 @@
         <module name="PetStudyBuddies" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PetStudyBuddies" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
