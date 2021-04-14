@@ -1,3 +1,5 @@
+# User-specific stuff:
+Idea-Projekt/.idea/
 Idea-Projekt/target/
 Idea-Projekt/.settings/
 Idea-Projekt/.classpath
@@ -8,23 +10,6 @@ Idea-Projekt/*.log
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 # Source: https://github.com/github/gitignore/blob/master/Global/JetBrains.gitignore
-
-# User-specific stuff:
-Idea-Projekt/.idea/**/workspace.xml
-Idea-Projekt/.idea/**/tasks.xml
-Idea-Projekt/.idea/dictionaries
-
-# Sensitive or high-churn files:
-Idea-Projekt/.idea/**/dataSources/
-Idea-Projekt/.idea/**/dataSources.ids
-Idea-Projekt/.idea/**/dataSources.local.xml
-Idea-Projekt/.idea/**/sqlDataSources.xml
-Idea-Projekt/.idea/**/dynamic.xml
-Idea-Projekt/.idea/**/uiDesigner.xml
-
-# Gradle:
-Idea-Projekt/.idea/**/gradle.xml
-Idea-Projekt/.idea/**/libraries
 
 # CMake
 Idea-Projekt/cmake-build-debug/
