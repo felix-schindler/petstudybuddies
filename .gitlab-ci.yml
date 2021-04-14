@@ -48,3 +48,6 @@ deploy:
   stage: deploy
   script:
     - cd Idea-Projekt && mvn -B package --file pom.xml
+  only:
+    changes:
+      - Idea-Projekt
