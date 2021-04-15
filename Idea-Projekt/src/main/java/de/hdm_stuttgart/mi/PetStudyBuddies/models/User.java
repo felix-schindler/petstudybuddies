@@ -1,7 +1,6 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
-public class User {
-    private int ID;
+public class User extends Model {
     private String eMail;
     private String username;
     private String token;

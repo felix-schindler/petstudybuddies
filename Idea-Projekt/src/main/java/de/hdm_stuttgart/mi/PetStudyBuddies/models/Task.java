@@ -1,9 +1,8 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
 import java.util.Date;
 
-public class Task {
-    private int ID;
+public class Task extends Model {
     private String title;
     private String content;
     private Date until;

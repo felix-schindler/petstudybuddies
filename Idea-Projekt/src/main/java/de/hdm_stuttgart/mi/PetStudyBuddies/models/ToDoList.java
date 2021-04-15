@@ -1,7 +1,8 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
-public class ToDoList {
-    private int ID;
+import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
+
+public class ToDoList extends Model {
     private String title;
     private Task[] tasks;
 

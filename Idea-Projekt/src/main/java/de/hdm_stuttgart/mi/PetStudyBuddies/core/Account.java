@@ -1,5 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.core;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.models.*;
+
 /**
  * Account - This class holds all of the user specific data.
  */

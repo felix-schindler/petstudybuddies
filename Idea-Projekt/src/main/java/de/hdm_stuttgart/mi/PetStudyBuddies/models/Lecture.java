@@ -1,7 +1,6 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
-public class Lecture {
-    private int ID;
+public class Lecture extends Model {
     private String title;
 
     public Lecture() {

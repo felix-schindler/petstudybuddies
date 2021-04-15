@@ -1,9 +1,8 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
 import java.util.Date;
 
-public class Note {
-    private int ID;
+public class Note extends Model {
     private String title;
     private String content;
     private Date lastEditedOn;
