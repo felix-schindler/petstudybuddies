@@ -50,4 +50,4 @@ deploy:
     - cd Idea-Projekt && mvn -B package --file pom.xml
   only:
     changes:
-      - Idea-Projekt
+      - Idea-Projekt/**/*
