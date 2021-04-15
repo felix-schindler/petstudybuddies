@@ -1,6 +1,6 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.models;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Backend.models;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Backend.models.Task;
 
 public class ToDoList extends Model {
     private String title;

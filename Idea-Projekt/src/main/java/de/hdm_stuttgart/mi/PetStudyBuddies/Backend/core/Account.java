@@ -1,6 +1,6 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Backend.core;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.models.*;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Backend.models.*;
 
 /**
  * Account - This class holds all of the user specific data.
