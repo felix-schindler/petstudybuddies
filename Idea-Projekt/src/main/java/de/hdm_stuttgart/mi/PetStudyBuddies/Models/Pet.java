@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Backend.models;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Backend.core.Emotion;
 

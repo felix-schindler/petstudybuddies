@@ -10,7 +10,7 @@
 Adding stylesheets="/styles/styles.css" yet does not work, see FxmlGuiDriver as well.
 -->
 
-<GridPane fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.HelloController"
+<GridPane fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.HelloController"
    hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
    prefHeight="402.0" prefWidth="600.0" styleClass="main-panel" vgap="5.0"
    xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >

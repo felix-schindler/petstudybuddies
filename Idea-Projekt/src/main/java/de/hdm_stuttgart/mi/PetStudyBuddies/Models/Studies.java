@@ -1,6 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Backend.models;
-
-import de.hdm_stuttgart.mi.PetStudyBuddies.Backend.models.Lecture;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 public class Studies extends Model {
     private String title;

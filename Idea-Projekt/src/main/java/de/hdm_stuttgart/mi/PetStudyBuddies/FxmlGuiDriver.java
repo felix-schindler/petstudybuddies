@@ -14,8 +14,6 @@ import org.apache.logging.log4j.Logger;
  *
  */
 public class FxmlGuiDriver extends Application {
-
-
 	private static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
 
     /**

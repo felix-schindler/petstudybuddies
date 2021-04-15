@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Backend.models;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 public class Lecture extends Model {
     private String title;
