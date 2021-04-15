@@ -1,5 +1,8 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.core;
 
+/**
+ * Account - This class holds all of the user specific data.
+ */
 public class Account {
     private User user;
     private Pet pet;
