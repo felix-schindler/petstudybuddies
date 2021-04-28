@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 
@@ -29,8 +28,7 @@ Adding stylesheets="/styles/styles.css" yet does not work, see FxmlGuiDriver as 
         <Button mnemonicParsing="false" onAction="#doLogin" text="Login" GridPane.rowIndex="2" />
         <TextField fx:id="emailField" GridPane.columnIndex="1" />
         <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Label fx:id="statusLabel" styleClass="hello-message" text="                   "
-               GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label fx:id="statusLabel" styleClass="hello-message" text=" " GridPane.columnIndex="1" GridPane.rowIndex="3" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
