@@ -24,7 +24,6 @@ public class FxmlGuiDriver extends Application {
     }
 
     public void start(Stage stage) throws Exception {
-
         log.info("Starting Hello JavaFX and Maven demonstration application");
 
         final String fxmlFile = "/fxml/hello.fxml";

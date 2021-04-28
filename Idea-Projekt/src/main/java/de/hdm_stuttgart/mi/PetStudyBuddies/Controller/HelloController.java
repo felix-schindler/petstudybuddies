@@ -21,7 +21,6 @@ public class HelloController {
      * deriving a greeting message from firstName and lastName
      */
     @FXML public void sayHello() {
-
         final String firstName = firstNameField.getText();
         final String lastName = lastNameField.getText();
 
