@@ -32,7 +32,7 @@ cache:
 .verify: &verify
   stage: test
   script:
-    - 'mvn $MAVEN_CLI_OPTS verify'
+    - 'cd Idea-Projekt' && 'mvn $MAVEN_CLI_OPTS verify'
   except:
     - master
 
@@ -47,7 +47,7 @@ verify:jdk11:
 deploy:
   stage: deploy
   script:
-    - cd Idea-Projekt && mvn -B package --file pom.xml
+    - 'cd Idea-Projekt' && 'mvn -B package --file pom.xml'
   only:
     changes:
       - Idea-Projekt/**/*
