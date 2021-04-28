@@ -5,4 +5,10 @@ module gui {
 
     opens de.hdm_stuttgart.mi.PetStudyBuddies to javafx.fxml;
     exports de.hdm_stuttgart.mi.PetStudyBuddies;
+
+    opens de.hdm_stuttgart.mi.PetStudyBuddies.Controller to javafx.fxml;
+    exports de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
+
+    opens de.hdm_stuttgart.mi.PetStudyBuddies.Views to javafx.fxml;
+    exports de.hdm_stuttgart.mi.PetStudyBuddies.Views;
 }

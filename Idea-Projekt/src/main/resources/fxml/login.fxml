@@ -10,7 +10,7 @@
 Adding stylesheets="/styles/styles.css" yet does not work, see FxmlGuiDriver as well.
 -->
 
-<GridPane fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.HelloController"
+<GridPane fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.LoginController"
           hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
           prefHeight="402.0" prefWidth="600.0" styleClass="main-panel" vgap="5.0"
           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
@@ -24,12 +24,12 @@ Adding stylesheets="/styles/styles.css" yet does not work, see FxmlGuiDriver as 
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label text="First name:" />
-        <Label text="Last name:" GridPane.rowIndex="1" />
-        <Button mnemonicParsing="false" onAction="#sayHello" text="Say hello" GridPane.rowIndex="2" />
-        <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
-        <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Label fx:id="helloLabel" styleClass="hello-message" text="                   "
+        <Label text="EMail:" />
+        <Label text="Passwort:" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#doLogin" text="Login" GridPane.rowIndex="2" />
+        <TextField fx:id="emailField" GridPane.columnIndex="1" />
+        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label fx:id="statusLabel" styleClass="hello-message" text="                   "
                GridPane.columnIndex="1" GridPane.rowIndex="2" />
     </children>
     <padding>
