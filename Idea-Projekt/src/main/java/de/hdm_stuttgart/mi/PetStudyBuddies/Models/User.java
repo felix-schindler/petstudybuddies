@@ -1,31 +1,30 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
+
 public class User extends Model {
-    private String eMail;
-    private String username;
-    private String token;
-
-    public static boolean login(String eMail, String password) {
-        return false;
-    }
-
-    public static boolean loginFromToken(String eMail, String token) {
-        return false;
-    }
-
     public User() {
 
     }
 
-    public static boolean register(String eMail, String password, String passwordRepeat) {
-        return false;
+    String getEMail() {
+        // TODO get field via SQL
+        return "";
     }
 
+    public void setEMail() {
+        // TODO set field via SQL
+    }
+
+    /*
+    Controller: (calls setPassword of this Model)
     public boolean changePassword(String oldPw, String newPw, String newPwRepeat) {
         return false;
     }
 
+    Controller: (calls setEMail of this Model)
     public boolean changeEmail(String newMail, String password) {
         return false;
     }
+    */
 }
