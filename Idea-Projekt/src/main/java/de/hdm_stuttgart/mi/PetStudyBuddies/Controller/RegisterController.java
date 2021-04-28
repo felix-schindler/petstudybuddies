@@ -49,7 +49,7 @@ public class RegisterController {
         if (user != null) {                 // Registrierung erfolgreich
             Account.setUser(user);
         } else {
-            status = "EMail oder Passwort ist falsch.";
+            status = "Registrierung war nicht erfolgreich, bitte versuch es später erneut.";
         }
 
         statusLabel.setText(status);
