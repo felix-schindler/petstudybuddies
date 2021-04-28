@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Views;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components;
 
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;

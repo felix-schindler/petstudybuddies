@@ -13,8 +13,8 @@ import org.apache.logging.log4j.Logger;
  * Driver class for a simple JavaFX demonstration.
  *
  */
-public class LoginView extends Application {
-    private static final Logger log = LogManager.getLogger(LoginView.class);
+public class RegisterView extends Application {
+    private static final Logger log = LogManager.getLogger(RegisterView.class);
 
     /**
      * @param args unused
@@ -24,10 +24,10 @@ public class LoginView extends Application {
     }
 
     public void start(Stage stage) throws Exception {
-        log.info("Starting login screen");
+        log.info("Starting register screen");
 
-        final String fxmlFile = "/fxml/login.fxml";
-        log.debug("Loading FXML for login view from: {}", fxmlFile);
+        final String fxmlFile = "/fxml/register.fxml";
+        log.debug("Loading FXML for register view from: {}", fxmlFile);
         final FXMLLoader loader = new FXMLLoader();
         final Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
 
@@ -35,7 +35,7 @@ public class LoginView extends Application {
         final Scene scene = new Scene(rootNode, 400, 200);
         //scene.getStylesheets().add("/styles/styles.css");
 
-        stage.setTitle("Login");
+        stage.setTitle("Register");
         stage.setScene(scene);
         stage.show();
     }

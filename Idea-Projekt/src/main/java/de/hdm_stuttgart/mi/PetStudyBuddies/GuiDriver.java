@@ -1,7 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.NumberField;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components.Dialog;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components.NumberField;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;

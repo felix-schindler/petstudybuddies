@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Backend.core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
 
 public enum Emotion {
     HAPPY,
