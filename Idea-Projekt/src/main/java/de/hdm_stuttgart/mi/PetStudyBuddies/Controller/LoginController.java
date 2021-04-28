@@ -25,13 +25,13 @@ public class LoginController {
      * Handle Login activity
      */
     @FXML public void doLogin() {
-        final String eMail = emailField.getText();
-        final String password = passwordField.getText();
+        final String eMail = emailField.getText().trim();
+        final String password = passwordField.getText().trim();
 
         final StringBuilder status = new StringBuilder();
 
         boolean usernameEntered;
-        if ((usernameEntered = eMail.trim().length() <= 0) || password.trim().length() <= 0) {
+        if ((usernameEntered = eMail.length() <= 0) || password.length() <= 0) {
             if (usernameEntered) {
                 status.append("Bitte geben Sie ein Passwort ein.");
             } else {

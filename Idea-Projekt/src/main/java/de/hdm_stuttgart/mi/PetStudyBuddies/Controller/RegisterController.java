@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,28 +24,34 @@ public class RegisterController {
     @FXML private Label statusLabel;
 
     /**
-     * Handle Login activity
+     * Handle Register activity
      */
     @FXML public void register() {
-        final String eMail = emailField.getText();
-        final String username = usernameField.getText();
-        final String password = passwordField.getText();
-        final String repeatPassword = repeatPasswordField.getText();
+        final String eMail = emailField.getText().trim();
+        final String username = usernameField.getText().trim();
+        final String password = passwordField.getText().trim();
+        final String repeatPassword = repeatPasswordField.getText().trim();
 
-        final String status;
+        String status="";
 
-        if (eMail.trim().length() <= 0 || username.trim().length() <= 0 ||
-                password.trim().length() <= 0 || repeatPassword.trim().length() <= 0) {
+        if (eMail.length() <= 0 || username.length() <= 0 ||
+                password.length() <= 0 || repeatPassword.length() <= 0) {
             status = "Bitte fülle alle Felder aus.";
-        } else {
-            User user = Auth.login(eMail, password);
-            if (user != null) {                 // Login erfolgreich
-                Account.setUser(user);
-            } else {
-                status.append("EMail oder Passwort ist falsch.");
-            }
+            return;
         }
 
-        statusLabel.setText(status.toString());
+        if (!password.equals(repeatPassword)) {
+            status = "Die Passwörter stimmen nicht überein.";
+            return;
+        }
+
+        User user = Auth.register(eMail, username, password);
+        if (user != null) {                 // Registrierung erfolgreich
+            Account.setUser(user);
+        } else {
+            status = "EMail oder Passwort ist falsch.";
+        }
+
+        statusLabel.setText(status);
     }
 }
