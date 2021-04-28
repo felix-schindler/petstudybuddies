@@ -15,7 +15,7 @@ public class Auth {
      * @return User if login successful : null
      */
     public static User login(String eMail, String password) {
-        String query = " SELECT * FROM User WHERE Username='" + eMail + " AND Password='SHA1(" + password + ");";
+        String query = "SELECT * FROM User WHERE EMail='" + eMail + " AND Password='SHA1(" + password + ");";
         return null;
     }
 
@@ -23,8 +23,9 @@ public class Auth {
         return null;
     }
 
-    public static boolean register(String eMail, String password, String passwordRepeat) {
-        return false;
+    public static User register(String eMail, String username, String password) {
+        String query = "INSERT INTO User (EMail, Username, Password) VALUES (" + eMail + "," + username + ",SHA1(" + password + "));";
+        return null;
     }
 
     public String getEMail() {
