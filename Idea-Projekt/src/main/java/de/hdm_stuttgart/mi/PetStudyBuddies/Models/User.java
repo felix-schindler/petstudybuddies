@@ -35,6 +35,12 @@ public class User extends Model {
     public void setEMail() {
     }
 
+    // TODO get actual password (as sha1 straight out of the database)
+    public static String getPassword() {
+        return "";
+    }
+
+
     /*
     Controller: (calls setPassword of this Model)
     public boolean changePassword(String oldPw, String newPw, String newPwRepeat) {

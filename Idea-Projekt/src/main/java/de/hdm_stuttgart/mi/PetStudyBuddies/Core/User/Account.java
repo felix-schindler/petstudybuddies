@@ -1,43 +1,47 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.User;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.*;
 
 /**
- * Account - This class holds all of the user specific data.
+ * Account - This class holds the current User and the token
  */
 public class Account {
     private static User user;
-    private Pet pet;
-    private Calendar calendar;
-    private Note[] notes;
-    private ToDoList[] todolists;
-    private Studies studies;
+    private static String token;
 
     public Account() {
-        user = null;        // no user is logged in
-        // TODO get pet, calendar, notes, todolists and studies out of some kind of storage (database, json, sqlite)
+        user = null; // no user is logged in
+        token = null;
     }
 
     boolean deleteAccount() {
-        // TODO Delete everything (Constrainteigenschaften -> DELETE)
+        // TODO Delete everything (set Constrainteigenschaften -> ON DELETE)
         return false;
     }
 
     public static void setUser(User user) {
         Account.user = user;
+        token = Utils.sha1(User.getPassword()); // double sha1
     }
 
-    public static User getUser() {
-        return user;
+    public static User getUser() { return user; }
+
+    public static String getToken() {
+        return token;
+    }
+    public static void setToken(String token) {
+        Account.token = token;
     }
 
+
+    /*
+    TODO Alles nur Abläufe in irgendwelchen Controllern
     boolean createPet(String name) {
-        // TODO Create pet and store pet
         return false;
     }
 
     boolean deletePet(String name) {
-        // TODO Delete pet
         return false;
     }
 
@@ -69,7 +73,8 @@ public class Account {
         return false;
     }
 
-    boolean deleteStudies(int ID) {
+    boolean deleteStudies(int ID){
         return false;
     }
+    */
 }

@@ -3,6 +3,9 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * Utility functions you can use everywhere
  */
@@ -37,5 +40,23 @@ public class Utils {
      */
     public static boolean verifyMail(String eMail) {
         return eMail.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$");
+    }
+
+    /**
+     * SHA1 for Java bc apparently it's too hard to have a standard sha1() function
+     * @param input string to be encrypted
+     * @return sha1 encrypted string
+     */
+    public static String sha1(String input) {
+        try {
+            MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+            byte[] result = mDigest.digest(input.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : result) {
+                sb.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        } catch (Exception ignored) {}
+        return null;
     }
 }

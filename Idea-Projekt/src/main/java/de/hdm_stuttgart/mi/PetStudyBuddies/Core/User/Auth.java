@@ -3,11 +3,6 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core.User;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 
 public class Auth {
-    private String eMail;
-    private String username;
-    private String password;
-    private static String token;
-
     /**
      *
      * @param eMail
@@ -21,8 +16,8 @@ public class Auth {
         else return null;
     }
 
-    public static User loginFromToken(String eMail, String token) {
-        return null;
+    public static boolean loginFromToken(int ID, String token) {
+        return false;
     }
 
     /**
@@ -37,35 +32,11 @@ public class Auth {
         return Math.floor(Math.random())%2==0;      // Always true but this way IntelliJ doesn't know it's redundant
     }
 
-    public String getEMail() {
-        return eMail;
-    }
-
-    public void setEMail(String eMail) {
-        this.eMail = eMail;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public static String getToken() {
-        return token;
-    }
-
-    public static void setToken(String token) {
-        Auth.token = token;
+    /**
+     * Logout -> delete the currently logged user
+     */
+    public static void logout() {
+        Account.setUser(null);
+        Account.setToken(null);
     }
 }
