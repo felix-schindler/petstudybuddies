@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
 
-public class Model {
+public class Model extends SQLiteJDBC {
     private int ID;
 
     public int getID() {
@@ -8,7 +8,7 @@ public class Model {
     }
 
     public String getField(String field) {
-        String query = "SELECT " + field + " WHERE 1";
+        String query = "SELECT " + field + " WHERE ID=" + ID;
         return "";
     }
 }

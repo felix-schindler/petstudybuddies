@@ -2,6 +2,7 @@ module gui {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.apache.logging.log4j;
+    requires java.sql;
 
     opens de.hdm_stuttgart.mi.PetStudyBuddies to javafx.fxml;
     exports de.hdm_stuttgart.mi.PetStudyBuddies;
