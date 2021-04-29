@@ -1,32 +1,40 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.*;
 
 public class SQLiteJDBC {
-    public static void main(String args[]) {
-        Connection c = null;
-        Statement stmt = null;
+    private final static Logger log = LogManager.getLogger(SQLiteJDBC.class);
 
+    public static Connection con = null;
+
+    SQLiteJDBC() {
+        connect();
+    }
+
+    public static Connection getConnection() {
+        log.debug("Trying to connect");
+
+        // Bereits verbunden -> Muss nicht neu verbinden
+        if (con!=null)
+            return con;
+        else
+            connect();
+
+        return con;
+    }
+
+    public static void connect() {
         try {
+            log.debug("Opened database successfully");
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:psb.sqlite");
-            System.out.println("Opened database successfully");
-
-            stmt = c.createStatement();
-            String sql = """
-                    CREATE TABLE COMPANY
-                    (ID INT PRIMARY KEY     NOT NULL,
-                     NAME           TEXT    NOT NULL,
-                     AGE            INT     NOT NULL,
-                     ADDRESS        CHAR(50),
-                     SALARY         REAL)""";
-            stmt.executeUpdate(sql);
-            stmt.close();
-            c.close();
-        } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-            System.exit(0);
+            con = DriverManager.getConnection("jdbc:sqlite:psb.sqlite");
+            con.setAutoCommit(true);
+        } catch(Exception e) {
+            log.catching(e);
+            log.error("Connection not successful");
         }
-        System.out.println("Table created successfully");
     }
 }

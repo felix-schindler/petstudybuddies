@@ -16,6 +16,11 @@ public class User extends Model {
         // TODO set field via SQL
     }
 
+    @Override
+    public String getTable() {
+        return null;
+    }
+
     /*
     Controller: (calls setPassword of this Model)
     public boolean changePassword(String oldPw, String newPw, String newPwRepeat) {

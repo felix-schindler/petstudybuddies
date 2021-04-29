@@ -10,4 +10,9 @@ public class Pet extends Model {
     public Pet() {
 
     }
+
+    @Override
+    public String getTable() {
+        return null;
+    }
 }

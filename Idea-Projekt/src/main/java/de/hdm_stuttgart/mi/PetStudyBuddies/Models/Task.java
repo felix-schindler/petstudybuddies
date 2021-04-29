@@ -17,4 +17,9 @@ public class Task extends Model {
     public boolean assignPerson(int NoteID, String username) {
         return false;
     }
+
+    @Override
+    public String getTable() {
+        return null;
+    }
 }

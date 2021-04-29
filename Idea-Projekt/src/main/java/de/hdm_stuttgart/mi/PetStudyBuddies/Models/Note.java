@@ -18,4 +18,9 @@ public class Note extends Model implements Shareable {
     public boolean share(int ID) {
         return false;
     }
+
+    @Override
+    public String getTable() {
+        return null;
+    }
 }

@@ -1,14 +1,15 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
 
-public class Model extends SQLiteJDBC {
+public abstract class Model extends SQLiteJDBC {
     private int ID;
 
     public int getID() {
         return ID;
     }
 
+    public abstract String getTable();
+
     public String getField(String field) {
-        String query = "SELECT " + field + " WHERE ID=" + ID;
-        return "";
+        return new Query("SELECT " + field + " FROM " + getTable() + " WHERE ID=" + ID).fetch();
     }
 }

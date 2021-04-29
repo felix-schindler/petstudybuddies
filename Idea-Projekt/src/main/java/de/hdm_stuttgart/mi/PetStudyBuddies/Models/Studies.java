@@ -9,4 +9,9 @@ public class Studies extends Model {
     public Studies() {
 
     }
+
+    @Override
+    public String getTable() {
+        return null;
+    }
 }
