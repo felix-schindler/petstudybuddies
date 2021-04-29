@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
-public abstract class Model extends SQLiteJDBC {
+public abstract class Model {
     private int ID;
 
     public int getID() {
