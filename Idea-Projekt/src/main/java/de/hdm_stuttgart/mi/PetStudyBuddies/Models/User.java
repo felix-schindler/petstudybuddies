@@ -7,18 +7,32 @@ public class User extends Model {
 
     }
 
-    String getEMail() {
-        // TODO get field via SQL
+    /**
+     * @return the table name of the model
+     */
+    @Override
+    public String getTable() {
+        return "User";
+    }
+
+    /**
+     * TODO get actual username
+     * @return username
+     */
+    public String getUsername() {
         return "";
     }
 
-    public void setEMail() {
-        // TODO set field via SQL
+    /**
+     * TODO get actual email
+     * @return email
+     */
+    public String getEMail() {
+        return "";
     }
 
-    @Override
-    public String getTable() {
-        return null;
+    // TODO set field via SQL
+    public void setEMail() {
     }
 
     /*

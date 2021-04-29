@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -25,8 +26,8 @@ public class RegisterController {
      * Handle Register activity
      */
     @FXML public void register() {
-        final String eMail = emailField.getText().trim();
-        final String username = usernameField.getText().trim();
+        final String eMail = Utils.getInputString(emailField);
+        final String username = Utils.getInputString() usernameField.getText().trim();
         final String password = passwordField.getText().trim();
         final String repeatPassword = repeatPasswordField.getText().trim();
 

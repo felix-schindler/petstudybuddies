@@ -32,7 +32,7 @@ Adding stylesheets="/styles/styles.css" yet does not work, see FxmlGuiDriver as 
         <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <PasswordField fx:id="repeatPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Label fx:id="statusLabel" styleClass="hello-message" text=" " GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Label fx:id="statusLabel" styleClass="hello-message" text=" " GridPane.rowIndex="5" />
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

@@ -2,6 +2,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -25,24 +26,29 @@ public class LoginController {
      * Handle Login activity
      */
     @FXML public void doLogin() {
-        final String eMail = emailField.getText().trim();
-        final String password = passwordField.getText().trim();
+        final String eMail = Utils.getInputString(emailField);
+        final String password = Utils.getInputString(passwordField);
 
         final StringBuilder status = new StringBuilder();
 
-        boolean usernameEntered;
-        if ((usernameEntered = eMail.length() <= 0) || password.length() <= 0) {
-            if (usernameEntered) {
-                status.append("Bitte geben Sie ein Passwort ein.");
-            } else {
-                status.append("Bitte geben Sie eine EMail ein.");
-            }
+        boolean passwordMissing = (password == null);
+        boolean eMailMissing = (eMail == null);
+        boolean bothMissing = (passwordMissing && eMailMissing);
+
+        if (bothMissing) {
+            status.append("Bitte gebe e-Mail und Passwort ein.");
+        } else if (eMailMissing) {
+            status.append("Bitte gebe eine e-Mail ein.");
+        } else if (passwordMissing) {
+            status.append("Bitte gebe ein Passwort ein");
         } else {
             User user = Auth.login(eMail, password);
             if (user != null) {                 // Login erfolgreich
+                log.debug("User " + user.getUsername() + " erfolgreich eingeloggt.");
                 Account.setUser(user);
             } else {
-                status.append("EMail oder Passwort ist falsch.");
+                log.warn(eMail + " tried to log in with wrong EMail / Password");
+                status.append("eMail oder Passwort ist falsch.");
             }
         }
 

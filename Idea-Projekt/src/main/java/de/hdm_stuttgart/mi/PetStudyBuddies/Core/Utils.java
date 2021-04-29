@@ -10,18 +10,22 @@ public class Utils {
     /**
      * Validates the user input in the text fields.
      *
-     * @return true if the input is valid
+     * @return the trimmed input string
      */
-    public static boolean isInputValid(TextField textField) {
-        return !(textField.getText() == null || textField.getText().trim().length() == 0);
+    public static String getInputString(TextField textField) {
+        if (textField.getText() == null || textField.getText().trim().length() == 0)
+            return null;
+        return textField.getText().trim();
     }
 
     /**
      * Validates the user input in the password fields.
      *
-     * @return true if the input is valid
+     * @return the input string
      */
-    public static boolean isInputValid(PasswordField textField) {
-        return !(textField.getText() == null || textField.getText().trim().length() == 0);
+    public static String getInputString(PasswordField textField) {
+        if (textField.getText() == null || textField.getText().length() == 0)
+            return null;
+        return textField.getText();
     }
 }
