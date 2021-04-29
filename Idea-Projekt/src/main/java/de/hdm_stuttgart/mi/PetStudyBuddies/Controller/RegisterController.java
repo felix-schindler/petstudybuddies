@@ -1,8 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Auth;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -45,9 +43,8 @@ public class RegisterController {
             return;
         }
 
-        User user = Auth.register(eMail, username, password);
-        if (user != null) {                 // Registrierung erfolgreich
-            Account.setUser(user);
+        if (Auth.register(eMail, username, password)) {                 // Registrierung erfolgreich
+            status = "Registrierung war erfolgreich, sie können Sich nun einloggen!";
         } else {
             status = "Registrierung war nicht erfolgreich, bitte versuch es später erneut.";
         }
