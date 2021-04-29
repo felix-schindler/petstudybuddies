@@ -20,6 +20,7 @@ public class Account {
         token = Utils.sha1(User.getPassword()); // calc token (double sha1)
     }
 
+    // TODO check token again?
     public static User getLoggedUser() { return user; }
     public static String getToken() {
         return token;
