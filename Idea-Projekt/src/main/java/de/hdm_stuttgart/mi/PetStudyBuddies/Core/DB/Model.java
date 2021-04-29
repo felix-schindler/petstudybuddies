@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
 public abstract class Model extends SQLiteJDBC {
     private int ID;

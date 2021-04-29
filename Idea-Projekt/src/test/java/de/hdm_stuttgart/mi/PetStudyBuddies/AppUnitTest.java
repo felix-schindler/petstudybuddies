@@ -1,10 +1,11 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Auth;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.UnitTest;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SQLiteJDBC;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.sql.SQLException;
 
 /**
  * Unit test for simple App.
@@ -42,7 +43,8 @@ public class AppUnitTest {
      * Test database connection
      */
     @Test
-    public void testDatabaseConnection() {
-        Assert.assertTrue(UnitTest.databaseConnectionIsValid());
+    public void testDatabaseConnection() throws SQLException {
+        SQLiteJDBC tester = new SQLiteJDBC();
+        Assert.assertTrue(tester.getConnection().isValid(1));
     }
 }

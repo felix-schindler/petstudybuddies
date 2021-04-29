@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Core.User;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 

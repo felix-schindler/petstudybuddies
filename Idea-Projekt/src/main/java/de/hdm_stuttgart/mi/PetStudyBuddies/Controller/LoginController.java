@@ -1,7 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Auth;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
