@@ -3,13 +3,13 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
 import java.sql.*;
 
 public class SQLiteJDBC {
-    public static void main( String args[] ) {
+    public static void main(String args[]) {
         Connection c = null;
         Statement stmt = null;
 
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:test.db");
+            c = DriverManager.getConnection("jdbc:sqlite:psb.sqlite");
             System.out.println("Opened database successfully");
 
             stmt = c.createStatement();

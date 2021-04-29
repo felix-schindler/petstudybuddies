@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Auth;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.UnitTest;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+public class AppUnitTest {
     /**
      * Dummy test method
      */
@@ -35,5 +36,13 @@ public class AppTest {
         Assert.assertTrue(Auth.register("guenther.oettinger@parlament.eu", "guenther", "12345"));
         Assert.assertTrue(Auth.register("kriha@hdm-stuttgart.de", "kriha", "r6D84=xt*UCvpJBa"));
         Assert.assertTrue(Auth.register("mb365@hdm-stuttgart.de", "xX_Lover_Xx", "MeinNeuesSichersPasswort"));
+    }
+
+    /**
+     * Test database connection
+     */
+    @Test
+    public void testDatabaseConnection() {
+        Assert.assertTrue(UnitTest.databaseConnectionIsValid());
     }
 }
