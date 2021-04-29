@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * A simple controller providing a callback method {@link #register()}
- *
  */
 public class RegisterController {
     private final static Logger log = LogManager.getLogger(RegisterController.class);
@@ -27,29 +26,27 @@ public class RegisterController {
      */
     @FXML public void register() {
         final String eMail = Utils.getInputString(emailField);
-        final String username = Utils.getInputString() usernameField.getText().trim();
-        final String password = passwordField.getText().trim();
-        final String repeatPassword = repeatPasswordField.getText().trim();
+        final String username = Utils.getInputString(usernameField);
+        final String password = Utils.getInputString(passwordField);
+        final String repeatPassword = Utils.getInputString(repeatPasswordField);
 
-        String status="";
+        StringBuilder status = new StringBuilder();
 
-        if (eMail.length() <= 0 || username.length() <= 0 ||
-                password.length() <= 0 || repeatPassword.length() <= 0) {
-            status = "Bitte fülle alle Felder aus.";
-            return;
-        }
-
-        if (!password.equals(repeatPassword)) {
-            status = "Die Passwörter stimmen nicht überein.";
-            return;
-        }
-
-        if (Auth.register(eMail, username, password)) {                 // Registrierung erfolgreich
-            status = "Registrierung war erfolgreich, sie können Sich nun einloggen!";
+        if (eMail == null || username == null || password == null || repeatPassword == null) {
+            status.append("Bitte fülle alle Felder aus.");
+        } else if (!Utils.verifyMail(eMail)) {
+            status.append("Bitte gebe eine gültige e-Mail Adresse ein.");
+        } else if (!password.equals(repeatPassword)) {
+            status.append("Die eingegebenen Passwörter stimmen nicht überein.");
         } else {
-            status = "Registrierung war nicht erfolgreich, bitte versuch es später erneut.";
+            // Registrierung erfolgreich
+            if (Auth.register(eMail, username, password)) {
+                status.append("Registrierung war erfolgreich, sie können Sich nun einloggen!");
+            } else {
+                status.append("Registrierung war nicht erfolgreich, bitte versuch es später erneut.");
+            }
         }
 
-        statusLabel.setText(status);
+        statusLabel.setText(status.toString());
     }
 }

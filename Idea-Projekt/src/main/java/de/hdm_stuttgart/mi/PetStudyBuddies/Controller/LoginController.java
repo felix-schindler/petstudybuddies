@@ -31,9 +31,11 @@ public class LoginController {
 
         final StringBuilder status = new StringBuilder();
 
-        boolean passwordMissing = (password == null);
-        boolean eMailMissing = (eMail == null);
-        boolean bothMissing = (passwordMissing && eMailMissing);
+        // TODO ask for better way
+
+        final boolean passwordMissing = (password == null);
+        final boolean eMailMissing = (eMail == null);
+        final boolean bothMissing = (passwordMissing && eMailMissing);
 
         if (bothMissing) {
             status.append("Bitte gebe e-Mail und Passwort ein.");

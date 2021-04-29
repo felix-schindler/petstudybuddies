@@ -28,4 +28,14 @@ public class Utils {
             return null;
         return textField.getText();
     }
+
+    /**
+     * "Validates" the given eMail (locally)
+     *
+     * @param eMail eMail to be checked
+     * @return true if the eMail is valid
+     */
+    public static boolean verifyMail(String eMail) {
+        return eMail.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$");
+    }
 }
