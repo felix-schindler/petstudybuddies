@@ -15,18 +15,12 @@ public class Account {
         token = null;
     }
 
-    boolean deleteAccount() {
-        // TODO Delete everything (set Constrainteigenschaften -> ON DELETE)
-        return false;
-    }
-
     public static void setUser(User user) {
         Account.user = user;
-        token = Utils.sha1(User.getPassword()); // double sha1
+        token = Utils.sha1(User.getPassword()); // calc token (double sha1)
     }
 
-    public static User getUser() { return user; }
-
+    public static User getLoggedUser() { return user; }
     public static String getToken() {
         return token;
     }
@@ -37,6 +31,12 @@ public class Account {
 
     /*
     TODO Alles nur Abläufe in irgendwelchen Controllern
+
+    boolean deleteAccount() {
+        // TODO Delete everything (set Constrainteigenschaften -> ON DELETE)
+        return false;
+    }
+
     boolean createPet(String name) {
         return false;
     }
