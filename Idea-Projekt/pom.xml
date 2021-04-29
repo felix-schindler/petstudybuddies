@@ -10,7 +10,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
-        <javafx.base.version>14.0.1</javafx.base.version>
+        <javafx.base.version>16</javafx.base.version>
     </properties>
 
     <name>PetStudyBuddies</name>
