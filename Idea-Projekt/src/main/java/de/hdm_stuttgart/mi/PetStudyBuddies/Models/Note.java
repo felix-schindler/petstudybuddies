@@ -11,8 +11,8 @@ public class Note extends Model implements Shareable {
     private Date lastEditedOn;
     private Date createdOn;
 
-    public Note() {
-
+    public Note(int ID) {
+        super(ID);
     }
 
     public boolean share(int ID) {

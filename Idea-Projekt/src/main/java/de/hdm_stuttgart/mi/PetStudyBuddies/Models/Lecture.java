@@ -6,8 +6,8 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
 public class Lecture extends Model implements Shareable {
     private String title;
 
-    public Lecture() {
-
+    public Lecture(int ID) {
+        super(ID);
     }
 
     public boolean share(int ID) {

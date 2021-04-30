@@ -12,7 +12,7 @@ public class Auth {
     public static User login(String eMail, String password) {
         String query = "SELECT * FROM User WHERE EMail='" + eMail + " AND Password='SHA1(" + password + ");";
 
-        if (eMail.equals("fs146@hdm-stuttgart.de") && password.equals("test")) return new User();
+        if (eMail.equals("fs146@hdm-stuttgart.de") && password.equals("test")) return new User(1);
         else return null;
     }
 

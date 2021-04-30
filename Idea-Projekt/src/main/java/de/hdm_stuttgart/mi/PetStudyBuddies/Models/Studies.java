@@ -6,8 +6,8 @@ public class Studies extends Model {
     private String title;
     private Lecture[] lectures;
 
-    public Studies() {
-
+    public Studies(int ID) {
+        super(ID);
     }
 
     @Override

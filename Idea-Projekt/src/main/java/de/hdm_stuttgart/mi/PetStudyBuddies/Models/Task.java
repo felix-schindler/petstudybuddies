@@ -10,8 +10,8 @@ public class Task extends Model {
     private Date until;
     private Date createdOn;
 
-    public Task() {
-
+    public Task(int ID) {
+        super(ID);
     }
 
     public boolean assignPerson(int NoteID, String username) {

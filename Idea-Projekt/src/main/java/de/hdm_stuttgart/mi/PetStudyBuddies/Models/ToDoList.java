@@ -7,8 +7,8 @@ public class ToDoList extends Model implements Shareable {
     private String title;
     private Task[] tasks;
 
-    public ToDoList() {
-
+    public ToDoList(int ID) {
+        super(ID);
     }
 
     public boolean share(int ID) {

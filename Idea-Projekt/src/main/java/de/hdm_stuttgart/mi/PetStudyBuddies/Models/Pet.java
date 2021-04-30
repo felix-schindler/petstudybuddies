@@ -7,8 +7,8 @@ public class Pet extends Model {
     private String name;
     private Emotion emotion;
 
-    public Pet() {
-
+    public Pet(int ID) {
+        super(ID);
     }
 
     @Override
