@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Model;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 
 import java.util.Date;
 

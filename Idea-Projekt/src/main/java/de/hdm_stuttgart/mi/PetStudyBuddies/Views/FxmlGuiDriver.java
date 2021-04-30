@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Views;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

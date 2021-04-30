@@ -1,5 +1,6 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Views;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Conf;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components.Dialog;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components.NumberField;
 

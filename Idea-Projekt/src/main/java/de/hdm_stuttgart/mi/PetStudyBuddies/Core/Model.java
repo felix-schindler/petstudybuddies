@@ -1,4 +1,6 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
+
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
 
 public abstract class Model {
     private int ID;
