@@ -20,6 +20,6 @@ public class Task extends Model {
 
     @Override
     public String getTable() {
-        return null;
+        return "Task";
     }
 }

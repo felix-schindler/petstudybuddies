@@ -21,6 +21,6 @@ public class Note extends Model implements Shareable {
 
     @Override
     public String getTable() {
-        return null;
+        return "Note";
     }
 }

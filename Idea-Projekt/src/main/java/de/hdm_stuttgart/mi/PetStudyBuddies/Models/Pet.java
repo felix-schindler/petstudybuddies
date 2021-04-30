@@ -13,6 +13,6 @@ public class Pet extends Model {
 
     @Override
     public String getTable() {
-        return null;
+        return "Pet";
     }
 }

@@ -16,6 +16,6 @@ public class Lecture extends Model implements Shareable {
 
     @Override
     public String getTable() {
-        return null;
+        return "Lecture";
     }
 }

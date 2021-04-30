@@ -17,6 +17,6 @@ public class ToDoList extends Model implements Shareable {
 
     @Override
     public String getTable() {
-        return null;
+        return "ToDoList";
     }
 }

@@ -12,6 +12,6 @@ public class Studies extends Model {
 
     @Override
     public String getTable() {
-        return null;
+        return "Studies";
     }
 }
