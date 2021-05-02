@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Query extends SQLiteJDBC /* implements Iterator */
+public class Query extends SQLiteJDBC
 {
     /**
      * Stores the actual Query Object
@@ -103,20 +103,28 @@ public class Query extends SQLiteJDBC /* implements Iterator */
      */
     public int Count()
     {
+        int count = 0;
+        try {
+            while (result.next())
+                count++;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return count;
+        /* TODO DIDN'T WORK
         try {
             if (result.last()) {
-                result.getRow();
+                return result.getRow();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-        return 0;
+        return -1; */
     }
 
     /**
-     * Returns an assosiative Array with all the Database Values
-     * @return HashMap<string,string>|null - Associative Array
+     * Returns the Result Set with all the Database Values
+     * @return the result of the query
      */
     public ResultSet Fetch()
     {
@@ -125,34 +133,15 @@ public class Query extends SQLiteJDBC /* implements Iterator */
 
     /**
      * Retuns a SINGLE string with the database value
-     * @param field column name in database table
      * @return fieldValue String
      */
-    public String Fetch(String field) {
+    public String FetchSingleField() {
         try {
-            return result.getString(field);
+            return result.getString(1);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
         return null;
-    }
-
-    /**
-     * Executes the actual Query and returns an Array with all the Rows
-     */
-    public ArrayList FetchAll()
-    {
-        ArrayList completeResult = new ArrayList<HashMap<String,Object>>();
-
-        try {
-            while (result.next()) {
-                completeResult.add(result);
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        return completeResult;
     }
 }

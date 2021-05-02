@@ -10,13 +10,13 @@ import java.sql.SQLException;
  * For now just a class for testing
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         System.out.println(new SelectQuery("User", "EMail", "Username='test' AND Password='" + Utils.sha1("test")+ "';").fetch());
 
-        try {
-            System.out.println(new Query("SELECT EMail FROM User WHERE Username='test' AND Password='" + Utils.sha1("test") + "';").Fetch().getString("EMail"));
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        System.out.println("There exist " + new Query("SELECT * FROM User;").Count() + " Users:");
+        Utils.printResultSet(new Query("SELECT * FROM User;").Fetch());
+
+        System.out.println(new Query("SELECT ID FROM User WHERE Username='test' AND Password='" + Utils.sha1("test") + "';").FetchSingleField());
+        Utils.printResultSet(new Query("SELECT EMail FROM User WHERE Username='test' AND Password='" + Utils.sha1("test") + "';").Fetch());
     }
 }
