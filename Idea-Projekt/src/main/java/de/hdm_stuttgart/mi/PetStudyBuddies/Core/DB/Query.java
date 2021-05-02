@@ -56,7 +56,7 @@ public class Query extends SQLiteJDBC
      * @param query query string
      */
     public void SetQueryString(String query) {
-        super.connectIfNotConnected();
+        connectIfNotConnected();
         queryString=query;
         Execute();
     }
