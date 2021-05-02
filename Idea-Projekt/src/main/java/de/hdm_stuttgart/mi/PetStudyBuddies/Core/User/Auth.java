@@ -13,7 +13,7 @@ public class Auth {
         String query = "SELECT * FROM User WHERE EMail='" + eMail + " AND Password='SHA1(" + password + ");";
 
         if (eMail.equals("fs146@hdm-stuttgart.de") && password.equals("test")) return new User(1);
-        else return null;
+        return null;
     }
 
     public static boolean loginFromToken(int ID, String token) {
