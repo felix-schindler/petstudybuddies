@@ -10,21 +10,23 @@ public class Query extends SQLiteJDBC
 {
     /**
      * Stores the actual Query Object
-     * @var Statement
      */
     private Statement query;
 
     /**
      * Stores the Querystring that was provided
-     * @var String
      */
     private String queryString;
 
     /**
      * ResultSet result
-     * @var ArrayList<HashMap<String,Object>>()
      */
      private ResultSet result;
+
+    /**
+     * execution of query success (true) or not (false)
+     */
+    public boolean success = false;
 
     /**
      * Assembled a Database Query
@@ -54,7 +56,7 @@ public class Query extends SQLiteJDBC
      * @param query query string
      */
     public void SetQueryString(String query) {
-        super.connectIfNotConnected();
+        connectIfNotConnected();
         queryString=query;
         Execute();
     }
@@ -78,8 +80,10 @@ public class Query extends SQLiteJDBC
             *       result =  query.getResultSet();
             *   else QUERY FAILED
             * */
-            if (query!=null)
+            if (query!=null) {
+                success = true;
                 result = query.executeQuery(queryString);
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
