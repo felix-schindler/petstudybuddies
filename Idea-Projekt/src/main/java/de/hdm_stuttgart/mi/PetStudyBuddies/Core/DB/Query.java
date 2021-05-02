@@ -116,11 +116,26 @@ public class Query extends SQLiteJDBC /* implements Iterator */
 
     /**
      * Returns an assosiative Array with all the Database Values
-     * @return array<string,string>|null - Associative Array
+     * @return HashMap<string,string>|null - Associative Array
      */
     public ResultSet Fetch()
     {
         return result;
+    }
+
+    /**
+     * Retuns a SINGLE string with the database value
+     * @param field column name in database table
+     * @return fieldValue String
+     */
+    public String Fetch(String field) {
+        try {
+            return result.getString(field);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return null;
     }
 
     /**
