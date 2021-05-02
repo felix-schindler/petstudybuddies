@@ -31,13 +31,12 @@ public class Query extends SQLiteJDBC /* implements Iterator */
      */
     public Query(String queryString)
     {
-        SetQueryString(queryString);
         try {
             query = getConnection().createStatement();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        result = null;
+        SetQueryString(queryString);
     }
 
     public Query() {
@@ -79,7 +78,8 @@ public class Query extends SQLiteJDBC /* implements Iterator */
             *       result =  query.getResultSet();
             *   else QUERY FAILED
             * */
-            result = query.executeQuery(queryString);
+            if (query!=null)
+                result = query.executeQuery(queryString);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
