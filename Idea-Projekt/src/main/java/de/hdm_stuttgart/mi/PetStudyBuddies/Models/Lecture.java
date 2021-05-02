@@ -14,6 +14,18 @@ public class Lecture extends Model implements Shareable {
         return false;
     }
 
+    public String getUserID() {
+        return getField("UserID");
+    }
+
+    public String getMajorID() {
+        return getField("MajorID");
+    }
+
+    public String getLectureID() {
+        return getField("LectureID");
+    }
+
     @Override
     public String getTable() {
         return "Lecture";

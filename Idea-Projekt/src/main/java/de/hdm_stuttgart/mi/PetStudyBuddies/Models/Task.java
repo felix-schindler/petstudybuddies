@@ -27,6 +27,10 @@ public class Task extends Model {
         return new Date(getField("Until"));
     }
 
+    public String getAssignedTo(){
+        return getField("AssignedTo");
+    }
+
     public boolean assignPerson(int NoteID, String username) {
         return false;
     }

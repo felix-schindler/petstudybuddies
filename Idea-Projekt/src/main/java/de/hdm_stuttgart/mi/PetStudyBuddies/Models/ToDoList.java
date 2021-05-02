@@ -15,8 +15,18 @@ public class ToDoList extends Model implements Shareable {
         return false;
     }
 
+    public String getUserID(){
+        return getField("UserID");
+    }
+    public String getTitle(){
+        return getField("Title");
+    }
+
     @Override
     public String getTable() {
         return "ToDoList";
     }
+
+
+
 }

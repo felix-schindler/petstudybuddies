@@ -20,6 +20,6 @@ public abstract class Model {
     public abstract String getTable();
 
     public String getField(String field) {
-        return new SelectQuery(getTable(), field, "ID=" + ID).fetch();
+        return new SelectQuery(getTable(), field, "ID=" + ID, null, null).fetch();
     }
 }

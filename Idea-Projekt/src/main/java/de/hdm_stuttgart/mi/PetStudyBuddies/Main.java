@@ -11,7 +11,7 @@ import java.sql.SQLException;
  */
 public class Main {
     public static void main(String[] args) throws SQLException {
-        System.out.println(new SelectQuery("User", "EMail", "Username='test' AND Password='" + Utils.sha1("test")+ "';").fetch());
+        System.out.println(new SelectQuery("User", "EMail", "Username='test' AND Password='" + Utils.sha1("test")+ "';", null, null).fetch());
 
         System.out.println("There exist " + new Query("SELECT * FROM User;").Count() + " Users:");
         Utils.printResultSet(new Query("SELECT * FROM User;").Fetch());

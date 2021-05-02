@@ -19,6 +19,23 @@ public class Note extends Model implements Shareable {
         return false;
     }
 
+    public String getUserID() {
+        return getField("UserID");
+    }
+
+    public String getTitle() {
+        return getField("Title");
+    }
+
+    public String getContent() {
+        return getField("Content");
+    }
+
+    public Date getLastEditedOn() {return new Date(getField("LastEditedOn")); }
+
+    public Date getCreatedOn() {return new Date(getField("CreatedOn")); }
+
+
     @Override
     public String getTable() {
         return "Note";

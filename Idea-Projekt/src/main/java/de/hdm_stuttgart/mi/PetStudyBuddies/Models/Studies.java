@@ -10,8 +10,23 @@ public class Studies extends Model {
         super(ID);
     }
 
+    public String getTitle() {
+        return getField("Title");
+    }
+
+    public String getUserID() {
+        return getField("UserID");
+    }
+
+    public String getLectureID() {
+        return getField("LectureID");
+    }
+
+
     @Override
     public String getTable() {
         return "Studies";
     }
+
+
 }
