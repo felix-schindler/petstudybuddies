@@ -64,8 +64,7 @@ public class Query extends SQLiteJDBC
     /**
      * Returns the current Query String
      */
-    public String GetQueryString()
-    {
+    public String GetQueryString() {
         return queryString;
     }
 
