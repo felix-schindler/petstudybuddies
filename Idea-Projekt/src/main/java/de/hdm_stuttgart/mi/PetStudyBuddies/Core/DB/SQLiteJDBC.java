@@ -11,22 +11,32 @@ public class SQLiteJDBC {
     public static Connection con = null;
 
     public SQLiteJDBC() {
-        connect();
+        connectIfNotConnected();
     }
 
+    /**
+     * @return the current database connection
+     */
     public static Connection getConnection() {
         log.debug("Trying to connect");
-
-        // Bereits verbunden -> Muss nicht neu verbinden
-        if (con!=null)
-            return con;
-        else
-            connect();
-
+        connectIfNotConnected();
         return con;
     }
 
-    public static void connect() {
+    /**
+     * Connect if not connected
+     */
+    public static void connectIfNotConnected() {
+        // Bereits verbunden -> Muss nicht neu verbinden
+        if (con!=null)
+            return;
+        connect();
+    }
+
+    /**
+     * Connects to DB
+     */
+    private static void connect() {
         try {
             log.debug("Opened database successfully");
             Class.forName("org.sqlite.JDBC");
