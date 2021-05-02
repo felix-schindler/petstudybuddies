@@ -20,7 +20,7 @@ public class User extends Model {
      * @return username
      */
     public String getUsername() {
-        return "";
+        return getField("Username");
     }
 
     /**
@@ -28,7 +28,7 @@ public class User extends Model {
      * @return email
      */
     public String getEMail() {
-        return "";
+        return getField("EMail");
     }
 
     // TODO set field via SQL
