@@ -13,7 +13,7 @@ public class SelectQuery extends Query{
         }else if(groupBy != null){
             query.append(" GROUP BY" + groupBy);
         }else if(orderBy != null){
-            query.append(" ORDER BY" + groupBy);
+            query.append(" ORDER BY" + orderBy);
         }else query.append(";");
 
         super.SetQueryString(query.toString());
