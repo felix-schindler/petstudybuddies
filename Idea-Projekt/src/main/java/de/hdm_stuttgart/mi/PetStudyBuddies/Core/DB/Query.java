@@ -133,9 +133,7 @@ public class Query extends SQLiteJDBC
     public String FetchSingleField() {
         try {
             return result.getString(1);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        } catch (SQLException ignored) {}
 
         return null;
     }

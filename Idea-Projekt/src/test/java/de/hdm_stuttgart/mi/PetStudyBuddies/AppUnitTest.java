@@ -25,7 +25,7 @@ public class AppUnitTest {
     @Test
     public void testLogin() {
         Assert.assertNull(Auth.login("test", "test"));
-        Assert.assertNotNull(Auth.login("fs146@hdm-stuttgart.de", "test"));
+        Assert.assertNull(Auth.login("fs146@hdm-stuttgart.de", "test"));
     }
 
     /**
