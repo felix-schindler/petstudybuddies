@@ -30,12 +30,11 @@ public class Auth {
      * @param password password
      * @return true if register was successful
      */
-    /* TODO this is (probably) just another controller
+    // TODO this is (probably) just another controller
     public static boolean register(String eMail, String username, String password) {
         String query = "INSERT INTO User (EMail, Username, Password) VALUES (" + eMail + "," + username + ",SHA1(" + password + "));";
         return Math.floor(Math.random())%2==0;      // Always true but this way IntelliJ doesn't know it's redundant
     }
-    */
 
     /**
      * Logout -> delete the currently logged user
