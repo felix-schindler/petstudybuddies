@@ -69,7 +69,7 @@ public class Utils {
      * @param  rs           The ResultSet to print
      * @throws SQLException If there is a problem reading the ResultSet
      */
-    final public static void printResultSet(ResultSet rs) throws SQLException
+    public static void printResultSet(ResultSet rs) throws SQLException
     {
         ResultSetMetaData rsmd = rs.getMetaData();
         int columnsNumber = rsmd.getColumnCount();

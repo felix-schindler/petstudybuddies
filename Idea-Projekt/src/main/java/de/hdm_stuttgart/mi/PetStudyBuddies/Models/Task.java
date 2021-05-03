@@ -6,11 +6,6 @@ import java.text.DateFormat;
 import java.util.Date;
 
 public class Task extends Model {
-    private String title;
-    private String content;
-    private Date until;
-    private Date createdOn;
-
     public Task(int ID) {
         super(ID);
     }
@@ -24,7 +19,7 @@ public class Task extends Model {
     }
 
     public Date getUntil() {
-        return new Date(getField("Until"));
+        return new Date(Integer.parseInt(getField("Until")));
     }
 
     public String getAssignedTo(){

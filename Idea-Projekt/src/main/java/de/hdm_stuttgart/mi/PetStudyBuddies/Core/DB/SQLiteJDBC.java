@@ -8,7 +8,10 @@ import java.sql.*;
 public class SQLiteJDBC {
     private final static Logger log = LogManager.getLogger(SQLiteJDBC.class);
 
-    public static Connection con = null;
+    /**
+     * holds the current database connection
+     */
+    private static Connection con = null;
 
     public SQLiteJDBC() {
         connectIfNotConnected();

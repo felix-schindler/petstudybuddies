@@ -6,11 +6,6 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
 import java.util.Date;
 
 public class Note extends Model implements Shareable {
-    private String title;
-    private String content;
-    private Date lastEditedOn;
-    private Date createdOn;
-
     public Note(int ID) {
         super(ID);
     }
@@ -31,10 +26,9 @@ public class Note extends Model implements Shareable {
         return getField("Content");
     }
 
-    public Date getLastEditedOn() {return new Date(getField("LastEditedOn")); }
+    public Date getLastEditedOn() {return new Date(Integer.parseInt(getField("LastEditedOn"))); }
 
-    public Date getCreatedOn() {return new Date(getField("CreatedOn")); }
-
+    public Date getCreatedOn() {return new Date(Integer.parseInt(getField("CreatedOn"))); }
 
     @Override
     public String getTable() {
