@@ -1,9 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
-import java.sql.ResultSet;
-
 public class UpdateQuery extends Query{
-
     private StringBuilder query = new StringBuilder();
 
     public UpdateQuery(String table, String field, String value, String where) {

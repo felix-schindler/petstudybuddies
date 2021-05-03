@@ -42,7 +42,7 @@ public class Utils {
      * @return true if the eMail is valid
      */
     public static boolean verifyMail(String eMail) {
-        return eMail.matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$");
+        return eMail.matches("^\\S+@\\S+\\.\\S+$");
     }
 
     /**

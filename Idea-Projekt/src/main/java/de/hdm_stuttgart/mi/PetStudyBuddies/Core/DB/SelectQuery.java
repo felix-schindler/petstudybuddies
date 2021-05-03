@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
-import java.lang.reflect.Array;
 import java.sql.ResultSet;
 
 public class SelectQuery extends Query{
@@ -27,5 +26,4 @@ public class SelectQuery extends Query{
     public String fetch() {
         return super.FetchSingleField();
     }
-
 }

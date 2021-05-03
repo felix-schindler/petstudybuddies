@@ -1,7 +1,10 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SQLiteJDBC;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,12 +23,16 @@ public class AppUnitTest {
     }
 
     /**
-     * Test the Auth.login Method
+     * Test utils valid mail
      */
     @Test
-    public void testLogin() {
-        Assert.assertNull(Auth.login("test", "test"));
-        Assert.assertNull(Auth.login("fs146@hdm-stuttgart.de", "test"));
+    public void testValidEMail() {
+        Assert.assertTrue(Utils.verifyMail("fs146@hdm-stuttgart.de"));
+        Assert.assertTrue(Utils.verifyMail("kb136@hdm-stuttgart.de"));
+        Assert.assertTrue(Utils.verifyMail("abc@abc.de"));
+        Assert.assertFalse(Utils.verifyMail("abc@abc"));
+        Assert.assertFalse(Utils.verifyMail("abc.de"));
+        Assert.assertFalse(Utils.verifyMail("eexamble@.de"));
     }
 
     /**
@@ -40,11 +47,32 @@ public class AppUnitTest {
     }
 
     /**
+     * Test the Auth.login Method
+     */
+    @Test
+    public void testLogin() {
+        Assert.assertNull(Auth.login("test", "test"));
+        Assert.assertNull(Auth.login("fs146@hdm-stuttgart.de", "test"));
+    }
+
+    /**
      * Test database connection
      */
     @Test
     public void testDatabaseConnection() throws SQLException {
         SQLiteJDBC tester = new SQLiteJDBC();
         Assert.assertTrue(tester.getConnection().isValid(1));
+    }
+
+    /**
+     * Test QueryBuilder functions
+     */
+    @Test
+    public void testUpdateQuery() {
+        Assert.assertEquals("UPDATE User SET EMail='';", new UpdateQuery("User", "EMail", null, null).GetQueryString());
+        Assert.assertEquals("UPDATE Note SET Title='';", new UpdateQuery("Note", "Title", null, null).GetQueryString());
+        Assert.assertEquals("UPDATE Note SET Title='' WHERE UserID=1;", new UpdateQuery("Note", "Title", null, "UserID=1").GetQueryString());
+        Assert.assertEquals("UPDATE User SET EMail='fs146@hdm-stuttgart.de';", new UpdateQuery("User", "EMail", "fs146@hdm-stuttgart.de", null).GetQueryString());
+        Assert.assertEquals("UPDATE User SET EMail='fs146@hdm-stuttgart.de' WHERE UserID=1;", new UpdateQuery("User", "EMail", "fs146@hdm-stuttgart.de", "UserID=1").GetQueryString());
     }
 }
