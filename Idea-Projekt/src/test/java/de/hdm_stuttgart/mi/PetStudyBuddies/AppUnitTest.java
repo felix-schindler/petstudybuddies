@@ -63,16 +63,4 @@ public class AppUnitTest {
         SQLiteJDBC tester = new SQLiteJDBC();
         Assert.assertTrue(tester.getConnection().isValid(1));
     }
-
-    /**
-     * Test QueryBuilder functions
-     */
-    @Test
-    public void testUpdateQuery() {
-        Assert.assertEquals("UPDATE User SET EMail='';", new UpdateQuery("User", "EMail", null, null).GetQueryString());
-        Assert.assertEquals("UPDATE Note SET Title='';", new UpdateQuery("Note", "Title", null, null).GetQueryString());
-        Assert.assertEquals("UPDATE Note SET Title='' WHERE UserID=1;", new UpdateQuery("Note", "Title", null, "UserID=1").GetQueryString());
-        Assert.assertEquals("UPDATE User SET EMail='fs146@hdm-stuttgart.de';", new UpdateQuery("User", "EMail", "fs146@hdm-stuttgart.de", null).GetQueryString());
-        Assert.assertEquals("UPDATE User SET EMail='fs146@hdm-stuttgart.de' WHERE UserID=1;", new UpdateQuery("User", "EMail", "fs146@hdm-stuttgart.de", "UserID=1").GetQueryString());
-    }
 }

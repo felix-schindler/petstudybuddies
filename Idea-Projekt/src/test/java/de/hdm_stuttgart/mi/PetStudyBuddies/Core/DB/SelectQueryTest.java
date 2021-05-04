@@ -1,11 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import junit.framework.TestCase;
 import org.junit.Test;
-
-
-import static de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query.*;
 
 public class SelectQueryTest extends TestCase {
 
