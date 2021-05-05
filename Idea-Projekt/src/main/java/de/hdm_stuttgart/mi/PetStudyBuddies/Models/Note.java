@@ -26,9 +26,13 @@ public class Note extends Model implements Shareable {
         return getField("Content");
     }
 
-    public Date getLastEditedOn() {return new Date(Integer.parseInt(getField("LastEditedOn"))); }
+    public Date getLastEditedOn() {
+        return new Date(Integer.parseInt(getField("LastEditedOn")));
+    }
 
-    public Date getCreatedOn() {return new Date(Integer.parseInt(getField("CreatedOn"))); }
+    public Date getCreatedOn() {
+        return new Date(Integer.parseInt(getField("CreatedOn")));
+    }
 
     @Override
     public String getTable() {

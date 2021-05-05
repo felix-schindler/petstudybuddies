@@ -22,6 +22,7 @@ public abstract class Model {
     public String getField(String field) {
         return new SelectQuery(getTable(), field, "ID=" + ID, null, null).fetch();
     }
+
     public boolean setField(String field, String newValue){
         return new UpdateQuery(getTable(),field,newValue,null).Success();
     }
