@@ -13,7 +13,7 @@ public class DeleteQuery extends Query{
             SetQueryString(query.toString());
         }
     }
-    
+
     public void BuildQuery(String table, String where) {
         query.append("DELETE FROM " + table);
         if(where != null){

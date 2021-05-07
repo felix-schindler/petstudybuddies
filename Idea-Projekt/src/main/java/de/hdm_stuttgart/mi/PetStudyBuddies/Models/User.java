@@ -3,6 +3,9 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 
 public class User extends Model {
+    private String username;
+    private String eMail;
+    private String password;
     public User(int ID) {
         super(ID);
     }
