@@ -38,8 +38,7 @@ public class SelectQueryTest extends TestCase {
     }
     @Test
     public void testSelectNull(){
-        SelectQuery query = new SelectQuery(null,"-","-","-","-");
-        assertEquals(query,null);
+        String query = new SelectQuery(null,"-","-","-","-", false).GetQueryString();
+        assertNull(query);
     }
-
 }

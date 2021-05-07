@@ -1,10 +1,16 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple controller providing a callback method {@link #sayHello()}

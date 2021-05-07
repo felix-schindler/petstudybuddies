@@ -6,24 +6,38 @@ public class SelectQuery extends Query{
     private StringBuilder query = new StringBuilder();
 
     public SelectQuery(String table, String field, String where, String orderBy, String groupBy) {
+        buildQuery(table, field, where, orderBy, groupBy);
+        SetQueryString(query.toString());
+    }
+
+    public SelectQuery(String table, String field, String where, String orderBy, String groupBy, boolean run) {
+        buildQuery(table, field, where, orderBy, groupBy);
+
+        if (run) {
+            SetQueryString(query.toString());
+        }
+    }
+
+
+    public void buildQuery(String table, String field, String where, String orderBy, String groupBy) {
         query.append("SELECT " + field + " FROM " + table);
         if(where != null){
             query.append(" WHERE " + where);
-        }else if(groupBy != null){
+        }
+        if(groupBy != null){
             query.append(" GROUP BY" + groupBy);
-        }else if(orderBy != null){
+        }
+        if(orderBy != null){
             query.append(" ORDER BY" + orderBy);
-        }else query.append(";");
-
-        super.SetQueryString(query.toString());
+        }
+        query.append(";");
     }
 
-
     public ResultSet fetchAll() {
-        return super.Fetch();
+        return Fetch();
     }
 
     public String fetch() {
-        return super.FetchSingleField();
+        return FetchSingleField();
     }
 }
