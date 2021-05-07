@@ -48,11 +48,12 @@ public class AppUnitTest {
 
     /**
      * Test the Auth.login Method
+     * TODO Macht es sinn mit der Datenbank zu testen?!
      */
     @Test
     public void testLogin() {
         Assert.assertNull(Auth.login("test", "test"));
-        Assert.assertNull(Auth.login("fs146@hdm-stuttgart.de", "test"));
+        Assert.assertNull(Auth.login("fs146@hdm-stuttgart.de", "hehe"));
     }
 
     /**
