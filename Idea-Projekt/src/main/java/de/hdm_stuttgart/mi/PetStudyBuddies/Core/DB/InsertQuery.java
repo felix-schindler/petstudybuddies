@@ -3,7 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
 public class InsertQuery extends Query{
 
-    private StringBuilder query = new StringBuilder();
+    private final StringBuilder query = new StringBuilder();
 
     public InsertQuery(String table, String[] values) {
         BuildQuery(table, values);

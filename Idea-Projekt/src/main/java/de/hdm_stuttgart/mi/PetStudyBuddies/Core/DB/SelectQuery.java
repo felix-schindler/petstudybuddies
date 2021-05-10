@@ -3,7 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 import java.sql.ResultSet;
 
 public class SelectQuery extends Query{
-    private StringBuilder query = new StringBuilder();
+    private final StringBuilder query = new StringBuilder();
 
     public SelectQuery(String table, String field, String where, String orderBy, String groupBy) {
         buildQuery(table, field, where, orderBy, groupBy);

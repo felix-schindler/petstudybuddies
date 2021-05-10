@@ -1,7 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
 public class UpdateQuery extends Query{
-    private StringBuilder query = new StringBuilder();
+    private final StringBuilder query = new StringBuilder();
 
     public UpdateQuery(String table, String[] fields, String[] values, String where){
         BuildQuery(table, fields, values, where);

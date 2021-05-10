@@ -29,7 +29,7 @@ public class LoginView extends Application {
         final String fxmlFile = "/fxml/login.fxml";
         log.debug("Loading FXML for login view from: {}", fxmlFile);
         final FXMLLoader loader = new FXMLLoader();
-        final Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
+        final Parent rootNode = loader.load(getClass().getResourceAsStream(fxmlFile));
 
         log.debug("Showing JFX scene");
         final Scene scene = new Scene(rootNode, 400, 200);

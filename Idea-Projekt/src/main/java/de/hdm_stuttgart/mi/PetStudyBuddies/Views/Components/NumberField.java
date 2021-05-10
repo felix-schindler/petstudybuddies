@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 public class NumberField extends TextField {
 
-  private static Logger log = LogManager.getLogger(NumberField.class);
+  private static final Logger log = LogManager.getLogger(NumberField.class);
 
   private int value = 0;
 

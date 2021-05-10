@@ -4,7 +4,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -78,7 +77,7 @@ public class Utils {
                 if (i > 1) System.out.print(" | ");
                 System.out.print(rs.getString(i));
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 }

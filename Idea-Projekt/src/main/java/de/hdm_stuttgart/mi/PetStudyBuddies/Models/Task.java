@@ -5,7 +5,6 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.util.Date;
 
 public class Task extends Model {

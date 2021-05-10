@@ -5,8 +5,6 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.sql.SQLException;
-
 /**
  * Unit test for simple App.
  */

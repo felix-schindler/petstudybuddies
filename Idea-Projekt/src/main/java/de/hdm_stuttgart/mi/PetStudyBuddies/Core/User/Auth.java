@@ -7,8 +7,8 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 public class Auth {
     /**
      * Returns a User if eMail AND Password match
-     * @param eMail
-     * @param password
+     * @param eMail EMail
+     * @param password Passwort
      * @return User if login successful : null
      */
     public static User login(String eMail, String password) {

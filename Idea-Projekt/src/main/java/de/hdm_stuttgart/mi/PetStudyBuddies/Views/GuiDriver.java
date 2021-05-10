@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 
 public class GuiDriver extends Application {
 
-  private static Logger log = LogManager.getLogger(GuiDriver.class);
+  private static final Logger log = LogManager.getLogger(GuiDriver.class);
 
   private final static int
       colIndex_0 = 0,

@@ -1,7 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
 public class DeleteQuery extends Query{
-    private StringBuilder query = new StringBuilder();
+    private final StringBuilder query = new StringBuilder();
 
     public DeleteQuery(String table, String where) {
         BuildQuery(table, where);
