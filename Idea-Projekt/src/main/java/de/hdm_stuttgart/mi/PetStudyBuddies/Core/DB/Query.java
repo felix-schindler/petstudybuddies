@@ -19,13 +19,17 @@ public class Query extends SQLiteJDBC
     /**
      * ResultSet result
      */
-     private ResultSet result = null;
+    private ResultSet result = null;
 
     /**
      * execution of query success (true) or not (false)
      */
     private boolean success = false;
 
+    /**
+     * Effected rows
+     */
+    private int rows = -1;
 
     /**
      * Sets and executes a given Database Query
@@ -72,17 +76,16 @@ public class Query extends SQLiteJDBC
      */
     private void Execute() {
         try {
-            /*  same as
-            *   if (query.execute(queryString)
-            *       result =  query.getResultSet();
-            *   else QUERY FAILED
-            * */
-            if (query!=null) {
+            if (query != null) {
+                if (queryString.toLowerCase().contains("update"))
+                    rows = query.executeUpdate(queryString);
+                else if (queryString.toLowerCase().contains("select")) {
+                    result = query.executeQuery(queryString);
+                }
                 success = true;
-                result = query.executeQuery(queryString);
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ignored) {
+            success = false;
         }
     }
 
@@ -91,31 +94,24 @@ public class Query extends SQLiteJDBC
      * @return boolean - If the Query was a success
      */
     public boolean Success() {
-        return result!=null || success;
+        return (result != null) || (rows != 0) || (success);
     }
 
     /**
      * Returns the Number of Rows that this Query returned
-     * @return int - Number of Rows
+     * @return effected rows
      */
     public int Count() {
-        int count = 0;
-        try {
-            while (result.next())
-                count++;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        if (rows == -1) {
+            int count = 0;
+            try {
+                while (result.next())
+                    count++;
+            } catch (SQLException ignored) {}
+            rows = count;
         }
-        return count;
-        /* TODO DIDN'T WORK
-        try {
-            if (result.last()) {
-                return result.getRow();
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return -1; */
+
+        return rows;
     }
 
     /**
