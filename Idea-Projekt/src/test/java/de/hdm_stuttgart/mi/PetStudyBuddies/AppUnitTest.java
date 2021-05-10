@@ -1,8 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SQLiteJDBC;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import org.junit.Assert;
@@ -14,14 +11,6 @@ import java.sql.SQLException;
  * Unit test for simple App.
  */
 public class AppUnitTest {
-    /**
-     * Dummy test method
-     */
-    @Test
-    public void testApp() {
-        Assert.assertTrue( true );
-    }
-
     /**
      * Test utils valid mail
      */
@@ -54,14 +43,5 @@ public class AppUnitTest {
     public void testLogin() {
         Assert.assertNull(Auth.login("test", "test"));
         Assert.assertNull(Auth.login("fs146@hdm-stuttgart.de", "hehe"));
-    }
-
-    /**
-     * Test database connection
-     */
-    @Test
-    public void testDatabaseConnection() throws SQLException {
-        SQLiteJDBC tester = new SQLiteJDBC();
-        Assert.assertTrue(tester.getConnection().isValid(1));
     }
 }
