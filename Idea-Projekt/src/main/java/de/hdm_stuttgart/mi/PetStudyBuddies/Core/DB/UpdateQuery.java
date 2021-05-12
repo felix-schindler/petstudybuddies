@@ -7,27 +7,22 @@ public class UpdateQuery extends Query{
         BuildQuery(table, fields, values, where);
         SetQueryString(query.toString());
     }
+
     public UpdateQuery(String table, String field, String value, String where){
         BuildQuery(table, field, value, where);
         SetQueryString(query.toString());
-
     }
+
     public UpdateQuery(String table, String[] fields, String[] values, String where, boolean run){
         BuildQuery(table, fields, values, where);
-        SetQueryString(query.toString());
-
-        if (run) {
-            SetQueryString(query.toString());
-        }
+        SetQueryString(query.toString(), run);
     }
+
     public UpdateQuery(String table, String field, String value, String where, boolean run){
         BuildQuery(table, field, value, where);
-        SetQueryString(query.toString());
-
-        if (run) {
-            SetQueryString(query.toString());
-        }
+        SetQueryString(query.toString(), run);
     }
+
     public void BuildQuery(String table, String[] fields, String[] values, String where) {
         int lengthFields=fields.length; int lengthValues=values.length;
         query.append("UPDATE " + table + " SET ");
@@ -41,8 +36,6 @@ public class UpdateQuery extends Query{
         }
 
         query.append(";");
-
-        super.SetQueryString(query.toString());
     }
 
     public void BuildQuery(String table, String field, String value, String where) {
@@ -58,8 +51,6 @@ public class UpdateQuery extends Query{
         }
 
         query.append(";");
-
-        super.SetQueryString(query.toString());
     }
 
     @Override
