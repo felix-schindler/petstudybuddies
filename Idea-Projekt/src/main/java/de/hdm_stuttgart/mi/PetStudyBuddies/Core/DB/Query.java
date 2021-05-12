@@ -1,11 +1,18 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Query extends SQLiteJDBC
-{
+public class Query extends SQLiteJDBC {
+    /**
+     * Logger
+     */
+    private final static Logger log = LogManager.getLogger(Query.class);
+
     /**
      * Stores the actual Query Object
      */
@@ -58,9 +65,18 @@ public class Query extends SQLiteJDBC
      * @param query query string
      */
     public void SetQueryString(String query) {
+        queryString = query;
         connectIfNotConnected();
-        queryString=query;
         Execute();
+    }
+
+    public void SetQueryString(String query, boolean run) {
+        queryString = query;
+
+        if (run) {
+            connectIfNotConnected();
+            Execute();
+        }
     }
 
     /**
@@ -81,6 +97,8 @@ public class Query extends SQLiteJDBC
                     rows = query.executeUpdate(queryString);
                 else if (queryString.toLowerCase().contains("select")) {
                     result = query.executeQuery(queryString);
+                } else {
+                    query.execute(queryString);
                 }
                 success = true;
             }
