@@ -39,27 +39,24 @@ public class User extends Model {
     }
 
     /**
-     * TODO get actual username
      * @return username
      */
     public String getUsername() {
-        return getField("Username");
+        return username;
     }
 
     /**
-     * TODO get actual email
      * @return email
      */
     public String getEMail() {
-        return getField("EMail");
+        return eMail;
     }
-
-    // TODO set field via SQL
 
     /**
      *
      */
-    public void setEMail() {
+    public void setEMail(String newMail) {
+        setField("EMail", newMail);
     }
 
     // TODO get actual password (as sha1 straight out of the database)
@@ -68,8 +65,8 @@ public class User extends Model {
      *
      * @return
      */
-    public static String getPassword() {
-        return "";
+    public String getPassword() {
+        return password;
     }
 
 
