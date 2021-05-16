@@ -7,10 +7,10 @@ public class InsertQuery extends Query{
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(InsertQuery.class);
+    private static final Logger log = LogManager.getLogger(InsertQuery.class);
 
     /**
-     * Stores the Insert SQL-Query statement
+     * Stores the Insert SQL-Query string
      */
     private final StringBuilder query = new StringBuilder();
 
@@ -40,9 +40,6 @@ public class InsertQuery extends Query{
         log.debug("buildQuery method was run");
         SetQueryString(query.toString(),run);
         log.debug("setQueryString method was run");
-
-
-
     }
 
     /**
@@ -54,20 +51,20 @@ public class InsertQuery extends Query{
     private void BuildQuery(String table, String[] fields, String[] values) {
         if (fields != null && values != null && fields.length == values.length) {
             int lengthValues = values.length;
-            query.append("INSERT INTO " + table + " (");
+            query.append("INSERT INTO ").append(table).append(" (");
 
             for (int i = 0; i < lengthValues-1; i++) {
-                query.append(fields[i] + ", ");
+                query.append(fields[i]).append(", ");
             }
-            query.append(fields[lengthValues-1] + ")");
+            query.append(fields[lengthValues - 1]).append(")");
 
             query.append(" VALUES (");
 
             for (int i=0; i<lengthValues-1; i++) {
-                query.append("'" + values[i] + "' , ");
+                query.append("'").append(values[i]).append("' , ");
             }
 
-            query.append("'" + values[lengthValues-1] + "')");
+            query.append("'").append(values[lengthValues - 1]).append("')");
             query.append(";");
             log.debug("query object was built");
         }

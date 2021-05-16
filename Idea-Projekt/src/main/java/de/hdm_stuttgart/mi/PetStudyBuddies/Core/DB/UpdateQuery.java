@@ -7,9 +7,9 @@ public class UpdateQuery extends Query{
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(UpdateQuery.class);
+    private static final Logger log = LogManager.getLogger(UpdateQuery.class);
     /**
-     * Stores the Update SQL-Query statement
+     * Stores the Update SQL-Query string
      */
     private final StringBuilder query = new StringBuilder();
 
@@ -20,7 +20,7 @@ public class UpdateQuery extends Query{
      * @param values String Array containing the  values which shall be updated
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
-    public UpdateQuery(String table, String[] fields, String[] values, String where){
+    public UpdateQuery(String table, String[] fields, String[] values, String where) {
         BuildQuery(table, fields, values, where);
         log.debug("buildQuery method was run");
         SetQueryString(query.toString());
@@ -28,13 +28,13 @@ public class UpdateQuery extends Query{
     }
 
     /**
-     *
+     * Update a single field
      * @param table String containing the name of the table
      * @param field  String containing the name of the field where a given value shall be updated
      * @param value String containing the value which shall be updated
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
-    public UpdateQuery(String table, String field, String value, String where){
+    public UpdateQuery(String table, String field, String value, String where) {
         BuildQuery(table, field, value, where);
         log.debug("buildQuery method was run");
         SetQueryString(query.toString());
@@ -42,14 +42,14 @@ public class UpdateQuery extends Query{
     }
 
     /**
-     *
+     * Update multiple fields and ask for run
      * @param table String containing the name of the table
      * @param fields String Array containing the names of the fields where values shall be updated
      * @param values String Array containing the  values which shall be updated
      * @param where String containing the "WHERE"-clause of the SQL-statement
      * @param run boolean if true built Query is set with SetQueryString method
      */
-    public UpdateQuery(String table, String[] fields, String[] values, String where, boolean run){
+    public UpdateQuery(String table, String[] fields, String[] values, String where, boolean run) {
         BuildQuery(table, fields, values, where);
         log.debug("buildQuery method was run");
         SetQueryString(query.toString(),run);
@@ -57,14 +57,14 @@ public class UpdateQuery extends Query{
     }
 
     /**
-     *
+     * Update single field and ask for run
      * @param table String containing the name of the table
      * @param field String containing the name of the field where a given value shall be updated
      * @param value String containing the value which shall be updated
      * @param where String containing the "WHERE"-clause of the SQL-statement
      * @param run boolean if true built Query is set with SetQueryString method
      */
-    public UpdateQuery(String table, String field, String value, String where, boolean run){
+    public UpdateQuery(String table, String field, String value, String where, boolean run) {
         BuildQuery(table, field, value, where);
         log.debug("buildQuery method was run");
         SetQueryString(query.toString(), run);
@@ -72,7 +72,7 @@ public class UpdateQuery extends Query{
     }
 
     /**
-     *
+     * Builds the Update-Query string
      * @param table String containing the name of the table
      * @param fields String Array containing the names of the fields where values shall be updated
      * @param values String Array containing the  values which shall be updated
@@ -80,14 +80,16 @@ public class UpdateQuery extends Query{
      */
     public void BuildQuery(String table, String[] fields, String[] values, String where) {
         int lengthFields=fields.length; int lengthValues=values.length;
-        query.append("UPDATE " + table + " SET ");
+        query.append("UPDATE ").append(table).append(" SET ");
+
         for (;lengthValues>1 && lengthFields>1; lengthValues--,lengthFields-- ) {
-            query.append(fields[lengthFields] + " = '" +values[lengthValues] + "' , ");
+            query.append(fields[lengthFields-1]).append(" = '").append(values[lengthValues-1]).append("' , ");
         }
-        query.append(fields[0] + " = " +values[0] + " ");
+
+        query.append(fields[0]).append(" = ").append(values[0]).append(" ");
 
         if (where != null) {
-            query.append(" WHERE " + where);
+            query.append(" WHERE ").append(where);
         }
 
         query.append(";");

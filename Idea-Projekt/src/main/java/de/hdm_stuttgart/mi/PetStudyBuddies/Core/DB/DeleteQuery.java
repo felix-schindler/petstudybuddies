@@ -7,7 +7,7 @@ public class DeleteQuery extends Query{
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(DeleteQuery.class);
+    private static final Logger log = LogManager.getLogger(DeleteQuery.class);
 
     /**
      * Stores the Delete SQL-Query statement
@@ -46,9 +46,9 @@ public class DeleteQuery extends Query{
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
     public void BuildQuery(String table, String where) {
-        query.append("DELETE FROM " + table);
+        query.append("DELETE FROM ").append(table);
         if(where != null){
-            query.append(" WHERE " + where);
+            query.append(" WHERE ").append(where);
         }
         query.append(";");
         log.debug("query object was built");

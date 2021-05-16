@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
 import org.apache.logging.log4j.LogManager;
@@ -13,19 +14,22 @@ public class Lecture extends Model implements Shareable {
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(Lecture.class);
+    private static final Logger log = LogManager.getLogger(Lecture.class);
+
     /**
      * String containing the lecture title
      */
     private String title;
+
     /**
      * Integer containing the ECTS of the lecture
      */
-    int ECTS;
+    int ects;
+
     /**
      * Integer containing the MajorID
      */
-    int MajorID;
+    int majorID;
 
     /**
      * fetches all lectures of User with DB statement und sets variables with found values
@@ -36,65 +40,45 @@ public class Lecture extends Model implements Shareable {
         try {
             ResultSet lecture = new Query("SELECT * FROM Lecture WHERE ID=" + ID).Fetch();
             title = lecture.getString("Title");
-            ECTS = lecture.getInt("ECTS");
-            MajorID = lecture.getInt("MajorID");
+            ects = lecture.getInt("ECTS");
+            majorID = lecture.getInt("MajorID");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
     /**
-     * //TODO
-     * @return
+     * Save an updated lecture to the database
+     * @return successfully updated or not
      */
     public boolean save() {
-        return new Query("UPDATE Note SET Title='"+title+"', ECTS="+ECTS+", MajorID="+MajorID+" WHERE ID="+getID()+";").Success();
+        return new UpdateQuery(getTable(), new String[]{"Title", "ECTS", "MajorID"}, new String[]{title, Integer.toString(ects), Integer.toString(majorID)}, "ID="+getID()).Success();
     }
 
     /**
-     *
-     * @param ID UserID
-     * @return // TODO
+     * @param ID UserID to be shared to
+     * @return successfully shared or not
      */
     public boolean share(int ID) {
         return false;
     }
 
     /**
-     *
-     * @return
+     * @return Title of the lecture
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     *
-     * @return
+     * @return MajorID
      */
-    public String getUserID() {
-        return getField("UserID");
+    public int getMajorID() {
+        return majorID;
     }
 
     /**
-     *
-     * @return
-     */
-    public String getMajorID() {
-        return getField("MajorID");
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getLectureID() {
-        return getField("LectureID");
-    }
-
-    /**
-     *
-     * @return
+     * @return Name of table in database
      */
     @Override
     public String getTable() {
