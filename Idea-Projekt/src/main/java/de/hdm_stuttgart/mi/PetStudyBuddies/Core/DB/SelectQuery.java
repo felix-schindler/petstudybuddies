@@ -5,13 +5,14 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
 
-public class SelectQuery extends Query{
+public class SelectQuery extends Query {
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(SelectQuery.class);
+    private static final Logger log = LogManager.getLogger(SelectQuery.class);
+
     /**
-     * Stores the Select SQL-Query statement
+     * Stores the Select SQL-Query String
      */
     private final StringBuilder query = new StringBuilder();
 
@@ -58,15 +59,15 @@ public class SelectQuery extends Query{
         if(field== null || table== null){
             log.debug("table or field equals null");
         }else {
-            query.append("SELECT " + field + " FROM " + table);
+            query.append("SELECT ").append(field).append(" FROM ").append(table);
             if (where != null) {
-                query.append(" WHERE " + where);
+                query.append(" WHERE ").append(where);
             }
             if (groupBy != null) {
-                query.append(" GROUP BY " + groupBy);
+                query.append(" GROUP BY ").append(groupBy);
             }
             if (orderBy != null) {
-                query.append(" ORDER BY " + orderBy);
+                query.append(" ORDER BY ").append(orderBy);
             }
             query.append(";");
             log.debug("query object was built");

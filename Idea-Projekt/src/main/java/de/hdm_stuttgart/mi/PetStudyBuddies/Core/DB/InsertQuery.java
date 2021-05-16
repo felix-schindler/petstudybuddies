@@ -73,13 +73,4 @@ public class InsertQuery extends Query{
         }
         log.debug("fields, values were null or not the same length");
     }
-
-    /**
-     * calls parent class and checks if Update-statement was correct
-     * @return boolean true if statement was handled correctly by the DB
-     */
-    @Override
-    public boolean Success() {
-        return super.Success();
-    }
 }

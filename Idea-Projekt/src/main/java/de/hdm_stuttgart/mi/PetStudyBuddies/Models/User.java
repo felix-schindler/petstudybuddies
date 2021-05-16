@@ -9,29 +9,32 @@ public class User extends Model {
      * log object for error handling
      */
     private static Logger log = LogManager.getLogger(User.class);
+
     /**
-     *
+     * username of the user
      */
     private String username;
+
     /**
-     *
+     * eMail of the user
      */
     private String eMail;
+
     /**
-     *
+     * password of the user
      */
     private String password;
 
     /**
-     *
-     * @param ID
+     * Creates a new user linked to the users database-entry via his ID
+     * @param ID ID of the user in the database
      */
     public User(int ID) {
         super(ID);
     }
 
     /**
-     * @return the table name of the model
+     * @return The table name of the model
      */
     @Override
     public String getTable() {
@@ -39,31 +42,29 @@ public class User extends Model {
     }
 
     /**
-     * @return username
+     * @return Username of the user
      */
     public String getUsername() {
         return username;
     }
 
     /**
-     * @return email
+     * @return EMail of the user
      */
     public String getEMail() {
         return eMail;
     }
 
     /**
-     *
+     * Updates the Users' EMail in the Database
      */
     public void setEMail(String newMail) {
         setField("EMail", newMail);
     }
 
-    // TODO get actual password (as sha1 straight out of the database)
-
     /**
-     *
-     * @return
+     * TODO this should probably not exist
+     * @return The SHA1 Password of the User
      */
     public String getPassword() {
         return password;
