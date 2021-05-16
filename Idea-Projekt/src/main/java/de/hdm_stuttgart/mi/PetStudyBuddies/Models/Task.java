@@ -2,16 +2,39 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
 public class Task extends Model {
+    /**
+     * log object for error handling
+     */
+    private static Logger log = LogManager.getLogger(Task.class);
+    /**
+     *
+     */
     private int toDoList;
+    /**
+     *
+     */
     private String content;
+    /**
+     *
+     */
     private String until;
+    /**
+     *
+     */
     private int assignedTo;
+
+    /**
+     *
+     * @param ID
+     */
     public Task(int ID) {
         super(ID);
         try {
@@ -25,26 +48,52 @@ public class Task extends Model {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getToDoListID() {
         return getField("ToDoListID");
     }
 
+    /**
+     *
+     * @return
+     */
     public String getContent() {
         return getField("Content");
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getUntil() {
         return new Date(Integer.parseInt(getField("Until")));
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAssignedTo(){
         return getField("AssignedTo");
     }
 
+    /**
+     *
+     * @param NoteID
+     * @param username
+     * @return
+     */
     public boolean assignPerson(int NoteID, String username) {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getTable() {
         return "Task";

@@ -1,28 +1,83 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class UpdateQuery extends Query{
+    /**
+     * log object for error handling
+     */
+    private static Logger log = LogManager.getLogger(UpdateQuery.class);
+    /**
+     * Stores the Update SQL-Query statement
+     */
     private final StringBuilder query = new StringBuilder();
 
+    /**
+     * Hands over parts of the SQL-Query Update statement to the BuildQuery method and then calls SetQueryString
+     * @param table String containing the name of the table
+     * @param fields String Array containing the names of the fields where values shall be updated
+     * @param values String Array containing the  values which shall be updated
+     * @param where String containing the "WHERE"-clause of the SQL-statement
+     */
     public UpdateQuery(String table, String[] fields, String[] values, String where){
         BuildQuery(table, fields, values, where);
+        log.debug("buildQuery method was run");
         SetQueryString(query.toString());
+        log.debug("setQueryString method was run");
     }
 
+    /**
+     *
+     * @param table String containing the name of the table
+     * @param field  String containing the name of the field where a given value shall be updated
+     * @param value String containing the value which shall be updated
+     * @param where String containing the "WHERE"-clause of the SQL-statement
+     */
     public UpdateQuery(String table, String field, String value, String where){
         BuildQuery(table, field, value, where);
+        log.debug("buildQuery method was run");
         SetQueryString(query.toString());
+        log.debug("setQueryString method was run");
     }
 
+    /**
+     *
+     * @param table String containing the name of the table
+     * @param fields String Array containing the names of the fields where values shall be updated
+     * @param values String Array containing the  values which shall be updated
+     * @param where String containing the "WHERE"-clause of the SQL-statement
+     * @param run boolean if true built Query is set with SetQueryString method
+     */
     public UpdateQuery(String table, String[] fields, String[] values, String where, boolean run){
         BuildQuery(table, fields, values, where);
-        SetQueryString(query.toString(), run);
+        log.debug("buildQuery method was run");
+        SetQueryString(query.toString(),run);
+        log.debug("setQueryString method was run");
     }
 
+    /**
+     *
+     * @param table String containing the name of the table
+     * @param field String containing the name of the field where a given value shall be updated
+     * @param value String containing the value which shall be updated
+     * @param where String containing the "WHERE"-clause of the SQL-statement
+     * @param run boolean if true built Query is set with SetQueryString method
+     */
     public UpdateQuery(String table, String field, String value, String where, boolean run){
         BuildQuery(table, field, value, where);
+        log.debug("buildQuery method was run");
         SetQueryString(query.toString(), run);
+        log.debug("setQueryString method was run");
     }
 
+    /**
+     *
+     * @param table String containing the name of the table
+     * @param fields String Array containing the names of the fields where values shall be updated
+     * @param values String Array containing the  values which shall be updated
+     * @param where String containing the "WHERE"-clause of the SQL-statement
+     */
     public void BuildQuery(String table, String[] fields, String[] values, String where) {
         int lengthFields=fields.length; int lengthValues=values.length;
         query.append("UPDATE " + table + " SET ");
@@ -36,8 +91,16 @@ public class UpdateQuery extends Query{
         }
 
         query.append(";");
+        log.debug("query object was built");
     }
 
+    /**
+     *
+     * @param table String containing the name of the table
+     * @param field String containing the name of the field where a given value shall be updated
+     * @param value String containing the value which shall be updated
+     * @param where String containing the "WHERE"-clause of the SQL-statement
+     */
     public void BuildQuery(String table, String field, String value, String where) {
         query.append("UPDATE " + table + " SET " + field);
         if (value == null) {
@@ -51,8 +114,13 @@ public class UpdateQuery extends Query{
         }
 
         query.append(";");
+        log.debug("query object was built");
     }
 
+    /**
+     * calls parent class and checks if Update-statement was correct
+     * @return boolean true if statement was handled correctly by the DB
+     */
     @Override
     public boolean Success() {
         return super.Success();

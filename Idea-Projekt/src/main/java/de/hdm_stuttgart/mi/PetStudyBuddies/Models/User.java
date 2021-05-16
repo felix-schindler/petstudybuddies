@@ -1,11 +1,31 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class User extends Model {
+    /**
+     * log object for error handling
+     */
+    private static Logger log = LogManager.getLogger(User.class);
+    /**
+     *
+     */
     private String username;
+    /**
+     *
+     */
     private String eMail;
+    /**
+     *
+     */
     private String password;
+
+    /**
+     *
+     * @param ID
+     */
     public User(int ID) {
         super(ID);
     }
@@ -35,10 +55,19 @@ public class User extends Model {
     }
 
     // TODO set field via SQL
+
+    /**
+     *
+     */
     public void setEMail() {
     }
 
     // TODO get actual password (as sha1 straight out of the database)
+
+    /**
+     *
+     * @return
+     */
     public static String getPassword() {
         return "";
     }
