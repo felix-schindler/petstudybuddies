@@ -5,49 +5,67 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
-public class SQLiteJDBC {
-    private final static Logger log = LogManager.getLogger(SQLiteJDBC.class);
+/*
+ * Database driver
+ */
+class SQLiteJDBC {
+    /**
+     * Log object for error handling
+     */
+    private static final Logger log = LogManager.getLogger(SQLiteJDBC.class);
+
+    /*
+     * Holds the database connection
+     */
+    private Connection con = null;
+
 
     /**
-     * holds the current database connection
+     * Constructor - Doesn't do anything active right now
      */
-    private static Connection con = null;
-
-    public SQLiteJDBC() {
-        connectIfNotConnected();
-    }
+    protected SQLiteJDBC() {}
 
     /**
-     * @return the current database connection
+     * Connect to the database if not connected
+     * @return The current database conenction
      */
-    public static Connection getConnection() {
-        log.debug("Trying to connect");
-        connectIfNotConnected();
+    protected Connection getConnection() {
+        if (con == null)
+            connect();
         return con;
     }
 
     /**
-     * Connect if not connected
+     * Connects to the database
      */
-    public static void connectIfNotConnected() {
-        // Bereits verbunden -> Muss nicht neu verbinden
-        if (con!=null)
+    private void connect() {
+        if (con != null)
             return;
-        connect();
+
+        log.debug("Trying to connect to database.");
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:psb.sqlite");
+            con.setAutoCommit(true);	// Änderungen werden sofort in die Datenbank geschrieben & können nicht einfach rückgängig gemacht werden
+            log.debug("Database connection opened successfully.");
+        } catch (SQLException | ClassNotFoundException e) {
+            log.catching(e);
+            log.error("Connection not successful.");
+            log.info("Tipp: Check if a .sqlite database file exists.");
+        }
     }
 
     /**
-     * Connects to DB
+     * Ends the connection to the database
      */
-    private static void connect() {
+    protected void disconnect() {
         try {
-            log.debug("Opened database successfully");
-            Class.forName("org.sqlite.JDBC");
-            con = DriverManager.getConnection("jdbc:sqlite:psb.sqlite");
-            con.setAutoCommit(true);
-        } catch(Exception e) {
+            if (!con.isClosed())
+                con.close();
+            log.debug("Database connection is closed.");
+        } catch (SQLException e) {
             log.catching(e);
-            log.error("Connection not successful");
+            log.warn("Could not disconnect from database.");
         }
     }
 }

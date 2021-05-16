@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,7 +38,7 @@ public class Task extends Model {
     public Task(int ID) {
         super(ID);
         try {
-            ResultSet task = new Query("SELECT * FROM Task WHERE ID=" + ID).Fetch();
+            ResultSet task = new SelectQuery("Task", "*", "ID="+ID, null, null).fetchAll();
             toDoList = task.getInt("ToDoList");
             content = task.getString("Content");
             until = task.getString("Until");

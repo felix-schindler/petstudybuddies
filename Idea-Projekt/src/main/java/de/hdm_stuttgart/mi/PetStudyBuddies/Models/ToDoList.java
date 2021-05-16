@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
 import org.apache.logging.log4j.LogManager;
@@ -26,7 +26,7 @@ public class ToDoList extends Model implements Shareable {
     public ToDoList(int ID) {
         super(ID);
         try {
-            ResultSet toDoList = new Query("SELECT * FROM ToDoList WHERE ID=" + ID).Fetch();
+            ResultSet toDoList = new SelectQuery("ToDoList", "*", "ID="+ID, null, null).fetchAll();
             title = toDoList.getString("Title");
         } catch (SQLException throwables) {
             throwables.printStackTrace();

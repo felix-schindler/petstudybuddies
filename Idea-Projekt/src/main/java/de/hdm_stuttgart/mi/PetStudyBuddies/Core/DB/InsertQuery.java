@@ -14,6 +14,11 @@ public class InsertQuery extends Query{
      */
     private final StringBuilder query = new StringBuilder();
 
+    /**
+     * Count of effected rows
+     */
+    int rows = -1;
+
 
     /**
      * Hands over parts of the SQL-Query Insert statement to the BuildQuery method and then calls SetQueryString
@@ -25,6 +30,7 @@ public class InsertQuery extends Query{
         BuildQuery(table, fields, values);
         log.debug("buildQuery method was run");
         SetQueryString(query.toString());
+        rows = WriteData();
         log.debug("setQueryString method was run");
     }
 
@@ -38,7 +44,9 @@ public class InsertQuery extends Query{
     public InsertQuery(String table, String[] fields, String[] values, boolean run) {
         BuildQuery(table, fields, values);
         log.debug("buildQuery method was run");
-        SetQueryString(query.toString(),run);
+        SetQueryString(query.toString());
+        if (run)
+            rows = WriteData();
         log.debug("setQueryString method was run");
     }
 
@@ -69,5 +77,9 @@ public class InsertQuery extends Query{
             log.debug("query object was built");
         }
         log.debug("fields, values were null or not the same length");
+    }
+
+    public int Count() {
+        return rows;
     }
 }

@@ -3,6 +3,7 @@ module gui {
     requires javafx.fxml;
     requires org.apache.logging.log4j;
     requires java.sql;
+    requires sqlite.jdbc;
 
     opens de.hdm_stuttgart.mi.PetStudyBuddies to javafx.fxml;
     exports de.hdm_stuttgart.mi.PetStudyBuddies;

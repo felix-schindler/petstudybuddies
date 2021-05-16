@@ -32,7 +32,7 @@ public class Auth {
      * @return true if register was successful
      */
     public static boolean register(String eMail, String username, String password) {
-        return new InsertQuery("User", new String[]{"EMail, Username, Password"}, new String[]{eMail, username, Utils.sha1(password)}).Success();
+        return new InsertQuery("User", new String[]{"EMail, Username, Password"}, new String[]{eMail, username, Utils.sha1(password)}).Count() == 1;
     }
 
     /**

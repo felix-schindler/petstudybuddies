@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SelectQuery extends Query {
     /**
@@ -17,6 +18,11 @@ public class SelectQuery extends Query {
     private final StringBuilder query = new StringBuilder();
 
     /**
+     * result of the executed query
+     */
+    private ResultSet result;
+
+    /**
      * Hands over parts of the SQL-Query Select statement to the BuildQuery method and then calls SetQueryString
      * @param table String containing the name of the table
      * @param field String containing the name of the field where values shall be outprinted
@@ -28,6 +34,7 @@ public class SelectQuery extends Query {
         buildQuery(table, field, where, orderBy, groupBy);
         log.debug("buildQuery method was run");
         SetQueryString(query.toString());
+        result = ReadData();
         log.debug("setQueryString method was run");
     }
 
@@ -43,7 +50,9 @@ public class SelectQuery extends Query {
     public SelectQuery(String table, String field, String where, String orderBy, String groupBy, boolean run) {
         buildQuery(table, field, where, orderBy, groupBy);
         log.debug("buildQuery method was run");
-        SetQueryString(query.toString(),run);
+        SetQueryString(query.toString());
+        if (run)
+            result = ReadData();
         log.debug("setQueryString method was run");
     }
 
@@ -79,7 +88,7 @@ public class SelectQuery extends Query {
      * @return result of SELECT-statement
      */
     public ResultSet fetchAll() {
-        return Fetch();
+        return result;
     }
 
     /**
@@ -87,6 +96,10 @@ public class SelectQuery extends Query {
      * @return result of SELECT-statement
      */
     public String fetch() {
-        return FetchSingleField();
+        try {
+            return result.getString(1);
+        } catch (SQLException e) {
+            return null;
+        }
     }
 }

@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +29,7 @@ public class Pet extends Model {
     public Pet(int ID) {
         super(ID);
         try {
-            ResultSet pet = new Query("SELECT * FROM Pet WHERE ID=" + ID).Fetch();
+            ResultSet pet = new SelectQuery("Pet", "*", "ID="+ID, null, null).fetchAll();
             name = pet.getString("Name");
             emotion = pet.getString("Emotion");
         } catch (SQLException throwables) {

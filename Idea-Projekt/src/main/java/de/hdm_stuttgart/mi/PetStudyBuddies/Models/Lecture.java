@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
@@ -38,7 +38,7 @@ public class Lecture extends Model implements Shareable {
     public Lecture(int ID) {
         super(ID);
         try {
-            ResultSet lecture = new Query("SELECT * FROM Lecture WHERE ID=" + ID).Fetch();
+            ResultSet lecture = new SelectQuery("Lecture", "*", "ID="+ID, null, null).ReadData();
             title = lecture.getString("Title");
             ects = lecture.getInt("ECTS");
             majorID = lecture.getInt("MajorID");
@@ -52,7 +52,7 @@ public class Lecture extends Model implements Shareable {
      * @return successfully updated or not
      */
     public boolean save() {
-        return new UpdateQuery(getTable(), new String[]{"Title", "ECTS", "MajorID"}, new String[]{title, Integer.toString(ects), Integer.toString(majorID)}, "ID="+getID()).Success();
+        return new UpdateQuery(getTable(), new String[]{"Title", "ECTS", "MajorID"}, new String[]{title, Integer.toString(ects), Integer.toString(majorID)}, "ID="+getID()).Count() == 1;
     }
 
     /**

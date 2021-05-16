@@ -15,6 +15,11 @@ public class DeleteQuery extends Query {
     private final StringBuilder query = new StringBuilder();
 
     /**
+     * Count of effected rows
+     */
+    private int rows = -1;
+
+    /**
      * Hands over parts of the SQL-Query Delete statement to the BuildQuery method and then calls SetQueryString
      * @param table String containing the name of the table
      * @param where String containing the "WHERE"-clause of the SQL-statement
@@ -23,6 +28,7 @@ public class DeleteQuery extends Query {
         BuildQuery(table, where);
         log.debug("buildQuery method was run");
         SetQueryString(query.toString());
+        rows = WriteData();
         log.debug("setQueryString method was run");
     }
 
@@ -35,9 +41,10 @@ public class DeleteQuery extends Query {
     public DeleteQuery(String table, String where, boolean run) {
         BuildQuery(table, where);
         log.debug("buildQuery method was run");
-        SetQueryString(query.toString(),run);
-        log.debug("setQueryString method was run");
-
+        SetQueryString(query.toString());
+        if (run)
+            rows = WriteData();
+        log.debug("SetQueryString method was run");
     }
 
     /**
@@ -51,7 +58,10 @@ public class DeleteQuery extends Query {
             query.append(" WHERE ").append(where);
         }
         query.append(";");
-        log.debug("query object was built");
+        log.debug("Query object was built");
     }
 
+    public int Count() {
+        return rows;
+    }
 }

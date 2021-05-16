@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
 import org.apache.logging.log4j.LogManager;
@@ -43,7 +43,7 @@ public class Note extends Model implements Shareable {
     public Note(int ID) {
         super(ID);
         try {
-            ResultSet note = new Query("SELECT * FROM Note WHERE ID=" + ID).Fetch();
+            ResultSet note = new SelectQuery("Note", "*", "ID="+ID, null, null).fetchAll();
             title = note.getString("Title");
             content = note.getString("Content");
             lastEditedOn = note.getString("LastEditedOn");
