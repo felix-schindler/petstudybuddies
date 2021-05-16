@@ -88,7 +88,6 @@ public class Query extends SQLiteJDBC {
 
     /**
      * This executes the Query and stores the Resource Object in $query
-     * @see Query ::$query
      */
     private void Execute() {
         try {

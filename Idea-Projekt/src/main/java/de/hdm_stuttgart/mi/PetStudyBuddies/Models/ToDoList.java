@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
 import de.hdm_stuttgart.mi.PetStudyBuddies.CoreTest.DBTest.Query;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
@@ -13,7 +14,7 @@ public class ToDoList extends Model implements Shareable {
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(ToDoList.class);
+    private static final Logger log = LogManager.getLogger(ToDoList.class);
     /**
      *
      */

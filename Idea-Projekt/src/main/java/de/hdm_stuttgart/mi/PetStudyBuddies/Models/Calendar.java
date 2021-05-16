@@ -8,7 +8,7 @@ public class Calendar extends Model {
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(Calendar.class);
+    private static final Logger log = LogManager.getLogger(Calendar.class);
     /**
      *
      * @param ID UserID

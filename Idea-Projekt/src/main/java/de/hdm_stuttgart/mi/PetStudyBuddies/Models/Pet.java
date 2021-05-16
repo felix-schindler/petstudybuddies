@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.CoreTest.DBTest.Query;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +12,7 @@ public class Pet extends Model {
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(Pet.class);
+    private static final Logger log = LogManager.getLogger(Pet.class);
     /**
      *
      */

@@ -8,7 +8,7 @@ public class User extends Model {
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(User.class);
+    private static final Logger log = LogManager.getLogger(User.class);
 
     /**
      * username of the user
