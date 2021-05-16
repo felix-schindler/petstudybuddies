@@ -24,7 +24,6 @@ public class AppUnitTest {
 
     /**
      * Test the Auth.register Method
-     */
     @Test
     public void testRegister() {
         Assert.assertTrue(Auth.register("fs146@hdm-stuttgart.de", "felix", "test"));
@@ -32,6 +31,7 @@ public class AppUnitTest {
         Assert.assertTrue(Auth.register("kriha@hdm-stuttgart.de", "kriha", "r6D84=xt*UCvpJBa"));
         Assert.assertTrue(Auth.register("mb365@hdm-stuttgart.de", "xX_Lover_Xx", "MeinNeuesSichersPasswort"));
     }
+    */
 
     /**
      * Test the Auth.login Method
