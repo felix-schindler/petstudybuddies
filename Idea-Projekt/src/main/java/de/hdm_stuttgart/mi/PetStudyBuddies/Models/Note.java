@@ -14,19 +14,23 @@ public class Note extends Model implements Shareable {
     /**
      * log object for error handling
      */
-    private static Logger log = LogManager.getLogger(Note.class);
+    private static final Logger log = LogManager.getLogger(Note.class);
+
     /**
      *
      */
     private String title;
+
     /**
      *
      */
     private String content;
+
     /**
      *
      */
     private String lastEditedOn;
+
     /**
      *
      */

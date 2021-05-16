@@ -3,7 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class DeleteQuery extends Query{
+public class DeleteQuery extends Query {
     /**
      * log object for error handling
      */
