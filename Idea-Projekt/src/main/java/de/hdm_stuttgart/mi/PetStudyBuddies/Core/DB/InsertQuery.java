@@ -10,11 +10,6 @@ public class InsertQuery extends Query{
     private static final Logger log = LogManager.getLogger(InsertQuery.class);
 
     /**
-     * Stores the Insert SQL-Query string
-     */
-    private final StringBuilder query = new StringBuilder();
-
-    /**
      * Count of effected rows
      */
     int rows = -1;
@@ -27,8 +22,7 @@ public class InsertQuery extends Query{
      * @param values String Array containing the  values which shall be inserted
      */
     public InsertQuery(String table, String[] fields, String[] values) {
-        BuildQuery(table, fields, values);
-        SetQueryString(query.toString());
+        SetQueryString(BuildQuery(table, fields, values));
         rows = WriteData();
     }
 
@@ -40,8 +34,7 @@ public class InsertQuery extends Query{
      * @param run boolean if true built Query is set with SetQueryString method
      */
     public InsertQuery(String table, String[] fields, String[] values, boolean run) {
-        BuildQuery(table, fields, values);
-        SetQueryString(query.toString());
+        SetQueryString(BuildQuery(table, fields, values));
         if (run)
             rows = WriteData();
     }
@@ -52,8 +45,10 @@ public class InsertQuery extends Query{
      * @param fields String Array containing the names of the fields where values shall be inserted
      * @param values String Array containing the  values which shall be inserted
      */
-    private void BuildQuery(String table, String[] fields, String[] values) {
-        log.debug("BuildQuery method was run.");
+    private String BuildQuery(String table, String[] fields, String[] values) {
+        log.debug("Query is being build.");
+        final StringBuilder query = new StringBuilder();
+
         if (fields != null && values != null && fields.length == values.length) {
             int lengthValues = values.length;
             query.append("INSERT INTO ").append(table).append(" (");
@@ -71,13 +66,17 @@ public class InsertQuery extends Query{
 
             query.append("'").append(values[lengthValues - 1]).append("')");
             query.append(";");
-            log.debug("QueryString was built.");
+            log.debug("Query string was built successfully.");
+            return query.toString();
         }
+
         log.error("Fields or values were null or not the same length.");
         if (fields != null && values != null)
             log.info("Lengths are: " + fields.length + " " + values.length);
         else
             log.info("Fields or values equals null.");
+
+        return "";
     }
 
     /**

@@ -10,11 +10,6 @@ public class UpdateQuery extends Query{
     private static final Logger log = LogManager.getLogger(UpdateQuery.class);
 
     /**
-     * Stores the Update SQL-Query string
-     */
-    private final StringBuilder query = new StringBuilder();
-
-    /**
      * Count of affected rows
      */
     private int rows = -1;
@@ -26,11 +21,8 @@ public class UpdateQuery extends Query{
      * @param values String Array containing the  values which shall be updated
      */
     public UpdateQuery(String table, String[] fields, String[] values) {
-        BuildQuery(table, fields, values, null);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+        SetQueryString(BuildQuery(table, fields, values, null));
         rows = WriteData();
-        log.debug("setQueryString method was run");
     }
 
     /**
@@ -41,11 +33,8 @@ public class UpdateQuery extends Query{
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
     public UpdateQuery(String table, String[] fields, String[] values, String where) {
-        BuildQuery(table, fields, values, where);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+        SetQueryString(BuildQuery(table, fields, values, where));
         rows = WriteData();
-        log.debug("setQueryString method was run");
     }
 
     /**
@@ -56,11 +45,8 @@ public class UpdateQuery extends Query{
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
     public UpdateQuery(String table, String field, String value, String where) {
-        BuildQuery(table, field, value, where);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+        SetQueryString(BuildQuery(table, field, value, where));
         rows = WriteData();
-        log.debug("setQueryString method was run");
     }
 
     /**
@@ -72,12 +58,9 @@ public class UpdateQuery extends Query{
      * @param run boolean if true built Query is set with SetQueryString method
      */
     public UpdateQuery(String table, String[] fields, String[] values, String where, boolean run) {
-        BuildQuery(table, fields, values, where);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+        SetQueryString(BuildQuery(table, fields, values, where));
         if (run)
             rows = WriteData();
-        log.debug("setQueryString method was run");
     }
 
     /**
@@ -89,12 +72,9 @@ public class UpdateQuery extends Query{
      * @param run boolean if true built Query is set with SetQueryString method
      */
     public UpdateQuery(String table, String field, String value, String where, boolean run) {
-        BuildQuery(table, field, value, where);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+        SetQueryString(BuildQuery(table, field, value, where));
         if (run)
             rows = WriteData();
-        log.debug("setQueryString method was run");
     }
 
     /**
@@ -104,7 +84,10 @@ public class UpdateQuery extends Query{
      * @param values String Array containing the  values which shall be updated
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
-    public void BuildQuery(String table, String[] fields, String[] values, String where) {
+    public String BuildQuery(String table, String[] fields, String[] values, String where) {
+        log.debug("Query is being build.");
+        final StringBuilder query = new StringBuilder();
+
         int lengthFields=fields.length; int lengthValues=values.length;
         query.append("UPDATE ").append(table).append(" SET ");
 
@@ -117,19 +100,24 @@ public class UpdateQuery extends Query{
         if (where != null) {
             query.append(" WHERE ").append(where);
         }
-
         query.append(";");
-        log.debug("query object was built");
+
+        log.debug("Query string was built successfully.");
+        return query.toString();
     }
 
     /**
-     *
+     * Builds the UPDATE-Query with the given parameters
      * @param table String containing the name of the table
      * @param field String containing the name of the field where a given value shall be updated
      * @param value String containing the value which shall be updated
      * @param where String containing the "WHERE"-clause of the SQL-statement
+     * @return SQL-Query
      */
-    public void BuildQuery(String table, String field, String value, String where) {
+    public String BuildQuery(String table, String field, String value, String where) {
+        log.debug("Query is being build.");
+        StringBuilder query = new StringBuilder();
+
         query.append("UPDATE ").append(table).append(" SET ").append(field);
         if (value == null) {
             query.append(" = NULL");
@@ -140,9 +128,10 @@ public class UpdateQuery extends Query{
         if (where != null) {
             query.append(" WHERE ").append(where);
         }
-
         query.append(";");
-        log.debug("query object was built");
+
+        log.debug("Query string was built successfully.");
+        return query.toString();
     }
 
     /**

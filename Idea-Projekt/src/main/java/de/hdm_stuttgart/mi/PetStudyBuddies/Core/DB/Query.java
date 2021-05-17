@@ -46,9 +46,10 @@ public class Query extends SQLiteJDBC {
     public void SetQueryString(String queryString) {
         this.queryString = queryString;
         log.debug("QueryString was set.");
+        log.info("New query string: " + queryString);
     }
 
-    /*
+    /**
      * @return Query as a string
      */
     public String GetQueryString() {
@@ -66,6 +67,7 @@ public class Query extends SQLiteJDBC {
             query = getConnection().createStatement();
             rows = query.executeUpdate(queryString);
             query.close();
+            log.debug("Query executed");
         } catch (SQLException e) {
             log.catching(e);
             log.error("Could not execute INSERT or UPDATE or DELETE Query.");
@@ -86,6 +88,7 @@ public class Query extends SQLiteJDBC {
             query = getConnection().createStatement();
             result = query.executeQuery(queryString);
             query.close();
+            log.debug("Query executed");
         } catch (SQLException e) {
             log.catching(e);
             log.error("Could not execute SELECT Query.");

@@ -10,11 +10,6 @@ public class DeleteQuery extends Query {
     private static final Logger log = LogManager.getLogger(DeleteQuery.class);
 
     /**
-     * Stores the Delete SQL-Query statement
-     */
-    private final StringBuilder query = new StringBuilder();
-
-    /**
      * Count of effected rows
      */
     private int rows = -1;
@@ -25,11 +20,8 @@ public class DeleteQuery extends Query {
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
     public DeleteQuery(String table, String where) {
-        BuildQuery(table, where);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+        SetQueryString(BuildQuery(table, where));
         rows = WriteData();
-        log.debug("setQueryString method was run");
     }
 
     /**
@@ -39,12 +31,9 @@ public class DeleteQuery extends Query {
      * @param run boolean if true built Query is set with SetQueryString method
      */
     public DeleteQuery(String table, String where, boolean run) {
-        BuildQuery(table, where);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+        SetQueryString(BuildQuery(table, where));
         if (run)
             rows = WriteData();
-        log.debug("SetQueryString method was run");
     }
 
     /**
@@ -52,13 +41,18 @@ public class DeleteQuery extends Query {
      * @param table String containing the name of the table
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
-    public void BuildQuery(String table, String where) {
+    public String BuildQuery(String table, String where) {
+        log.debug("Query is being build.");
+        final StringBuilder query = new StringBuilder();
+
         query.append("DELETE FROM ").append(table);
         if(where != null){
             query.append(" WHERE ").append(where);
         }
         query.append(";");
-        log.debug("Query object was built");
+
+        log.debug("Query string was built successfully.");
+        return query.toString();
     }
 
     /**
