@@ -6,17 +6,17 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Statement;
 import java.sql.*;
 
-/*
+/**
  * Query class
  */
-class Query extends SQLiteJDBC {
+public class Query extends SQLiteJDBC {
     /**
      * Log object for error handling
      */
     private static final Logger log = LogManager.getLogger(Query.class);
 
-    /*
-     * Stores the actualy query object
+    /**
+     * Stores the actual query object
      */
     private Statement query = null;
 
@@ -25,26 +25,27 @@ class Query extends SQLiteJDBC {
      */
     private String queryString;
 
-    /*
-     * Constructor - Doesn't do anything active right now
+    /**
+     * Constructor - Doesn't do anything active
      */
     protected Query() {
 
     }
 
-    /*
+    /**
      * Constructor - Sets the query string
-     * @param Query as a string
+     * @param queryString Query as a string
      */
     public Query(String queryString) {
         this.queryString = queryString;
     }
 
-    /*
+    /**
      * Sets the query string
      */
     public void SetQueryString(String queryString) {
         this.queryString = queryString;
+        log.debug("QueryString was set.");
     }
 
     /*
@@ -54,9 +55,9 @@ class Query extends SQLiteJDBC {
         return queryString;
     }
 
-    /*
-     * Executes an update / insert query
-     * @return Number of rows changed rows OR -1 if no rows are affected
+    /**
+     * Executes an update / insert / delete query
+     * @return Number of changed rows OR -1 if no rows are affected (1 if insert is successful)
      */
     public int WriteData() {
         int rows = -1;
@@ -67,15 +68,15 @@ class Query extends SQLiteJDBC {
             query.close();
         } catch (SQLException e) {
             log.catching(e);
-            log.error("Could not execute INSERT or UPDATE Query.");
+            log.error("Could not execute INSERT or UPDATE or DELETE Query.");
             log.info("Query was " + queryString);
         }
 
         return rows;
     }
 
-    /*
-     * Executes a select query
+    /**
+     * Executes an select query
      * @return Result set of the selected rows
      */
     public ResultSet ReadData() {

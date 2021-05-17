@@ -84,7 +84,8 @@ public class SelectQuery extends Query {
     }
 
     /**
-     * Returns result of SELECT-statement if several DB-reuslts were found
+     * Returns result of SELECT-statement if several DB-results were found
+     * @see Query#ReadData()
      * @return result of SELECT-statement
      */
     public ResultSet fetchAll() {

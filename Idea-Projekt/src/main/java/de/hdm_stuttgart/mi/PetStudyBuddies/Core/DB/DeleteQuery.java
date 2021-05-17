@@ -61,6 +61,9 @@ public class DeleteQuery extends Query {
         log.debug("Query object was built");
     }
 
+    /**
+     * @see Query#WriteData()
+     */
     public int Count() {
         return rows;
     }

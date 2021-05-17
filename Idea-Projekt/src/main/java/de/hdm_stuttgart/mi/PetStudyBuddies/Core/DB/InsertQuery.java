@@ -28,10 +28,8 @@ public class InsertQuery extends Query{
      */
     public InsertQuery(String table, String[] fields, String[] values) {
         BuildQuery(table, fields, values);
-        log.debug("buildQuery method was run");
         SetQueryString(query.toString());
         rows = WriteData();
-        log.debug("setQueryString method was run");
     }
 
     /**
@@ -43,20 +41,19 @@ public class InsertQuery extends Query{
      */
     public InsertQuery(String table, String[] fields, String[] values, boolean run) {
         BuildQuery(table, fields, values);
-        log.debug("buildQuery method was run");
         SetQueryString(query.toString());
         if (run)
             rows = WriteData();
-        log.debug("setQueryString method was run");
     }
 
     /**
-     * Builds the INSERT-Query with the given parameters and saves query in the Stringbuilder query object
+     * Builds the INSERT-Query with the given parameters and saves SQL-Query in the StringBuilder query
      * @param table String containing the name of the table
      * @param fields String Array containing the names of the fields where values shall be inserted
      * @param values String Array containing the  values which shall be inserted
      */
     private void BuildQuery(String table, String[] fields, String[] values) {
+        log.debug("BuildQuery method was run.");
         if (fields != null && values != null && fields.length == values.length) {
             int lengthValues = values.length;
             query.append("INSERT INTO ").append(table).append(" (");
@@ -74,11 +71,16 @@ public class InsertQuery extends Query{
 
             query.append("'").append(values[lengthValues - 1]).append("')");
             query.append(";");
-            log.debug("query object was built");
+            log.debug("QueryString was built.");
         }
-        log.debug("fields, values were null or not the same length");
+        log.error("Fields or values were null or not the same length.");
+        assert fields != null; assert values != null;
+        log.info("Lengths are: " + fields.length + " " + values.length);
     }
 
+    /**
+     * @see Query#WriteData()
+     */
     public int Count() {
         return rows;
     }

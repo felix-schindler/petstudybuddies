@@ -131,6 +131,9 @@ public class UpdateQuery extends Query{
         log.debug("query object was built");
     }
 
+    /**
+     * @see Query#WriteData()
+     */
     public int Count() {
         return rows;
     }
