@@ -74,8 +74,10 @@ public class InsertQuery extends Query{
             log.debug("QueryString was built.");
         }
         log.error("Fields or values were null or not the same length.");
-        assert fields != null; assert values != null;
-        log.info("Lengths are: " + fields.length + " " + values.length);
+        if (fields != null && values != null)
+            log.info("Lengths are: " + fields.length + " " + values.length);
+        else
+            log.info("Fields or values equals null.");
     }
 
     /**
