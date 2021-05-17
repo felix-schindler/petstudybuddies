@@ -13,11 +13,6 @@ public class SelectQuery extends Query {
     private static final Logger log = LogManager.getLogger(SelectQuery.class);
 
     /**
-     * Stores the Select SQL-Query String
-     */
-    private final StringBuilder query = new StringBuilder();
-
-    /**
      * result of the executed query
      */
     private ResultSet result;
@@ -29,11 +24,8 @@ public class SelectQuery extends Query {
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
     public SelectQuery(String table, String field, String where) {
-        buildQuery(table, field, where, null, null);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+        SetQueryString(buildQuery(table, field, where, null, null));
         result = ReadData();
-        log.debug("setQueryString method was run");
     }
 
     /**
@@ -45,11 +37,8 @@ public class SelectQuery extends Query {
      * @param groupBy String containing the "GROUP BY"-clause of the SQL-statement
      */
     public SelectQuery(String table, String field, String where, String orderBy, String groupBy) {
-        buildQuery(table, field, where, orderBy, groupBy);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+        SetQueryString(buildQuery(table, field, where, orderBy, groupBy));
         result = ReadData();
-        log.debug("setQueryString method was run");
     }
 
     /**
@@ -61,40 +50,44 @@ public class SelectQuery extends Query {
      * @param groupBy String containing the "GROUP BY"-clause of the SQL-statement
      * @param run boolean if true built Query is set with SetQueryString method
      */
-    public SelectQuery(String table, String field, String where, String orderBy, String groupBy, boolean run) {
-        buildQuery(table, field, where, orderBy, groupBy);
-        log.debug("buildQuery method was run");
-        SetQueryString(query.toString());
+    public SelectQuery(String table, String field, String where, String orderBy, String groupBy, boolean run) { ;
+        SetQueryString(buildQuery(table, field, where, orderBy, groupBy));
         if (run)
             result = ReadData();
-        log.debug("setQueryString method was run");
     }
 
     /**
-     * Builds the SELECT-Query with the given parameters and saves query in the Stringbuilder query object
+     * Builds the SELECT-Query with the given parameters
      * @param table String containing the name of the table
      * @param field String containing the name of the field where values shall be outprinted
      * @param where String containing the "WHERE"-clause of the SQL-statement
      * @param orderBy String containing the "ORDER BY"-clause of the SQL-statement
      * @param groupBy String containing the "GROUP BY"-clause of the SQL-statement
+     * @return SQL-Query
      */
-    public void buildQuery(String table, String field, String where, String orderBy, String groupBy) {
-        if(field== null || table== null){
-            log.debug("table or field equals null");
-        }else {
-            query.append("SELECT ").append(field).append(" FROM ").append(table);
-            if (where != null) {
-                query.append(" WHERE ").append(where);
-            }
-            if (groupBy != null) {
-                query.append(" GROUP BY ").append(groupBy);
-            }
-            if (orderBy != null) {
-                query.append(" ORDER BY ").append(orderBy);
-            }
-            query.append(";");
-            log.debug("query object was built");
+    public String buildQuery(String table, String field, String where, String orderBy, String groupBy) {
+        log.debug("Query is being build.");
+        final StringBuilder query = new StringBuilder();
+
+        if (table == null || field == null) {
+            log.error("Table or field equals null");
+            return "";
         }
+
+        query.append("SELECT ").append(field).append(" FROM ").append(table);
+        if (where != null) {
+            query.append(" WHERE ").append(where);
+        }
+        if (groupBy != null) {
+            query.append(" GROUP BY ").append(groupBy);
+        }
+        if (orderBy != null) {
+            query.append(" ORDER BY ").append(orderBy);
+        }
+        query.append(";");
+
+        log.debug("Query string was built successfully.");
+        return query.toString();
     }
 
     /**
@@ -116,5 +109,25 @@ public class SelectQuery extends Query {
         } catch (SQLException e) {
             return null;
         }
+    }
+
+    /**
+     * Counts selected rows
+     * @return Count of selected rows
+     */
+    public int Count() {
+        ResultSet rs = fetchAll();
+        int count = 0;
+
+        try {
+            while (rs.next()) {
+                count++;
+            }
+        } catch (SQLException e) {
+            log.catching(e);
+            log.error("Failed to count rows of ResultSet");
+        }
+
+        return count;
     }
 }
