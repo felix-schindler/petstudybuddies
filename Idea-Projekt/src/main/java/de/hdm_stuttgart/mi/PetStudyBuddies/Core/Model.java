@@ -40,6 +40,6 @@ public abstract class Model {
      * @param newValue New value to be set in the database
      */
     public void setField(String field, String newValue){
-        new UpdateQuery(getTable(),field,newValue,null);
+        new UpdateQuery(getTable(), field, newValue, null);
     }
 }

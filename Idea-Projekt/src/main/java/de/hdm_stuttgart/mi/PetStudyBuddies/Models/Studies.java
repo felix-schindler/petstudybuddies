@@ -13,10 +13,12 @@ public class Studies extends Model {
      * log object for error handling
      */
     private static final Logger log = LogManager.getLogger(Studies.class);
+
     /**
      *
      */
     private int majorID;
+
     /**
      *
      */
@@ -39,35 +41,38 @@ public class Studies extends Model {
     }
 
     /**
-     *
-     * @return
-     */
-    public String getTitle() {
-        return getField("Title");
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getUserID() {
-        return getField("UserID");
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getLectureID() {
-        return getField("LectureID");
-    }
-
-    /**
-     *
-     * @return
+     * @see Model#getTable()
      */
     @Override
     public String getTable() {
         return "Studies";
+    }
+
+    /**
+     * @see Studies#majorID
+     */
+    public int getMajorID() {
+        return majorID;
+    }
+
+    /**
+     * @see Studies#lectureID
+     */
+    public int getLectureID() {
+        return lectureID;
+    }
+
+    /**
+     * Sets the major id
+     */
+    public void setMajorID(int majorID) {
+        this.majorID = majorID;
+    }
+
+    /**
+     * Sets the lecture id
+     */
+    public void setLectureID(int lectureID) {
+        this.lectureID = lectureID;
     }
 }

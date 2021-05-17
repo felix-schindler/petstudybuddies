@@ -27,6 +27,20 @@ public class SelectQuery extends Query {
      * @param table String containing the name of the table
      * @param field String containing the name of the field where values shall be outprinted
      * @param where String containing the "WHERE"-clause of the SQL-statement
+     */
+    public SelectQuery(String table, String field, String where) {
+        buildQuery(table, field, where, null, null);
+        log.debug("buildQuery method was run");
+        SetQueryString(query.toString());
+        result = ReadData();
+        log.debug("setQueryString method was run");
+    }
+
+    /**
+     * Hands over parts of the SQL-Query Select statement to the BuildQuery method and then calls SetQueryString
+     * @param table String containing the name of the table
+     * @param field String containing the name of the field where values shall be outprinted
+     * @param where String containing the "WHERE"-clause of the SQL-statement
      * @param orderBy String containing the "ORDER BY"-clause of the SQL-statement
      * @param groupBy String containing the "GROUP BY"-clause of the SQL-statement
      */

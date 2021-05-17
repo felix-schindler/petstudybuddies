@@ -24,6 +24,20 @@ public class UpdateQuery extends Query{
      * @param table String containing the name of the table
      * @param fields String Array containing the names of the fields where values shall be updated
      * @param values String Array containing the  values which shall be updated
+     */
+    public UpdateQuery(String table, String[] fields, String[] values) {
+        BuildQuery(table, fields, values, null);
+        log.debug("buildQuery method was run");
+        SetQueryString(query.toString());
+        rows = WriteData();
+        log.debug("setQueryString method was run");
+    }
+
+    /**
+     * Hands over parts of the SQL-Query Update statement to the BuildQuery method and then calls SetQueryString
+     * @param table String containing the name of the table
+     * @param fields String Array containing the names of the fields where values shall be updated
+     * @param values String Array containing the  values which shall be updated
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
     public UpdateQuery(String table, String[] fields, String[] values, String where) {

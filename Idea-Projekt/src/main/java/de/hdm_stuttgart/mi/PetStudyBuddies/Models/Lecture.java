@@ -17,34 +17,87 @@ public class Lecture extends Model implements Shareable {
     private static final Logger log = LogManager.getLogger(Lecture.class);
 
     /**
-     * String containing the lecture title
+     * Title of the lecture
      */
     private String title;
 
     /**
-     * Integer containing the ECTS of the lecture
+     * ECTS of the lecture
      */
     int ects;
 
     /**
-     * Integer containing the MajorID
+     * MajorID the lecture belongs to
      */
     int majorID;
 
     /**
-     * fetches all lectures of User with DB statement und sets variables with found values
-     * @param ID UserID
+     * Fetches all lectures of Lecture with DB statement und sets variables with found values
+     * @param ID LectureID
      */
     public Lecture(int ID) {
         super(ID);
         try {
-            ResultSet lecture = new SelectQuery("Lecture", "*", "ID="+ID, null, null).ReadData();
+            ResultSet lecture = new SelectQuery(getTable(), "*", "ID="+ID).ReadData();
             title = lecture.getString("Title");
             ects = lecture.getInt("ECTS");
             majorID = lecture.getInt("MajorID");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    /**
+     * @see Model#getTable()
+     */
+    @Override
+    public String getTable() {
+        return "Lecture";
+    }
+
+    /**
+     * @see Lecture#title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * @see Lecture#ects
+     */
+    public int getEcts() {
+        return ects;
+    }
+
+    /**
+     * @see Lecture#majorID
+     */
+    public int getMajorID() {
+        return majorID;
+    }
+
+    /**
+     * Sets the title of the lecture
+     * @param title New title
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * Sets the ECTS
+     * @param ects New ECTS
+     */
+    public void setEcts(int ects) {
+        this.ects = ects;
+    }
+
+    /**
+     * Sets the major
+     * @param majorID New major ID
+     */
+    public void setMajorID(int majorID) {
+        this.majorID = majorID;
     }
 
     /**
@@ -61,27 +114,5 @@ public class Lecture extends Model implements Shareable {
      */
     public boolean share(int ID) {
         return false;
-    }
-
-    /**
-     * @return Title of the lecture
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * @return MajorID
-     */
-    public int getMajorID() {
-        return majorID;
-    }
-
-    /**
-     * @return Name of table in database
-     */
-    @Override
-    public String getTable() {
-        return "Lecture";
     }
 }

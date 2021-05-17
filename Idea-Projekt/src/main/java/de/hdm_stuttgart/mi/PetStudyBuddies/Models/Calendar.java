@@ -18,8 +18,7 @@ public class Calendar extends Model {
     }
 
     /**
-     *
-     * @return table
+     * @see Model#getTable()
      */
     @Override
     public String getTable() {

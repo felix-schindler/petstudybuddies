@@ -14,19 +14,26 @@ public class ToDoList extends Model implements Shareable {
      * log object for error handling
      */
     private static final Logger log = LogManager.getLogger(ToDoList.class);
+
     /**
-     *
+     * UserID of the owner
+     */
+    private int owner;
+
+    /**
+     * Title of the ToDoList
      */
     private String title;
 
     /**
-     *
-     * @param ID
+     * Creates a new ToDoList linked to the ToDoLists database-entry via its ID
+     * @param ID ID of the ToDoList in the database
      */
     public ToDoList(int ID) {
         super(ID);
         try {
-            ResultSet toDoList = new SelectQuery("ToDoList", "*", "ID="+ID, null, null).fetchAll();
+            ResultSet toDoList = new SelectQuery("ToDoList", "*", "ID="+ID).fetchAll();
+            owner = toDoList.getInt("UserID");
             title = toDoList.getString("Title");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -34,7 +41,37 @@ public class ToDoList extends Model implements Shareable {
     }
 
     /**
-     *
+     * @see Model#getTable()
+     */
+    @Override
+    public String getTable() {
+        return "ToDoList";
+    }
+
+    /**
+     * @return UserID of the owner
+     */
+    public int getOwner(){
+        return owner;
+    }
+
+    /**
+     * @return Title of the ToDoList
+     */
+    public String getTitle(){
+        return title;
+    }
+
+    /**
+     * Sets a new title for a ToDoList
+     * @param newTitle New title for ToDoList
+     */
+    public void setTitle(String newTitle) {
+        title = newTitle;
+    }
+
+    /**
+     * TODO this.
      * @param ID
      * @return
      */
@@ -43,30 +80,9 @@ public class ToDoList extends Model implements Shareable {
     }
 
     /**
-     *
-     * @return
+     * TODO save -> Throw Exception if owner != UserID (in DB) weil Owner kann nicht geändert werden.
      */
-    public String getUserID(){
-        return getField("UserID");
+    public boolean save() {
+        return false;
     }
-
-    /**
-     *
-     * @return
-     */
-    public String getTitle(){
-        return getField("Title");
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public String getTable() {
-        return "ToDoList";
-    }
-
-
-
 }

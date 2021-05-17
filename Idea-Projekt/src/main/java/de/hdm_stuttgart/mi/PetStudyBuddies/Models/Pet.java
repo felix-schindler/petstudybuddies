@@ -13,10 +13,12 @@ public class Pet extends Model {
      * log object for error handling
      */
     private static final Logger log = LogManager.getLogger(Pet.class);
+
     /**
      *
      */
     private String name;
+
     /**
      *
      */
@@ -38,35 +40,40 @@ public class Pet extends Model {
     }
 
     /**
-     *
-     * @return
-     */
-    public String getUserID() {
-        return getField("UserID");
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getName() {
-        return getField("Name");
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getEmotion() {
-        return getField("Emotion");
-    }
-
-    /**
-     *
-     * @return
+     * @see Model#getTable()
      */
     @Override
     public String getTable() {
         return "Pet";
+    }
+
+    /**
+     * @see Pet#name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @see Pet#emotion
+     */
+    public String getEmotion() {
+        return emotion;
+    }
+
+    /**
+     * Sets the name
+     * @param name New name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Sets the emotion
+     * @param emotion new emotion
+     */
+    public void setEmotion(String emotion) {
+        this.emotion = emotion;
     }
 }
