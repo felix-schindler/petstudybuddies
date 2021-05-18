@@ -110,6 +110,13 @@ public class Note extends Model implements Shareable {
      * @param ID
      * @return
      */
+
+    public boolean save() {
+        return new UpdateQuery(getTable(), new String[]{"Title", "Content", "LastEditedOn", "CreatedOn"},
+                new String[]{title, content ,Date.toString(lastEditedOn), Date.toString(createdOn)},
+                "ID="+getID()).Count() == 1;
+    }
+
     public boolean share(int ID) {
         return false;
     }

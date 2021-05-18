@@ -75,4 +75,10 @@ public class Studies extends Model {
     public void setLectureID(int lectureID) {
         this.lectureID = lectureID;
     }
+
+    public boolean save() {
+        return new UpdateQuery(getTable(), new String[]{"MajorID", "LectureID"},
+                new String[]{majorID, lectureID},
+                "ID="+getID()).Count() == 1;
+    }
 }

@@ -76,4 +76,10 @@ public class Pet extends Model {
     public void setEmotion(String emotion) {
         this.emotion = emotion;
     }
+
+    public boolean save() {
+        return new UpdateQuery(getTable(), new String[]{"Name", "Emotion"},
+                new String[]{name, emotion},
+                "ID="+getID()).Count() == 1;
+    }
 }

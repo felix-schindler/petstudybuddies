@@ -143,4 +143,10 @@ public class Task extends Model {
             return new UpdateQuery(getTable(), new String[]{"UserID"}, new String[]{Integer.toString(UserID)}, "ID="+TaskID).Count() == 1;
         }
     }
+
+    public boolean save() {
+        return new UpdateQuery(getTable(), new String[]{"ToDoListID", "Content", "Until", "AssignedTo"},
+                new String[]{Int.toString(toDoList), content, Date.toString(until), Int.toString(assignedPerson)},
+                "ID="+getID()).Count() == 1;
+    }
 }
