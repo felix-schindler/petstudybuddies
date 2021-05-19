@@ -100,13 +100,14 @@ public class SelectQuery extends Query {
     }
 
     /**
-     * Returns result of SELECT-statement if one DB-reuslt was found
+     * Returns result of SELECT-statement if one DB-result was found
      * @return result of SELECT-statement
      */
     public String fetch() {
         try {
             return result.getString(1);
         } catch (SQLException e) {
+            log.catching(e);
             return null;
         }
     }

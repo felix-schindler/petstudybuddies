@@ -66,7 +66,7 @@ public class Query extends SQLiteJDBC {
         try {
             query = getConnection().createStatement();
             rows = query.executeUpdate(queryString);
-            query.close();
+            // query.close();
             log.debug("Query executed");
         } catch (SQLException e) {
             log.catching(e);
@@ -87,7 +87,7 @@ public class Query extends SQLiteJDBC {
         try {
             query = getConnection().createStatement();
             result = query.executeQuery(queryString);
-            query.close();
+            // query.close();
             log.debug("Query executed");
         } catch (SQLException e) {
             log.catching(e);

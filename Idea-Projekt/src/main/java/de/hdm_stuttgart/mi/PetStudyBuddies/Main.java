@@ -1,8 +1,14 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.Query;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -10,19 +16,22 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        if (Account.getLoggedUser() == null) {
+        int menu = 0;
+        while (Account.getLoggedUser() == null) {
             Scanner scan = new Scanner(System.in);
 
             System.out.println("1. Login\n2. Register\n3. End");
-            final int menuChoose = scan.nextInt();
+            menu = scan.nextInt();
 
-            switch (menuChoose) {
+            switch (menu) {
                 case 1 -> {
                     System.out.println("==========\nLogin\n==========");
-                    System.out.println("EMail eingeben:");
+                    String email = "fs146@hdm-stuttgart.de", password = "test";
+                    /* System.out.println("EMail eingeben:");
                     final String email = scan.next();
                     System.out.println("Passwort eingeben:");
-                    final String password = scan.next();
+                    final String password = scan.next();*/
+
                     Account.setUser(Auth.login(email, password));
 
                     if (Account.getLoggedUser() != null) {
@@ -46,6 +55,39 @@ public class Main {
                 }
                 case 3 -> System.out.println("End");
                 default -> System.out.println("Invalid input, please fix your attitude");
+            }
+        }
+
+        while (Account.getLoggedUser() != null && menu != 4) {
+            Scanner scan = new Scanner(System.in);
+            System.out.flush();
+            System.out.println("Welcome " + Account.getLoggedUser().getUsername());
+            System.out.println("1. Notizen anzeigen\n2. Notiz erstellen\n3. Notiz bearbeiten\n4. Ende");
+            System.out.print("Deine WahL: ");
+            menu = scan.nextInt();
+
+            switch (menu) {
+                case 1 -> {
+                    try {
+                        Utils.printResultSet(new SelectQuery("Note", "*", "UserID="+Account.getLoggedUser().getID()).fetchAll());
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+                case 2 -> {
+                    System.out.print("Choose a title: ");
+                    final String title = scan.next();
+                    System.out.print("Write content: ");
+                    final String content = scan.next();
+
+                    if (new InsertQuery("Note", new String[]{"UserID", "Title", "Content"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), title, content}).Count() == 1) {
+                        System.out.println("New note created");
+                    } else {
+                        System.err.println("Note could not be created");
+                    }
+                }
+                case 4 -> System.out.println("Ok, dann nicht.");
+                default -> System.err.println("Oh no");
             }
         }
     }

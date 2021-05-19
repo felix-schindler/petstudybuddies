@@ -26,8 +26,10 @@ public class Account {
         if (user == null || token == null)
             return null;
 
+        /*
         if (!Auth.loginFromToken(user.getID(), token))
             Auth.logout();
+         */
 
         return user;
     }

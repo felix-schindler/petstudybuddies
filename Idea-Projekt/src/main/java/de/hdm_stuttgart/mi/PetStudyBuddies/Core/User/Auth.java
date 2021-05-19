@@ -5,6 +5,8 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 
+import java.util.Objects;
+
 public class Auth {
     /**
      * Returns a User if eMail AND Password match
@@ -13,7 +15,7 @@ public class Auth {
      * @return User if login successful : null
      */
     public static User login(String eMail, String password) {
-        String userID = new SelectQuery("User", "ID", "EMail='"+eMail+"' AND Password='"+ Utils.sha1(password)+"'", null, null).fetch();
+        String userID = new SelectQuery("User", "ID", "EMail='"+eMail+"' AND Password='"+ Utils.sha1(password)+"'").fetch();
         if (userID != null) {
             return new User(Integer.parseInt(userID));
         }
@@ -21,7 +23,7 @@ public class Auth {
     }
 
     public static boolean loginFromToken(int ID, String token) {
-        return new SelectQuery("User", "ID", "UserID='"+ID+"'", null, null).fetch().equals(Integer.toString(ID));
+        return Objects.equals(Utils.sha1(new SelectQuery("User", "Password", "ID=" + ID).fetch()), token);
     }
 
     /**
