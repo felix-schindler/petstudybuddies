@@ -2,6 +2,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.sqlite.SQLiteConfig;
 
 import java.sql.*;
 
@@ -27,7 +28,7 @@ class SQLiteJDBC {
 
     /**
      * Connect to the database if not connected
-     * @return The current database conenction
+     * @return The current database connection
      */
     protected Connection getConnection() {
         if (con == null)
@@ -45,7 +46,9 @@ class SQLiteJDBC {
         log.debug("Trying to connect to database.");
         try {
             Class.forName("org.sqlite.JDBC");
-            con = DriverManager.getConnection("jdbc:sqlite:psb.sqlite");
+            SQLiteConfig config = new SQLiteConfig();
+            config.enforceForeignKeys(true);
+            con = DriverManager.getConnection("jdbc:sqlite:psb.sqlite", config.toProperties());
             con.setAutoCommit(true);	// Änderungen werden sofort in die Datenbank geschrieben & können nicht einfach rückgängig gemacht werden
             log.debug("Database connection opened successfully.");
         } catch (SQLException | ClassNotFoundException e) {
