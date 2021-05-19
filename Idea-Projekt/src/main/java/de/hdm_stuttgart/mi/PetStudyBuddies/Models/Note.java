@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
 import org.apache.logging.log4j.LogManager;
@@ -106,14 +107,11 @@ public class Note extends Model implements Shareable {
     }
 
     /**
-     *
-     * @param ID
-     * @return
+     * @return true if saved successfully, false otherwise
      */
-
     public boolean save() {
         return new UpdateQuery(getTable(), new String[]{"Title", "Content", "LastEditedOn", "CreatedOn"},
-                new String[]{title, content ,Date.toString(lastEditedOn), Date.toString(createdOn)},
+                new String[]{title, content, lastEditedOn.toString(), createdOn.toString()},
                 "ID="+getID()).Count() == 1;
     }
 

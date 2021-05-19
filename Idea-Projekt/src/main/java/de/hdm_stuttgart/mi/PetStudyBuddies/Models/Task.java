@@ -144,9 +144,12 @@ public class Task extends Model {
         }
     }
 
+    /**
+     * @return true if saved successfully, false otherwise
+     */
     public boolean save() {
         return new UpdateQuery(getTable(), new String[]{"ToDoListID", "Content", "Until", "AssignedTo"},
-                new String[]{Int.toString(toDoList), content, Date.toString(until), Int.toString(assignedPerson)},
+                new String[]{Integer.toString(toDoList), content, until.toString(), Integer.toString(assignedPerson)},
                 "ID="+getID()).Count() == 1;
     }
 }
