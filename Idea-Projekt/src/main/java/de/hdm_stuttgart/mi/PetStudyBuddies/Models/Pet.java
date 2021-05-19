@@ -82,6 +82,7 @@ public class Pet extends Model {
      * @see Model#save()
      */
     public boolean save() {
+        log.debug("Trying to save");
         return new UpdateQuery(getTable(), new String[]{"Name", "Emotion"},
                 new String[]{name, emotion},
                 "ID="+getID()).Count() == 1;

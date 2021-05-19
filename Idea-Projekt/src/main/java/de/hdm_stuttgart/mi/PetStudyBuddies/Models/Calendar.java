@@ -24,4 +24,12 @@ public class Calendar extends Model {
     public String getTable() {
         return null;
     }
+
+    /**
+     * TODO implement
+     * @see Model#save()
+     */
+    public boolean save() {
+        return false;
+    }
 }
