@@ -78,6 +78,9 @@ public class Pet extends Model {
         this.emotion = emotion;
     }
 
+    /**
+     * @see Model#save()
+     */
     public boolean save() {
         return new UpdateQuery(getTable(), new String[]{"Name", "Emotion"},
                 new String[]{name, emotion},

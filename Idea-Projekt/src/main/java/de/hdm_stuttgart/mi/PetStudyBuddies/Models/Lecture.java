@@ -102,7 +102,7 @@ public class Lecture extends Model implements Shareable {
 
     /**
      * Save an updated lecture to the database
-     * @return successfully updated or not
+     * @see Model#save()
      */
     public boolean save() {
         return new UpdateQuery(getTable(), new String[]{"Title", "ECTS", "MajorID"}, new String[]{title, Integer.toString(ects), Integer.toString(majorID)}, "ID="+getID()).Count() == 1;

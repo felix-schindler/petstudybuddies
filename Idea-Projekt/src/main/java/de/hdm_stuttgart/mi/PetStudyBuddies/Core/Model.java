@@ -11,6 +11,11 @@ public abstract class Model {
     public abstract String getTable();
 
     /**
+     * @return true if saved successfully, false otherwise
+     */
+    public abstract boolean save() throws Exception;
+
+    /**
      * ID of the database entry
      */
     private final int ID;

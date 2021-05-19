@@ -145,7 +145,7 @@ public class Task extends Model {
     }
 
     /**
-     * @return true if saved successfully, false otherwise
+     * @see Model#save()
      */
     public boolean save() {
         return new UpdateQuery(getTable(), new String[]{"ToDoListID", "Content", "Until", "AssignedTo"},

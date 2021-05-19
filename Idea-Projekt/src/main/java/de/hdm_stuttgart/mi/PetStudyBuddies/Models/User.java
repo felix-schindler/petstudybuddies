@@ -114,8 +114,9 @@ public class User extends Model {
     /**
      * Saves changes of the User
      * @throws Exception if username is changed
+     * @see Model#save()
      */
-    public void save() throws Exception {
+    public boolean save() throws Exception {
         if (password.length() != 40) {
             log.error("The password has not the SHA1 length and is therefore not encrypted.");
             throw new Exception("Password has to be SHA1 encrypted");
@@ -127,7 +128,7 @@ public class User extends Model {
             throw new Exception("Username is not changeable");
         }
 
-        new UpdateQuery(getTable(), new String[]{"EMail", "Password"}, new String[]{eMail, password});
+        return new UpdateQuery(getTable(), new String[]{"EMail", "Password"}, new String[]{eMail, password}).Count() == 1;
     }
 
     /*

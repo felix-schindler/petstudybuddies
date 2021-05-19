@@ -107,7 +107,7 @@ public class Note extends Model implements Shareable {
     }
 
     /**
-     * @return true if saved successfully, false otherwise
+     * @see Model#save()
      */
     public boolean save() {
         return new UpdateQuery(getTable(), new String[]{"Title", "Content", "LastEditedOn", "CreatedOn"},
@@ -115,6 +115,11 @@ public class Note extends Model implements Shareable {
                 "ID="+getID()).Count() == 1;
     }
 
+    /**
+     *
+     * @param ID
+     * @return
+     */
     public boolean share(int ID) {
         return false;
     }

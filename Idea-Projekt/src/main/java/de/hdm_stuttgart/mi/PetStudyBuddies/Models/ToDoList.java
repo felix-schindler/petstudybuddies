@@ -81,7 +81,7 @@ public class ToDoList extends Model implements Shareable {
 
     /**
      * TODO save -> Throw Exception if owner != UserID (in DB) weil Owner kann nicht geändert werden.
-     * @return true if saved successfully, false otherwise
+     * @see Model#save()
      */
     public boolean save() {
         return false;
