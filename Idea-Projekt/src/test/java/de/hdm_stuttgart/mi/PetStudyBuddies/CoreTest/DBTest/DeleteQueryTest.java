@@ -2,9 +2,14 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.CoreTest.DBTest;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class DeleteQueryTest {
@@ -15,10 +20,17 @@ public class DeleteQueryTest {
 
     }
     @Test
-    public void testDeleteSeveralTables() {
-       //new InsertQuery("ToDoList", new String[]{"UserID","Title"}, new String[]{"1","TestNote2"}, true).GetQueryString();
-       new InsertQuery("ToDoListShare", new String[]{"UserID","ToDoListID"}, new String[]{"1","1"}, true).GetQueryString();
-       //Assert.assertEquals("DELETE FROM ToDoList WHERE ID=8;",new DeleteQuery("ToDoList","ID=8").GetQueryString());
-
+    public void testDeleteSeveralTables() throws SQLException {
+       new InsertQuery("ToDoList", new String[]{"UserID","Title"}, new String[]{"1","TestNote2"}, true).GetQueryString();
+       //new InsertQuery("ToDoListShare", new String[]{"UserID","ToDoListID"}, new String[]{"2","9"}, true).GetQueryString();
+        ResultSet ToDoListID=  new SelectQuery("ToDoList","ID","Title='TestNote2'",null,null,true).fetchAll();
+        ArrayList<Integer> IDs = new ArrayList<Integer>();
+        while (ToDoListID.next()){
+            IDs.add(ToDoListID.getInt(1));
+        }
+        System.out.println(IDs);
+      // Assert.assertEquals("DELETE FROM ToDoList WHERE Title='TestNote2';",new DeleteQuery("ToDoList","Title='TestNote2'").GetQueryString());
+      // Assert.assertNull("", new SelectQuery("ToDoList","*","Title='TestNote2'",null,null,true));
+      //  Assert.assertNull("", new SelectQuery("ToDoListShare","*","Title='TestNote2'",null,null,true));
     }
 }
