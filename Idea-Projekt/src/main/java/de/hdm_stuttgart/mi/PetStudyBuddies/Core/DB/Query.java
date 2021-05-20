@@ -67,7 +67,7 @@ public class Query extends SQLiteJDBC {
             query = getConnection().createStatement();
             rows = query.executeUpdate(queryString);
             // disconnect();
-            query.close();
+            // query.close();
             getConnection().commit();
             log.debug("Query executed");
         } catch (SQLTimeoutException e) {
