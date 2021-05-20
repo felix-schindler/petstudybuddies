@@ -63,7 +63,7 @@ public class Main {
             System.out.flush();
             System.out.println("Welcome " + Account.getLoggedUser().getUsername());
             System.out.println("1. Notizen anzeigen\n2. Notiz erstellen\n3. Notiz bearbeiten\n4. Ende");
-            System.out.print("Deine WahL: ");
+            System.out.print("Deine Wahl: ");
             menu = scan.nextInt();
 
             switch (menu) {

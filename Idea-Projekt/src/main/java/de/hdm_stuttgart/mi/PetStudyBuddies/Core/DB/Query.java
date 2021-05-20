@@ -61,14 +61,22 @@ public class Query extends SQLiteJDBC {
      * @return Number of changed rows OR -1 if no rows are affected (1 if insert is successful)
      */
     public int WriteData() {
+        log.debug(queryString + " run");
         int rows = -1;
 
         try {
             query = getConnection().createStatement();
             rows = query.executeUpdate(queryString);
+            // disconnect();
             // query.close();
+            getConnection().commit();
             log.debug("Query executed");
-        } catch (SQLException e) {
+        } catch (SQLTimeoutException e) {
+            log.catching(e);
+            log.error("INSERT or UPDATE or DELETE Query timed out.");
+            log.info("Query was " + queryString);
+        }
+        catch (SQLException e) {
             log.catching(e);
             log.error("Could not execute INSERT or UPDATE or DELETE Query.");
             log.info("Query was " + queryString);
@@ -82,11 +90,13 @@ public class Query extends SQLiteJDBC {
      * @return Result set of the selected rows
      */
     public ResultSet ReadData() {
+        log.debug(queryString + " run");
         ResultSet result = null;
 
         try {
             query = getConnection().createStatement();
             result = query.executeQuery(queryString);
+            // disconnect();
             // query.close();
             log.debug("Query executed");
         } catch (SQLException e) {

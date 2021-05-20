@@ -117,7 +117,7 @@ public class SelectQuery extends Query {
      * @return Count of selected rows
      */
     public int Count() {
-        ResultSet rs = fetchAll();
+        ResultSet rs = result;
         int count = 0;
 
         try {
