@@ -66,9 +66,16 @@ public class Query extends SQLiteJDBC {
         try {
             query = getConnection().createStatement();
             rows = query.executeUpdate(queryString);
-            // query.close();
+            // disconnect();
+            query.close();
+            getConnection().commit();
             log.debug("Query executed");
-        } catch (SQLException e) {
+        } catch (SQLTimeoutException e) {
+            log.catching(e);
+            log.error("INSERT or UPDATE or DELETE Query timed out.");
+            log.info("Query was " + queryString);
+        }
+        catch (SQLException e) {
             log.catching(e);
             log.error("Could not execute INSERT or UPDATE or DELETE Query.");
             log.info("Query was " + queryString);
@@ -87,6 +94,7 @@ public class Query extends SQLiteJDBC {
         try {
             query = getConnection().createStatement();
             result = query.executeQuery(queryString);
+            // disconnect();
             // query.close();
             log.debug("Query executed");
         } catch (SQLException e) {
