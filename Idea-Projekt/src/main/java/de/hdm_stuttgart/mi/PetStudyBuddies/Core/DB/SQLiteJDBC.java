@@ -49,8 +49,8 @@ class SQLiteJDBC {
             SQLiteConfig config = new SQLiteConfig();
             config.enforceForeignKeys(true);
             con = DriverManager.getConnection("jdbc:sqlite:psb.sqlite", config.toProperties());
-            con.setAutoCommit(false);
-            // con.setAutoCommit(true);	// Änderungen werden sofort in die Datenbank geschrieben & können nicht einfach rückgängig gemacht werden
+            // con.setAutoCommit(false);
+            con.setAutoCommit(true);	// Änderungen werden sofort in die Datenbank geschrieben & können nicht einfach rückgängig gemacht werden
             log.debug("Database connection opened successfully.");
         } catch (SQLException | ClassNotFoundException e) {
             log.catching(e);

@@ -23,10 +23,10 @@ public class Account {
     }
 
     public static User getLoggedUser() {
+        /*
         if (user == null || token == null)
             return null;
 
-        /*
         if (!Auth.loginFromToken(user.getID(), token))
             Auth.logout();
          */
@@ -40,54 +40,4 @@ public class Account {
     public static void setToken(String token) {
         Account.token = token;
     }
-
-
-    /*
-    TODO Alles nur Abläufe in irgendwelchen Controllern
-
-    boolean deleteAccount() {
-        // TODO Delete everything (set Constrainteigenschaften -> ON DELETE)
-        return false;
-    }
-
-    boolean createPet(String name) {
-        return false;
-    }
-
-    boolean deletePet(String name) {
-        return false;
-    }
-
-    boolean createCalendar() {
-        return false;
-    }
-
-    boolean deleteCalendar() {
-        return false;
-    }
-
-    boolean createNote(String title, String content) {
-        return false;
-    }
-
-    boolean deleteNote(int ID) {
-        return false;
-    }
-
-    boolean createToDoList(String title) {
-        return false;
-    }
-
-    boolean deleteToDoList(int ID) {
-        return false;
-    }
-
-    boolean createStudies() {
-        return false;
-    }
-
-    boolean deleteStudies(int ID){
-        return false;
-    }
-    */
 }

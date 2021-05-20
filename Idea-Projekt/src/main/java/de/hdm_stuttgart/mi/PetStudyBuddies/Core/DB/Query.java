@@ -66,10 +66,15 @@ public class Query extends SQLiteJDBC {
 
         try {
             query = getConnection().createStatement();
+
+            if (query == null)
+                log.error("Query is null!");
+
             rows = query.executeUpdate(queryString);
-            // disconnect();
+            disconnect();
             // query.close();
-            getConnection().commit();
+            // getConnection().commit();
+            log.info(rows + " are affected");
             log.debug("Query executed");
         } catch (SQLTimeoutException e) {
             log.catching(e);
@@ -96,7 +101,7 @@ public class Query extends SQLiteJDBC {
         try {
             query = getConnection().createStatement();
             result = query.executeQuery(queryString);
-            // disconnect();
+            disconnect();
             // query.close();
             log.debug("Query executed");
         } catch (SQLException e) {
