@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Appenders>
-        <File name="A1" fileName="A1.log" append="false">
+        <File name="Controller" fileName="Controller.log" append="false">
+            <PatternLayout pattern="%t %-5p %c{2} - %m%n"/>
+        </File>
+        <File name="Models" fileName="Models.log" append="false">
             <PatternLayout pattern="%t %-5p %c{2} - %m%n"/>
         </File>
         <File name="SelectQuery" fileName="SelectQuery.log" append="false">
@@ -24,8 +27,11 @@
     <Loggers>
 
         <!-- You my want to define class or package level per-logger rules -->
-        <Logger name="GuiDriver" level="debug">
-            <AppenderRef ref="A1"/>
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Controller" level="debug">
+            <AppenderRef ref="Controller"/>
+        </Logger>
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Models" level="debug">
+            <AppenderRef ref="Models"/>
         </Logger>
         <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery" level="debug">
             <AppenderRef ref="SelectQuery"/>
