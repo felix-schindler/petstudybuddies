@@ -61,6 +61,7 @@ public class Query extends SQLiteJDBC {
      * @return Number of changed rows OR -1 if no rows are affected (1 if insert is successful)
      */
     public int WriteData() {
+        log.debug(queryString + " run");
         int rows = -1;
 
         try {
@@ -89,6 +90,7 @@ public class Query extends SQLiteJDBC {
      * @return Result set of the selected rows
      */
     public ResultSet ReadData() {
+        log.debug(queryString + " run");
         ResultSet result = null;
 
         try {
