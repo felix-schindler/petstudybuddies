@@ -23,11 +23,11 @@ public class Main {
             switch (menu) {
                 case 1 -> {
                     System.out.println("==========\nLogin\n==========");
-                    // String email = "fs146@hdm-stuttgart.de", password = "test"; // Makes testing easier
-                    System.out.println("EMail eingeben:");
+                    String email = "fs146@hdm-stuttgart.de", password = "test"; // Makes testing easier
+                    /* System.out.println("EMail eingeben:");
                     final String email = scan.next();
                     System.out.println("Passwort eingeben:");
-                    final String password = scan.next();
+                    final String password = scan.next(); */
 
                     Account.setUser(Auth.login(email, password));
 

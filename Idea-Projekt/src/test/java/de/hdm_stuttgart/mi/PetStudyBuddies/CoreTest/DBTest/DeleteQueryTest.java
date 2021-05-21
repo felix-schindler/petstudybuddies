@@ -40,8 +40,8 @@ public class DeleteQueryTest {
         for (int i : IDs) {
             String selectedID = new SelectQuery("ToDoListShare","ID","ToDoListID='"+i+"'").fetch();
             IDsShare.add(selectedID);
-            new DeleteQuery("ToDoListShare","ID = "+selectedID+"");
-            Assert.assertEquals("",new SelectQuery("ToDoListShare","ID","ToDoListID='"+i+"'").fetch());
+            new DeleteQuery("ToDoListShare","ID = " + selectedID + "");
+            Assert.assertNull(new SelectQuery("ToDoListShare","ID","ToDoListID='" + i + "'").fetch());
         }
     }
 }

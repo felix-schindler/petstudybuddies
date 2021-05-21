@@ -113,6 +113,8 @@ public class SelectQuery extends Query {
     public String fetch() {
         try {
             result.first();
+            if (result.getRow() == 0)   // The is no result of select
+                return null;
             return result.getString(1);
         } catch (SQLException e) {
             log.catching(e);
