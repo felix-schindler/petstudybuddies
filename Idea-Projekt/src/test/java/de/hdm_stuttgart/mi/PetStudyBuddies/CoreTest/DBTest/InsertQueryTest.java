@@ -16,7 +16,5 @@ public class InsertQueryTest {
     @Test
     public void testInsertNull() {
         Assert.assertEquals("", new InsertQuery(null, null, null, false).GetQueryString());
-        Assert.assertEquals("", new InsertQuery(null, null, null, false).GetQueryString());
-        Assert.assertEquals("", new InsertQuery(null, null, null, false).GetQueryString());
     }
 }

@@ -5,8 +5,7 @@ import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SelectQueryTest extends TestCase {
-
+public class SelectQueryTest {
     @Test
     public void testSelectSimple(){
         Assert.assertEquals("SELECT ID FROM User;", new SelectQuery("User","ID",null,null,null,true).GetQueryString());
@@ -41,6 +40,5 @@ public class SelectQueryTest extends TestCase {
     @Test
     public void testSelectNull(){
         Assert.assertEquals("", new SelectQuery(null,null,null,null,null,true).GetQueryString());
-
     }
 }
