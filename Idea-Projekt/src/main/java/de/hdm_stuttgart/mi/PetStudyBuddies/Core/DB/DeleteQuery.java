@@ -46,7 +46,7 @@ public class DeleteQuery extends Query {
         final StringBuilder query = new StringBuilder();
 
         query.append("DELETE FROM ").append(table);
-        if(where != null){
+        if (where != null && !where.equals("")) {
             query.append(" WHERE ").append(where);
         }
         query.append(";");
