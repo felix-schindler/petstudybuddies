@@ -42,7 +42,6 @@ public class DeleteQuery extends Query {
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
     public String BuildQuery(String table, String where) {
-        log.debug("Query is being build.");
         final StringBuilder query = new StringBuilder();
 
         query.append("DELETE FROM ").append(table);
@@ -51,7 +50,7 @@ public class DeleteQuery extends Query {
         }
         query.append(";");
 
-        log.debug("Query string was built successfully.");
+        log.debug("Query string was built");
         return query.toString();
     }
 

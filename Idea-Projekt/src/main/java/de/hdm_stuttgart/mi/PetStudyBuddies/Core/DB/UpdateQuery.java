@@ -85,7 +85,6 @@ public class UpdateQuery extends Query{
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
     public String BuildQuery(String table, String[] fields, String[] values, String where) {
-        log.debug("Query is being build.");
         final StringBuilder query = new StringBuilder();
 
         int lengthFields=fields.length; int lengthValues=values.length;
@@ -102,7 +101,7 @@ public class UpdateQuery extends Query{
         }
         query.append(";");
 
-        log.debug("Query string was built successfully.");
+        log.debug("Query string was built");
         return query.toString();
     }
 
@@ -115,7 +114,6 @@ public class UpdateQuery extends Query{
      * @return SQL-Query
      */
     public String BuildQuery(String table, String field, String value, String where) {
-        log.debug("Query is being build.");
         StringBuilder query = new StringBuilder();
 
         query.append("UPDATE ").append(table).append(" SET ").append(field);
@@ -130,7 +128,7 @@ public class UpdateQuery extends Query{
         }
         query.append(";");
 
-        log.debug("Query string was built successfully.");
+        log.debug("Query string was built");
         return query.toString();
     }
 

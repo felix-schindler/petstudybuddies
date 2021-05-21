@@ -51,7 +51,7 @@ public class SelectQuery extends Query {
      * @param groupBy String containing the "GROUP BY"-clause of the SQL-statement
      * @param run boolean if true built Query is set with SetQueryString method
      */
-    public SelectQuery(String table, String field, String where, String orderBy, String groupBy, boolean run) { ;
+    public SelectQuery(String table, String field, String where, String orderBy, String groupBy, boolean run) {
         SetQueryString(buildQuery(table, field, where, orderBy, groupBy));
         if (run)
             result = ReadData();
@@ -67,7 +67,6 @@ public class SelectQuery extends Query {
      * @return SQL-Query
      */
     public String buildQuery(String table, String field, String where, String orderBy, String groupBy) {
-        log.debug("Query is being build.");
         final StringBuilder query = new StringBuilder();
 
         if (table == null || field == null) {
@@ -87,7 +86,7 @@ public class SelectQuery extends Query {
         }
         query.append(";");
 
-        log.debug("Query string was built successfully.");
+        log.debug("Query string was built");
         return query.toString();
     }
 

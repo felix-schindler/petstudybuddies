@@ -41,7 +41,7 @@ public class DeleteQueryTest {
             IDs.add(ToDoListID.getInt(1));
         }
         for (int i : IDs) {
-            new DeleteQuery("ToDoListShare", "UserID='2' AND ToDoListID='" + Integer.toString(i) + "'");
+            new DeleteQuery("ToDoListShare", "UserID='2' AND ToDoListID='" + i + "'");
             new InsertQuery("ToDoListShare", new String[]{"UserID","ToDoListID"}, new String[]{"2",Integer.toString(i)});
         }
         // System.out.println(IDs);

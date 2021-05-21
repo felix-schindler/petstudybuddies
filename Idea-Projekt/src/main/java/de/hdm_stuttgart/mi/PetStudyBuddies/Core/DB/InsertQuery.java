@@ -46,7 +46,6 @@ public class InsertQuery extends Query{
      * @param values String Array containing the  values which shall be inserted
      */
     private String BuildQuery(String table, String[] fields, String[] values) {
-        log.debug("Query is being build.");
         final StringBuilder query = new StringBuilder();
 
         if (fields != null && values != null && fields.length == values.length) {
@@ -66,7 +65,7 @@ public class InsertQuery extends Query{
 
             query.append("'").append(values[lengthValues - 1]).append("')");
             query.append(";");
-            log.debug("Query string was built successfully.");
+            log.debug("Query string was built");
             return query.toString();
         }
 
