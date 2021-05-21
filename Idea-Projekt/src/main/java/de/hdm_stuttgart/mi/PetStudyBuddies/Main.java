@@ -6,7 +6,6 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -24,11 +23,11 @@ public class Main {
             switch (menu) {
                 case 1 -> {
                     System.out.println("==========\nLogin\n==========");
-                    String email = "fs146@hdm-stuttgart.de", password = "test";
-                    /* System.out.println("EMail eingeben:");
+                    // String email = "fs146@hdm-stuttgart.de", password = "test"; // Makes testing easier
+                    System.out.println("EMail eingeben:");
                     final String email = scan.next();
                     System.out.println("Passwort eingeben:");
-                    final String password = scan.next();*/
+                    final String password = scan.next();
 
                     Account.setUser(Auth.login(email, password));
 
@@ -65,13 +64,8 @@ public class Main {
             menu = scan.nextInt();
 
             switch (menu) {
-                case 1 -> {
-                    try {
+                case 1 ->
                         Utils.printResultSet(new SelectQuery("Note", "*", "UserID="+Account.getLoggedUser().getID()).fetchAll());
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    }
-                }
                 case 2 -> {
                     System.out.print("Choose a title: ");
                     final String title = scan.next();

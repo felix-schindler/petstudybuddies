@@ -14,7 +14,6 @@ import java.sql.SQLException;
 public class Utils {
     /**
      * Validates the user input in the text fields.
-     *
      * @return the trimmed input string
      */
     public static String getInputString(TextField textField) {
@@ -25,7 +24,6 @@ public class Utils {
 
     /**
      * Validates the user input in the password fields.
-     *
      * @return the input string
      */
     public static String getInputString(PasswordField textField) {
@@ -36,7 +34,6 @@ public class Utils {
 
     /**
      * "Validates" the given eMail (locally)
-     *
      * @param eMail eMail to be checked
      * @return true if the eMail is valid
      */
@@ -64,20 +61,21 @@ public class Utils {
 
     /**
      * Print a result set to system out.
-     *
-     * @param  rs           The ResultSet to print
-     * @throws SQLException If there is a problem reading the ResultSet
+     * @param rs The ResultSet to print
      */
-    public static void printResultSet(ResultSet rs) throws SQLException
-    {
-        ResultSetMetaData rsmd = rs.getMetaData();
-        int columnsNumber = rsmd.getColumnCount();
-        while (rs.next()) {
-            for (int i = 1; i <= columnsNumber; i++) {
-                if (i > 1) System.out.print(" | ");
-                System.out.print(rs.getString(i));
+    public static void printResultSet(ResultSet rs) {
+        try {
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
+            while (rs.next()) {
+                for (int i = 1; i <= columnsNumber; i++) {
+                    if (i > 1) System.out.print(" | ");
+                    System.out.print(rs.getString(i));
+                }
+                System.out.println();
             }
-            System.out.println();
+        } catch (SQLException e) {
+            System.err.println("Didn't work");
         }
     }
 }

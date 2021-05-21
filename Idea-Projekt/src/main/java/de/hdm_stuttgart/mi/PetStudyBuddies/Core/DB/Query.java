@@ -3,6 +3,8 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.sql.rowset.CachedRowSet;
+import javax.sql.rowset.RowSetProvider;
 import java.sql.Statement;
 import java.sql.*;
 
@@ -45,7 +47,7 @@ public class Query extends SQLiteJDBC {
      */
     public void SetQueryString(String queryString) {
         this.queryString = queryString;
-        log.debug("QueryString was set.");
+        log.debug("QueryString was set");
         log.info("New query string: " + queryString);
     }
 
@@ -61,21 +63,17 @@ public class Query extends SQLiteJDBC {
      * @return Number of changed rows OR -1 if no rows are affected (1 if insert is successful)
      */
     public int WriteData() {
-        log.debug(queryString + " run");
         int rows = -1;
 
         try {
             query = getConnection().createStatement();
-
-            if (query == null)
-                log.error("Query is null!");
-
             rows = query.executeUpdate(queryString);
-            disconnect();
-            // query.close();
-            // getConnection().commit();
+
+            query.close();
+            // disconnect();
+
             log.info(rows + " are affected");
-            log.debug("Query executed");
+            log.debug("Query successfully executed");
         } catch (SQLTimeoutException e) {
             log.catching(e);
             log.error("INSERT or UPDATE or DELETE Query timed out.");
@@ -94,22 +92,26 @@ public class Query extends SQLiteJDBC {
      * Executes an select query
      * @return Result set of the selected rows
      */
-    public ResultSet ReadData() {
-        log.debug(queryString + " run");
-        ResultSet result = null;
+    public CachedRowSet ReadData() {
+        CachedRowSet rowset = null;
 
         try {
+            rowset = RowSetProvider.newFactory().createCachedRowSet();
             query = getConnection().createStatement();
-            result = query.executeQuery(queryString);
-            disconnect();
-            // query.close();
-            log.debug("Query executed");
+            ResultSet result = query.executeQuery(queryString);
+
+            rowset.populate(result);
+            query.close();
+
+            rowset.first();
+            // disconnect();
+            log.debug("Query successfully executed");
         } catch (SQLException e) {
             log.catching(e);
-            log.error("Could not execute SELECT Query.");
+            log.error("Could not execute SELECT Query");
             log.info("Query was " + queryString);
         }
 
-        return result;
+        return rowset;
     }
 }

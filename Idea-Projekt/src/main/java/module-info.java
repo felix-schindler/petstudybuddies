@@ -4,6 +4,7 @@ module gui {
     requires org.apache.logging.log4j;
     requires java.sql;
     requires sqlite.jdbc;
+    requires java.sql.rowset;
 
     opens de.hdm_stuttgart.mi.PetStudyBuddies to javafx.fxml;
     exports de.hdm_stuttgart.mi.PetStudyBuddies;

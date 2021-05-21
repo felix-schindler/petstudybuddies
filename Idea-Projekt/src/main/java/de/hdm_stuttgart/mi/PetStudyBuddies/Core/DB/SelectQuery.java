@@ -3,6 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.sql.rowset.CachedRowSet;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -15,7 +16,7 @@ public class SelectQuery extends Query {
     /**
      * result of the executed query
      */
-    private ResultSet result;
+    private CachedRowSet result;
 
     /**
      * Hands over parts of the SQL-Query Select statement to the BuildQuery method and then calls SetQueryString
@@ -95,7 +96,13 @@ public class SelectQuery extends Query {
      * @see Query#ReadData()
      * @return result of SELECT-statement
      */
-    public ResultSet fetchAll() {
+    public CachedRowSet fetchAll() {
+        try {
+            result.first();
+        } catch (SQLException e) {
+            log.catching(e);
+            log.error("Could not move to the first row");
+        }
         return result;
     }
 
@@ -105,25 +112,27 @@ public class SelectQuery extends Query {
      */
     public String fetch() {
         try {
+            result.first();
             return result.getString(1);
         } catch (SQLException e) {
             log.catching(e);
+            log.error("Could not move to the first row");
             return null;
         }
     }
 
     /**
      * Counts selected rows
+     * Moves to last row, sets count, moves to first again
      * @return Count of selected rows
      */
     public int Count() {
-        ResultSet rs = result;
         int count = 0;
 
         try {
-            while (rs.next()) {
-                count++;
-            }
+            result.last();
+            count = result.getRow();
+            result.first();
         } catch (SQLException e) {
             log.catching(e);
             log.error("Failed to count rows of ResultSet");
