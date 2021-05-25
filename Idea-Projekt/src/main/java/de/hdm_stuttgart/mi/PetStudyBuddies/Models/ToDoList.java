@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
 import org.apache.logging.log4j.LogManager;
@@ -84,6 +85,7 @@ public class ToDoList extends Model implements Shareable {
      * @see Model#save()
      */
     public boolean save() {
-        return false;
+        log.debug("Trying to safe changes");
+        return new UpdateQuery(getTable(), new String[]{"Title"}, new String[]{title}, "ID=" + ID).Count() == 1;
     }
 }

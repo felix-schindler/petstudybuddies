@@ -116,11 +116,11 @@ public class Note extends Model implements Shareable {
     }
 
     /**
-     *
-     * @param ID
-     * @return
+     * @see Model#save()
      */
     public boolean share(int ID) {
-        return false;
+        log.debug("Trying to save");
+        // TODO test writing System.currentTimeMillis() in the database
+        return new UpdateQuery(getTable(), new String[]{"Title", "Content", "LastEditedOn"}, new String[]{title, content, String.valueOf(System.currentTimeMillis())}, "ID=" + ID).Count() == 1;
     }
 }

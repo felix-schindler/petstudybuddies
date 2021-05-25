@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
@@ -101,16 +102,15 @@ public class Lecture extends Model implements Shareable {
     }
 
     /**
-     * Save an updated lecture to the database
      * @see Model#save()
      */
     public boolean save() {
-        return new UpdateQuery(getTable(), new String[]{"Title", "ECTS", "MajorID"}, new String[]{title, Integer.toString(ects), Integer.toString(majorID)}, "ID="+getID()).Count() == 1;
+        log.debug("Trying to save");
+        return new UpdateQuery(getTable(), new String[]{"Title", "ECTS", "MajorID"}, new String[]{title, String.valueOf(ects), String.valueOf(majorID)}, "ID=" + ID).Count() == 1;
     }
 
     /**
-     * @param ID UserID to be shared to
-     * @return successfully shared or not
+     * @see Shareable#share(int)
      */
     public boolean share(int ID) {
         return false;

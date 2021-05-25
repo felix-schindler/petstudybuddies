@@ -148,8 +148,9 @@ public class Task extends Model {
      * @see Model#save()
      */
     public boolean save() {
+        log.debug("Trying to safe changes");
         return new UpdateQuery(getTable(), new String[]{"ToDoListID", "Content", "Until", "AssignedTo"},
                 new String[]{Integer.toString(toDoList), content, until.toString(), Integer.toString(assignedPerson)},
-                "ID="+getID()).Count() == 1;
+                "ID=" + ID).Count() == 1;
     }
 }

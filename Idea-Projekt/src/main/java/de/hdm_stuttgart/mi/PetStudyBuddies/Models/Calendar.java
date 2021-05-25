@@ -26,10 +26,10 @@ public class Calendar extends Model {
     }
 
     /**
-     * TODO implement
      * @see Model#save()
      */
     public boolean save() {
+        log.debug("Trying to save");
         return false;
     }
 }

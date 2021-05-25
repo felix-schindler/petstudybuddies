@@ -5,7 +5,6 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 
 public abstract class Model {
     /**
-     * Has to be overwritten from the inheriting class
      * @return Name of the table (has to be exact SAME as in the DB!!)
      */
     public abstract String getTable();
@@ -13,12 +12,12 @@ public abstract class Model {
     /**
      * @return true if saved successfully, false otherwise
      */
-    public abstract boolean save() throws Exception;
+    public abstract boolean save();
 
     /**
      * ID of the database entry
      */
-    private final int ID;
+    protected final int ID;
 
     /**
      * Creates an object, linked to the database entry via the ID

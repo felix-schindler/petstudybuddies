@@ -81,8 +81,9 @@ public class Studies extends Model {
      * @see Model#save()
      */
     public boolean save() {
+        log.debug("Trying to safe changes");
         return new UpdateQuery(getTable(), new String[]{"MajorID", "LectureID"},
                 new String[]{Integer.toString(majorID), Integer.toString(lectureID)},
-                "ID="+getID()).Count() == 1;
+                "ID=" + ID).Count() == 1;
     }
 }
