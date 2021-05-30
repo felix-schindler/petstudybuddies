@@ -1,363 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #030307; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.ToDoListDashboard">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="539.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" style="-fx-background-radius: 15 15 0 0;" styleClass="linear-grad" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+      <HBox prefHeight="38.0" prefWidth="600.0">
          <children>
-            <Label layoutX="690.0" layoutY="1.0" prefHeight="79.0" prefWidth="224.0" text="To Do Lists">
-               <font>
-                  <Font name="Calibri" size="43.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../target/classes/images/to-do-list.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="176.0" prefHeight="79.0" prefWidth="164.0" text="PetStuddyBuddies" textAlignment="CENTER">
-               <font>
-                  <Font name="Calibri" size="21.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../target/classes/images/icons8-lehrplan-160.png" />
-               </image>
-            </ImageView>
-         </children></Pane>
-      <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;">
-         <children>
-            <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="80.0" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Start" textFill="#a868a0">
+            <Button mnemonicParsing="false" text="Back">
                <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../target/classes/images/cat.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
-               <font>
-                  <Font name="Calibri" size="12.0" />
-               </font></Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Notizen" textFill="#a868a0">
+            </Button>
+            <Pane prefHeight="38.0" prefWidth="134.0" />
+            <Label prefHeight="17.0" prefWidth="133.0" text="New List" />
+            <Pane prefHeight="38.0" prefWidth="108.0" />
+            <Button mnemonicParsing="false" text="Create List">
                <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../target/classes/images/time.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fitHeight="17.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
-               <font>
-                  <Font name="Calibri" size="12.0" />
-               </font></Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Vorlesungen" textFill="#a868a0">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../target/classes/images/flag.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Calibri" size="12.0" />
-               </font></Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="To Do" textFill="#a868a0">
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../target/classes/images/group.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Calibri" size="12.0" />
-               </font></Button>
+            </Button>
          </children>
-      </VBox>
-      <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+      </HBox>
+      <Pane layoutX="29.0" layoutY="39.0" prefHeight="108.0" prefWidth="495.0">
          <children>
-            <Label layoutX="25.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" text="Welcome" textFill="WHITE">
-               <font>
-                  <Font name="Calibri" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="135.0" layoutY="19.0" prefHeight="32.0" prefWidth="164.0" text="Username" textFill="#a868a0">
-               <font>
-                  <Font name="Calibri" size="34.0" />
-               </font>
-            </Label>
-            <Label layoutX="25.0" layoutY="246.0" text="These are your To-Do Lists:" textFill="#fffbfb">
-               <font>
-                  <Font name="Calibri" size="18.0" />
-               </font>
-            </Label>
-            <Pane layoutX="35.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+            <VBox prefHeight="103.0" prefWidth="494.0">
                <children>
-                  <Label layoutX="14.0" layoutY="116.0" text="Today" textFill="#d3cccc">
-                     <font>
-                        <Font name="Calibri" size="28.0" />
-                     </font></Label>
-                  <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="9.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../target/classes/images/icons8-heute-64.png" />
-                     </image></ImageView>
-                  <Label layoutX="110.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
-                     <font>
-                        <Font name="Calibri" size="28.0" />
-                     </font></Label>
-                  <Button layoutX="127.0" layoutY="91.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../target/classes/images/icons8-winkel-rechts-50.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <Label prefHeight="42.0" prefWidth="518.0" text="New To-Do List" />
+                  <HBox prefHeight="47.0" prefWidth="600.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="90.0" text="Name" />
+                        <TextField prefHeight="38.0" prefWidth="393.0" text="Enter a name for your To-Do List" />
+                     </children>
+                  </HBox>
                </children>
-            </Pane>
-            <Pane layoutX="663.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
-               <children>
-                  <Label layoutX="20.0" layoutY="119.0" text="All" textFill="#d3cccc">
-                     <font>
-                        <Font name="Calibri" size="28.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="10.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../target/classes/images/icons8-box-128.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="103.0" layoutY="33.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
-                     <font>
-                        <Font name="Calibri" size="28.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="127.0" layoutY="94.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../target/classes/images/icons8-winkel-rechts-50.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane layoutX="448.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
-               <children>
-                  <Label layoutX="10.0" layoutY="116.0" text="Flagged" textFill="#d3cccc">
-                     <font>
-                        <Font name="Calibri" size="28.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../target/classes/images/icons8-flag-2-64.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="98.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
-                     <font>
-                        <Font name="Calibri" size="28.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="122.0" layoutY="91.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../target/classes/images/icons8-winkel-rechts-50.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane layoutX="239.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
-               <children>
-                  <Label layoutX="11.0" layoutY="116.0" text="Scheduled" textFill="#d3cccc">
-                     <font>
-                        <Font name="Calibri" size="28.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../target/classes/images/icons8-zeit-80.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="105.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
-                     <font>
-                        <Font name="Calibri" size="28.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="129.0" layoutY="91.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../target/classes/images/icons8-winkel-rechts-50.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane layoutX="771.0" layoutY="391.0" prefHeight="100.0" prefWidth="103.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
-               <children>
-                  <VBox prefHeight="432.0" prefWidth="100.0">
-                     <children>
-                        <Pane prefHeight="9.0" prefWidth="100.0" />
-                        <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="84.0" prefWidth="93.0" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Add New List">
-                           <graphic>
-                              <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../target/classes/images/add.png" />
-                                 </image></ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </VBox>
-               </children></Pane>
-            <Pane layoutX="25.0" layoutY="277.0" prefHeight="32.0" prefWidth="746.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10 10 0 0;">
-               <children>
-                  <HBox prefHeight="32.0" prefWidth="746.0">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="665.0" text="Label" textFill="#868484">
-                           <font>
-                              <Font name="Calibri" size="21.0" />
-                           </font></Label>
-                        <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="View" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children></Pane>
-            <Pane layoutX="25.0" layoutY="477.0" prefHeight="22.0" prefWidth="746.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0 0 10 10;">
-               <children>
-                  <HBox prefHeight="32.0" prefWidth="746.0" style="-fx-background-color: #131022;">
-                     <children>
-                        <Pane prefHeight="32.0" prefWidth="299.0" style="-fx-background-color: #131022;" />
-                        <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="18.0" prefWidth="151.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Show more" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../target/classes/images/icons8-mehr-52.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children></Pane>
-            <Pane layoutX="25.0" layoutY="310.0" prefHeight="32.0" prefWidth="746.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0;">
-               <children>
-                  <HBox prefHeight="32.0" prefWidth="746.0">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="665.0" text="Label" textFill="#868484">
-                           <font>
-                              <Font name="Calibri" size="21.0" />
-                           </font></Label>
-                        <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="View" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children></Pane>
-            <Pane layoutX="25.0" layoutY="343.0" prefHeight="32.0" prefWidth="746.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0;">
-               <children>
-                  <HBox prefHeight="32.0" prefWidth="746.0">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="665.0" text="Label" textFill="#868484">
-                           <font>
-                              <Font name="Calibri" size="21.0" />
-                           </font></Label>
-                        <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="View" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children></Pane>
-            <Pane layoutX="25.0" layoutY="376.0" prefHeight="32.0" prefWidth="746.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0;">
-               <children>
-                  <HBox prefHeight="32.0" prefWidth="746.0">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="665.0" text="Label" textFill="#868484">
-                           <font>
-                              <Font name="Calibri" size="21.0" />
-                           </font></Label>
-                        <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="View" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children></Pane>
-            <Pane layoutX="25.0" layoutY="409.0" prefHeight="32.0" prefWidth="746.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0;">
-               <children>
-                  <HBox prefHeight="32.0" prefWidth="746.0">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="665.0" text="Label" textFill="#868484">
-                           <font>
-                              <Font name="Calibri" size="21.0" />
-                           </font></Label>
-                        <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="View" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children></Pane>
-            <Pane layoutX="25.0" layoutY="442.0" prefHeight="32.0" prefWidth="746.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0 0 15 15;">
-               <children>
-                  <HBox prefHeight="32.0" prefWidth="746.0" style="-fx-border-radius: 0 0 20 20;">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="665.0" style="-fx-border-radius: 0 0 15 15;" text="List" textFill="#868484">
-                           <font>
-                              <Font name="Calibri" size="21.0" />
-                           </font></Label>
-                        <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="View" textFill="WHITE">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children></Pane>
-         </children></AnchorPane>
+            </VBox>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
