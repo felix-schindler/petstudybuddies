@@ -16,7 +16,7 @@
             </Label>
             <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../target/classes/images/to-do-list.png" />
+                  <Image url="@../../../../target/classes/images/ToDoListDashboardImages/to-do-list.png" />
                </image>
             </ImageView>
             <Label layoutX="176.0" prefHeight="79.0" prefWidth="164.0" text="PetStuddyBuddies" textAlignment="CENTER">
@@ -26,7 +26,7 @@
             </Label>
             <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../target/classes/images/icons8-lehrplan-160.png" />
+                  <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-lehrplan-160.png" />
                </image>
             </ImageView>
          </children></Pane>
@@ -37,7 +37,7 @@
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/cat.png" />
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/cat.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -48,7 +48,7 @@
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/time.png" />
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/time.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -59,7 +59,7 @@
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/flag.png" />
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/flag.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -70,7 +70,7 @@
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/group.png" />
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/group.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -104,7 +104,7 @@
                      </font></Label>
                   <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="9.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/icons8-heute-64.png" />
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-heute-64.png" />
                      </image></ImageView>
                   <Label layoutX="110.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
                      <font>
@@ -114,7 +114,7 @@
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../target/classes/images/icons8-winkel-rechts-50.png" />
+                              <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -130,7 +130,7 @@
                   </Label>
                   <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="10.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/icons8-box-128.png" />
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-box-128.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="103.0" layoutY="33.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
@@ -142,7 +142,7 @@
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../target/classes/images/icons8-winkel-rechts-50.png" />
+                              <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -158,7 +158,7 @@
                   </Label>
                   <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/icons8-flag-2-64.png" />
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-flag-2-64.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="98.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
@@ -170,7 +170,7 @@
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../target/classes/images/icons8-winkel-rechts-50.png" />
+                              <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -186,7 +186,7 @@
                   </Label>
                   <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/icons8-zeit-80.png" />
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-zeit-80.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="105.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
@@ -198,7 +198,7 @@
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../target/classes/images/icons8-winkel-rechts-50.png" />
+                              <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -214,7 +214,7 @@
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/add.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/add.png" />
                                  </image></ImageView>
                            </graphic>
                         </Button>
@@ -233,7 +233,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -250,7 +250,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/icons8-mehr-52.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-mehr-52.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -270,7 +270,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -290,7 +290,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -310,7 +310,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -330,7 +330,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -350,7 +350,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/icons8-vorwärts-96.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
                                  </image>
                               </ImageView>
                            </graphic>
