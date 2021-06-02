@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="38.0" prefWidth="600.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Back" textFill="WHITE">
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/ToDoListAddModify/icons8-zurück-96.png" />
+                        <Image url="@../images/ToDoListAddModify/icons8-zurück-96.png" />
                      </image></ImageView>
                </graphic>
                <font>
@@ -28,11 +28,11 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Create List" textFill="WHITE">
+            <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Create List" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../target/classes/images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
+                        <Image url="@../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
                      </image></ImageView>
                </graphic>
                <font>

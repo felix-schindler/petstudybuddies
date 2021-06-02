@@ -62,7 +62,7 @@
 
 .button5
 {
-    -fx-background-color : #e681cc;
+    -fx-background-color : #bc8abb;
     -fx-background-radius :  0 0 0 0;
 }
 .button5:hover
@@ -73,7 +73,10 @@
 {
     -fx-background-color : #737083 ;
 }
-
+.button5:pressed,.button5:hover,.button5
+{
+    -fx-background-radius :  20 20 20 20;
+}
 .combo-box
 {
     -fx-background-color : #141124;

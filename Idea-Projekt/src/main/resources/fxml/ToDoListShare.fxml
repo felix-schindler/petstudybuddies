@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../target/classes/images/ToDoListAddModify/icons8-zurück-96.png" />
+                                <Image url="@../images/ToDoListAddModify/icons8-zurück-96.png" />
                             </image></ImageView>
                     </graphic>
                     <font>
@@ -28,11 +28,11 @@
                             </font>
                         </Label>
                     </children></Pane>
-                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Share List" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Share List" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../../../target/classes/images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
+                                <Image url="@../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
                             </image></ImageView>
                     </graphic>
                     <font>
@@ -89,11 +89,11 @@
                                             </font>
                                         </TextField>
                               <Pane prefHeight="27.0" prefWidth="56.0" />
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Check for User">
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" styleClass="button5" stylesheets="@../styles/fullpackstyling.css" text="Check for User">
                                  <graphic>
                                     <ImageView fitHeight="19.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../target/classes/images/ToDoListSearch/icons8-client-suchen-100.png" />
+                                          <Image url="@../images/ToDoListSearch/icons8-client-suchen-100.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -104,32 +104,32 @@
                            <children>
                               <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="494.0">
                                  <children>
-                                    <ToolBar prefHeight="42.0" prefWidth="616.0" style="-fx-background-radius: 20 20 20 20;" styleClass="combo-box" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+                                    <ToolBar prefHeight="42.0" prefWidth="616.0" style="-fx-background-radius: 20 20 20 20;" styleClass="combo-box" stylesheets="@../styles/fullpackstyling.css">
                                       <items>
-                                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Select User">
+                                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" styleClass="button5" stylesheets="@../styles/fullpackstyling.css" text="Select User">
                                              <graphic>
                                                 <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@../../../../target/classes/images/ToDoListSearch/icons8-wählen-sie-benutzer-aus-96.png" />
+                                                      <Image url="@../images/ToDoListSearch/icons8-wählen-sie-benutzer-aus-96.png" />
                                                    </image>
                                                 </ImageView>
                                              </graphic>
                                           </Button>
                                           <TextField text="Match" />
-                                          <Button mnemonicParsing="false" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+                                          <Button mnemonicParsing="false" styleClass="button5" stylesheets="@../styles/fullpackstyling.css">
                                              <graphic>
                                                 <ImageView fitHeight="17.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@../../../../target/classes/images/ToDoListSearch/icons8-oben-96.png" />
+                                                      <Image url="@../images/ToDoListSearch/icons8-oben-96.png" />
                                                    </image>
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <Button mnemonicParsing="false" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+                                          <Button mnemonicParsing="false" styleClass="button5" stylesheets="@../styles/fullpackstyling.css">
                                              <graphic>
                                                 <ImageView fitHeight="24.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
-                                                      <Image url="@../../../../target/classes/images/ToDoListSearch/icons8-unten-96.png" />
+                                                      <Image url="@../images/ToDoListSearch/icons8-unten-96.png" />
                                                    </image>
                                                 </ImageView>
                                              </graphic>

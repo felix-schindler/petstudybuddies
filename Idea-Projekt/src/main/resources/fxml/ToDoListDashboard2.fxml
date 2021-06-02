@@ -33,7 +33,7 @@
       <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;">
          <children>
             <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="80.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Start" textFill="#a868a0">
+            <Button fx:id="ApplicationDashboard" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="80.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Start" textFill="#a868a0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -44,7 +44,7 @@
                <font>
                   <Font name="Calibri" size="12.0" />
                </font></Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Notizen" textFill="#a868a0">
+            <Button fx:id="NotesDashboard" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Notizen" textFill="#a868a0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -55,7 +55,7 @@
                <font>
                   <Font name="Calibri" size="12.0" />
                </font></Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Vorlesungen" textFill="#a868a0">
+            <Button fx:id="StudiesDashboard" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Vorlesungen" textFill="#a868a0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -66,7 +66,7 @@
                <font>
                   <Font name="Calibri" size="12.0" />
                </font></Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="To Do" textFill="#a868a0">
+            <Button fx:id="ToDoDashboard" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="To Do" textFill="#a868a0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -86,7 +86,7 @@
                   <Font name="Calibri" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="135.0" layoutY="19.0" prefHeight="32.0" prefWidth="164.0" text="Username" textFill="#a868a0">
+            <Label fx:id="LabelUsername" layoutX="135.0" layoutY="19.0" prefHeight="32.0" prefWidth="164.0" text="Username" textFill="#a868a0">
                <font>
                   <Font name="Calibri" size="34.0" />
                </font>
@@ -106,11 +106,11 @@
                      <image>
                         <Image url="@../images/ToDoListDashboardImages/icons8-heute-64.png" />
                      </image></ImageView>
-                  <Label layoutX="110.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
+                  <Label fx:id="LabelCountToDoToday" layoutX="110.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
                      <font>
                         <Font name="Calibri" size="28.0" />
                      </font></Label>
-                  <Button layoutX="127.0" layoutY="91.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../styles/fullpackstyling.css">
+                  <Button fx:id="ButtonToDoToday" layoutX="127.0" layoutY="91.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../styles/fullpackstyling.css">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -133,12 +133,12 @@
                         <Image url="@../images/ToDoListDashboardImages/icons8-box-128.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="103.0" layoutY="33.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
+                  <Label fx:id="LabelCountToDoAll" layoutX="103.0" layoutY="33.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
                      <font>
                         <Font name="Calibri" size="28.0" />
                      </font>
                   </Label>
-                  <Button layoutX="127.0" layoutY="94.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../styles/fullpackstyling.css">
+                  <Button fx:id="ButtonToDoAll" layoutX="127.0" layoutY="94.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../styles/fullpackstyling.css">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -161,12 +161,12 @@
                         <Image url="@../images/ToDoListDashboardImages/icons8-flag-2-64.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="98.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
+                  <Label fx:id="LabelCountToDoFlagged" layoutX="98.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
                      <font>
                         <Font name="Calibri" size="28.0" />
                      </font>
                   </Label>
-                  <Button layoutX="122.0" layoutY="91.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../styles/fullpackstyling.css">
+                  <Button fx:id="ButtonToDoFlagged" layoutX="122.0" layoutY="91.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../styles/fullpackstyling.css">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -189,12 +189,12 @@
                         <Image url="@../images/ToDoListDashboardImages/icons8-zeit-80.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="105.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
+                  <Label fx:id="LabelCountToDoScheduled" layoutX="105.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
                      <font>
                         <Font name="Calibri" size="28.0" />
                      </font>
                   </Label>
-                  <Button layoutX="129.0" layoutY="91.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../styles/fullpackstyling.css">
+                  <Button fx:id="ButtonToDoScheduled" layoutX="129.0" layoutY="91.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="60.0" styleClass="button1" stylesheets="@../styles/fullpackstyling.css">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -207,10 +207,9 @@
             </Pane>
             <Pane layoutX="771.0" layoutY="391.0" prefHeight="100.0" prefWidth="103.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                <children>
-                  <VBox prefHeight="432.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0">
                      <children>
-                        <Pane prefHeight="9.0" prefWidth="100.0" />
-                        <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="84.0" prefWidth="93.0" styleClass="button5" stylesheets="@../styles/fullpackstyling.css" text="Add New List">
+                        <Button fx:id="ButtonAddNewList" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="84.0" prefWidth="93.0" styleClass="button5" stylesheets="@../styles/fullpackstyling.css" text="Add New List">
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
