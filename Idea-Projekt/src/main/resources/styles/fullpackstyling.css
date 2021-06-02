@@ -60,6 +60,20 @@
     -fx-background-radius :  30 30 30 30;
 }
 
+.button5
+{
+    -fx-background-color : #e681cc;
+    -fx-background-radius :  0 0 0 0;
+}
+.button5:hover
+{
+    -fx-background-color : #8075b6 ;
+}
+.button5:pressed
+{
+    -fx-background-color : #737083 ;
+}
+
 .combo-box
 {
     -fx-background-color : #141124;
@@ -148,4 +162,7 @@
 .linear-grad
 {
     -fx-background-color: linear-gradient(to bottom left, #A868A0, #2D75E8);
+}
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
 }

@@ -82,11 +82,11 @@
         </VBox>
         <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
             <children>
-            <Pane layoutX="25.0" layoutY="107.0" prefHeight="373.0" prefWidth="547.0">
+            <Pane layoutX="25.0" layoutY="107.0" prefHeight="373.0" prefWidth="647.0">
                <children>
-                  <ScrollPane prefHeight="380.0" prefWidth="547.0" style="-fx-background-color: transparent; -fx-background-radius: 10 10 10 10;">
+                  <ScrollPane prefHeight="380.0" prefWidth="648.0" style="-fx-background-color: transparent; -fx-background-radius: 10 10 10 10;" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
                      <content>
-                        <VBox prefHeight="440.0" prefWidth="535.0">
+                        <VBox prefHeight="440.0" prefWidth="632.0">
                            <children>
                               <HBox prefHeight="32.0" prefWidth="375.0">
                                  <children>
@@ -95,7 +95,7 @@
                                           <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
                                        </children>
                                     </Pane>
-                                    <Label prefHeight="26.0" prefWidth="403.0" text="Label" textFill="#656565">
+                                    <Label prefHeight="26.0" prefWidth="497.0" text="Label" textFill="#656565">
                                        <font>
                                           <Font name="Calibri" size="21.0" />
                                        </font>
@@ -129,7 +129,7 @@
                                           <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
                                        </children>
                                     </Pane>
-                                    <Label prefHeight="26.0" prefWidth="409.0" text="Label" textFill="#ddd1d1">
+                                    <Label prefHeight="26.0" prefWidth="495.0" text="Label" textFill="#ddd1d1">
                                        <font>
                                           <Font name="Calibri" size="21.0" />
                                        </font>
@@ -163,7 +163,7 @@
                                           <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
                                        </children>
                                     </Pane>
-                                    <Label prefHeight="26.0" prefWidth="415.0" text="Label" textFill="#ddd1d1">
+                                    <Label prefHeight="26.0" prefWidth="495.0" text="Label" textFill="#ddd1d1">
                                        <font>
                                           <Font name="Calibri" size="21.0" />
                                        </font>
@@ -197,7 +197,7 @@
                                           <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
                                        </children>
                                     </Pane>
-                                    <Label prefHeight="26.0" prefWidth="418.0" text="Label" textFill="#ddd1d1">
+                                    <Label prefHeight="26.0" prefWidth="495.0" text="Label" textFill="#ddd1d1">
                                        <font>
                                           <Font name="Calibri" size="21.0" />
                                        </font>
@@ -231,7 +231,7 @@
                                           <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
                                        </children>
                                     </Pane>
-                                    <Label prefHeight="26.0" prefWidth="423.0" text="Label" textFill="#ddd1d1">
+                                    <Label prefHeight="26.0" prefWidth="500.0" text="Label" textFill="#ddd1d1">
                                        <font>
                                           <Font name="Calibri" size="21.0" />
                                        </font>
@@ -265,7 +265,7 @@
                                           <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
                                        </children>
                                     </Pane>
-                                    <Label prefHeight="26.0" prefWidth="422.0" text="Label" textFill="#ddd1d1">
+                                    <Label prefHeight="26.0" prefWidth="496.0" text="Label" textFill="#ddd1d1">
                                        <font>
                                           <Font name="Calibri" size="21.0" />
                                        </font>
@@ -299,7 +299,7 @@
                                           <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
                                        </children>
                                     </Pane>
-                                    <Label prefHeight="26.0" prefWidth="422.0" text="Label" textFill="#ddd1d1">
+                                    <Label prefHeight="26.0" prefWidth="493.0" text="Label" textFill="#ddd1d1">
                                        <font>
                                           <Font name="Calibri" size="21.0" />
                                        </font>
@@ -333,7 +333,7 @@
                                           <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
                                        </children>
                                     </Pane>
-                                    <Label prefHeight="26.0" prefWidth="425.0" text="Label" textFill="#ddd1d1">
+                                    <Label prefHeight="26.0" prefWidth="493.0" text="Label" textFill="#ddd1d1">
                                        <font>
                                           <Font name="Calibri" size="21.0" />
                                        </font>
@@ -418,7 +418,7 @@
                                     <graphic>
                                         <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/flag.png" />
+                                                <Image url="@../../../../target/classes/images/ToDoListView/icons8-flag-2-100.png" />
                                             </image>
                               </ImageView>
                                     </graphic>
@@ -428,7 +428,7 @@
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/add.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListView/icons8-teilen-100.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -438,7 +438,7 @@
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/add.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListView/icons8-titel-100.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -448,7 +448,7 @@
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/add.png" />
+                                    <Image url="@../../../../target/classes/images/ToDoListView/icons8-spalte-hinzufügen-100.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -457,248 +457,6 @@
                             </children>
                         </VBox>
                     </children></Pane>
-            <Pane layoutX="503.0" layoutY="171.0">
-               <children>
-                  <VBox layoutY="2.0" prefHeight="287.0" prefWidth="590.0">
-                     <children>
-                        <Pane prefHeight="53.0" prefWidth="586.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10 10 0 0;">
-                           <children>
-                              <VBox prefHeight="53.0" prefWidth="586.0">
-                                 <children>
-                                    <HBox prefHeight="32.0" prefWidth="375.0">
-                                       <children>
-                                          <Pane prefHeight="32.0" prefWidth="55.0">
-                                             <children>
-                                                <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
-                                             </children>
-                                          </Pane>
-                                          <Label prefHeight="26.0" prefWidth="456.0" text="Label" textFill="#ddd1d1">
-                                             <font>
-                                                <Font name="Calibri" size="21.0" />
-                                             </font>
-                                          </Label>
-                                          <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
-                                             <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <font>
-                                                <Font name="Calibri" size="12.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <Label prefHeight="17.0" prefWidth="587.0" text="Date" textFill="#868484">
-                                       <font>
-                                          <Font name="Calibri" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="53.0" prefWidth="586.0" style="-fx-background-color: #1A172A;">
-                           <children>
-                              <VBox prefHeight="53.0" prefWidth="586.0">
-                                 <children>
-                                    <HBox prefHeight="32.0" prefWidth="375.0">
-                                       <children>
-                                          <Pane prefHeight="32.0" prefWidth="55.0">
-                                             <children>
-                                                <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
-                                             </children>
-                                          </Pane>
-                                          <Label prefHeight="26.0" prefWidth="456.0" text="Label" textFill="#ddd1d1">
-                                             <font>
-                                                <Font name="Calibri" size="21.0" />
-                                             </font>
-                                          </Label>
-                                          <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
-                                             <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <font>
-                                                <Font name="Calibri" size="12.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <Label prefHeight="17.0" prefWidth="587.0" text="Date" textFill="#868484">
-                                       <font>
-                                          <Font name="Calibri" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="53.0" prefWidth="586.0" style="-fx-background-color: #1A172A;">
-                           <children>
-                              <VBox prefHeight="53.0" prefWidth="586.0">
-                                 <children>
-                                    <HBox prefHeight="32.0" prefWidth="375.0">
-                                       <children>
-                                          <Pane prefHeight="32.0" prefWidth="55.0">
-                                             <children>
-                                                <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
-                                             </children>
-                                          </Pane>
-                                          <Label prefHeight="26.0" prefWidth="456.0" text="Label" textFill="#ddd1d1">
-                                             <font>
-                                                <Font name="Calibri" size="21.0" />
-                                             </font>
-                                          </Label>
-                                          <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
-                                             <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <font>
-                                                <Font name="Calibri" size="12.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <Label prefHeight="17.0" prefWidth="587.0" text="Date" textFill="#868484">
-                                       <font>
-                                          <Font name="Calibri" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="53.0" prefWidth="586.0" style="-fx-background-color: #1A172A;">
-                           <children>
-                              <VBox prefHeight="53.0" prefWidth="586.0">
-                                 <children>
-                                    <HBox prefHeight="32.0" prefWidth="375.0">
-                                       <children>
-                                          <Pane prefHeight="32.0" prefWidth="55.0">
-                                             <children>
-                                                <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
-                                             </children>
-                                          </Pane>
-                                          <Label prefHeight="26.0" prefWidth="456.0" text="Label" textFill="#ddd1d1">
-                                             <font>
-                                                <Font name="Calibri" size="21.0" />
-                                             </font>
-                                          </Label>
-                                          <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
-                                             <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <font>
-                                                <Font name="Calibri" size="12.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <Label prefHeight="17.0" prefWidth="587.0" text="Date" textFill="#868484">
-                                       <font>
-                                          <Font name="Calibri" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </Pane>
-                            <Pane prefHeight="53.0" prefWidth="586.0" style="-fx-background-color: #1A172A;">
-                                <children>
-                              <VBox prefHeight="53.0" prefWidth="586.0">
-                                 <children>
-                                          <HBox prefHeight="32.0" prefWidth="375.0">
-                                              <children>
-                                          <Pane prefHeight="32.0" prefWidth="55.0">
-                                             <children>
-                                                <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
-                                             </children>
-                                          </Pane>
-                                                  <Label prefHeight="26.0" prefWidth="456.0" text="Label" textFill="#ddd1d1">
-                                                      <font>
-                                                          <Font name="Calibri" size="21.0" />
-                                                      </font>
-                                          </Label>
-                                                  <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
-                                                      <graphic>
-                                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                                              <image>
-                                                                  <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
-                                                              </image>
-                                                          </ImageView>
-                                                      </graphic>
-                                             <font>
-                                                <Font name="Calibri" size="12.0" />
-                                             </font>
-                                                  </Button>
-                                              </children>
-                                          </HBox>
-                                    <Label prefHeight="17.0" prefWidth="587.0" text="Date" textFill="#868484">
-                                       <font>
-                                          <Font name="Calibri" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                                </children>
-                        </Pane>
-                        <Pane layoutX="500.0" layoutY="500.0" prefHeight="53.0" prefWidth="586.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0 0 10 10;">
-                           <children>
-                              <VBox prefHeight="53.0" prefWidth="586.0">
-                                 <children>
-                                    <HBox prefHeight="32.0" prefWidth="375.0">
-                                       <children>
-                                          <Pane prefHeight="32.0" prefWidth="55.0">
-                                             <children>
-                                                <CheckBox alignment="CENTER" layoutX="16.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="16.0" />
-                                             </children>
-                                          </Pane>
-                                          <Label prefHeight="26.0" prefWidth="456.0" text="Label" textFill="#ddd1d1">
-                                             <font>
-                                                <Font name="Calibri" size="21.0" />
-                                             </font>
-                                          </Label>
-                                          <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
-                                             <graphic>
-                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <font>
-                                                <Font name="Calibri" size="12.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <Label prefHeight="17.0" prefWidth="587.0" text="Date" textFill="#868484">
-                                       <font>
-                                          <Font name="Calibri" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </Pane>
-                     </children>
-                  </VBox>
-               </children>
-            </Pane>
             </children></AnchorPane>
     </children>
 </AnchorPane>
