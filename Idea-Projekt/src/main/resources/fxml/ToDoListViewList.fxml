@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #030307; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.ToDoListViewList">
+    <children>
+        <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" style="-fx-background-radius: 15 15 0 0;" styleClass="linear-grad" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+            <children>
+                <Label layoutX="690.0" layoutY="1.0" prefHeight="79.0" prefWidth="224.0" text="To Do Lists">
+                    <font>
+                        <Font name="Calibri" size="43.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/to-do-list.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="176.0" prefHeight="79.0" prefWidth="164.0" text="PetStuddyBuddies" textAlignment="CENTER">
+                    <font>
+                        <Font name="Calibri" size="21.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-lehrplan-160.png" />
+                    </image>
+                </ImageView>
+            </children></Pane>
+        <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;">
+            <children>
+                <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="80.0" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Start" textFill="#a868a0">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/cat.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Calibri" size="12.0" />
+                    </font></Button>
+                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Notizen" textFill="#a868a0">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/time.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Calibri" size="12.0" />
+                    </font></Button>
+                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Vorlesungen" textFill="#a868a0">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/flag.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Calibri" size="12.0" />
+                    </font></Button>
+                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="To Do" textFill="#a868a0">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/group.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Calibri" size="12.0" />
+                    </font></Button>
+            </children>
+        </VBox>
+        <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+            <children>
+                <Label layoutX="25.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" text="To-Do List" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri" size="25.0" />
+                    </font>
+                </Label>
+                <Label layoutX="135.0" layoutY="19.0" prefHeight="40.0" prefWidth="240.0" text="Name To-Do List" textFill="#a868a0">
+                    <font>
+                        <Font name="Calibri" size="34.0" />
+                    </font>
+                </Label>
+                <Label layoutX="25.0" layoutY="72.0" text="These are your To-Do List Tasks:" textFill="#fffbfb">
+                    <font>
+                        <Font name="Calibri" size="18.0" />
+                    </font>
+                </Label>
+                <Pane layoutX="721.0" layoutY="18.0" prefHeight="473.0" prefWidth="153.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="473.0" prefWidth="153.0">
+                            <children>
+                                <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="78.0" prefWidth="93.0" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Set Flag">
+                                    <graphic>
+                                        <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/flag.png" />
+                                            </image></ImageView>
+                                    </graphic>
+                                </Button>
+                        <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="93.0" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Share List">
+                           <graphic>
+                              <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="94.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="93.0" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Change Title">
+                           <graphic>
+                              <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="93.0" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Add New Task">
+                           <graphic>
+                              <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../target/classes/images/ToDoListDashboardImages/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                            </children>
+                        </VBox>
+                    </children></Pane>
+                <Pane layoutX="25.0" layoutY="105.0" prefHeight="66.0" prefWidth="586.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10 10 0 0;">
+                    <children>
+                  <VBox prefHeight="50.0" prefWidth="586.0">
+                     <children>
+                              <HBox prefHeight="32.0" prefWidth="375.0">
+                                  <children>
+                              <CheckBox mnemonicParsing="false" prefHeight="32.0" prefWidth="43.0" />
+                                      <Label prefHeight="26.0" prefWidth="667.0" text="Label" textFill="#868484">
+                                          <font>
+                                              <Font name="Calibri" size="21.0" />
+                                          </font>
+                              </Label>
+                                      <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="274.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
+                                          <graphic>
+                                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
+                                                  </image>
+                                              </ImageView>
+                                          </graphic>
+                                      </Button>
+                                  </children>
+                              </HBox>
+                        <Label prefHeight="17.0" prefWidth="110.0" text="Date" />
+                     </children></VBox>
+                    </children></Pane>
+                <Pane layoutX="25.0" layoutY="167.0" prefHeight="66.0" prefWidth="586.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0;">
+                    <children>
+                        <HBox prefHeight="32.0" prefWidth="586.0">
+                            <children>
+                        <CheckBox mnemonicParsing="false" prefHeight="32.0" prefWidth="43.0" />
+                                <Label prefHeight="26.0" prefWidth="596.0" text="Label" textFill="#868484">
+                                    <font>
+                                        <Font name="Calibri" size="21.0" />
+                                    </font></Label>
+                                <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="177.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children></Pane>
+                <Pane layoutX="25.0" layoutY="233.0" prefHeight="66.0" prefWidth="586.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0;">
+                    <children>
+                        <HBox prefHeight="32.0" prefWidth="586.0">
+                            <children>
+                        <CheckBox mnemonicParsing="false" prefHeight="32.0" prefWidth="43.0" />
+                                <Label prefHeight="17.0" prefWidth="665.0" text="Label" textFill="#868484">
+                                    <font>
+                                        <Font name="Calibri" size="21.0" />
+                                    </font></Label>
+                                <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="248.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children></Pane>
+                <Pane layoutX="25.0" layoutY="299.0" prefHeight="75.0" prefWidth="586.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0;">
+                    <children>
+                        <HBox prefHeight="75.0" prefWidth="586.0">
+                            <children>
+                        <CheckBox mnemonicParsing="false" prefHeight="32.0" prefWidth="43.0" />
+                                <Label prefHeight="17.0" prefWidth="665.0" text="Label" textFill="#868484">
+                                    <font>
+                                        <Font name="Calibri" size="21.0" />
+                                    </font></Label>
+                                <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="244.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children></Pane>
+                <Pane layoutX="25.0" layoutY="374.0" prefHeight="66.0" prefWidth="586.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0;">
+                    <children>
+                        <HBox prefHeight="32.0" prefWidth="586.0">
+                            <children>
+                        <CheckBox mnemonicParsing="false" prefHeight="32.0" prefWidth="43.0" />
+                                <Label prefHeight="26.0" prefWidth="574.0" text="Label" textFill="#868484">
+                                    <font>
+                                        <Font name="Calibri" size="21.0" />
+                                    </font></Label>
+                                <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="151.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children></Pane>
+                <Pane layoutX="25.0" layoutY="440.0" prefHeight="60.0" prefWidth="586.0" style="-fx-background-color: #1A172A; -fx-background-radius: 0 0 15 15;">
+                    <children>
+                        <HBox prefHeight="32.0" prefWidth="586.0" style="-fx-border-radius: 0 0 20 20;">
+                            <children>
+                        <CheckBox mnemonicParsing="false" prefHeight="32.0" prefWidth="43.0" />
+                                <Label prefHeight="17.0" prefWidth="665.0" style="-fx-border-radius: 0 0 15 15;" text="Task" textFill="#868484">
+                                    <font>
+                                        <Font name="Calibri" size="21.0" />
+                                    </font></Label>
+                                <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="28.0" prefWidth="239.0" styleClass="button2" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Modify" textFill="WHITE">
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../../../target/classes/images/ToDoListDashboardImages/icons8-vorwärts-96.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children></Pane>
+            </children></AnchorPane>
+    </children>
+</AnchorPane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="242.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="327.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
@@ -41,30 +41,30 @@
                 </Button>
             </children>
         </HBox>
-        <Pane layoutX="29.0" layoutY="39.0" prefHeight="108.0" prefWidth="495.0">
+        <Pane layoutX="29.0" layoutY="39.0" prefHeight="277.0" prefWidth="495.0">
             <children>
-                <VBox prefHeight="164.0" prefWidth="494.0">
+                <VBox prefHeight="277.0" prefWidth="494.0">
                     <children>
-                        <Label prefHeight="222.0" prefWidth="494.0" text="Share To-Do List" textFill="WHITE">
+                        <Label prefHeight="45.0" prefWidth="494.0" text="Share To-Do List" textFill="WHITE">
                             <font>
                                 <Font name="Calibri" size="22.0" />
                             </font></Label>
-                        <Pane prefHeight="200.0" prefWidth="494.0" />
-                        <Pane prefHeight="200.0" prefWidth="200.0">
+                        <Pane prefHeight="189.0" prefWidth="494.0" />
+                        <Pane prefHeight="206.0" prefWidth="494.0">
                             <children>
-                                <HBox prefHeight="25.0" prefWidth="494.0">
+                                <HBox prefHeight="33.0" prefWidth="494.0">
                                     <children>
-                                        <Label prefHeight="22.0" prefWidth="485.0" text="With whom would you like to share " textFill="WHITE">
+                                        <Label prefHeight="38.0" prefWidth="304.0" text="With whom would you like to share " textFill="WHITE">
                                             <font>
                                                 <Font name="Calibri" size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label prefHeight="25.0" prefWidth="370.0" text="Title of To-Do List " textFill="WHITE">
+                                        <Label prefHeight="43.0" prefWidth="154.0" text="Title of To-Do List " textFill="WHITE">
                                             <font>
-                                                <Font name="Calibri" size="18.0" />
+                                                <Font name="Calibri Bold" size="18.0" />
                                             </font>
                                         </Label>
-                              <Label layoutX="10.0" layoutY="10.0" prefHeight="22.0" prefWidth="79.0" text="?" textFill="WHITE">
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="43.0" text="?" textFill="WHITE">
                                  <font>
                                     <Font name="Calibri" size="18.0" />
                                  </font>
@@ -73,32 +73,93 @@
                                 </HBox>
                             </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="494.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <Pane prefHeight="186.0" prefWidth="494.0" />
+                        <VBox prefHeight="357.0" prefWidth="494.0">
                             <children>
-                                <Label prefHeight="28.0" prefWidth="182.0" text="Username:" textFill="WHITE">
+                                <Label prefHeight="35.0" prefWidth="494.0" text="E-Mail Adress of User" textFill="WHITE">
                                     <font>
                                         <Font name="Calibri" size="24.0" />
                                     </font>
                                 </Label>
-                                <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="600.0">
+                                <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="494.0">
                                     <children>
-                                        <TextField prefHeight="27.0" prefWidth="389.0" text="Enter a name for your To-Do List">
+                                        <TextField prefHeight="25.0" prefWidth="345.0" text="Enter a name for your To-Do List">
                                             <font>
                                                 <Font name="Calibri" size="14.0" />
                                             </font>
                                         </TextField>
-                              <ChoiceBox prefWidth="150.0" />
-                              <ToolBar prefHeight="40.0" prefWidth="200.0">
-                                <items>
-                                  <Button mnemonicParsing="false" text="Button" />
-                                </items>
-                              </ToolBar>
+                              <Pane prefHeight="27.0" prefWidth="56.0" />
+                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Check for User">
+                                 <graphic>
+                                    <ImageView fitHeight="19.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../target/classes/images/ToDoListSearch/icons8-client-suchen-100.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                                     </children>
                                 </HBox>
+                        <Pane prefHeight="54.0" prefWidth="494.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="494.0">
+                                 <children>
+                                    <ToolBar prefHeight="42.0" prefWidth="616.0" style="-fx-background-radius: 20 20 20 20;" styleClass="combo-box" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+                                      <items>
+                                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css" text="Select User">
+                                             <graphic>
+                                                <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../target/classes/images/ToDoListSearch/icons8-wählen-sie-benutzer-aus-96.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <TextField text="Match" />
+                                          <Button mnemonicParsing="false" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+                                             <graphic>
+                                                <ImageView fitHeight="17.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../target/classes/images/ToDoListSearch/icons8-oben-96.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button mnemonicParsing="false" styleClass="button5" stylesheets="@../../../../target/classes/styles/fullpackstyling.css">
+                                             <graphic>
+                                                <ImageView fitHeight="24.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../../../target/classes/images/ToDoListSearch/icons8-unten-96.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Label alignment="CENTER" prefHeight="17.0" prefWidth="124.0" text="Nr of Count Matches" textFill="WHITE" />
+                                      </items>
+                                    </ToolBar>
+                                 </children>
+                              </HBox>
+                           </children></Pane>
+                              <Pane prefHeight="27.0" prefWidth="494.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="494.0">
+                                 <children>
+                                    <Label prefHeight="57.0" prefWidth="335.0" text="Chosen User:" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="26.0" prefWidth="416.0" text="Username" textFill="#fff3f3">
+                                       <font>
+                                          <Font name="Calibri" size="22.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children></Pane>
                             </children>
                         </VBox>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                  <Pane layoutX="10.0" layoutY="74.0" prefHeight="195.0" prefWidth="494.0" />
                     </children>
                 </VBox>
             </children>
