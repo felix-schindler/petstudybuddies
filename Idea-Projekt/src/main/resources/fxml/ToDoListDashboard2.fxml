@@ -364,6 +364,22 @@
                   </ScrollPane>
                </children>
             </Pane>
+            <Pane layoutY="146.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="TableViewTest" prefHeight="200.0" prefWidth="200.0">
+                                <columns>
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
          </children></AnchorPane>
    </children>
 </AnchorPane>

@@ -18,6 +18,7 @@ import org.apache.logging.log4j.Logger;
 import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * A simple controller providing a callback method {@link #doLogin()}
@@ -33,7 +34,7 @@ public class LoginController {
     /**
      * Handle Login activity
      */
-    @FXML public void doLogin() throws IOException {
+    @FXML public void doLogin() throws IOException, SQLException {
         //Stage stage;
         //Parent root;
 
@@ -80,7 +81,7 @@ public class LoginController {
         labelUser.setText(selectedUser.getEmail());
     }*/
 
-    public void changeToMainWindow() throws IOException {
+    public void changeToMainWindow() throws IOException, SQLException {
         log.debug("changetoMain was called");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/ToDoListDashboard2.fxml"));
