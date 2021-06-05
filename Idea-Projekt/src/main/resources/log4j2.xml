@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Appenders>
-        <File name="Controller" fileName="data/log/Controller.log" append="false">
+        <File name="Controller" fileName="data/logs/Controller.log" append="false">
             <PatternLayout pattern="%t %-5p %c{2} - %m%n"/>
         </File>
-        <File name="Utils" fileName="data/log/Utils.log" append="false">
+        <File name="Utils" fileName="data/logs/Utils.log" append="false">
             <PatternLayout pattern="%t %-5p %c{2} - %m%n"/>
         </File>
-        <File name="Models" fileName="data/log/Models.log" append="false">
+        <File name="Models" fileName="data/logs/Models.log" append="false">
             <PatternLayout pattern="%t %-5p %c{2} - %m%n"/>
         </File>
         <File name="SelectQuery" fileName="data/logs/SelectQuery.log" append="false">
