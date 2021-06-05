@@ -23,7 +23,7 @@ public class Account {
     }
 
     public static User getLoggedUser() {
-        /*
+        /* TODO remove bc not needed in java
         if (user == null || token == null)
             return null;
 

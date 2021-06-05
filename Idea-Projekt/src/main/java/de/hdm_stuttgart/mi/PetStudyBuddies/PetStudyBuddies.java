@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ToDoListDashboard;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ToDoListController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,22 +12,23 @@ import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.Objects;
 
 public class PetStudyBuddies extends Application {
-    private static Logger log = LogManager.getLogger(ToDoListDashboard.class);
-    private Stage Window;
-    Scene SceneLogin;
+    private static Logger log = LogManager.getLogger(ToDoListController.class);
+    private static Stage window;
 
     @Override
     public void start(Stage stage) throws Exception {
-        Window = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-        SceneLogin = new Scene(root);
+        window = stage;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
+        Scene loginScene = new Scene(root, 854, 480);
         log.debug("FXML geladen");
 
-        Window.setScene(SceneLogin);
-        Window.setTitle("Login");
-        Window.setResizable(false);
+        window.setScene(loginScene);
+        window.setTitle("Login");
+        window.setResizable(false);
 
         // Set application icon
         // Windows
@@ -38,16 +39,8 @@ public class PetStudyBuddies extends Application {
             if (Taskbar.getTaskbar().isSupported(Taskbar.Feature.ICON_IMAGE))
                 Taskbar.getTaskbar().setIconImage(logo.getImage());
 
-        Window.show();
+        window.show();
         log.debug("Login gestartet");
-
-        /*StackPane root = new StackPane();
-        Scene scene = new Scene(root, 854, 480);
-        Button btn = new Button("Hello world!");
-        root.getChildren().add(btn);
-        stage.setTitle("PetStudyBuddies");
-        stage.setScene(scene);
-        stage.show();*/
     }
 
     public static void main(String[] args) {
@@ -55,6 +48,27 @@ public class PetStudyBuddies extends Application {
     }
 
     public static void setStage(Stage newStage) {
-        newStage.show();
+        window = newStage;
+        window.show();
+    }
+
+    public static void setStage(Stage newStage, String newTitle) {
+        window = newStage;
+        window.setTitle(newTitle);
+        window.show();
+    }
+
+    public static void setStage(String fileName) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(PetStudyBuddies.class.getResource(fileName));
+            Scene mainScene = new Scene(loader.load());
+            window.setScene(mainScene);
+            PetStudyBuddies.setStage(window, "Dashboard");
+            log.debug("Scene was successfully loaded");
+        } catch (IOException e) {
+            log.catching(e);
+            log.error("Error occurred while loading scene");
+        }
     }
 }
