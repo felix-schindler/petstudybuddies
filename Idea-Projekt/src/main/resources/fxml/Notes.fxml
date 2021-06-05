@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0"
+      prefWidth="854.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.NotesController">
+    <HBox alignment="CENTER" prefHeight="52.0" prefWidth="600.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        </padding>
+        <TextField fx:id="searchField" onKeyReleased="#search" prefHeight="26.0" prefWidth="275.0"
+                   promptText="Suchen..."/>
+    </HBox>
+    <TableView fx:id="notesTable" minHeight="0.0" prefWidth="854.0">
+      <columns>
+          <TableColumn prefWidth="75.0" text="ID"/>
+          <TableColumn prefWidth="75.0" text="Title"/>
+          <TableColumn prefWidth="75.0" text="Content"/>
+          <TableColumn prefWidth="75.0" text="Last Edited"/>
+      </columns>
+    </TableView>
+    <ScrollPane minHeight="0.0" prefWidth="854.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0">
+            <VBox>
+                <HBox prefWidth="854.0">
+                    <HBox minWidth="600.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title"/>
+                    </HBox>
+                    <HBox alignment="TOP_RIGHT" minWidth="254.0">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Created"
+                              textOrigin="CENTER"/>
+                    </HBox>
+                </HBox>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inhalt"/>
+            </VBox>
+        </AnchorPane>
+    </ScrollPane>
+</VBox>

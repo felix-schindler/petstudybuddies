@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Note extends Model implements Shareable {
@@ -47,9 +49,9 @@ public class Note extends Model implements Shareable {
             ResultSet note = new SelectQuery("Note", "*", "ID="+ID, null, null).fetchAll();
             title = note.getString("Title");
             content = note.getString("Content");
-            lastEditedOn = note.getDate("LastEditedOn");
-            createdOn = note.getDate("CreatedOn");
-        } catch (SQLException throwables) {
+            lastEditedOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("LastEditedOn"));
+            createdOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("CreatedOn"));
+        } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
         }
     }

@@ -72,7 +72,7 @@ public class ToDoListController extends Controller {
             log.debug("ApplicationDashboard loaded");
         } else if(event.getSource() == NotesDashboard){
             stage = (Stage) NotesDashboard.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/fxml/hello.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/Notes.fxml"));
             log.debug("NotesDashboard loaded");
         } else if(event.getSource() == StudiesDashboard){
             stage = (Stage) StudiesDashboard.getScene().getWindow();
@@ -93,7 +93,7 @@ public class ToDoListController extends Controller {
     }
 
     @FXML
-    public void start() {
+    public void initialize() {
         LabelUsername.setText(Account.getLoggedUser().getUsername());
 
         try {
