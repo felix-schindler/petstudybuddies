@@ -6,6 +6,7 @@ Idea-Projekt/.settings/
 Idea-Projekt/.classpath
 Idea-Projekt/.project
 Idea-Projekt/dependency-reduced-pom.xml
+Idea-Projekt/data/logs
 Idea-Projekt/*.log
 Idea-Projekt/log
 

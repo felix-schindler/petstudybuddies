@@ -5,6 +5,7 @@ module gui {
     requires java.sql;
     requires sqlite.jdbc;
     requires java.sql.rowset;
+    requires java.desktop;
 
     opens de.hdm_stuttgart.mi.PetStudyBuddies to javafx.fxml;
     exports de.hdm_stuttgart.mi.PetStudyBuddies;
