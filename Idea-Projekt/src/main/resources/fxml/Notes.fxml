@@ -20,12 +20,13 @@
         <TextField fx:id="searchField" onKeyReleased="#search" prefHeight="26.0" prefWidth="275.0"
                    promptText="Suchen..."/>
     </HBox>
-    <TableView fx:id="notesTable" minHeight="0.0" prefWidth="854.0">
+    <TableView fx:id="tableview" minHeight="0.0" prefWidth="854.0">
       <columns>
-          <TableColumn prefWidth="75.0" text="ID"/>
-          <TableColumn prefWidth="75.0" text="Title"/>
-          <TableColumn prefWidth="75.0" text="Content"/>
-          <TableColumn prefWidth="75.0" text="Last Edited"/>
+          <TableColumn fx:id="colID" prefWidth="75.0" text="ID"/>
+          <TableColumn fx:id="colTitle" prefWidth="75.0" text="Title"/>
+          <TableColumn fx:id="colContent" prefWidth="75.0" text="Content"/>
+          <TableColumn fx:id="colLastEdited" prefWidth="75.0" text="Last Edited"/>
+          <TableColumn fx:id="colCreated" prefWidth="75.0" text="Created"/>
       </columns>
     </TableView>
     <ScrollPane minHeight="0.0" prefWidth="854.0">

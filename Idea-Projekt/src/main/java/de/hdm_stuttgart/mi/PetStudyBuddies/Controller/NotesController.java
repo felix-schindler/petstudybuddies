@@ -5,6 +5,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import javafx.collections.FXCollections;
@@ -22,15 +23,22 @@ import org.apache.logging.log4j.Logger;
 import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class NotesController implements Initializable {
     private final static Logger log = LogManager.getLogger(NotesController.class);
 
+    @FXML
+    public TableColumn<Note, Integer> colID;
+    @FXML
     public TableColumn<Note, String> colTitle;
-    public TableColumn<Note, Double> colContent;
-    public TableColumn<Note, Integer> colCreated;
-    ObservableList<Note> observableList = getNotes();
+    @FXML
+    public TableColumn<Note, String> colContent;
+    @FXML
+    public TableColumn<Note, Date> colLastEdited;
+    @FXML
+    public TableColumn<Note, Date> colCreated;
     @FXML
     private TableView<Note> tableview;
     @FXML
@@ -40,7 +48,7 @@ public class NotesController implements Initializable {
         ObservableList<Note> notes = FXCollections.observableArrayList();
 
         try {
-            CachedRowSet notesSet = new SelectQuery("Note", "ID", "1").fetchAll();
+            CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID="+ Account.getLoggedUser().getID()).fetchAll();
             while (notesSet.next()) {
                 notes.add(new Note(notesSet.getInt("ID")));
                 log.debug("Note " + notesSet.getInt("ID") + " added");
@@ -65,8 +73,11 @@ public class NotesController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         tableview.setItems(getNotes());
 
+        colID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
         colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
+        colLastEdited.setCellValueFactory(new PropertyValueFactory<>("LastEditedOn"));
+        colCreated.setCellValueFactory(new PropertyValueFactory<>("CreatedOn"));
         tableview.setEditable(true);
         tableview.getSelectionModel().setCellSelectionEnabled(true);
     }
