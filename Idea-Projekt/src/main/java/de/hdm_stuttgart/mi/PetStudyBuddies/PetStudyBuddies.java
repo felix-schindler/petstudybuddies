@@ -22,13 +22,6 @@ public class PetStudyBuddies extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         window = stage;
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
-        Scene loginScene = new Scene(root, 854, 480);
-        log.debug("FXML geladen");
-
-        window.setScene(loginScene);
-        window.setTitle("Login");
-        window.setResizable(false);
 
         // Set application icon
         // Windows
@@ -39,6 +32,11 @@ public class PetStudyBuddies extends Application {
             if (Taskbar.getTaskbar().isSupported(Taskbar.Feature.ICON_IMAGE))
                 Taskbar.getTaskbar().setIconImage(logo.getImage());
 
+        window.setMinWidth(854);
+        window.setMinHeight(480);
+        setStage("/fxml/login.fxml", "Login");
+        window.setResizable(false);
+        window.setTitle("Login");
         window.show();
         log.debug("Login gestartet");
     }
@@ -59,12 +57,16 @@ public class PetStudyBuddies extends Application {
     }
 
     public static void setStage(String fileName) {
+        setStage(fileName, "PetStudyBuddies");
+    }
+
+    public static void setStage(String fileName, String title) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(PetStudyBuddies.class.getResource(fileName));
-            Scene mainScene = new Scene(loader.load());
-            window.setScene(mainScene);
-            PetStudyBuddies.setStage(window, "Dashboard");
+            Scene newScene = new Scene(loader.load());
+            window.setScene(newScene);
+            PetStudyBuddies.setStage(window, title);
             log.debug("Scene was successfully loaded");
         } catch (IOException e) {
             log.catching(e);

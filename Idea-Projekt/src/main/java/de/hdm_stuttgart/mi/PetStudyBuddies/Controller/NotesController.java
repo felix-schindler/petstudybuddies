@@ -65,7 +65,7 @@ public class NotesController implements Initializable {
      */
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<Note> notes = getNotes();
+        tableview.setItems(getNotes());
 
         colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
         colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
