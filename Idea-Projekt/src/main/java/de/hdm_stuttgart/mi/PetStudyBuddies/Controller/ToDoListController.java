@@ -24,33 +24,43 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ToDoListController implements Initializable {
-    private static Logger log = LogManager.getLogger(ToDoListController.class);
-    @FXML Button ApplicationDashboard = new Button();
-    @FXML Button NotesDashboard = new Button();
-    @FXML Button StudiesDashboard = new Button();
-    @FXML Button ToDoDashboard = new Button();
-    @FXML Label LabelUsername;
-    @FXML Label LabelCountToDoToday, LabelCountToDoScheduled, LabelCountToDoFlagged, LabelCountToDoAll;
-    @FXML Button ListsToday, ListsScheduled, ListsFlagged, ListsAll;
-    @FXML ScrollPane ScrollPaneAllLists;
-    @FXML TableView TableViewTest;
-    @FXML ObservableList<ObservableList> data;
+    private static final Logger log = LogManager.getLogger(ToDoListController.class);
+    @FXML
+    Button ApplicationDashboard = new Button();
+    @FXML
+    Button NotesDashboard = new Button();
+    @FXML
+    Button StudiesDashboard = new Button();
+    @FXML
+    Button ToDoDashboard = new Button();
+    @FXML
+    Label LabelUsername;
+    @FXML
+    Label LabelCountToDoToday, LabelCountToDoScheduled, LabelCountToDoFlagged, LabelCountToDoAll;
+    @FXML
+    Button ListsToday, ListsScheduled, ListsFlagged, ListsAll;
+    @FXML
+    ScrollPane ScrollPaneAllLists;
+    @FXML
+    TableView TableViewTest;
+    @FXML
+    ObservableList<ObservableList> data;
+    Scene SceneToDoDashboard, SceneToDoViewList;
+    int NToday, NScheduled, NFlagged, NAll;
     private Stage Window;
-    Scene SceneToDoDashboard,SceneToDoViewList;
-    int NToday, NScheduled,NFlagged,NAll;
 
     @FXML
-    public void navigateApplicationDashboard(ActionEvent event){
+    public void navigateApplicationDashboard(ActionEvent event) {
         // TODO Rufe Scene des Start Dashboards auf
     }
 
     @FXML
-    public void navigateNotesDashboard(ActionEvent event){
+    public void navigateNotesDashboard(ActionEvent event) {
         // TODO Rufe Scene des Start Dashboards auf
     }
 
     @FXML
-    public void navigateStudiesDashboard(ActionEvent event){
+    public void navigateStudiesDashboard(ActionEvent event) {
         ToDoDashboard.setOnAction(actionEvent -> Window.setScene(SceneToDoDashboard));
     }
 
@@ -63,24 +73,24 @@ public class ToDoListController implements Initializable {
     }*/
 
     @FXML
-    private void handleButtonAction (ActionEvent event) throws Exception {
+    private void handleButtonAction(ActionEvent event) throws Exception {
         Stage stage;
         Parent root;
 
         log.debug("handleButtonAction called");
-        if(event.getSource() == ApplicationDashboard){
+        if (event.getSource() == ApplicationDashboard) {
             stage = (Stage) ApplicationDashboard.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/hello.fxml"));
             log.debug("ApplicationDashboard loaded");
-        } else if(event.getSource() == NotesDashboard){
+        } else if (event.getSource() == NotesDashboard) {
             stage = (Stage) NotesDashboard.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/Notes.fxml"));
             log.debug("NotesDashboard loaded");
-        } else if(event.getSource() == StudiesDashboard){
+        } else if (event.getSource() == StudiesDashboard) {
             stage = (Stage) StudiesDashboard.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/hello.fxml"));
             log.debug("StudiesDashboard loaded");
-        } else if(event.getSource() == ToDoDashboard){
+        } else if (event.getSource() == ToDoDashboard) {
             stage = (Stage) ToDoDashboard.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/ToDoListDashboard2.fxml"));
             log.debug("ToDoListDashboard loaded");
@@ -117,17 +127,17 @@ public class ToDoListController implements Initializable {
 
             ResultSet AllUserLists = new SelectQuery("ToDoList", "Title", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll();
             String result = new SelectQuery("ToDoList", "Title", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetch();
-            log.debug(result+"result");
-            ArrayList<String> ListsArray= new ArrayList<>();
+            log.debug(result + "result");
+            ArrayList<String> ListsArray = new ArrayList<>();
             ListsArray.add(result);
-            while(AllUserLists.next()){
+            while (AllUserLists.next()) {
                 ListsArray.add(AllUserLists.getString("Title"));
                 log.debug("ListsArray equals" + ListsArray);
             }
             //ObservableList data = FXCollections.observableArrayList(dataBaseArrayList(AllUserLists));
             //this.data=data;
 
-            log.debug("Chosen Lists aka ResultSet: " + AllUserLists.toString());
+            log.debug("Chosen Lists aka ResultSet: " + AllUserLists);
             for (int i = 0; i < AllUserLists.getMetaData().getColumnCount(); i++) {
                 //We are using non property style for making dynamic table
                 final int j = i;
@@ -159,7 +169,7 @@ public class ToDoListController implements Initializable {
             this.data.add(row);
             log.debug("Row added to data");
         }*/
-            log.debug("Data is"+data);
+            log.debug("Data is" + data);
             TableViewTest.setItems(data);
             log.debug("Table View Data set");
         } catch (SQLException e) {
@@ -168,13 +178,14 @@ public class ToDoListController implements Initializable {
             log.info("");                                       // TODO provide additional information
         }
     }
+
     /*
     public static void main(String[] args) {
         launch(args);
     }
     */
     private ArrayList dataBaseArrayList(ResultSet resultSet) throws SQLException {
-        ArrayList<String> data =  new ArrayList<>();
+        ArrayList<String> data = new ArrayList<>();
         while (resultSet.next()) {
             //ToDoList ListsUser = new ToDoList(loggedUser.getID());
             //   String ListTitle = resultSet.getString("Title");
@@ -183,7 +194,7 @@ public class ToDoListController implements Initializable {
             person.married.set(resultSet.getBoolean("married"));*/
             data.add(resultSet.getString("Title"));
         }
-        log.debug("ArrayList content"+data);
+        log.debug("ArrayList content" + data);
         return data;
     }
 }

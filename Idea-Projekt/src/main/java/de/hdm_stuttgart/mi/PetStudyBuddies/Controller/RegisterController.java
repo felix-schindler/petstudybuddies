@@ -15,16 +15,22 @@ import org.apache.logging.log4j.Logger;
 public class RegisterController {
     private final static Logger log = LogManager.getLogger(RegisterController.class);
 
-    @FXML private TextField emailField;
-    @FXML private TextField usernameField;
-    @FXML private PasswordField passwordField;
-    @FXML private PasswordField repeatPasswordField;
-    @FXML private Label statusLabel;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private PasswordField repeatPasswordField;
+    @FXML
+    private Label statusLabel;
 
     /**
      * Handle Register activity
      */
-    @FXML public void register() {
+    @FXML
+    public void register() {
         final String eMail = Utils.getInputString(emailField);
         final String username = Utils.getInputString(usernameField);
         final String password = Utils.getInputString(passwordField);

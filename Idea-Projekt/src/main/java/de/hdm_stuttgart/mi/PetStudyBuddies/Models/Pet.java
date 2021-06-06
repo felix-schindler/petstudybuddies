@@ -26,13 +26,12 @@ public class Pet extends Model {
     private String emotion;
 
     /**
-     *
      * @param ID
      */
     public Pet(int ID) {
         super(ID);
         try {
-            ResultSet pet = new SelectQuery("Pet", "*", "ID="+ID, null, null).fetchAll();
+            ResultSet pet = new SelectQuery("Pet", "*", "ID=" + ID, null, null).fetchAll();
             name = pet.getString("Name");
             emotion = pet.getString("Emotion");
         } catch (SQLException throwables) {
@@ -56,14 +55,8 @@ public class Pet extends Model {
     }
 
     /**
-     * @see Pet#emotion
-     */
-    public String getEmotion() {
-        return emotion;
-    }
-
-    /**
      * Sets the name
+     *
      * @param name New name
      */
     public void setName(String name) {
@@ -71,7 +64,15 @@ public class Pet extends Model {
     }
 
     /**
+     * @see Pet#emotion
+     */
+    public String getEmotion() {
+        return emotion;
+    }
+
+    /**
      * Sets the emotion
+     *
      * @param emotion new emotion
      */
     public void setEmotion(String emotion) {

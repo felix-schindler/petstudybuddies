@@ -5,16 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
  * Driver class for a simple JavaFX demonstration.
- *
  */
 public class FxmlGuiDriver extends Application {
-	private static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
+    private static final Logger log = LogManager.getLogger(FxmlGuiDriver.class);
 
     /**
      * @param args unused

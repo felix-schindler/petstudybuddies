@@ -26,13 +26,12 @@ public class Studies extends Model {
     private int lectureID;
 
     /**
-     *
      * @param ID
      */
     public Studies(int ID) {
         super(ID);
         try {
-            ResultSet studies = new SelectQuery("Studies", "*", "ID="+ID, null, null).fetchAll();
+            ResultSet studies = new SelectQuery("Studies", "*", "ID=" + ID, null, null).fetchAll();
             majorID = studies.getInt("MajorID");
             lectureID = studies.getInt("LectureID");
 
@@ -57,17 +56,17 @@ public class Studies extends Model {
     }
 
     /**
-     * @see Studies#lectureID
-     */
-    public int getLectureID() {
-        return lectureID;
-    }
-
-    /**
      * Sets the major id
      */
     public void setMajorID(int majorID) {
         this.majorID = majorID;
+    }
+
+    /**
+     * @see Studies#lectureID
+     */
+    public int getLectureID() {
+        return lectureID;
     }
 
     /**

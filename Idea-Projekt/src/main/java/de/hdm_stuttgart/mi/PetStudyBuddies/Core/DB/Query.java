@@ -5,8 +5,10 @@ import org.apache.logging.log4j.Logger;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.SQLTimeoutException;
 import java.sql.Statement;
-import java.sql.*;
 
 /**
  * Query class
@@ -36,6 +38,7 @@ public class Query extends SQLiteJDBC {
 
     /**
      * Constructor - Sets the query string
+     *
      * @param queryString Query as a string
      */
     public Query(String queryString) {
@@ -60,6 +63,7 @@ public class Query extends SQLiteJDBC {
 
     /**
      * Executes an update / insert / delete query
+     *
      * @return Number of changed rows OR -1 if no rows are affected (1 if insert is successful)
      */
     public int WriteData() {
@@ -78,8 +82,7 @@ public class Query extends SQLiteJDBC {
             log.catching(e);
             log.error("INSERT or UPDATE or DELETE Query timed out.");
             log.info("Query was " + queryString);
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             log.catching(e);
             log.error("Could not execute INSERT or UPDATE or DELETE Query.");
             log.info("Query was " + queryString);
@@ -90,6 +93,7 @@ public class Query extends SQLiteJDBC {
 
     /**
      * Executes an select query
+     *
      * @return Result set of the selected rows
      */
     public CachedRowSet ReadData() {

@@ -40,13 +40,12 @@ public class Note extends Model implements Shareable {
     private Date createdOn;
 
     /**
-     *
      * @param ID
      */
     public Note(int ID) {
         super(ID);
         try {
-            ResultSet note = new SelectQuery("Note", "*", "ID="+ID, null, null).fetchAll();
+            ResultSet note = new SelectQuery("Note", "*", "ID=" + ID, null, null).fetchAll();
             title = note.getString("Title");
             content = note.getString("Content");
             lastEditedOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("LastEditedOn"));
@@ -72,10 +71,28 @@ public class Note extends Model implements Shareable {
     }
 
     /**
+     * Sets the new title of the note
+     *
+     * @param title new title
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
      * @see Note#content
      */
     public String getContent() {
         return content;
+    }
+
+    /**
+     * Sets the new content of the note
+     *
+     * @param content The new content of the note
+     */
+    public void setContent(String content) {
+        this.content = content;
     }
 
     /**
@@ -93,28 +110,12 @@ public class Note extends Model implements Shareable {
     }
 
     /**
-     * Sets the new title of the note
-     * @param title new title
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    /**
-     * Sets the new content of the note
-     * @param content The new content of the note
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    /**
      * @see Model#save()
      */
     public boolean save() {
         return new UpdateQuery(getTable(), new String[]{"Title", "Content", "LastEditedOn", "CreatedOn"},
                 new String[]{title, content, lastEditedOn.toString(), createdOn.toString()},
-                "ID="+getID()).Count() == 1;
+                "ID=" + getID()).Count() == 1;
     }
 
     /**

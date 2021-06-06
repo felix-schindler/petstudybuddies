@@ -8,19 +8,22 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * A simple controller providing a callback method {@link #sayHello()}
- *
  */
 public class HelloController {
     private final static Logger log = LogManager.getLogger(HelloController.class);
 
-    @FXML private TextField firstNameField;
-    @FXML private TextField lastNameField;
-    @FXML private Label helloLabel;
+    @FXML
+    private TextField firstNameField;
+    @FXML
+    private TextField lastNameField;
+    @FXML
+    private Label helloLabel;
 
     /**
      * deriving a greeting message from firstName and lastName
      */
-    @FXML public void sayHello() {
+    @FXML
+    public void sayHello() {
         final String firstName = firstNameField.getText();
         final String lastName = lastNameField.getText();
 

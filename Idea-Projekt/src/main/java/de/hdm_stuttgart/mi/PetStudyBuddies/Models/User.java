@@ -33,12 +33,13 @@ public class User extends Model {
 
     /**
      * Creates a new user linked to the users database-entry via its ID
+     *
      * @param ID ID of the user in the database
      */
     public User(int ID) {
         super(ID);
         try {
-            ResultSet user = new SelectQuery(getTable(), "*", "ID="+ID).ReadData();
+            ResultSet user = new SelectQuery(getTable(), "*", "ID=" + ID).ReadData();
             username = user.getString("Username");
             eMail = user.getString("EMail");
             password = user.getString("Password");
@@ -70,17 +71,17 @@ public class User extends Model {
     }
 
     /**
-     * @return The SHA1-Encrypted password of the user
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
      * Sets the users EMail (only after safe to DB!)
      */
     public void setEMail(String newMail) {
         eMail = newMail;
+    }
+
+    /**
+     * @return The SHA1-Encrypted password of the user
+     */
+    public String getPassword() {
+        return password;
     }
 
     /**
@@ -113,6 +114,7 @@ public class User extends Model {
 
     /**
      * Saves changes of the User
+     *
      * @see Model#save()
      */
     public boolean save() {
