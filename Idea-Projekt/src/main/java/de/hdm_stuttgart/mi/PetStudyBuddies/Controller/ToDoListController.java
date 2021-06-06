@@ -2,8 +2,13 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
+import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,11 +17,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,7 +51,7 @@ public class ToDoListController implements Initializable {
     @FXML
     TableView TableViewTest;
     @FXML
-    ObservableList<ObservableList> data;
+    TableColumn colTitle;
     Scene SceneToDoDashboard, SceneToDoViewList;
     int NToday, NScheduled, NFlagged, NAll;
     private Stage Window;
@@ -64,14 +71,6 @@ public class ToDoListController implements Initializable {
         ToDoDashboard.setOnAction(actionEvent -> Window.setScene(SceneToDoDashboard));
     }
 
-    /* @FXML public void navigateToDoDashboard(ActionEvent event) throws IOException {
-        Window.setScene(SceneToDoDashboard);
-        Window.setTitle("To-Do List Dashboard");
-        Window.setResizable(false);
-        Window.show();
-        log.debug("Scene set back to Dashboard");
-    }*/
-
     @FXML
     private void handleButtonAction(ActionEvent event) throws Exception {
         Stage stage;
@@ -79,6 +78,7 @@ public class ToDoListController implements Initializable {
 
         log.debug("handleButtonAction called");
         if (event.getSource() == ApplicationDashboard) {
+            // PetStudyBuddies.setStage("/fxml/hello.fxml");
             stage = (Stage) ApplicationDashboard.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/fxml/hello.fxml"));
             log.debug("ApplicationDashboard loaded");
@@ -113,7 +113,7 @@ public class ToDoListController implements Initializable {
             log.debug("Number of All To Do Lists " + NAll);
             LabelCountToDoAll.setText(String.valueOf(NAll));
 
-            this.NFlagged = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = 'y'").Count();
+            this.NFlagged = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'").Count();
             log.debug("Number of Flagged To Do Lists " + NFlagged);
             LabelCountToDoFlagged.setText(String.valueOf(NFlagged));
 
@@ -125,76 +125,19 @@ public class ToDoListController implements Initializable {
             log.debug("Number of To Do Lists " + NToday);
             LabelCountToDoToday.setText(String.valueOf(NToday));
 
-            ResultSet AllUserLists = new SelectQuery("ToDoList", "Title", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll();
-            String result = new SelectQuery("ToDoList", "Title", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetch();
-            log.debug(result + "result");
-            ArrayList<String> ListsArray = new ArrayList<>();
-            ListsArray.add(result);
+            ObservableList<ToDoList> data = FXCollections.observableArrayList();
+            CachedRowSet AllUserLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll();
             while (AllUserLists.next()) {
-                ListsArray.add(AllUserLists.getString("Title"));
-                log.debug("ListsArray equals" + ListsArray);
-            }
-            //ObservableList data = FXCollections.observableArrayList(dataBaseArrayList(AllUserLists));
-            //this.data=data;
-
-            log.debug("Chosen Lists aka ResultSet: " + AllUserLists);
-            for (int i = 0; i < AllUserLists.getMetaData().getColumnCount(); i++) {
-                //We are using non property style for making dynamic table
-                final int j = i;
-                TableColumn col = new TableColumn(AllUserLists.getMetaData().getColumnName(i + 1));
-                log.debug("New TableColumn created");
-                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                        return new SimpleStringProperty(param.getValue().get(j).toString());
-                    }
-                });
-                TableViewTest.getColumns().addAll(col);
-                log.debug("TableColumn added to TableView");
-                log.debug("Column [" + i + "] ");
+                data.add(new ToDoList(AllUserLists.getInt("ID")));
+                log.debug("ToDo List " + AllUserLists.getInt("ID") + " added");
             }
 
-
-            /*while(AllUserLists.next()){
-            log.debug("I'm in while");
-            //Iterate Row
-            /*ObservableList<ObservableList> data = FXCollections.observableArrayList();
-            log.debug("List created");
-            this.data=data;
-            ObservableList<String> row = FXCollections.observableArrayList();
-            for(int i=1 ; i<=AllUserLists.getMetaData().getColumnCount(); i++){
-                //Iterate Column
-                row.add(AllUserLists.getString(i));
-            }
-            log.debug("Row [1] added "+row );
-            this.data.add(row);
-            log.debug("Row added to data");
-        }*/
-            log.debug("Data is" + data);
             TableViewTest.setItems(data);
+            colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
             log.debug("Table View Data set");
         } catch (SQLException e) {
             log.catching(e);
-            log.error("Es ist ein Fehler aufgetreten");         // TODO was ist der fehler??
-            log.info("");                                       // TODO provide additional information
+            log.error("Beim Laden der ToDo Lists ist ein Fehler aufgetreten");
         }
-    }
-
-    /*
-    public static void main(String[] args) {
-        launch(args);
-    }
-    */
-    private ArrayList dataBaseArrayList(ResultSet resultSet) throws SQLException {
-        ArrayList<String> data = new ArrayList<>();
-        while (resultSet.next()) {
-            //ToDoList ListsUser = new ToDoList(loggedUser.getID());
-            //   String ListTitle = resultSet.getString("Title");
-            /*ListsUser..id.set(resultSet.getInt("id"));
-            person.name.set(resultSet.getString("name"));
-            person.married.set(resultSet.getBoolean("married"));*/
-            data.add(resultSet.getString("Title"));
-        }
-        log.debug("ArrayList content" + data);
-        return data;
     }
 }

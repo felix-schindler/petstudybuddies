@@ -372,6 +372,7 @@
                            <children>
                               <TableView fx:id="TableViewTest" prefHeight="200.0" prefWidth="200.0">
                                 <columns>
+                                   <TableColumn fx:id="colTitle" text="Title"></TableColumn>
                                 </columns>
                               </TableView>
                            </children>
