@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.sql.rowset.CachedRowSet;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SelectQuery extends Query {
@@ -20,6 +19,7 @@ public class SelectQuery extends Query {
 
     /**
      * Hands over parts of the SQL-Query Select statement to the BuildQuery method and then calls SetQueryString
+     *
      * @param table String containing the name of the table
      * @param field String containing the name of the field where values shall be outprinted
      * @param where String containing the "WHERE"-clause of the SQL-statement
@@ -31,9 +31,10 @@ public class SelectQuery extends Query {
 
     /**
      * Hands over parts of the SQL-Query Select statement to the BuildQuery method and then calls SetQueryString
-     * @param table String containing the name of the table
-     * @param field String containing the name of the field where values shall be outprinted
-     * @param where String containing the "WHERE"-clause of the SQL-statement
+     *
+     * @param table   String containing the name of the table
+     * @param field   String containing the name of the field where values shall be outprinted
+     * @param where   String containing the "WHERE"-clause of the SQL-statement
      * @param orderBy String containing the "ORDER BY"-clause of the SQL-statement
      * @param groupBy String containing the "GROUP BY"-clause of the SQL-statement
      */
@@ -44,12 +45,13 @@ public class SelectQuery extends Query {
 
     /**
      * Hands over parts of the SQL-Query Select statement to the BuildQuery method and then calls SetQueryString if run set true
-     * @param table String containing the name of the table
-     * @param field String containing the name of the field where values shall be outprinted
-     * @param where String containing the "WHERE"-clause of the SQL-statement
+     *
+     * @param table   String containing the name of the table
+     * @param field   String containing the name of the field where values shall be outprinted
+     * @param where   String containing the "WHERE"-clause of the SQL-statement
      * @param orderBy String containing the "ORDER BY"-clause of the SQL-statement
      * @param groupBy String containing the "GROUP BY"-clause of the SQL-statement
-     * @param run boolean if true built Query is set with SetQueryString method
+     * @param run     boolean if true built Query is set with SetQueryString method
      */
     public SelectQuery(String table, String field, String where, String orderBy, String groupBy, boolean run) {
         SetQueryString(buildQuery(table, field, where, orderBy, groupBy));
@@ -59,9 +61,10 @@ public class SelectQuery extends Query {
 
     /**
      * Builds the SELECT-Query with the given parameters
-     * @param table String containing the name of the table
-     * @param field String containing the name of the field where values shall be outprinted
-     * @param where String containing the "WHERE"-clause of the SQL-statement
+     *
+     * @param table   String containing the name of the table
+     * @param field   String containing the name of the field where values shall be outprinted
+     * @param where   String containing the "WHERE"-clause of the SQL-statement
      * @param orderBy String containing the "ORDER BY"-clause of the SQL-statement
      * @param groupBy String containing the "GROUP BY"-clause of the SQL-statement
      * @return SQL-Query
@@ -92,8 +95,9 @@ public class SelectQuery extends Query {
 
     /**
      * Returns result of SELECT-statement if several DB-results were found
-     * @see Query#ReadData()
+     *
      * @return result of SELECT-statement
+     * @see Query#ReadData()
      */
     public CachedRowSet fetchAll() {
         try {
@@ -107,6 +111,7 @@ public class SelectQuery extends Query {
 
     /**
      * Returns result of SELECT-statement if one DB-result was found
+     *
      * @return result of SELECT-statement
      */
     public String fetch() {
@@ -125,6 +130,7 @@ public class SelectQuery extends Query {
     /**
      * Counts selected rows
      * Moves to last row, sets count, moves to first again
+     *
      * @return Count of selected rows
      */
     public int Count() {

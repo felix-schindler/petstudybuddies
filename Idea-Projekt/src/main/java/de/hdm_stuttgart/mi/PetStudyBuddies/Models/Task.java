@@ -39,12 +39,13 @@ public class Task extends Model {
 
     /**
      * Creates a new task linked to the tasks database-entry via its ID
+     *
      * @param ID ID of the task in the database
      */
     public Task(int ID) {
         super(ID);
         try {
-            ResultSet task = new SelectQuery("Task", "*", "ID="+ID, null, null).fetchAll();
+            ResultSet task = new SelectQuery("Task", "*", "ID=" + ID, null, null).fetchAll();
             toDoList = task.getInt("ToDoList");
             content = task.getString("Content");
             until = task.getDate("Until");
@@ -77,10 +78,24 @@ public class Task extends Model {
     }
 
     /**
+     * Sets the content
+     */
+    public void setContent(String newContent) {
+        content = newContent;
+    }
+
+    /**
      * @see Task#until
      */
     public Date getUntil() {
         return until;
+    }
+
+    /**
+     * Set due to date
+     */
+    public void setUntil(Date newUntil) {
+        until = newUntil;
     }
 
     /**
@@ -98,20 +113,6 @@ public class Task extends Model {
     }
 
     /**
-     * Sets the content
-     */
-    public void setContent(String newContent) {
-        content = newContent;
-    }
-
-    /**
-     * Set due to date
-     */
-    public void setUntil(Date newUntil) {
-        until = newUntil;
-    }
-
-    /**
      * Set new assigned person
      */
     public void setAssignedPerson(int UserID) {
@@ -119,10 +120,10 @@ public class Task extends Model {
     }
 
 
-
     /**
      * TODO das kommt entweder in the save funktion selbst oder wird dort aufgerufen. wahrscheinlich aber eher in die save funktion selbst
      * Assigns the task to a person
+     *
      * @param TaskID ID of the note to be shared
      * @param UserID ID of the user to be assigned to
      * @return true if the person could be assigned, false otherwise
@@ -140,7 +141,7 @@ public class Task extends Model {
             return new InsertQuery(getTable(), new String[]{"NoteID", "UserID"}, new String[]{Integer.toString(TaskID), Integer.toString(UserID)}).Count() == 1;
         } else {
             log.debug("Try to update assigned person");
-            return new UpdateQuery(getTable(), new String[]{"UserID"}, new String[]{Integer.toString(UserID)}, "ID="+TaskID).Count() == 1;
+            return new UpdateQuery(getTable(), new String[]{"UserID"}, new String[]{Integer.toString(UserID)}, "ID=" + TaskID).Count() == 1;
         }
     }
 

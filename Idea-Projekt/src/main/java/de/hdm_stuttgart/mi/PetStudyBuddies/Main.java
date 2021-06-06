@@ -64,8 +64,7 @@ public class Main {
             menu = scan.nextInt();
 
             switch (menu) {
-                case 1 ->
-                        Utils.printResultSet(new SelectQuery("Note", "*", "UserID=" + Account.getLoggedUser().getID()).fetchAll());
+                case 1 -> Utils.printResultSet(new SelectQuery("Note", "*", "UserID=" + Account.getLoggedUser().getID()).fetchAll());
                 case 2 -> {
                     System.out.print("Choose a title: ");
                     final String title = scan.next();

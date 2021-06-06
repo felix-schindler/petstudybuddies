@@ -9,8 +9,8 @@ public class Calendar extends Model {
      * log object for error handling
      */
     private static final Logger log = LogManager.getLogger(Calendar.class);
+
     /**
-     *
      * @param ID UserID
      */
     public Calendar(int ID) {

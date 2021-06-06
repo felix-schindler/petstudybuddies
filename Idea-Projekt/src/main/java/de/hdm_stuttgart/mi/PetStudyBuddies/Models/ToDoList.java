@@ -28,12 +28,13 @@ public class ToDoList extends Model implements Shareable {
 
     /**
      * Creates a new ToDoList linked to the ToDoLists database-entry via its ID
+     *
      * @param ID ID of the ToDoList in the database
      */
     public ToDoList(int ID) {
         super(ID);
         try {
-            ResultSet toDoList = new SelectQuery("ToDoList", "*", "ID="+ID).fetchAll();
+            ResultSet toDoList = new SelectQuery("ToDoList", "*", "ID=" + ID).fetchAll();
             owner = toDoList.getInt("UserID");
             title = toDoList.getString("Title");
         } catch (SQLException throwables) {
@@ -52,19 +53,20 @@ public class ToDoList extends Model implements Shareable {
     /**
      * @return UserID of the owner
      */
-    public int getOwner(){
+    public int getOwner() {
         return owner;
     }
 
     /**
      * @return Title of the ToDoList
      */
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
     /**
      * Sets a new title for a ToDoList
+     *
      * @param newTitle New title for ToDoList
      */
     public void setTitle(String newTitle) {
@@ -73,6 +75,7 @@ public class ToDoList extends Model implements Shareable {
 
     /**
      * TODO this.
+     *
      * @param ID
      * @return
      */
@@ -82,6 +85,7 @@ public class ToDoList extends Model implements Shareable {
 
     /**
      * TODO save -> Throw Exception if owner != UserID (in DB) weil Owner kann nicht geändert werden.
+     *
      * @see Model#save()
      */
     public boolean save() {

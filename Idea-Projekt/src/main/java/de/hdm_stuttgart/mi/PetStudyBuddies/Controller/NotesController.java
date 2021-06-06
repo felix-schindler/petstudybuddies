@@ -4,11 +4,6 @@
 
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.Date;
-import java.util.ResourceBundle;
-
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
@@ -25,6 +20,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.sql.rowset.CachedRowSet;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class NotesController implements Initializable {
     private final static Logger log = LogManager.getLogger(NotesController.class);
@@ -32,11 +30,11 @@ public class NotesController implements Initializable {
     public TableColumn<Note, String> colTitle;
     public TableColumn<Note, Double> colContent;
     public TableColumn<Note, Integer> colCreated;
-    @FXML private TableView<Note> tableview;
-
-    @FXML private TextField searchField;
-
     ObservableList<Note> observableList = getNotes();
+    @FXML
+    private TableView<Note> tableview;
+    @FXML
+    private TextField searchField;
 
     public ObservableList<Note> getNotes() {
         ObservableList<Note> notes = FXCollections.observableArrayList();
@@ -60,7 +58,7 @@ public class NotesController implements Initializable {
     }
 
     /**
-     * @param location URL location of the FXML file that was given to the FXMLLoader
+     * @param location  URL location of the FXML file that was given to the FXMLLoader
      * @param resources ResourceBundle that was given to the FXMLLoader
      */
     @Override // This method is called by the FXMLLoader when initialization is complete

@@ -3,7 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class InsertQuery extends Query{
+public class InsertQuery extends Query {
     /**
      * log object for error handling
      */
@@ -17,7 +17,8 @@ public class InsertQuery extends Query{
 
     /**
      * Hands over parts of the SQL-Query Insert statement to the BuildQuery method and then calls SetQueryString
-     * @param table String containing the name of the table
+     *
+     * @param table  String containing the name of the table
      * @param fields String Array containing the names of the fields where values shall be inserted
      * @param values String Array containing the  values which shall be inserted
      */
@@ -28,10 +29,11 @@ public class InsertQuery extends Query{
 
     /**
      * Hands over parts of the SQL-Query Insert statement to the BuildQuery method and then calls SetQueryString if run set true
-     * @param table String containing the name of the table
+     *
+     * @param table  String containing the name of the table
      * @param fields String Array containing the names of the fields where values shall be inserted
      * @param values String Array containing the  values which shall be inserted
-     * @param run boolean if true built Query is set with SetQueryString method
+     * @param run    boolean if true built Query is set with SetQueryString method
      */
     public InsertQuery(String table, String[] fields, String[] values, boolean run) {
         SetQueryString(BuildQuery(table, fields, values));
@@ -41,7 +43,8 @@ public class InsertQuery extends Query{
 
     /**
      * Builds the INSERT-Query with the given parameters and saves SQL-Query in the StringBuilder query
-     * @param table String containing the name of the table
+     *
+     * @param table  String containing the name of the table
      * @param fields String Array containing the names of the fields where values shall be inserted
      * @param values String Array containing the  values which shall be inserted
      */
@@ -52,14 +55,14 @@ public class InsertQuery extends Query{
             int lengthValues = values.length;
             query.append("INSERT INTO ").append(table).append(" (");
 
-            for (int i = 0; i < lengthValues-1; i++) {
+            for (int i = 0; i < lengthValues - 1; i++) {
                 query.append(fields[i]).append(", ");
             }
             query.append(fields[lengthValues - 1]).append(")");
 
             query.append(" VALUES (");
 
-            for (int i=0; i<lengthValues-1; i++) {
+            for (int i = 0; i < lengthValues - 1; i++) {
                 query.append("'").append(values[i]).append("' , ");
             }
 

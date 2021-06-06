@@ -14,6 +14,7 @@ import java.sql.SQLException;
 public class Utils {
     /**
      * Validates the user input in the text fields.
+     *
      * @return the trimmed input string
      */
     public static String getInputString(TextField textField) {
@@ -24,6 +25,7 @@ public class Utils {
 
     /**
      * Validates the user input in the password fields.
+     *
      * @return the input string
      */
     public static String getInputString(PasswordField textField) {
@@ -34,6 +36,7 @@ public class Utils {
 
     /**
      * "Validates" the given eMail (locally)
+     *
      * @param eMail eMail to be checked
      * @return true if the eMail is valid
      */
@@ -43,6 +46,7 @@ public class Utils {
 
     /**
      * SHA1 for Java bc apparently it's too hard to have a standard sha1() function
+     *
      * @param input string to be encrypted
      * @return sha1 encrypted string
      */
@@ -55,12 +59,14 @@ public class Utils {
                 sb.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
             }
             return sb.toString();
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
         return null;
     }
 
     /**
      * Print a result set to system out.
+     *
      * @param rs The ResultSet to print
      */
     public static void printResultSet(ResultSet rs) {

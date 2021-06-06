@@ -16,6 +16,7 @@ public class DeleteQuery extends Query {
 
     /**
      * Hands over parts of the SQL-Query Delete statement to the BuildQuery method and then calls SetQueryString
+     *
      * @param table String containing the name of the table
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
@@ -26,9 +27,10 @@ public class DeleteQuery extends Query {
 
     /**
      * Hands over parts of the SQL-Query Delete statement to the BuildQuery method and then calls SetQueryString if run set true
+     *
      * @param table String containing the name of the table
      * @param where String containing the "WHERE"-clause of the SQL-statement
-     * @param run boolean if true built Query is set with SetQueryString method
+     * @param run   boolean if true built Query is set with SetQueryString method
      */
     public DeleteQuery(String table, String where, boolean run) {
         SetQueryString(BuildQuery(table, where));
@@ -38,6 +40,7 @@ public class DeleteQuery extends Query {
 
     /**
      * Builds the DELETE-Query with the given parameters and saves query in the Stringbuilder query object
+     *
      * @param table String containing the name of the table
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */

@@ -10,12 +10,13 @@ import java.util.Objects;
 public class Auth {
     /**
      * Returns a User if eMail AND Password match
-     * @param eMail EMail
+     *
+     * @param eMail    EMail
      * @param password Passwort
      * @return User if login successful : null
      */
     public static User login(String eMail, String password) {
-        String userID = new SelectQuery("User", "ID", "EMail='"+eMail+"' AND Password='"+ Utils.sha1(password)+"'").fetch();
+        String userID = new SelectQuery("User", "ID", "EMail='" + eMail + "' AND Password='" + Utils.sha1(password) + "'").fetch();
         if (userID != null) {
             return new User(Integer.parseInt(userID));
         }
@@ -28,7 +29,8 @@ public class Auth {
 
     /**
      * User has to register first, than log in.
-     * @param eMail user email
+     *
+     * @param eMail    user email
      * @param username username
      * @param password password
      * @return true if register was successful

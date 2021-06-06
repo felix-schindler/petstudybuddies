@@ -4,7 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.sqlite.SQLiteConfig;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /*
  * Database driver
@@ -24,10 +26,12 @@ class SQLiteJDBC {
     /**
      * Constructor - Doesn't do anything active right now
      */
-    protected SQLiteJDBC() {}
+    protected SQLiteJDBC() {
+    }
 
     /**
      * Connect to the database if not connected
+     *
      * @return The current database connection
      */
     protected Connection getConnection() {
@@ -49,7 +53,7 @@ class SQLiteJDBC {
             SQLiteConfig config = new SQLiteConfig();
             config.enforceForeignKeys(true);
             con = DriverManager.getConnection("jdbc:sqlite:data/psb.sqlite", config.toProperties());
-            con.setAutoCommit(true);	// Änderungen werden sofort in die Datenbank geschrieben & können nicht einfach rückgängig gemacht werden
+            con.setAutoCommit(true);    // Änderungen werden sofort in die Datenbank geschrieben & können nicht einfach rückgängig gemacht werden
             log.debug("Database connection opened successfully.");
         } catch (SQLException | ClassNotFoundException e) {
             log.catching(e);

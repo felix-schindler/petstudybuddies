@@ -3,7 +3,6 @@ package de.hdm_stuttgart.mi.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ToDoListController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -13,33 +12,10 @@ import org.apache.logging.log4j.Logger;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.util.Objects;
 
 public class PetStudyBuddies extends Application {
-    private static Logger log = LogManager.getLogger(ToDoListController.class);
+    private static final Logger log = LogManager.getLogger(ToDoListController.class);
     private static Stage window;
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        window = stage;
-
-        // Set application icon
-        // Windows
-        stage.getIcons().add(new Image("file:data/icon.png"));
-        // Mac
-        ImageIcon logo = new ImageIcon("data/icon.png");
-        if (Taskbar.isTaskbarSupported())
-            if (Taskbar.getTaskbar().isSupported(Taskbar.Feature.ICON_IMAGE))
-                Taskbar.getTaskbar().setIconImage(logo.getImage());
-
-        window.setMinWidth(854);
-        window.setMinHeight(480);
-        setStage("/fxml/login.fxml", "Login");
-        window.setResizable(false);
-        window.setTitle("Login");
-        window.show();
-        log.debug("Login gestartet");
-    }
 
     public static void main(String[] args) {
         launch(args);
@@ -72,5 +48,27 @@ public class PetStudyBuddies extends Application {
             log.catching(e);
             log.error("Error occurred while loading scene");
         }
+    }
+
+    @Override
+    public void start(Stage stage) {
+        window = stage;
+
+        // Set application icon
+        // Windows
+        stage.getIcons().add(new Image("file:data/icon.png"));
+        // Mac
+        ImageIcon logo = new ImageIcon("data/icon.png");
+        if (Taskbar.isTaskbarSupported())
+            if (Taskbar.getTaskbar().isSupported(Taskbar.Feature.ICON_IMAGE))
+                Taskbar.getTaskbar().setIconImage(logo.getImage());
+
+        window.setMinWidth(854);
+        window.setMinHeight(480);
+        setStage("/fxml/login.fxml", "Login");
+        window.setResizable(false);
+        window.setTitle("Login");
+        window.show();
+        log.debug("Login gestartet");
     }
 }

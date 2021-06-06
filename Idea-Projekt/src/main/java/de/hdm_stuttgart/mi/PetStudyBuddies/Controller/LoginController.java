@@ -17,15 +17,16 @@ import java.sql.SQLException;
 
 /**
  * A simple controller providing a callback method {@link #doLogin()}
- *
  */
 public class LoginController {
     private final static Logger log = LogManager.getLogger(LoginController.class);
-
-    @FXML private TextField emailField;
-    @FXML private PasswordField passwordField;
-    @FXML private Label statusLabel;
     User loggedUser;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Label statusLabel;
 
     /**
      * Handle Login activity
