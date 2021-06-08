@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class User extends Model {
     /**
-     * log object for error handling
+     * Log object for error handling
      */
     private static final Logger log = LogManager.getLogger(User.class);
 

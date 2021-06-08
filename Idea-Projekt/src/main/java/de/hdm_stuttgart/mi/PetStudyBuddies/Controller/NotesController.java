@@ -1,9 +1,6 @@
-/**
- * Sample Skeleton for 'Untitled' Controller Class
- */
-
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Controller;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
@@ -26,7 +23,10 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class NotesController implements Initializable {
+/**
+ * Sample Skeleton for 'Untitled' Controller Class
+ */
+public class NotesController extends Controller {
     private final static Logger log = LogManager.getLogger(NotesController.class);
 
     @FXML
