@@ -3,13 +3,9 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 abstract public class Controller {
     /**
@@ -39,7 +35,7 @@ abstract public class Controller {
             PetStudyBuddies.setStage("/fxml/hello.fxml");
             log.debug("StudiesDashboard loaded");
         } else if (event.getSource() == ToDoDashboard) {
-            PetStudyBuddies.setStage("/fxml/ToDoListDashboard2.fxml");
+            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");
             log.debug("ToDoListDashboard loaded");
         } else {
             log.error("No route specified");

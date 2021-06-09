@@ -60,7 +60,7 @@ public class ToDoListController extends Controller implements Initializable {
 
     @FXML
     public void navigateStudiesDashboard(ActionEvent event) {
-        ToDoDashboard.setOnAction(actionEvent -> PetStudyBuddies.setStage("/fxml/ToDoListDashboard.fxml"));
+        ToDoDashboard.setOnAction(actionEvent -> PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard.fxml"));
     }
 
     @Override

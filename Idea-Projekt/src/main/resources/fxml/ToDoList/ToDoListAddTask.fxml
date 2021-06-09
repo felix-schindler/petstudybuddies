@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="202.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="202.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/ToDoListAddModify/icons8-zurück-96.png" />
+                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png" />
                             </image></ImageView>
                     </graphic>
                     <font>
@@ -22,17 +22,17 @@
                 </Button>
                 <Pane prefHeight="38.0" prefWidth="344.0">
                     <children>
-                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="344.0" text="Modify Task" textFill="#fff0f0">
+                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="344.0" text="Add Task" textFill="#fff0f0">
                             <font>
                                 <Font name="Calibri" size="14.0" />
                             </font>
                         </Label>
                     </children></Pane>
-                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../styles/fullpackstyling.css" text="Modify Task" textFill="WHITE">
+                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Create New Task" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
+                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
                             </image></ImageView>
                     </graphic>
                     <font>
@@ -45,34 +45,34 @@
             <children>
                 <VBox prefHeight="103.0" prefWidth="494.0">
                     <children>
-                        <Label prefHeight="42.0" prefWidth="518.0" text="Modify your Task for your To-Do List" textFill="WHITE">
+                        <Label prefHeight="42.0" prefWidth="518.0" text="Add a new Task" textFill="WHITE">
                             <font>
                                 <Font name="Calibri" size="22.0" />
                             </font></Label>
-                        <Pane layoutX="10.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Pane layoutX="10.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0" />
                         <HBox prefHeight="47.0" prefWidth="600.0">
                             <children>
-                                <Label prefHeight="24.0" prefWidth="122.0" text="Modified Name" textFill="WHITE">
+                                <Label prefHeight="17.0" prefWidth="90.0" text="Name" textFill="WHITE">
                                     <font>
                                         <Font name="Calibri" size="18.0" />
                                     </font></Label>
-                                <TextField prefHeight="40.0" prefWidth="371.0" text="Modify your Task ">
+                                <TextField prefHeight="38.0" prefWidth="393.0" text="New Task for your To-Do List">
                                     <font>
                                         <Font name="Calibri" size="14.0" />
                                     </font></TextField>
                             </children>
                         </HBox>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                            <children>
-                                <Label prefHeight="17.0" prefWidth="91.0" text="Deadline" textFill="WHITE">
-                                    <font>
-                                        <Font name="Calibri" size="14.0" />
-                                    </font>
-                                </Label>
-                                <DatePicker prefHeight="25.0" prefWidth="176.0" promptText="Enter New Deadline" />
-                            </children>
-                        </HBox>
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="91.0" text="Deadline" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                        <DatePicker prefHeight="25.0" prefWidth="176.0" promptText="Enter Deadline" />
+                     </children>
+                  </HBox>
                     </children>
                 </VBox>
             </children>

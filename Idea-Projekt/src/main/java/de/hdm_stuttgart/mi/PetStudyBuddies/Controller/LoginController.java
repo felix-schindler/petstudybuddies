@@ -54,7 +54,7 @@ public class LoginController {
                 this.loggedUser = Account.getLoggedUser();
 
                 // Redirect to Dashboard
-                PetStudyBuddies.setStage("/fxml/ToDoListDashboard2.fxml", "To Do List");
+                PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do List");
             } else {
                 log.warn(eMail + " tried to log in with wrong EMail / Password");
                 status.append("eMail oder Passwort ist falsch.");
