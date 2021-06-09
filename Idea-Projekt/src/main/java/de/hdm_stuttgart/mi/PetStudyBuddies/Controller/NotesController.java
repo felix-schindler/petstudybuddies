@@ -84,7 +84,9 @@ public class NotesController extends Controller {
         tableview.getSelectionModel().setCellSelectionEnabled(true);
     }
 
+    // TODO implement
     @FXML
     public void createNewNote() {
+        log.error("TODO IMPLEMENT!!!!");
     }
 }
