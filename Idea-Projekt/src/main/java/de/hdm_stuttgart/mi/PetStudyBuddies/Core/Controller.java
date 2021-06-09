@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-abstract public class Controller implements Initializable {
+abstract public class Controller {
     /**
      * Log object for error handling
      */
@@ -25,8 +25,6 @@ abstract public class Controller implements Initializable {
     protected Button StudiesDashboard = new Button();
     @FXML
     protected Button ToDoDashboard = new Button();
-
-    abstract public void initialize(URL location, ResourceBundle resources);
 
     @FXML
     private void handleMenu(ActionEvent event) {

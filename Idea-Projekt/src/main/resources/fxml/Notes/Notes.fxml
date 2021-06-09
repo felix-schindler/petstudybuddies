@@ -83,7 +83,8 @@
                </graphic>
                <font>
                   <Font name="Calibri" size="12.0" />
-               </font></Button>
+               </font>
+            </Button>
          </children>
       </VBox>
       <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../../styles/fullpackstyling.css">

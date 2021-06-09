@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 /**
  * Sample Skeleton for 'Untitled' Controller Class
  */
-public class NotesController extends Controller {
+public class NotesController extends Controller implements Initializable {
     private final static Logger log = LogManager.getLogger(NotesController.class);
 
     @FXML
