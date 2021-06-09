@@ -9,9 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +37,8 @@ public class NotesController extends Controller {
     public TableColumn<Note, Date> colLastEdited;
     @FXML
     public TableColumn<Note, Date> colCreated;
+    @FXML
+    public Label labelUsername;
     @FXML
     private TableView<Note> tableview;
     @FXML
@@ -73,6 +73,8 @@ public class NotesController extends Controller {
     public void initialize(URL location, ResourceBundle resources) {
         tableview.setItems(getNotes());
 
+        labelUsername.setText(Account.getLoggedUser().getUsername());
+
         colID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
         colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
@@ -80,5 +82,9 @@ public class NotesController extends Controller {
         colCreated.setCellValueFactory(new PropertyValueFactory<>("CreatedOn"));
         tableview.setEditable(true);
         tableview.getSelectionModel().setCellSelectionEnabled(true);
+    }
+
+    @FXML
+    public void createNewNote() {
     }
 }

@@ -35,7 +35,7 @@ abstract public class Controller implements Initializable {
             PetStudyBuddies.setStage("/fxml/hello.fxml");
             log.debug("ApplicationDashboard loaded");
         } else if (event.getSource() == NotesDashboard) {
-            PetStudyBuddies.setStage("/fxml/Notes.fxml");
+            PetStudyBuddies.setStage("/fxml/Notes2.fxml");
             log.debug("NotesDashboard loaded");
         } else if (event.getSource() == StudiesDashboard) {
             PetStudyBuddies.setStage("/fxml/hello.fxml");
@@ -44,8 +44,7 @@ abstract public class Controller implements Initializable {
             PetStudyBuddies.setStage("/fxml/ToDoListDashboard2.fxml");
             log.debug("ToDoListDashboard loaded");
         } else {
-            PetStudyBuddies.setStage("/fxml/ToDoListDashboard2.fxml");
-            log.debug("Alternative loaded");
+            log.error("No route specified");
         }
     }
 }

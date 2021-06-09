@@ -12,9 +12,6 @@ import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 /**
  * A simple controller providing a callback method {@link #doLogin()}
  */
@@ -32,7 +29,7 @@ public class LoginController {
      * Handle Login activity
      */
     @FXML
-    public void doLogin() throws IOException, SQLException {
+    public void doLogin() {
         final String eMail = Utils.getInputString(emailField);
         final String password = Utils.getInputString(passwordField);
 
