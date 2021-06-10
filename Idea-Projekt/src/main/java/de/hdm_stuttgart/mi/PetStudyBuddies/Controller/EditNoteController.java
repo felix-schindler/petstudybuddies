@@ -5,6 +5,8 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
+import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -25,6 +27,7 @@ public class EditNoteController extends Controller implements Initializable {
     @FXML
     private TextArea content;
 
+    private Note note;
     private int ID;
 
     @Override
@@ -32,37 +35,21 @@ public class EditNoteController extends Controller implements Initializable {
         ID = NotesController.getEditNote();
 
         if (ID != -1) {
-            try {
-                SelectQuery sq = new SelectQuery("Note", "*", "ID=" + ID);
-                if (sq.Count() == 1) {
-                    CachedRowSet rs = sq.fetchAll();
-                    title.setText(rs.getString("Title"));
-                    content.setText(rs.getString("Content"));
-                }
-            } catch (SQLException throwables) {
-                log.catching(throwables);
-                log.error("Failed to get note content");
-                log.info("Tipp: Check if you have set the ID");
-            }
+            note = new Note(ID);
+            title.setText(note.getContent());
+            content.setText(note.getContent());
+        } else {
+            log.error("Failed to get a note");
+            log.info("Tipp: Check if you have set the ID");
+            log.debug("Redirecting to home screen");
+            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");
         }
     }
 
     @FXML
     public void save() {
-        if (ID == -1)
-            createNote();
-        else
-            saveNote();
-    }
-
-    public void saveNote() {
-
-    }
-
-    public void createNote() {
-        String contentStr = Utils.getInputString(content);
-        String titleStr = Utils.getInputString(title);
-
-        new InsertQuery("Note", new String[]{"UserID", "Title", "Content"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), titleStr, contentStr});
+        note.setTitle(Utils.getInputString(title));
+        note.setContent(Utils.getInputString(content));
+        note.save();
     }
 }

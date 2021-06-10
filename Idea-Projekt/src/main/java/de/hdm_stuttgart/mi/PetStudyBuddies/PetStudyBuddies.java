@@ -65,6 +65,7 @@ public class PetStudyBuddies extends Application {
 
         window.setMinWidth(854);
         window.setMinHeight(480);
+        window.setFullScreen(false);
         setStage("/fxml/login.fxml", "Login");
         window.setResizable(false);
         window.setTitle("Login");
