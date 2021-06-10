@@ -4,6 +4,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,19 +46,13 @@ public class Note extends Model implements Shareable {
     public Note(int ID) {
         super(ID);
         try {
-            ResultSet note = new SelectQuery("Note", "*", "ID=" + ID, null, null).fetchAll();
+            ResultSet note = new SelectQuery("Note", "*", "ID=" + ID).fetchAll();
             title = note.getString("Title");
             content = note.getString("Content");
-            try {
-                lastEditedOn = new Date(Long.parseLong(note.getString("LastEditedOn")));
-                createdOn = new Date(Long.parseLong(note.getString("CreatedOn")));
-            } catch (NumberFormatException ignored) {
-                log.debug("Failed to parse date as long, try as ");
-                lastEditedOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("LastEditedOn"));
-                createdOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("CreatedOn"));
-            }
-        } catch (SQLException | ParseException throwables) {
-            log.catching(throwables);
+            lastEditedOn = Utils.parseDate(note.getString("LastEditedOn"));
+            createdOn = Utils.parseDate(note.getString("CreatedOn"));
+        } catch (SQLException e) {
+            log.catching(e);
             log.error("Failed to create note");
         }
     }

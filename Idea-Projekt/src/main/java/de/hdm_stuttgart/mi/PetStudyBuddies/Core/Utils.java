@@ -8,6 +8,9 @@ import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Utility functions you can use everywhere
@@ -95,5 +98,25 @@ public class Utils {
         } catch (SQLException e) {
             System.err.println("Didn't work");
         }
+    }
+
+    /**
+     * Parses a given String to a date
+     *
+     * @param dateStr string to be parsed
+     * @return Date as an valid object
+     */
+    public static Date parseDate(String dateStr) {
+        Date date = null;
+        try {
+            date = new Date(Long.parseLong(dateStr));
+        } catch (NumberFormatException ignored) {
+            try {
+                date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+            } catch (ParseException ignored1) {
+            }
+        }
+
+        return date;
     }
 }
