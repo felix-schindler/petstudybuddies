@@ -12,8 +12,8 @@ import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -21,24 +21,23 @@ public class EditNoteController extends Controller implements Initializable {
     private final static Logger log = LogManager.getLogger(EditNoteController.class);
 
     @FXML
-    private TextArea content;
-    @FXML
     private TextField title;
+    @FXML
+    private TextArea content;
 
-    private int ID = -1;
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+    private int ID;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ID = NotesController.getEditNote();
+
         if (ID != -1) {
             try {
                 SelectQuery sq = new SelectQuery("Note", "*", "ID=" + ID);
                 if (sq.Count() == 1) {
-                    ResultSet rs = sq.fetchAll();
+                    CachedRowSet rs = sq.fetchAll();
                     title.setText(rs.getString("Title"));
+                    content.setText(rs.getString("Content"));
                 }
             } catch (SQLException throwables) {
                 log.catching(throwables);
@@ -62,7 +61,7 @@ public class EditNoteController extends Controller implements Initializable {
 
     public void createNote() {
         String contentStr = Utils.getInputString(content);
-        String titleStr =  Utils.getInputString(title);
+        String titleStr = Utils.getInputString(title);
 
         new InsertQuery("Note", new String[]{"UserID", "Title", "Content"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), titleStr, contentStr});
     }
