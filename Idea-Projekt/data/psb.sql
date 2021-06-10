@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS Note
 			on delete cascade,
 	Title VARCHAR(255),
 	Content TEXT,
-	LastEditedOn DATETIME DEFAULT CURRENT_DATE,
-	CreatedOn DATETIME DEFAULT CURRENT_DATE
+	LastEditedOn INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	CreatedOn INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS NoteShare
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS Task
 		references ToDoList
 			on delete cascade,
 	Content TEXT not null,
-	Until DATE DEFAULT NULL,
+	Until INTEGER DEFAULT NULL,
 	AssignedTo INTEGER DEFAULT NULL
 		references User
 			on delete cascade

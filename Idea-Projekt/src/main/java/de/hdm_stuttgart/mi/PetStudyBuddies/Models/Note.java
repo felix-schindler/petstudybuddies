@@ -48,10 +48,17 @@ public class Note extends Model implements Shareable {
             ResultSet note = new SelectQuery("Note", "*", "ID=" + ID, null, null).fetchAll();
             title = note.getString("Title");
             content = note.getString("Content");
-            lastEditedOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("LastEditedOn"));
-            createdOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("CreatedOn"));
+            try {
+                lastEditedOn = new Date(Long.parseLong(note.getString("LastEditedOn")));
+                createdOn = new Date(Long.parseLong(note.getString("CreatedOn")));
+            } catch (NumberFormatException ignored) {
+                log.debug("Failed to parse date as long, try as ");
+                lastEditedOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("LastEditedOn"));
+                createdOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("CreatedOn"));
+            }
         } catch (SQLException | ParseException throwables) {
-            throwables.printStackTrace();
+            log.catching(throwables);
+            log.error("Failed to create note");
         }
     }
 
@@ -114,7 +121,7 @@ public class Note extends Model implements Shareable {
      */
     public boolean save() {
         return new UpdateQuery(getTable(), new String[]{"Title", "Content", "LastEditedOn", "CreatedOn"},
-                new String[]{title, content, lastEditedOn.toString(), createdOn.toString()},
+                new String[]{title, content, String.valueOf(lastEditedOn.getTime()), String.valueOf(createdOn.getTime())},
                 "ID=" + getID()).Count() == 1;
     }
 
