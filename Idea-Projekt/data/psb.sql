@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS Note
 	UserID INTEGER
 		references User
 			on delete cascade,
-	Title VarCHAR(255) not null,
-	Content TEXT not null,
+	Title VARCHAR(255),
+	Content TEXT,
 	LastEditedOn DATETIME DEFAULT CURRENT_DATE,
 	CreatedOn DATETIME DEFAULT CURRENT_DATE
 );
