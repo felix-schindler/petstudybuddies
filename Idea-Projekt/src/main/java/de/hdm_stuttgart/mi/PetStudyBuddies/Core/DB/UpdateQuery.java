@@ -100,7 +100,7 @@ public class UpdateQuery extends Query {
             query.append(fields[lengthFields - 1]).append(" = '").append(values[lengthValues - 1]).append("' , ");
         }
 
-        query.append(fields[0]).append(" = ").append(values[0]).append(" ");
+        query.append(fields[0]).append(" = '").append(values[0]).append("'   ");
 
         if (where != null) {
             query.append(" WHERE ").append(where);
