@@ -1,9 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Controller;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
@@ -14,9 +11,7 @@ import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class EditNoteController extends Controller implements Initializable {
@@ -50,6 +45,12 @@ public class EditNoteController extends Controller implements Initializable {
     public void save() {
         note.setTitle(Utils.getInputString(title));
         note.setContent(Utils.getInputString(content));
-        note.save();
+
+        if (note.save()) {
+            PetStudyBuddies.setStage("/fxml/Notes/Notes.fxml");
+        } else {
+            // TODO Error message on screen
+            log.error("Failed to save note");
+        }
     }
 }
