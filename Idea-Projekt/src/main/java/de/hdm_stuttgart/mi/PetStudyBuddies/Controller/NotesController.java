@@ -1,17 +1,20 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Controller;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.DeleteQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
+import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,43 +29,40 @@ import java.util.ResourceBundle;
  */
 public class NotesController extends Controller implements Initializable {
     private final static Logger log = LogManager.getLogger(NotesController.class);
-
+    private static int editNote = -1;
     @FXML
-    public TableColumn<Note, Integer> colID;
+    private TableColumn<Note, Integer> colID;
     @FXML
-    public TableColumn<Note, String> colTitle;
+    private TableColumn<Note, String> colTitle;
     @FXML
-    public TableColumn<Note, String> colContent;
+    private TableColumn<Note, String> colContent;
     @FXML
-    public TableColumn<Note, Date> colLastEdited;
+    private TableColumn<Note, Date> colLastEdited;
     @FXML
-    public TableColumn<Note, Date> colCreated;
+    private TableColumn<Note, Date> colCreated;
     @FXML
-    public Label labelUsername;
+    private Label labelUsername;
     @FXML
     private TableView<Note> tableview;
-    @FXML
-    private TextField searchField;
+
+    public static int getEditNote() {
+        return editNote;
+    }
 
     public ObservableList<Note> getNotes() {
         ObservableList<Note> notes = FXCollections.observableArrayList();
 
         try {
-            CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID="+ Account.getLoggedUser().getID()).fetchAll();
-            while (notesSet.next()) {
+            CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "LastEditedOn", null).fetchAll();
+            do {
                 notes.add(new Note(notesSet.getInt("ID")));
                 log.debug("Note " + notesSet.getInt("ID") + " added");
-            }
+            } while (notesSet.next());
         } catch (SQLException e) {
             log.catching(e);
             log.error("Failed to load notes");
         }
         return notes;
-    }
-
-    @FXML
-    public void search(KeyEvent event) {
-        final String search = Utils.getInputString(searchField);
     }
 
     /**
@@ -71,6 +71,9 @@ public class NotesController extends Controller implements Initializable {
      */
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL location, ResourceBundle resources) {
+        // Delete empty notes
+        new DeleteQuery("Note", "UserID=" + Account.getLoggedUser().getID() + " AND Title IS NULL AND Content IS NULL");
+
         tableview.setItems(getNotes());
 
         labelUsername.setText(Account.getLoggedUser().getUsername());
@@ -84,9 +87,11 @@ public class NotesController extends Controller implements Initializable {
         tableview.getSelectionModel().setCellSelectionEnabled(true);
     }
 
-    // TODO implement
     @FXML
     public void createNewNote() {
-        log.error("TODO IMPLEMENT!!!!");
+        new InsertQuery("Note", new String[]{"UserID"}, new String[]{String.valueOf(Account.getLoggedUser().getID())});
+        editNote = Integer.parseInt(new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID() + " AND Title IS NULL AND Content IS NULL").fetch());
+
+        PetStudyBuddies.setStage("/fxml/Notes/EditNote.fxml");
     }
 }
