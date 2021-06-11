@@ -13,7 +13,7 @@ import java.sql.Statement;
 /**
  * Query class
  */
-public class Query extends SQLiteJDBC {
+class Query extends SQLiteJDBC {
     /**
      * Log object for error handling
      */

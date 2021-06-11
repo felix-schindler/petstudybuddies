@@ -90,7 +90,11 @@ public class NotesController extends Controller implements Initializable {
     @FXML
     public void createNewNote() {
         new InsertQuery("Note", new String[]{"UserID"}, new String[]{String.valueOf(Account.getLoggedUser().getID())});
-        editNote = Integer.parseInt(new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID() + " AND Title IS NULL AND Content IS NULL").fetch());
+        try {
+            editNote = Integer.parseInt(new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID() + " AND Title IS NULL AND Content IS NULL").fetch());
+        } catch (NumberFormatException e) {
+            log.error("Failed to select and set new note");
+        }
 
         PetStudyBuddies.setStage("/fxml/Notes/EditNote.fxml");
     }
