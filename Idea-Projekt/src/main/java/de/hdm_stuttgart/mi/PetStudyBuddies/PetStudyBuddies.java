@@ -50,6 +50,10 @@ public class PetStudyBuddies extends Application {
         }
     }
 
+    public static String getPrimaryStage() {
+        return "/fxml/ToDoList/ToDoListDashboard2.fxml";
+    }
+
     @Override
     public void start(Stage stage) {
         window = stage;
@@ -71,9 +75,5 @@ public class PetStudyBuddies extends Application {
         window.setTitle("Login");
         window.show();
         log.debug("Login gestartet");
-    }
-
-    public static String getPrimaryStage() {
-        return "/fxml/ToDoList/ToDoListDashboard2.fxml";
     }
 }

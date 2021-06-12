@@ -38,6 +38,7 @@ class Query extends SQLiteJDBC {
 
     /**
      * Constructor - Sets the query string
+     * TODO remove as it is not needed anymore
      *
      * @param queryString Query as a string
      */

@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Conf;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
@@ -47,7 +46,7 @@ public class EditNoteController extends Controller implements Initializable {
         note.setContent(Utils.getInputString(content));
 
         if (note.save()) {
-            PetStudyBuddies.setStage(PetStudyBuddies.getPrimaryStage());
+            PetStudyBuddies.setStage("/fxml/Notes/Notes.fxml");
         } else {
             Dialog.showError("Failed to save note");
             log.error("Failed to save note");

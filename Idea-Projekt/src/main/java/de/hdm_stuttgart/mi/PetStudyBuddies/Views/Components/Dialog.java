@@ -32,7 +32,7 @@ public class Dialog {
      * Show a modal error box
      *
      * @param title A title to be displayed
-     * @param msg A message to be displayed
+     * @param msg   A message to be displayed
      */
     public static void showError(final String title, final String msg) {
         final String realTitle = Objects.requireNonNullElse(title, "Error");
