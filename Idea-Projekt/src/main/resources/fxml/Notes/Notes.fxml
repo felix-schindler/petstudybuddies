@@ -122,7 +122,7 @@
             </Pane>
             <Pane layoutX="30.0" layoutY="106.0" prefHeight="376.0" prefWidth="701.0">
                <ScrollPane minHeight="0.0" prefHeight="375.0" prefWidth="700.0">
-                  <TableView fx:id="tableview" minHeight="0.0" prefHeight="373.0" prefWidth="698.0">
+                  <TableView fx:id="noteTable" minHeight="0.0" prefHeight="373.0" prefWidth="698.0">
                      <columns>
                         <TableColumn fx:id="colTitle" minWidth="100.0" prefWidth="-1.0" text="Title" />
                         <TableColumn fx:id="colContent" minWidth="300.0" prefWidth="-1.0" text="Content" />

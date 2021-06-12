@@ -38,7 +38,7 @@ public class NotesController extends Controller implements Initializable {
     @FXML
     private Label labelUsername;
     @FXML
-    private TableView<Note> tableview;
+    private TableView<Note> noteTable;
 
     public static int getEditNote() {
         return editNote;
@@ -48,7 +48,7 @@ public class NotesController extends Controller implements Initializable {
         ObservableList<Note> notes = FXCollections.observableArrayList();
 
         try {
-            CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "LastEditedOn", null).fetchAll();
+            CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "ID DESC", null).fetchAll();
             do {
                 notes.add(new Note(notesSet.getInt("ID")));
                 log.debug("Note " + notesSet.getInt("ID") + " added");
@@ -69,15 +69,15 @@ public class NotesController extends Controller implements Initializable {
         // Delete empty notes
         new DeleteQuery("Note", "UserID=" + Account.getLoggedUser().getID() + " AND Title IS NULL AND Content IS NULL");
 
-        tableview.setItems(getNotes());
+        noteTable.setItems(getNotes());
 
         labelUsername.setText(Account.getLoggedUser().getUsername());
 
         colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
         colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
         colLastEdited.setCellValueFactory(new PropertyValueFactory<>("LastEditedOn"));
-        tableview.setEditable(true);
-        tableview.getSelectionModel().setCellSelectionEnabled(true);
+        noteTable.setEditable(true);
+        noteTable.getSelectionModel().setCellSelectionEnabled(true);
     }
 
     @FXML
