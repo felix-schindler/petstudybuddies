@@ -29,6 +29,7 @@ public class PetStudyBuddies extends Application {
     public static void setStage(Stage newStage, String newTitle) {
         window = newStage;
         window.setTitle(newTitle);
+        window.centerOnScreen();
         window.show();
     }
 
@@ -69,11 +70,9 @@ public class PetStudyBuddies extends Application {
 
         window.setMinWidth(854);
         window.setMinHeight(480);
+        window.setResizable(false);
         window.setFullScreen(false);
         setStage("/fxml/login.fxml", "Login");
-        window.setResizable(false);
-        window.setTitle("Login");
-        window.show();
-        log.debug("Login gestartet");
+        log.debug("PetStudyBuddies gestartet");
     }
 }

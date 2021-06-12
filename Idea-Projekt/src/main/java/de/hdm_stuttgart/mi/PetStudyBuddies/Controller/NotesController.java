@@ -72,7 +72,7 @@ public class NotesController extends Controller implements Initializable {
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL location, ResourceBundle resources) {
         // Delete empty notes
-        new DeleteQuery("Note", "UserID=" + Account.getLoggedUser().getID() + " AND Title IS NULL AND Content IS NULL");
+        new DeleteQuery("Note", "UserID=" + Account.getLoggedUser().getID() + " AND (Title IS NULL OR Title='null' OR Title='') AND (Content IS NULL OR Content='null' OR Content='')");
 
         noteTable.setItems(getNotes());
 
