@@ -1,9 +1,10 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Controller;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Conf;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -23,11 +24,10 @@ public class EditNoteController extends Controller implements Initializable {
     private TextArea content;
 
     private Note note;
-    private int ID;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ID = NotesController.getEditNote();
+        int ID = NotesController.getEditNote();
 
         if (ID != -1) {
             note = new Note(ID);
@@ -37,7 +37,7 @@ public class EditNoteController extends Controller implements Initializable {
             log.error("Failed to get a note");
             log.info("Tipp: Check if you have set the ID");
             log.debug("Redirecting to home screen");
-            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");
+            PetStudyBuddies.setStage("");
         }
     }
 
@@ -47,9 +47,9 @@ public class EditNoteController extends Controller implements Initializable {
         note.setContent(Utils.getInputString(content));
 
         if (note.save()) {
-            PetStudyBuddies.setStage("/fxml/Notes/Notes.fxml");
+            PetStudyBuddies.setStage(PetStudyBuddies.getPrimaryStage());
         } else {
-            // TODO Error message on screen
+            Dialog.showError("Failed to save note");
             log.error("Failed to save note");
         }
     }

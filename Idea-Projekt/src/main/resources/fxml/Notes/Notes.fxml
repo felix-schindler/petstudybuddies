@@ -124,11 +124,9 @@
                <ScrollPane minHeight="0.0" prefHeight="375.0" prefWidth="700.0">
                   <TableView fx:id="tableview" minHeight="0.0" prefHeight="373.0" prefWidth="698.0">
                      <columns>
-                        <TableColumn fx:id="colID" prefWidth="75.0" text="ID" />
                         <TableColumn fx:id="colTitle" minWidth="100.0" prefWidth="-1.0" text="Title" />
                         <TableColumn fx:id="colContent" minWidth="300.0" prefWidth="-1.0" text="Content" />
                         <TableColumn fx:id="colLastEdited" minWidth="100.0" prefWidth="-1.0" text="Last Edited" />
-                        <TableColumn fx:id="colCreated" prefWidth="75.0" text="Created" />
                      </columns>
                   </TableView>
                </ScrollPane>
