@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Controller;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;

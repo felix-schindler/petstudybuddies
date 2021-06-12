@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Controller;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
