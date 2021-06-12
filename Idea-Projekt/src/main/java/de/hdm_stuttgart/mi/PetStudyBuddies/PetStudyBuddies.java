@@ -72,4 +72,8 @@ public class PetStudyBuddies extends Application {
         window.show();
         log.debug("Login gestartet");
     }
+
+    public static String getPrimaryStage() {
+        return "/fxml/ToDoList/ToDoListDashboard2.fxml";
+    }
 }
