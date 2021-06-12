@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Controller;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
@@ -31,15 +30,11 @@ public class NotesController extends Controller implements Initializable {
     private final static Logger log = LogManager.getLogger(NotesController.class);
     private static int editNote = -1;
     @FXML
-    private TableColumn<Note, Integer> colID;
-    @FXML
     private TableColumn<Note, String> colTitle;
     @FXML
     private TableColumn<Note, String> colContent;
     @FXML
     private TableColumn<Note, Date> colLastEdited;
-    @FXML
-    private TableColumn<Note, Date> colCreated;
     @FXML
     private Label labelUsername;
     @FXML
@@ -78,11 +73,9 @@ public class NotesController extends Controller implements Initializable {
 
         labelUsername.setText(Account.getLoggedUser().getUsername());
 
-        colID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
         colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
         colLastEdited.setCellValueFactory(new PropertyValueFactory<>("LastEditedOn"));
-        colCreated.setCellValueFactory(new PropertyValueFactory<>("CreatedOn"));
         tableview.setEditable(true);
         tableview.getSelectionModel().setCellSelectionEnabled(true);
     }
