@@ -1,12 +1,16 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
 
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Utility functions you can use everywhere
@@ -18,6 +22,17 @@ public class Utils {
      * @return the trimmed input string
      */
     public static String getInputString(TextField textField) {
+        if (textField.getText() == null || textField.getText().trim().length() == 0)
+            return null;
+        return textField.getText().trim();
+    }
+
+    /**
+     * Validates the user input in the text fields.
+     *
+     * @return the trimmed input string
+     */
+    public static String getInputString(TextArea textField) {
         if (textField.getText() == null || textField.getText().trim().length() == 0)
             return null;
         return textField.getText().trim();
@@ -83,5 +98,25 @@ public class Utils {
         } catch (SQLException e) {
             System.err.println("Didn't work");
         }
+    }
+
+    /**
+     * Parses a given String to a date
+     *
+     * @param dateStr string to be parsed
+     * @return Date as an valid object
+     */
+    public static Date parseDate(String dateStr) {
+        Date date = null;
+        try {
+            date = new Date(Long.parseLong(dateStr));
+        } catch (NumberFormatException ignored) {
+            try {
+                date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+            } catch (ParseException ignored1) {
+            }
+        }
+
+        return date;
     }
 }

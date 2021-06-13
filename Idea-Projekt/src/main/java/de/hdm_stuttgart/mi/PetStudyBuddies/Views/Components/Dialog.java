@@ -9,6 +9,7 @@ import javafx.scene.layout.Priority;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Objects;
 
 /**
  * See http://code.makery.ch/blog/javafx-dialogs-official
@@ -28,6 +29,25 @@ public class Dialog {
     }
 
     /**
+     * Show a modal error box
+     *
+     * @param title A title to be displayed
+     * @param msg   A message to be displayed
+     */
+    public static void showError(final String title, final String msg) {
+        final String realTitle = Objects.requireNonNullElse(title, "Error");
+        final Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle(realTitle);
+        alert.setHeaderText(realTitle);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
+
+    public static void showError(final String msg) {
+        showError(null, msg);
+    }
+
+    /**
      * Showing an error box and terminating without any further error processing
      *
      * @param msg      An informative message
@@ -35,15 +55,12 @@ public class Dialog {
      * @param exitCode The exit code to be used by e.g. the calling process.
      */
     public static void showExceptionAndExit(final String msg, final Exception ex, int exitCode) {
-
         final Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Unrecoverable error");
         alert.setHeaderText("Application will be terminated!");
         alert.setContentText(msg);
 
-
         // Create expandable Exception.
-
         if (null != ex) {
             final StringWriter sw = new StringWriter();
             final PrintWriter pw = new PrintWriter(sw);

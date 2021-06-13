@@ -1,9 +1,9 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Core;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 
-public abstract class Model {
+abstract class Model {
     /**
      * ID of the database entry
      */

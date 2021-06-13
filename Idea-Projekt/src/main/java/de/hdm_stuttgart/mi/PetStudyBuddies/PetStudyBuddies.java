@@ -21,6 +21,27 @@ public class PetStudyBuddies extends Application {
         launch(args);
     }
 
+    @Override
+    public void start(Stage stage) {
+        window = stage;
+
+        // Set application icon
+        // Windows
+        stage.getIcons().add(new Image("file:data/icon.png"));
+        // Mac
+        ImageIcon logo = new ImageIcon("data/icon.png");
+        if (Taskbar.isTaskbarSupported())
+            if (Taskbar.getTaskbar().isSupported(Taskbar.Feature.ICON_IMAGE))
+                Taskbar.getTaskbar().setIconImage(logo.getImage());
+
+        window.setMinWidth(854);
+        window.setMinHeight(480);
+        window.setResizable(false);
+        window.setFullScreen(false);
+        setStage("/fxml/Login.fxml", "Login");
+        log.debug("PetStudyBuddies gestartet");
+    }
+
     public static void setStage(Stage newStage) {
         window = newStage;
         window.show();
@@ -29,6 +50,7 @@ public class PetStudyBuddies extends Application {
     public static void setStage(Stage newStage, String newTitle) {
         window = newStage;
         window.setTitle(newTitle);
+        window.centerOnScreen();
         window.show();
     }
 
@@ -50,25 +72,7 @@ public class PetStudyBuddies extends Application {
         }
     }
 
-    @Override
-    public void start(Stage stage) {
-        window = stage;
-
-        // Set application icon
-        // Windows
-        stage.getIcons().add(new Image("file:data/icon.png"));
-        // Mac
-        ImageIcon logo = new ImageIcon("data/icon.png");
-        if (Taskbar.isTaskbarSupported())
-            if (Taskbar.getTaskbar().isSupported(Taskbar.Feature.ICON_IMAGE))
-                Taskbar.getTaskbar().setIconImage(logo.getImage());
-
-        window.setMinWidth(854);
-        window.setMinHeight(480);
-        setStage("/fxml/login.fxml", "Login");
-        window.setResizable(false);
-        window.setTitle("Login");
-        window.show();
-        log.debug("Login gestartet");
+    public static String getPrimaryStage() {
+        return "/fxml/ToDoList/ToDoListDashboard2.fxml";
     }
 }

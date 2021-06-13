@@ -2,15 +2,12 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Shareable;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Note extends Model implements Shareable {
@@ -45,13 +42,14 @@ public class Note extends Model implements Shareable {
     public Note(int ID) {
         super(ID);
         try {
-            ResultSet note = new SelectQuery("Note", "*", "ID=" + ID, null, null).fetchAll();
+            ResultSet note = new SelectQuery("Note", "*", "ID=" + ID).fetchAll();
             title = note.getString("Title");
             content = note.getString("Content");
-            lastEditedOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("LastEditedOn"));
-            createdOn = new SimpleDateFormat("yyyy-MM-dd").parse(note.getString("CreatedOn"));
-        } catch (SQLException | ParseException throwables) {
-            throwables.printStackTrace();
+            lastEditedOn = Utils.parseDate(note.getString("LastEditedOn"));
+            createdOn = Utils.parseDate(note.getString("CreatedOn"));
+        } catch (SQLException e) {
+            log.catching(e);
+            log.error("Failed to create note");
         }
     }
 
@@ -114,7 +112,7 @@ public class Note extends Model implements Shareable {
      */
     public boolean save() {
         return new UpdateQuery(getTable(), new String[]{"Title", "Content", "LastEditedOn", "CreatedOn"},
-                new String[]{title, content, lastEditedOn.toString(), createdOn.toString()},
+                new String[]{title, content, String.valueOf(lastEditedOn.getTime()), String.valueOf(createdOn.getTime())},
                 "ID=" + getID()).Count() == 1;
     }
 

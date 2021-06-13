@@ -37,10 +37,10 @@ CREATE TABLE IF NOT EXISTS Note
 	UserID INTEGER
 		references User
 			on delete cascade,
-	Title VarCHAR(255) not null,
-	Content TEXT not null,
-	LastEditedOn DATETIME DEFAULT CURRENT_DATE,
-	CreatedOn DATETIME DEFAULT CURRENT_DATE
+	Title VARCHAR(255),
+	Content TEXT,
+	LastEditedOn INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	CreatedOn INTEGER NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS NoteShare
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS Task
 		references ToDoList
 			on delete cascade,
 	Content TEXT not null,
-	Until DATE DEFAULT NULL,
+	Until INTEGER DEFAULT NULL,
 	AssignedTo INTEGER DEFAULT NULL
 		references User
 			on delete cascade
@@ -131,6 +131,7 @@ CREATE UNIQUE INDEX User_Username_uindex
 
 -- Insert test data
 INSERT INTO User (ID, Username, EMail, Password) VALUES (101, 't', 't', '8efd86fb78a56a5145ed7739dcb00c78581c5375');
+INSERT INTO User (ID, Username, EMail, Password) VALUES (102, 'e', 'e', '58e6b3a414a1e090dfc6029add0f3555ccba127f');
 
 INSERT INTO ToDoList (ID, UserID, Title) VALUES (101, 101, 'Uni');
 INSERT INTO ToDoList (ID, UserID, Title, Flagged) VALUES (102, 101, 'Arbeit', true);
@@ -142,6 +143,9 @@ INSERT INTO Task (ToDoListID, Content, Until) VALUES (102, 'Geld verdienen', CUR
 INSERT INTO Note (UserID, Title, Content) VALUES (101, 'Notiz', 'Hier könnte Ihre Werbung stehen!');
 INSERT INTO Note (UserID, Title, Content) VALUES (101, 'Notion', 'Switch to Notion');
 INSERT INTO Note (UserID, Title, Content) VALUES (101, 'Lorem ipsum', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.');
+INSERT INTO Note (ID, UserID, Title, Content) VALUES (200, 102, 'Shared note', 'This is a shared note.');
+
+INSERT INTO NoteShare (UserID, NoteID) VALUES (101, 200);
 
 INSERT INTO Pet (Name, UserID) VALUES ('Peach', 101);
 

@@ -2,7 +2,6 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Model;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +11,7 @@ import java.sql.SQLException;
 
 public class User extends Model {
     /**
-     * log object for error handling
+     * Log object for error handling
      */
     private static final Logger log = LogManager.getLogger(User.class);
 
