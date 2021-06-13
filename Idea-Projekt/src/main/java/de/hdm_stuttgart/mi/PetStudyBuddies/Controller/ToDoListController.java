@@ -33,8 +33,12 @@ import java.util.ResourceBundle;
 
 import static de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils.printResultSet;
 
-public class ToDoListController implements Initializable {
+public class ToDoListController extends Controller implements Initializable {
+    /**
+     * Log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(ToDoListController.class);
+
     @FXML
     Button ApplicationDashboard = new Button();
     @FXML
@@ -55,6 +59,11 @@ public class ToDoListController implements Initializable {
     TableView TableViewTest;
     @FXML
     TableColumn colTitle;
+    /*
+    @FXML
+    TableColumn<Object, Object> colTitle;
+    ObservableList<ToDoList> data = FXCollections.observableArrayList();
+     */
     Scene SceneToDoDashboard, SceneToDoViewList;
     @FXML
     TextField TextFieldAddNewList;
@@ -91,6 +100,7 @@ public class ToDoListController implements Initializable {
     @FXML
     public void navigateStudiesDashboard(ActionEvent event) {
         ToDoDashboard.setOnAction(actionEvent -> Window.setScene(SceneToDoDashboard));
+        //ToDoDashboard.setOnAction(actionEvent -> PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard.fxml"));
     }
 
 
@@ -163,10 +173,7 @@ public class ToDoListController implements Initializable {
             TableViewTest.setItems(data);
             colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
             log.debug("Table View Data set");
-        }catch (SQLException e) {
-            log.catching(e);
-            log.error("Beim Hinzufügen von ToDoLists zum TableView  ist ein Fehler aufgetreten");
-        }
+
 
 
         this.NAll=AllUserLists.size();
@@ -185,6 +192,10 @@ public class ToDoListController implements Initializable {
         log.debug("Number of To Do Lists " + NToday);
         LabelCountToDoToday.setText(String.valueOf(NToday));
 
+        }catch (SQLException e) {
+            log.catching(e);
+            log.error("Beim Hinzufügen von ToDoLists zum TableView  ist ein Fehler aufgetreten");
+        }
     }
 
 
