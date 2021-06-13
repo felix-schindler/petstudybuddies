@@ -5,6 +5,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components.Dialog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -17,7 +18,7 @@ import org.apache.logging.log4j.Logger;
  */
 public class LoginController extends Controller {
     private final static Logger log = LogManager.getLogger(LoginController.class);
-    User loggedUser;
+
     @FXML
     private TextField emailField;
     @FXML
@@ -51,13 +52,12 @@ public class LoginController extends Controller {
             if (user != null) {
                 log.debug("User " + user.getUsername() + " erfolgreich eingeloggt.");
                 Account.setUser(user);
-                this.loggedUser = Account.getLoggedUser();
 
                 // Redirect to Dashboard
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do List");
             } else {
+                Dialog.showError("EMail or Password is incorrect.");
                 log.warn(eMail + " tried to log in with wrong EMail / Password");
-                status.append("eMail oder Passwort ist falsch.");
             }
         }
 
