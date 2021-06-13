@@ -13,9 +13,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * A simple controller providing a callback method {@link #doLogin()}
+ * A simple controller providing a callback method {@link #login()}
  */
-public class LoginController {
+public class LoginController extends Controller {
     private final static Logger log = LogManager.getLogger(LoginController.class);
     User loggedUser;
     @FXML
@@ -29,7 +29,7 @@ public class LoginController {
      * Handle Login activity
      */
     @FXML
-    public void doLogin() {
+    public void login() {
         final String eMail = Utils.getInputString(emailField);
         final String password = Utils.getInputString(passwordField);
 

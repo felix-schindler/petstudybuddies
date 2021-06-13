@@ -31,7 +31,7 @@ public class FxmlGuiDriver extends Application {
 
         log.debug("Showing JFX scene");
         final Scene scene = new Scene(rootNode, 400, 200);
-        //scene.getStylesheets().add("/styles/styles.css");
+        // scene.getStylesheets().add("/styles/styles.css");
 
         stage.setTitle("Hello JavaFX and Maven");
         stage.setScene(scene);
