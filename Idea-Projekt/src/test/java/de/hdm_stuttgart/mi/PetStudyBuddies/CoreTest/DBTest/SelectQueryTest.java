@@ -1,7 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.CoreTest.DBTest;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
