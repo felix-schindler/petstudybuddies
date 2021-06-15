@@ -3,6 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -123,10 +124,10 @@ public class Note extends Model implements Shareable {
      * @see Shareable#share(int)
      */
     public boolean share(int ID) {
-        if (new SelectQuery("NoteShare", "ID", "UserID=" + ID + " AND NoteID=" + this.ID).fetch() != null) {
+        if (ID == Account.getLoggedUser().getID() ||new SelectQuery("NoteShare", "ID", "UserID=" + ID + " AND NoteID=" + getID()).fetch() != null) {
             log.debug("User " + ID + " already got access");
             return true;    // User already has access
         }
-        return new InsertQuery("NoteShare", new String[]{"UserID", "NoteID"}, new String[]{String.valueOf(ID), String.valueOf(this.ID)}).Count() == 1;
+        return new InsertQuery("NoteShare", new String[]{"UserID", "NoteID"}, new String[]{String.valueOf(ID), String.valueOf(getID())}).Count() == 1;
     }
 }

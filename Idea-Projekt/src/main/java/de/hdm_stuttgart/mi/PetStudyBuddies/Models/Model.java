@@ -7,7 +7,7 @@ abstract class Model {
     /**
      * ID of the database entry
      */
-    protected final int ID;
+    private final int ID;
 
     /**
      * Creates an object, linked to the database entry via the ID

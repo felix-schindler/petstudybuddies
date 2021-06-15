@@ -53,7 +53,8 @@ CREATE TABLE IF NOT EXISTS NoteShare
 			on delete cascade,
 	NoteID INTEGER
 		references Note
-			on delete cascade
+			on delete cascade,
+    UNIQUE (UserID, NoteID)
 );
 
 CREATE TABLE IF NOT EXISTS Pet

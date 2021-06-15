@@ -132,7 +132,7 @@ public class User extends Model {
             return false;
         }
 
-        return new UpdateQuery(getTable(), new String[]{"EMail", "Password"}, new String[]{eMail, password}, "ID=" + ID).Count() == 1;
+        return new UpdateQuery(getTable(), new String[]{"EMail", "Password"}, new String[]{eMail, password}, "ID=" + getID()).Count() == 1;
     }
 
     /*
