@@ -1,157 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
-            style="-fx-background-color: #030307; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/16"
-            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.NotesController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #030307; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.NotesController">
     <children>
-        <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" style="-fx-background-radius: 15 15 0 0;"
-              styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css">
+        <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" style="-fx-background-radius: 15 15 0 0;" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                 <Label layoutX="690.0" layoutY="1.0" prefHeight="79.0" prefWidth="224.0" text="Notes">
                     <font>
-                        <Font name="Calibri" size="43.0"/>
+                        <Font name="Calibri" size="43.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true"
-                           preserveRatio="true">
+                <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/ToDoListDashboardImages/to-do-list.png"/>
+                        <Image url="@../../images/ToDoListDashboardImages/to-do-list.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="176.0" minHeight="79.0" minWidth="164.0" prefHeight="79.0" text="PetStuddyBuddies"
-                       textAlignment="CENTER">
+                <Label layoutX="176.0" minHeight="79.0" minWidth="164.0" prefHeight="79.0" text="PetStuddyBuddies" textAlignment="CENTER">
                     <font>
-                        <Font name="Calibri" size="21.0"/>
+                        <Font name="Calibri" size="21.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true"
-                           preserveRatio="true">
+                <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png"/>
+                        <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png" />
                     </image>
                 </ImageView>
             </children>
         </Pane>
-        <VBox prefHeight="609.0" prefWidth="79.0"
-              style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;">
+        <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;">
             <children>
-                <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;"/>
-                <Button fx:id="ApplicationDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
-                        prefHeight="66.0" prefWidth="80.0" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Start" textFill="#a868a0">
+                <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                <Button fx:id="ApplicationDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="80.0" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Start" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/cat.png"/>
+                                <Image url="@../../images/ToDoListDashboardImages/cat.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0"/>
+                        <Font name="Calibri" size="12.0" />
                     </font>
                 </Button>
-                <Button fx:id="NotesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
-                        prefHeight="66.0" prefWidth="81.0" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Notizen" textFill="#a868a0">
+                <Button fx:id="NotesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Notizen" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/time.png"/>
+                                <Image url="@../../images/ToDoListDashboardImages/time.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0"/>
+                        <Font name="Calibri" size="12.0" />
                     </font>
                 </Button>
-                <Button fx:id="StudiesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
-                        prefHeight="66.0" prefWidth="81.0" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Vorlesungen" textFill="#a868a0">
+                <Button fx:id="StudiesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Vorlesungen" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/flag.png"/>
+                                <Image url="@../../images/ToDoListDashboardImages/flag.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0"/>
+                        <Font name="Calibri" size="12.0" />
                     </font>
                 </Button>
-                <Button fx:id="ToDoDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
-                        prefHeight="66.0" prefWidth="81.0" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="To Do" textFill="#a868a0">
+                <Button fx:id="ToDoDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="To Do" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/group.png"/>
+                                <Image url="@../../images/ToDoListDashboardImages/group.png" />
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0"/>
+                        <Font name="Calibri" size="12.0" />
                     </font>
                 </Button>
             </children>
         </VBox>
-        <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0"
-                    style="-fx-background-color: #131022; -fx-background-radius: 10;"
-                    stylesheets="@../../styles/fullpackstyling.css">
+        <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../../styles/fullpackstyling.css">
             <children>
-                <Label layoutX="25.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" text="Welcome"
-                       textFill="WHITE">
+                <Label layoutX="25.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" text="Welcome" textFill="WHITE">
                     <font>
-                        <Font name="Calibri" size="25.0"/>
+                        <Font name="Calibri" size="25.0" />
                     </font>
                 </Label>
-                <Label fx:id="labelUsername" layoutX="135.0" layoutY="19.0" prefHeight="32.0" prefWidth="164.0"
-                       text="Username" textFill="#a868a0">
+                <Label fx:id="labelUsername" layoutX="135.0" layoutY="19.0" prefHeight="32.0" prefWidth="164.0" text="Username" textFill="#a868a0">
                     <font>
-                        <Font name="Calibri" size="34.0"/>
+                        <Font name="Calibri" size="34.0" />
                     </font>
                 </Label>
                 <Label layoutX="25.0" layoutY="74.0" text="These are your Notes:" textFill="#fffbfb">
                     <font>
-                        <Font name="Calibri" size="18.0"/>
+                        <Font name="Calibri" size="18.0" />
                     </font>
                 </Label>
-                <Pane layoutX="771.0" layoutY="391.0" prefHeight="100.0" prefWidth="103.0"
-                      style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                <Pane layoutX="771.0" layoutY="214.0" prefHeight="278.0" prefWidth="100.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                     <children>
-                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" layoutY="2.0" prefHeight="185.0" prefWidth="100.0" spacing="10.0">
                             <children>
-                                <Button fx:id="addNewNote" alignment="BOTTOM_CENTER" contentDisplay="TOP"
-                                        mnemonicParsing="false" onAction="#createNewNote" prefHeight="84.0"
-                                        prefWidth="93.0" styleClass="button5"
-                                        stylesheets="@../../styles/fullpackstyling.css" text="New Note">
+                                <Button fx:id="ButtonShareList" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Share">
                                     <graphic>
-                                        <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true"
-                                                   preserveRatio="true">
+                                        <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/ToDoListDashboardImages/add.png"/>
+                                                <Image url="@../../images/ToDoListView/icons8-teilen-100.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
+                                </Button>
+                                <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#editNote" prefHeight="84.0" prefWidth="93.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Edit">
+                                    <graphic>
+                                        <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../images/ToDoListDashboardImages/add.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </Button>
+                                <Button fx:id="addNewNote" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#createNewNote" prefHeight="84.0" prefWidth="93.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Create">
+                                    <graphic>
+                                        <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../images/ToDoListDashboardImages/add.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
                                 </Button>
                             </children>
                         </VBox>
                     </children>
                 </Pane>
-                <Pane layoutX="30.0" layoutY="106.0" prefHeight="376.0" prefWidth="701.0">
-                    <ScrollPane minHeight="0.0" prefHeight="375.0" prefWidth="700.0">
-                        <TableView fx:id="noteTable" minHeight="0.0" prefHeight="373.0" prefWidth="698.0">
+                <Pane layoutX="30.0" layoutY="106.0" prefHeight="385.0" prefWidth="700.0">
+                    <children>
+                        <TableView fx:id="noteTable" prefHeight="385.0" prefWidth="700.0">
                             <columns>
-                                <TableColumn fx:id="colTitle" minWidth="100.0" prefWidth="-1.0" text="Title"/>
-                                <TableColumn fx:id="colContent" minWidth="300.0" prefWidth="-1.0" text="Content"/>
-                                <TableColumn fx:id="colLastEdited" minWidth="100.0" prefWidth="-1.0"
-                                             text="Last Edited"/>
+                                <TableColumn fx:id="colTitle" minWidth="100.0" prefWidth="-1.0" text="Title" />
+                                <TableColumn fx:id="colContent" minWidth="300.0" prefWidth="-1.0" text="Content" />
+                                <TableColumn fx:id="colLastEdited" minWidth="100.0" prefWidth="-1.0" text="Last Edited" />
                             </columns>
                         </TableView>
-                    </ScrollPane>
+                    </children>
                 </Pane>
             </children>
         </AnchorPane>

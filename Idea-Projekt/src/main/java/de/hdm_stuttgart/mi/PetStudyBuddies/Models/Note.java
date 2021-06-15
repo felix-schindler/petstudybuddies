@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
@@ -111,8 +112,10 @@ public class Note extends Model implements Shareable {
      * @see Model#save()
      */
     public boolean save() {
-        return new UpdateQuery(getTable(), new String[]{"Title", "Content", "LastEditedOn", "CreatedOn"},
-                new String[]{title, content, String.valueOf(lastEditedOn.getTime()), String.valueOf(createdOn.getTime())},
+        return new UpdateQuery(
+                getTable(),
+                new String[]{"Title", "Content", "LastEditedOn"},
+                new String[]{title, content, String.valueOf(new Date(System.currentTimeMillis()).getTime())},
                 "ID=" + getID()).Count() == 1;
     }
 
@@ -120,8 +123,6 @@ public class Note extends Model implements Shareable {
      * @see Model#save()
      */
     public boolean share(int ID) {
-        log.debug("Trying to save");
-        // TODO test writing System.currentTimeMillis() in the database
-        return new UpdateQuery(getTable(), new String[]{"Title", "Content", "LastEditedOn"}, new String[]{title, content, String.valueOf(System.currentTimeMillis())}, "ID=" + ID).Count() == 1;
+        return new InsertQuery("NoteShare", new String[]{"UserID", "NoteID"}, new String[]{String.valueOf(ID), String.valueOf(this.ID)}).Count() == 1;
     }
 }

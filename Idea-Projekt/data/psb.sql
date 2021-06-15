@@ -148,5 +148,3 @@ INSERT INTO Note (ID, UserID, Title, Content) VALUES (200, 102, 'Shared note', '
 INSERT INTO NoteShare (UserID, NoteID) VALUES (101, 200);
 
 INSERT INTO Pet (Name, UserID) VALUES ('Peach', 101);
-
-COMMIT;

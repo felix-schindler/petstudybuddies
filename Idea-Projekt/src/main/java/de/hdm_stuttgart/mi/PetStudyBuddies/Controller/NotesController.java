@@ -6,6 +6,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -48,7 +49,7 @@ public class NotesController extends Controller implements Initializable {
         ObservableList<Note> notes = FXCollections.observableArrayList();
 
         try {
-            CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "ID DESC", null).fetchAll();
+            CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "DATETIME(LastEditedOn)", null).fetchAll();
             do {
                 notes.add(new Note(notesSet.getInt("ID")));
             } while (notesSet.next());
@@ -86,6 +87,18 @@ public class NotesController extends Controller implements Initializable {
     }
 
     @FXML
+    public void editNote() {
+        ObservableList<Note> selectedNote = noteTable.getSelectionModel().getSelectedItems();
+        if (!selectedNote.isEmpty()) {
+            editNote = selectedNote.get(0).getID();
+            goToEditNote();
+        } else {
+            log.error("Note could not be selected");
+            Dialog.showError("Note selection error", "Note could not be selected");
+        }
+    }
+
+    @FXML
     public void createNewNote() {
         new InsertQuery("Note", new String[]{"UserID"}, new String[]{String.valueOf(Account.getLoggedUser().getID())});
         try {
@@ -94,6 +107,10 @@ public class NotesController extends Controller implements Initializable {
             log.error("Failed to select and set new note");
         }
 
-        PetStudyBuddies.setStage("/fxml/Notes/EditNote.fxml");
+        goToEditNote();
+    }
+
+    public void goToEditNote() {
+        PetStudyBuddies.setStage("/fxml/Notes/EditNote.fxml", "Edit note");
     }
 }

@@ -16,12 +16,10 @@ import java.util.ResourceBundle;
 
 public class EditNoteController extends Controller implements Initializable {
     private final static Logger log = LogManager.getLogger(EditNoteController.class);
-
     @FXML
     private TextField title;
     @FXML
     private TextArea content;
-
     private Note note;
 
     @Override
