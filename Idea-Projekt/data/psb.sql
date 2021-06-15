@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Note
 
 CREATE TABLE IF NOT EXISTS NoteShare
 (
-	ShareID INTEGER
+	ID INTEGER
 		constraint NoteShare_pk
 			primary key autoincrement,
 	UserID INTEGER
