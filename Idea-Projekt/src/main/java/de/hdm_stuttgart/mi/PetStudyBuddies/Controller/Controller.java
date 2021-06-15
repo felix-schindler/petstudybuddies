@@ -1,6 +1,9 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,6 +28,16 @@ abstract class Controller {
     protected Button LoginView;
     @FXML
     protected Button RegisterView;
+
+    @FXML
+    public static ObservableList<ToDoList> selectedList= FXCollections.observableArrayList();
+
+    public void setSelectedList(ObservableList<ToDoList> selectedList){
+        this.selectedList=selectedList;
+    }
+    public ObservableList<ToDoList> getSelectedList(){
+        return selectedList;
+    }
 
     @FXML
     private void handleMenu(ActionEvent event) {

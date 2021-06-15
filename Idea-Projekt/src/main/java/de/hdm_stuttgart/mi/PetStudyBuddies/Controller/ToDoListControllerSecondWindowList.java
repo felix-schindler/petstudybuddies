@@ -54,7 +54,7 @@ public class ToDoListControllerSecondWindowList implements Initializable {
                 //TODO
                 new InsertQuery("Task", new String[]{"ToDoListID", "Content","Until"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), eingabe,DatePickerAddNewTask.getValue().toString()}, true);
                 closeSecondScene(actionEvent);
-                PetStudyBuddies.setStage("/fxml/ToDoListViewList.fxml");
+                PetStudyBuddies.setStage("/fxml/ToDoListViewList2.fxml");
             }else{
                 LabelValidInputAddTask.setText("Please enter a new Title for your List!");
                 log.debug("No New Title entered, Label set");

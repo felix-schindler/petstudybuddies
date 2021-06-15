@@ -29,6 +29,7 @@ public class ToDoListControllerSecondWindow implements Initializable {
     @FXML
     Label LabelValidInput;
 
+
     public void buttonAction (ActionEvent actionEvent){
         if(actionEvent.getSource()==ButtonCreateList) {
             String eingabe = TextFieldAddNewList.getText();
@@ -36,7 +37,7 @@ public class ToDoListControllerSecondWindow implements Initializable {
             if (eingabe != null && !eingabe.isEmpty()) {
                 new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), eingabe}, true);
                 closeSecondScene(actionEvent);
-                PetStudyBuddies.setStage("/fxml/ToDoListViewList.fxml");
+                PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             }else{
                 LabelValidInput.setText("Please enter a new Title for your List!");
                 log.debug("No New Title entered, Label set");
@@ -44,7 +45,7 @@ public class ToDoListControllerSecondWindow implements Initializable {
         }
         if(actionEvent.getSource()==ButtonBack){
             closeSecondScene(actionEvent);
-            PetStudyBuddies.setStage("/fxml/ToDoListDashboard2.fxml");
+            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");
 
         }
     }

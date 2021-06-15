@@ -9,7 +9,7 @@
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button fx:id="ButtonBackModifyTask" mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -28,7 +28,7 @@
                             </font>
                         </Label>
                     </children></Pane>
-                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Modify Task" textFill="WHITE">
+                <Button fx:id="ButtonModifyTask" mnemonicParsing="false" prefHeight="28.0" prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Modify Task" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -41,9 +41,9 @@
                 </Button>
             </children>
         </HBox>
-        <Pane layoutX="29.0" layoutY="39.0" prefHeight="108.0" prefWidth="495.0">
+        <Pane layoutX="29.0" layoutY="39.0" prefHeight="152.0" prefWidth="495.0">
             <children>
-                <VBox prefHeight="103.0" prefWidth="494.0">
+                <VBox prefHeight="152.0" prefWidth="494.0">
                     <children>
                         <Label prefHeight="42.0" prefWidth="518.0" text="Modify your Task for your To-Do List" textFill="WHITE">
                             <font>
@@ -56,7 +56,7 @@
                                     <font>
                                         <Font name="Calibri" size="18.0" />
                                     </font></Label>
-                                <TextField prefHeight="40.0" prefWidth="371.0" text="Modify your Task ">
+                                <TextField fx:id="TextFieldModifyTask" prefHeight="40.0" prefWidth="371.0" promptText="Modify your Task ">
                                     <font>
                                         <Font name="Calibri" size="14.0" />
                                     </font></TextField>
@@ -70,9 +70,14 @@
                                         <Font name="Calibri" size="14.0" />
                                     </font>
                                 </Label>
-                                <DatePicker prefHeight="25.0" prefWidth="176.0" promptText="Enter New Deadline" />
+                                <DatePicker fx:id="DatePickerModifyTask" prefHeight="25.0" prefWidth="176.0" promptText="Enter New Deadline" />
                             </children>
                         </HBox>
+                  <Label fx:id="LabelValidInputModifyTask" layoutX="10.0" layoutY="10.0" minWidth="200.0" prefHeight="42.0" prefWidth="518.0" textFill="RED">
+                     <font>
+                        <Font name="Calibri Bold" size="22.0" />
+                     </font>
+                  </Label>
                     </children>
                 </VBox>
             </children>

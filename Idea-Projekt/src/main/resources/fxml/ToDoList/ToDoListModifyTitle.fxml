@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button fx:id="ButtonBackChangeTitle" mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -28,7 +28,7 @@
                             </font>
                         </Label>
                     </children></Pane>
-                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Change Title" textFill="WHITE">
+                <Button fx:id="ButtonChangeTitle" mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Change Title" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -41,9 +41,9 @@
                 </Button>
             </children>
         </HBox>
-        <Pane layoutX="29.0" layoutY="39.0" prefHeight="108.0" prefWidth="495.0">
+        <Pane layoutX="29.0" layoutY="39.0" prefHeight="219.0" prefWidth="495.0">
             <children>
-                <VBox prefHeight="164.0" prefWidth="494.0">
+                <VBox prefHeight="219.0" prefWidth="494.0">
                     <children>
                         <Label prefHeight="222.0" prefWidth="494.0" text="New To-Do List Title" textFill="WHITE">
                             <font>
@@ -59,7 +59,7 @@
                                     <Font name="Calibri" size="18.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="25.0" prefWidth="427.0" text="Title of To-Do List" textFill="WHITE">
+                              <Label fx:id="LabelCurrentTitle" prefHeight="25.0" prefWidth="427.0" text="Title of To-Do List" textFill="WHITE">
                                  <font>
                                     <Font name="Calibri" size="18.0" />
                                  </font>
@@ -78,7 +78,7 @@
                         </Label>
                               <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="600.0">
                                   <children>
-                                      <TextField prefHeight="27.0" prefWidth="389.0" text="Enter a name for your To-Do List">
+                                      <TextField fx:id="TextFieldNewTitle" prefHeight="27.0" prefWidth="389.0" promptText="Enter a name for your To-Do List">
                                           <font>
                                               <Font name="Calibri" size="14.0" />
                                           </font>
@@ -88,6 +88,11 @@
                      </children>
                   </VBox>
                   <Pane prefHeight="200.0" prefWidth="200.0" />
+                  <Label fx:id="LabelInvalidInputNewTitle" layoutX="10.0" layoutY="10.0" prefHeight="222.0" prefWidth="494.0" textFill="RED">
+                     <font>
+                        <Font name="Calibri Bold" size="22.0" />
+                     </font>
+                  </Label>
                     </children>
                 </VBox>
             </children>

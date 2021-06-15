@@ -9,7 +9,7 @@
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button fx:id="ButtonBackShareList" mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -28,7 +28,7 @@
                             </font>
                         </Label>
                     </children></Pane>
-                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Share List" textFill="WHITE">
+                <Button fx:id="ButtonShareList" mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Share List" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -59,7 +59,7 @@
                                                 <Font name="Calibri" size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label prefHeight="43.0" prefWidth="154.0" text="Title of To-Do List " textFill="WHITE">
+                                        <Label fx:id="LabelNameToDoList" prefHeight="43.0" prefWidth="154.0" text="Title of To-Do List " textFill="WHITE">
                                             <font>
                                                 <Font name="Calibri Bold" size="18.0" />
                                             </font>
@@ -83,13 +83,13 @@
                                 </Label>
                                 <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="494.0">
                                     <children>
-                                        <TextField prefHeight="25.0" prefWidth="345.0" text="Enter a name for your To-Do List">
+                                        <TextField fx:id="TextFieldEMailShare" prefHeight="25.0" prefWidth="345.0" promptText="Enter E-Mail of the User ">
                                             <font>
                                                 <Font name="Calibri" size="14.0" />
                                             </font>
                                         </TextField>
                               <Pane prefHeight="27.0" prefWidth="56.0" />
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Check for User">
+                              <Button fx:id="ButtonCheckforUser" alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Check for User">
                                  <graphic>
                                     <ImageView fitHeight="19.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -106,7 +106,7 @@
                                  <children>
                                     <ToolBar prefHeight="42.0" prefWidth="616.0" style="-fx-background-radius: 20 20 20 20;" styleClass="combo-box" stylesheets="@../../styles/fullpackstyling.css">
                                       <items>
-                                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Select User">
+                                        <Button fx:id="ButtonSelectUser" mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Select User">
                                              <graphic>
                                                 <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -115,8 +115,8 @@
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <TextField text="Match" />
-                                          <Button mnemonicParsing="false" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css">
+                                          <TextField fx:id="TextFieldMatch" promptText="Match" />
+                                          <Button fx:id="ButtonUp" mnemonicParsing="false" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css">
                                              <graphic>
                                                 <ImageView fitHeight="17.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -125,7 +125,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <Button mnemonicParsing="false" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css">
+                                          <Button fx:id="ButtonDown" mnemonicParsing="false" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css">
                                              <graphic>
                                                 <ImageView fitHeight="24.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -134,7 +134,7 @@
                                                 </ImageView>
                                              </graphic>
                                           </Button>
-                                          <Label alignment="CENTER" prefHeight="17.0" prefWidth="124.0" text="Nr of Count Matches" textFill="WHITE" />
+                                          <Label fx:id="LabelNumberOfMatches" alignment="CENTER" prefHeight="17.0" prefWidth="124.0" text="Nr of Count Matches" textFill="WHITE" />
                                       </items>
                                     </ToolBar>
                                  </children>
@@ -149,7 +149,7 @@
                                           <Font name="Calibri" size="24.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="26.0" prefWidth="416.0" text="Username" textFill="#fff3f3">
+                                    <Label fx:id="LabelUsername" prefHeight="26.0" prefWidth="416.0" text="Username" textFill="#fff3f3">
                                        <font>
                                           <Font name="Calibri" size="22.0" />
                                        </font>
