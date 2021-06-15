@@ -120,9 +120,13 @@ public class Note extends Model implements Shareable {
     }
 
     /**
-     * @see Model#save()
+     * @see Shareable#share(int)
      */
     public boolean share(int ID) {
+        if (new SelectQuery("NoteShare", "ID", "UserID=" + ID + " AND NoteID=" + this.ID).fetch() != null) {
+            log.debug("User " + ID + " already got access");
+            return true;    // User already has access
+        }
         return new InsertQuery("NoteShare", new String[]{"UserID", "NoteID"}, new String[]{String.valueOf(ID), String.valueOf(this.ID)}).Count() == 1;
     }
 }

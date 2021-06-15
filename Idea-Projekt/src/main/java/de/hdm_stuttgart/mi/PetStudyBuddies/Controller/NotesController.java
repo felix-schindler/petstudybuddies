@@ -87,10 +87,18 @@ public class NotesController extends Controller implements Initializable {
     }
 
     @FXML
-    public void editNote() {
+    public Note getSelectedNote() {
         ObservableList<Note> selectedNote = noteTable.getSelectionModel().getSelectedItems();
         if (!selectedNote.isEmpty()) {
-            editNote = selectedNote.get(0).getID();
+            return selectedNote.get(0);
+        }
+        return null;
+    }
+
+    @FXML
+    public void editNote() {
+        if (getSelectedNote() != null) {
+            editNote = getSelectedNote().getID();
             goToEditNote();
         } else {
             log.error("Note could not be selected");
@@ -108,6 +116,25 @@ public class NotesController extends Controller implements Initializable {
         }
 
         goToEditNote();
+    }
+
+    @FXML
+    public void share() {
+        Note selectedNote = getSelectedNote();
+        String username = Dialog.showInput("Input username to share to: ");
+
+        if (selectedNote == null || username == null)
+            return;
+
+        try {
+            if (selectedNote.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + username + "'").fetch()))) {
+                Dialog.showInfo("Success", "User added");
+            }
+        } catch (NumberFormatException e) {
+            log.catching(e);
+            log.error("User not found");
+            Dialog.showError("Failed to add user", "User does not exists");
+        }
     }
 
     public void goToEditNote() {
