@@ -1,48 +1,24 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
-
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
-        import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
-        import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.fxml.FXMLLoader;
-        import javafx.fxml.Initializable;
-        import javafx.scene.Node;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.control.TextField;
-        import javafx.stage.Stage;
-        import org.apache.logging.log4j.LogManager;
-        import org.apache.logging.log4j.Logger;
-
-        import java.net.URL;
-        import java.util.ResourceBundle;
 
 public class ToDoListControllerViewList extends Controller implements Initializable{
 
