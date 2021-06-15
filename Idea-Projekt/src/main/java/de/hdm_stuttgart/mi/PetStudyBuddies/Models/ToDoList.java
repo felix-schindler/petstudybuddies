@@ -103,6 +103,6 @@ public class ToDoList extends Model implements Shareable {
      */
     public boolean save() {
         log.debug("Trying to safe changes");
-        return new UpdateQuery(getTable(), new String[]{"Title"}, new String[]{title}, "ID=" + ID).Count() == 1;
+        return new UpdateQuery(getTable(), new String[]{"Title"}, new String[]{title}, "ID=" + getID()).Count() == 1;
     }
 }

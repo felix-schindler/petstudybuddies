@@ -104,7 +104,7 @@ public class Lecture extends Model implements Shareable {
      */
     public boolean save() {
         log.debug("Trying to save");
-        return new UpdateQuery(getTable(), new String[]{"Title", "ECTS", "MajorID"}, new String[]{title, String.valueOf(ects), String.valueOf(majorID)}, "ID=" + ID).Count() == 1;
+        return new UpdateQuery(getTable(), new String[]{"Title", "ECTS", "MajorID"}, new String[]{title, String.valueOf(ects), String.valueOf(majorID)}, "ID=" + getID()).Count() == 1;
     }
 
     /**

@@ -44,6 +44,5 @@ public class Auth {
      */
     public static void logout() {
         Account.setUser(null);
-        Account.setToken(null);
     }
 }

@@ -151,6 +151,6 @@ public class Task extends Model {
         log.debug("Trying to safe changes");
         return new UpdateQuery(getTable(), new String[]{"ToDoListID", "Content", "Until", "AssignedTo"},
                 new String[]{Integer.toString(toDoList), content, until.toString(), Integer.toString(assignedPerson)},
-                "ID=" + ID).Count() == 1;
+                "ID=" + getID()).Count() == 1;
     }
 }
