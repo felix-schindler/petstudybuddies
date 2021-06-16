@@ -54,7 +54,7 @@ public class NotesController extends Controller implements Initializable {
                 notes.add(new Note(notesSet.getInt("ID")));
             } while (notesSet.next());
 
-            CachedRowSet sharedNotesSet = new SelectQuery("NoteShare", "NoteID", "UserID=" + Account.getLoggedUser().getID(), "DATETIME(LastEditedOn)", null).fetchAll();
+            CachedRowSet sharedNotesSet = new SelectQuery("NoteShare", "NoteID", "UserID=" + Account.getLoggedUser().getID()).fetchAll();
             do {
                 notes.add(new Note(sharedNotesSet.getInt("NoteID")));
             } while (sharedNotesSet.next());
