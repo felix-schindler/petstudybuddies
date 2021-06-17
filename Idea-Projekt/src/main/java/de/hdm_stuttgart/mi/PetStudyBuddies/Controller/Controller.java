@@ -43,11 +43,11 @@ abstract class Controller {
     private void handleMenu(ActionEvent event) {
         log.debug("Setting new stage...");
         if (event.getSource() == ApplicationDashboard) {
-            PetStudyBuddies.setStage("/fxml/hello.fxml", "Hello");
+            // TODO
         } else if (event.getSource() == NotesDashboard) {
             PetStudyBuddies.setStage("/fxml/Notes/Notes.fxml", "Notes");
         } else if (event.getSource() == StudiesDashboard) {
-            PetStudyBuddies.setStage("/fxml/hello.fxml", "Hello");
+            // TODO
         } else if (event.getSource() == ToDoDashboard) {
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do");
         } else if (event.getSource() == LoginView) {

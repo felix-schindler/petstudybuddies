@@ -112,8 +112,12 @@ public class Utils {
             date = new Date(Long.parseLong(dateStr));
         } catch (NumberFormatException ignored) {
             try {
-                date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+                date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateStr);
             } catch (ParseException ignored1) {
+                try {
+                    date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
+                } catch (ParseException ignored2) {
+                }
             }
         }
 

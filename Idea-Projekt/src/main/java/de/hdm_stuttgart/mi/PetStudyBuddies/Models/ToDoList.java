@@ -16,6 +16,7 @@ public class ToDoList extends Model implements Shareable {
 
     /**
      * UserID of the owner
+     * TODO delete bc only needed in DB
      */
     private int owner;
 
@@ -27,7 +28,10 @@ public class ToDoList extends Model implements Shareable {
      * Boolean if Flag is set
      */
     private boolean flagged;
-
+    /**
+     * ToDoList ID
+     */
+    private int todoID;
     /**
      * Creates a new ToDoList linked to the ToDoLists database-entry via its ID
      *
@@ -40,6 +44,7 @@ public class ToDoList extends Model implements Shareable {
             owner = toDoList.getInt("UserID");
             title = toDoList.getString("Title");
             flagged=toDoList.getBoolean("Flagged");
+            todoID=toDoList.getInt("ID");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -74,6 +79,20 @@ public class ToDoList extends Model implements Shareable {
     public boolean getFlagged(){
         return flagged;
     }
+
+    /**
+     * Changes value flagged to opposite of current value
+     */
+    public void changeFlagged() {
+        if(this.flagged){
+            new UpdateQuery("ToDoList",new String[]{"Flagged"},new String[]{"false"},"ID="+ todoID);
+            this.flagged=false;
+        }else {
+            new UpdateQuery("ToDoList",new String[]{"Flagged"},new String[]{"true"},"ID="+ todoID);
+            this.flagged = true;
+        }
+    }
+
     /**
      * Sets a new title for a ToDoList
      *
@@ -103,6 +122,6 @@ public class ToDoList extends Model implements Shareable {
      */
     public boolean save() {
         log.debug("Trying to safe changes");
-        return new UpdateQuery(getTable(), new String[]{"Title"}, new String[]{title}, "ID=" + ID).Count() == 1;
+        return new UpdateQuery(getTable(), new String[]{"Title"}, new String[]{title}, "ID=" + getID()).Count() == 1;
     }
 }

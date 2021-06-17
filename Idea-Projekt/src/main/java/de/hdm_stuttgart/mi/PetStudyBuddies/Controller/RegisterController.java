@@ -1,7 +1,8 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
+import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -45,9 +46,13 @@ public class RegisterController extends Controller {
         } else if (!password.equals(repeatPassword)) {
             status.append("Die eingegebenen Passwörter stimmen nicht überein.");
         } else {
-            // Registrierung erfolgreich
-            if (Auth.register(eMail, username, password)) {
+            if (new InsertQuery("User", new String[]{"EMail", "Username", "Password"}, new String[]{eMail, username, Utils.sha1(password)}).Count() == 1) {
                 status.append("Registrierung war erfolgreich, sie können Sich nun einloggen!");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ignored) {
+                }
+                PetStudyBuddies.setStage("/fxml/Login.fxml", "Login");
             } else {
                 status.append("Registrierung war nicht erfolgreich, bitte versuch es später erneut.");
             }

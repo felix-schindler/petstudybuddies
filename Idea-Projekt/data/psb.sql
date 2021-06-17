@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Note
 
 CREATE TABLE IF NOT EXISTS NoteShare
 (
-	ShareID INTEGER
+	ID INTEGER
 		constraint NoteShare_pk
 			primary key autoincrement,
 	UserID INTEGER
@@ -53,7 +53,8 @@ CREATE TABLE IF NOT EXISTS NoteShare
 			on delete cascade,
 	NoteID INTEGER
 		references Note
-			on delete cascade
+			on delete cascade,
+    UNIQUE (UserID, NoteID)
 );
 
 CREATE TABLE IF NOT EXISTS Pet
@@ -148,5 +149,3 @@ INSERT INTO Note (ID, UserID, Title, Content) VALUES (200, 102, 'Shared note', '
 INSERT INTO NoteShare (UserID, NoteID) VALUES (101, 200);
 
 INSERT INTO Pet (Name, UserID) VALUES ('Peach', 101);
-
-COMMIT;

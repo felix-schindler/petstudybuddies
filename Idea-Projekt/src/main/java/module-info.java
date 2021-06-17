@@ -13,12 +13,6 @@ module gui {
     exports de.hdm_stuttgart.mi.PetStudyBuddies.Core;
     opens de.hdm_stuttgart.mi.PetStudyBuddies.Controller to javafx.fxml;
     exports de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
-    // TODO Views not used
-    opens de.hdm_stuttgart.mi.PetStudyBuddies.Views to javafx.fxml;
-    exports de.hdm_stuttgart.mi.PetStudyBuddies.Views;
-    // TODO Components not used
-    exports de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components;
-    opens de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components to javafx.fxml;
     opens de.hdm_stuttgart.mi.PetStudyBuddies.Models to javafx.fxml;
     exports de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 }

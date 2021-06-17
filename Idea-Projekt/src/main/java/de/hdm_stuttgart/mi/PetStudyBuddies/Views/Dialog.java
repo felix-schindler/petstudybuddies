@@ -1,11 +1,14 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Views;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -21,11 +24,17 @@ public class Dialog {
      *
      * @param msg A message to be displayed
      */
-    public static void showInfo(final String msg) {
+    public static void showInfo(final String title, final String msg) {
+        final String realTitle = Objects.requireNonNullElse(title, "Info");
         final Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Info");
+        alert.setTitle(realTitle);
+        alert.setHeaderText(realTitle);
         alert.setContentText(msg);
         alert.showAndWait();
+    }
+
+    public static void showInfo(final String msg) {
+        showInfo(null, msg);
     }
 
     /**
@@ -45,6 +54,20 @@ public class Dialog {
 
     public static void showError(final String msg) {
         showError(null, msg);
+    }
+
+    public static String showInput(String title) {
+        final Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Input");
+        alert.setHeaderText(title);
+
+        final TextField username = new TextField();
+        username.setPromptText("Username...");
+        VBox root = new VBox();
+        root.getChildren().add(username);
+        alert.setGraphic(root);
+        alert.showAndWait();
+        return Utils.getInputString(username);
     }
 
     /**

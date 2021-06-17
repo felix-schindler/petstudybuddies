@@ -15,12 +15,12 @@ public class Pet extends Model {
     private static final Logger log = LogManager.getLogger(Pet.class);
 
     /**
-     *
+     * Name of the pet
      */
     private String name;
 
     /**
-     *
+     * Emotion of the pet
      */
     private String emotion;
 
@@ -85,6 +85,6 @@ public class Pet extends Model {
         log.debug("Trying to save");
         return new UpdateQuery(getTable(), new String[]{"Name", "Emotion"},
                 new String[]{name, emotion},
-                "ID=" + ID).Count() == 1;
+                "ID=" + getID()).Count() == 1;
     }
 }
