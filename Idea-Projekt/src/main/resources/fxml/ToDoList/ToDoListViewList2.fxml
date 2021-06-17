@@ -4,6 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #030307; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ToDoListControllerViewList">
     <children>
         <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" style="-fx-background-radius: 15 15 0 0;" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css">
@@ -125,7 +126,7 @@
                                     </graphic>
                                 </Button>
                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="ButtonShareList" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Share List">
+                        <Button fx:id="ButtonShareList" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Share List">
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -135,7 +136,7 @@
                            </graphic>
                         </Button>
                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="ButtonChangeTitle" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="94.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Change Title">
+                        <Button fx:id="ButtonChangeTitle" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="94.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Change Title">
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -145,7 +146,7 @@
                            </graphic>
                         </Button>
                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="ButtonAddNewTask" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Add New Task">
+                        <Button fx:id="ButtonAddNewTask" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Add New Task">
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -155,7 +156,7 @@
                            </graphic>
                         </Button>
                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                        <Button fx:id="ButtonModifyTask" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="40.0" layoutY="371.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Modify Task">
+                        <Button fx:id="ButtonModifyTask" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="40.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Modify Task">
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

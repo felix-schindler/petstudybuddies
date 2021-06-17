@@ -16,7 +16,6 @@ public class ToDoList extends Model implements Shareable {
 
     /**
      * UserID of the owner
-     * TODO delete bc only needed in DB
      */
     private int owner;
 
@@ -83,14 +82,23 @@ public class ToDoList extends Model implements Shareable {
     /**
      * Changes value flagged to opposite of current value
      */
-    public void changeFlagged() {
+    /*public void changeFlagged() {
         if(this.flagged){
             new UpdateQuery("ToDoList",new String[]{"Flagged"},new String[]{"false"},"ID="+ todoID);
+
             this.flagged=false;
         }else {
             new UpdateQuery("ToDoList",new String[]{"Flagged"},new String[]{"true"},"ID="+ todoID);
             this.flagged = true;
         }
+    }*/
+
+    /**
+     * sets flagged
+     * @param flagged
+     */
+    public void setFlagged(boolean flagged) {
+        this.flagged = flagged;
     }
 
     /**
@@ -122,6 +130,7 @@ public class ToDoList extends Model implements Shareable {
      */
     public boolean save() {
         log.debug("Trying to safe changes");
-        return new UpdateQuery(getTable(), new String[]{"Title"}, new String[]{title}, "ID=" + getID()).Count() == 1;
+        return new UpdateQuery(getTable(), new String[]{"Title","Flagged"}, new String[]{title,flagged ? "1" : "0"}, "ID=" + getID()).Count() == 1;
+        //return new UpdateQuery(getTable(), new String[]{"Title"}, new String[]{title}, "ID=" + getID()).Count() == 1;
     }
 }

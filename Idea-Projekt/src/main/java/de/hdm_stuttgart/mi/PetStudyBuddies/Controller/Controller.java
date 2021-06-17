@@ -6,7 +6,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -50,12 +53,20 @@ abstract class Controller {
             // TODO
         } else if (event.getSource() == ToDoDashboard) {
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do");
+            closeButtonAction(event);
         } else if (event.getSource() == LoginView) {
             PetStudyBuddies.setStage("/fxml/Login.fxml", "Login");
         } else if (event.getSource() == RegisterView) {
+
             PetStudyBuddies.setStage("/fxml/Register.fxml", "Register");
         } else {
             log.error("No route specified");
         }
+    }
+    @FXML
+    public void closeButtonAction(ActionEvent actionEvent){
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage)node.getScene().getWindow();
+        stage.close();
     }
 }

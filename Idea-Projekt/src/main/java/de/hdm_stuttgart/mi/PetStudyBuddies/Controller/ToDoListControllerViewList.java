@@ -1,30 +1,61 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
+
+import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
+import java.sql.Array;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
+        import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
+        import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+        import javafx.event.ActionEvent;
+        import javafx.fxml.FXML;
+        import javafx.fxml.FXMLLoader;
+        import javafx.fxml.Initializable;
+        import javafx.scene.Node;
+        import javafx.scene.Parent;
+        import javafx.scene.Scene;
+        import javafx.scene.control.Button;
+        import javafx.scene.control.Label;
+        import javafx.scene.control.TextField;
+        import javafx.stage.Stage;
+        import org.apache.logging.log4j.LogManager;
+        import org.apache.logging.log4j.Logger;
+
+import javax.sql.rowset.CachedRowSet;
+import java.net.URL;
+        import java.util.ResourceBundle;
 
 public class ToDoListControllerViewList extends Controller implements Initializable{
 
     private static final Logger log = LogManager.getLogger(ToDoListControllerViewList.class);
     @FXML
-    Button ButtonSetFlag, ButtonShareList,ButtonChangeTitle,ButtonAddNewTask,ButtonModifyTask;
+    Button ButtonSetFlag, ButtonShareList,ButtonChangeTitle,ButtonAddNewTask,ButtonModifyTask, ButtonCreateModifiedTask,ButtonBackModifyTask;
     @FXML
     TableView TableViewList;
     @FXML
@@ -37,6 +68,11 @@ public class ToDoListControllerViewList extends Controller implements Initializa
     Label LabelToDoListName;
     @FXML
     Stage anotherStage = new Stage();
+    ToDoList ToDoListSelected;
+    @FXML
+    TextField TextFieldModifyTask;
+    @FXML
+    DatePicker DatePickerModifyTask;
 
     @FXML
     public void setTableViewList(ActionEvent actionViewList) {
@@ -52,11 +88,10 @@ public class ToDoListControllerViewList extends Controller implements Initializa
     }
     @FXML
     private void handleButtonAction(ActionEvent event) throws Exception {
-        Stage stage = null;
-        Parent root = null;
-
         if(event.getSource()==ButtonSetFlag) {
             log.debug("ButtonSetFlag was clicked");
+            ToDoListSelected.setFlagged(!ToDoListSelected.getFlagged());
+            ToDoListSelected.save();
         }else if(event.getSource()==ButtonChangeTitle){
                 log.debug("ButtonChangeTitle was clicked");
                 openSecondScene("/fxml/ToDoList/ToDoListModifyTitle.fxml");
@@ -71,11 +106,6 @@ public class ToDoListControllerViewList extends Controller implements Initializa
             openSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
         }
 
-        if(root!=null && stage != null) {
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
     }
 
     @FXML
@@ -106,12 +136,31 @@ public class ToDoListControllerViewList extends Controller implements Initializa
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         log.debug("New Controller loaded");
-        if(this.selectedList!=null){
-            TableViewSelectedList.setItems(this.selectedList);
-            //colContent.setCellValueFactory(new SimpleStringProperty(selectedList.get(1).toString()).getBean());
-            colContent.setCellValueFactory(new PropertyValueFactory<ToDoList,String>("Content"));
-            colUntil.setCellValueFactory(new PropertyValueFactory<ToDoList,Integer>("Until"));
-            colAssignedTo.setCellValueFactory(new PropertyValueFactory<ToDoList,Integer>("Assigned To"));
+        ObservableList<ToDoList> selectedList = getSelectedList();
+        log.debug("Selected List Size " + selectedList.size());
+        if(getSelectedList()!=null){
+            int ToDoListID=0;
+            for(ToDoList todolist:selectedList){
+                ToDoListID = todolist.getID();
+                this.ToDoListSelected=todolist;
+                LabelToDoListName.setText(ToDoListSelected.getTitle());
+            }
+            log.debug("ToDoList Id "+ToDoListID);
+            ObservableList<Task> tasks = FXCollections.observableArrayList();
+            CachedRowSet TasksInSelectedList = new SelectQuery("Task","ID","ToDoListID="+ToDoListID,"ID",null,true).fetchAll();
+            try{
+                do {
+                    tasks.add(new Task (TasksInSelectedList.getInt("ID")));
+                    log.debug("Observable List Size "+ tasks.size());
+                } while (TasksInSelectedList.next());
+            }catch(SQLException e){
+                log.debug("Could not resolve Tasks from CachedRowSet");
+            }
+
+            TableViewSelectedList.setItems(tasks);
+            colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
+            colUntil.setCellValueFactory(new PropertyValueFactory<>("Until"));
+            colAssignedTo.setCellValueFactory(new PropertyValueFactory<>("AssignedTo"));
 
             log.debug("TableView set");
         }else log.debug("List was null");
