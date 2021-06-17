@@ -16,7 +16,7 @@ import java.sql.Statement;
 /*
  * Database driver
  */
-class SQLiteJDBC {
+abstract class SQLiteJDBC {
     /**
      * Log object for error handling
      */
