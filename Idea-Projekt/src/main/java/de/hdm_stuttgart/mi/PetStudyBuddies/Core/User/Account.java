@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Core.User;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
@@ -47,7 +48,10 @@ public class LoginController extends Controller {
         } else if (passwordMissing) {
             status.append("Bitte gebe ein Passwort ein");
         } else {
-            User user = Auth.login(eMail, password);
+            User user = null;
+            String userID = new SelectQuery("User", "ID", "EMail='" + eMail + "' AND Password='" + Utils.sha1(password) + "'").fetch();
+            if (userID != null)
+                user = new User(Integer.parseInt(userID));
             // Login erfolgreich
             if (user != null) {
                 log.debug("User " + user.getUsername() + " erfolgreich eingeloggt.");
