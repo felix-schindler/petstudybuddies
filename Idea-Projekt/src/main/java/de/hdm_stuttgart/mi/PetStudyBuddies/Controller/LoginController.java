@@ -2,7 +2,6 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
