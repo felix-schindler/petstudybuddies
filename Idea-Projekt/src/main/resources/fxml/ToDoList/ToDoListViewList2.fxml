@@ -115,7 +115,7 @@
                         <VBox alignment="CENTER" prefHeight="473.0" prefWidth="153.0">
                             <children>
                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                                <Button fx:id="ButtonSetFlag" alignment="BOTTOM_CENTER" contentDisplay="TOP" minWidth="70.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Set Flag">
+                                <Button fx:id="ButtonSetFlag" alignment="BOTTOM_CENTER" contentDisplay="TOP" minWidth="70.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Set Flag">
                                     <graphic>
                                         <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
                                             <image>

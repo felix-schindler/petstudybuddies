@@ -3,6 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,10 +46,10 @@ public class Task extends Model {
         super(ID);
         try {
             ResultSet task = new SelectQuery("Task", "*", "ID=" + ID, null, null).fetchAll();
-            toDoList = task.getInt("ToDoList");
+            toDoList = task.getInt("ToDoListID");
             content = task.getString("Content");
-            until = task.getDate("Until");
-            assignedPerson = task.getInt("assignedTo");
+            until = Utils.parseDate(task.getString("Until"));
+            assignedPerson = task.getInt("AssignedTo");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
