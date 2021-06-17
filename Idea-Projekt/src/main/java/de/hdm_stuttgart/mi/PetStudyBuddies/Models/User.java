@@ -135,21 +135,9 @@ public class User extends Model {
         return new UpdateQuery(getTable(), new String[]{"EMail", "Password"}, new String[]{eMail, password}, "ID=" + getID()).Count() == 1;
     }
 
-    /*
-    Controller: (calls setPassword of this Model)
-    public boolean changePassword(String oldPw, String newPw, String newPwRepeat) {
-        return false;
-    }
-
-    Controller: (calls setEMail of this Model)
-    public boolean changeEmail(String newMail, String password) {
-        return false;
-    }
-    */
-
+    // TODO remove after testing
     //Tests if works
-    public static ObservableList<ToDoList> selectedList=null;
-
+    public static ObservableList<ToDoList> selectedList = null;
     public static void setSelectedList(ObservableList<ToDoList> selectedList) {
         User.selectedList = selectedList;
     }

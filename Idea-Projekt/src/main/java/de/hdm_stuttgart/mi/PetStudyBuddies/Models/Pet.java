@@ -15,12 +15,12 @@ public class Pet extends Model {
     private static final Logger log = LogManager.getLogger(Pet.class);
 
     /**
-     *
+     * Name of the pet
      */
     private String name;
 
     /**
-     *
+     * Emotion of the pet
      */
     private String emotion;
 

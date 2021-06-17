@@ -16,6 +16,7 @@ public class ToDoList extends Model implements Shareable {
 
     /**
      * UserID of the owner
+     * TODO delete bc only needed in DB
      */
     private int owner;
 
