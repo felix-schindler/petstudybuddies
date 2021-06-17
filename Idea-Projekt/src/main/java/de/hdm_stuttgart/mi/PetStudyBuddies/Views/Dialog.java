@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components;
+package de.hdm_stuttgart.mi.PetStudyBuddies.Views;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import javafx.scene.control.Alert;

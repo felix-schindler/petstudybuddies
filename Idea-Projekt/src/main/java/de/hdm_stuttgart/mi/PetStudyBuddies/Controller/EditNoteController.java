@@ -3,7 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components.Dialog;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;

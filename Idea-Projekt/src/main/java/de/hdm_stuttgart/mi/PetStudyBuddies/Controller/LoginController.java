@@ -5,7 +5,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Auth;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Components.Dialog;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
