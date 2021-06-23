@@ -1,17 +1,12 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,19 +15,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.sql.rowset.CachedRowSet;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import static de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils.printResultSet;
 
 public class ToDoListController extends Controller implements Initializable {
     /**
@@ -61,8 +52,6 @@ public class ToDoListController extends Controller implements Initializable {
     @FXML
     TextField TextFieldAddNewList;
     int NToday, NScheduled, NFlagged, NAll;
-    private Stage Window;
-    private Integer UserID=Account.getLoggedUser().getID();
     @FXML
     CachedRowSet AllUserLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll();
     @FXML
@@ -77,9 +66,9 @@ public class ToDoListController extends Controller implements Initializable {
     Scene secondScene;
     @FXML
     TableView TableViewList;
+    private Stage Window;
+    private final Integer UserID = Account.getLoggedUser().getID();
     //ObservableList<ToDoList> selectedList;
-
-
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws Exception {
@@ -87,12 +76,12 @@ public class ToDoListController extends Controller implements Initializable {
         Parent root = null;
 
 
-        if(event.getSource()==ButtonAddNewList){
+        if (event.getSource() == ButtonAddNewList) {
             log.debug("ButtonAddList was clicked");
             try {
                 FXMLLoader firstPaneLoader = new FXMLLoader(getClass().getResource("/fxml/ToDoList/ToDoListDashboard2.fxml"));
                 Parent firstPane = firstPaneLoader.load();
-                FXMLLoader secondPageLoader = new FXMLLoader(getClass().getResource("/fxml/ToDoList/ToDoListAddList.fxml")) ;
+                FXMLLoader secondPageLoader = new FXMLLoader(getClass().getResource("/fxml/ToDoList/ToDoListAddList.fxml"));
                 Parent secondPane = secondPageLoader.load();
                 Scene secondScene = new Scene(secondPane);
                 anotherStage.setScene(secondScene);
@@ -102,7 +91,7 @@ public class ToDoListController extends Controller implements Initializable {
             }
         }
 
-        if(root!=null && stage != null) {
+        if (root != null && stage != null) {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -114,35 +103,34 @@ public class ToDoListController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         LabelUsername.setText(Account.getLoggedUser().getUsername());
         ObservableList<ToDoList> data = FXCollections.observableArrayList();
-        try{
-            do{
+        try {
+            do {
                 data.add(new ToDoList(AllUserLists.getInt("ID")));
                 log.debug("ToDo List " + AllUserLists.getInt("ID") + " added");
-            }while (AllUserLists.next());
+            } while (AllUserLists.next());
 
             TableViewTest.setItems(data);
             colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
             log.debug("Table View Data set");
 
 
+            this.NAll = AllUserLists.size();
+            log.debug("Number of All To Do Lists " + NAll);
+            LabelCountToDoAll.setText(String.valueOf(NAll));
 
-        this.NAll=AllUserLists.size();
-        log.debug("Number of All To Do Lists " + NAll);
-        LabelCountToDoAll.setText(String.valueOf(NAll));
+            this.NFlagged = FlaggedUserLists.size();
+            log.debug("Number of Flagged To Do Lists " + NFlagged);
+            LabelCountToDoFlagged.setText(String.valueOf(NFlagged));
 
-        this.NFlagged = FlaggedUserLists.size();
-        log.debug("Number of Flagged To Do Lists " + NFlagged);
-        LabelCountToDoFlagged.setText(String.valueOf(NFlagged));
+            this.NScheduled = ScheduledUserLists.size();
+            log.debug("Number of To Do Lists " + NScheduled);
+            LabelCountToDoScheduled.setText(String.valueOf(NScheduled));
 
-        this.NScheduled = ScheduledUserLists.size();
-        log.debug("Number of To Do Lists " + NScheduled);
-        LabelCountToDoScheduled.setText(String.valueOf(NScheduled));
+            this.NToday = TodayUserLists.size();
+            log.debug("Number of To Do Lists " + NToday);
+            LabelCountToDoToday.setText(String.valueOf(NToday));
 
-        this.NToday = TodayUserLists.size();
-        log.debug("Number of To Do Lists " + NToday);
-        LabelCountToDoToday.setText(String.valueOf(NToday));
-
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             log.catching(e);
             log.error("Beim Hinzufügen von ToDoLists zum TableView  ist ein Fehler aufgetreten");
         }
@@ -150,15 +138,14 @@ public class ToDoListController extends Controller implements Initializable {
 
 
     @FXML
-    public void setTableViewTest(ResultSet QueryResult){
+    public void setTableViewTest(ResultSet QueryResult) {
         ObservableList<ToDoList> data = FXCollections.observableArrayList();
         try {
-            if(QueryResult.first()==false)
-            {
+            if (QueryResult.first() == false) {
                 log.debug("Data is empty");
                 data.clear();
                 TableViewTest.setItems(data);
-            }else {
+            } else {
                 QueryResult.first();
                 do {
                     data.add(new ToDoList(QueryResult.getInt("ID")));
@@ -177,35 +164,36 @@ public class ToDoListController extends Controller implements Initializable {
     }
 
 
-    @FXML void filterButtons(ActionEvent actionEvent) {
+    @FXML
+    void filterButtons(ActionEvent actionEvent) {
         log.debug("Button Event Handler called");
-        if(actionEvent.getSource()==ButtonToDoAll){
+        if (actionEvent.getSource() == ButtonToDoAll) {
             setTableViewTest(AllUserLists);
             log.debug("AllUserLists was set");
-        }else if(actionEvent.getSource()==ButtonToDoScheduled){
+        } else if (actionEvent.getSource() == ButtonToDoScheduled) {
             setTableViewTest(ScheduledUserLists);
             log.debug("ScheduledUserLists was set");
-        }else if(actionEvent.getSource()==ButtonToDoFlagged){
+        } else if (actionEvent.getSource() == ButtonToDoFlagged) {
             setTableViewTest(FlaggedUserLists);
             log.debug("FlaggedUserLists was set");
-        }else if(actionEvent.getSource()==ButtonToDoToday){
+        } else if (actionEvent.getSource() == ButtonToDoToday) {
             setTableViewTest(TodayUserLists);
             log.debug("TodayUserLists was set");
-        }else if(actionEvent.getSource()==ButtonViewList){
+        } else if (actionEvent.getSource() == ButtonViewList) {
             log.debug("ButtonViewList was clicked on");
             ObservableList<ToDoList> selectedList = TableViewTest.getSelectionModel().getSelectedItems();
             log.debug("Observable List with selected Items was created");
-                    if(!selectedList.isEmpty()){
-                        log.debug("Items were selected");
-                        //setSelectedList(selectedList);
-                        this.selectedList=selectedList;
-                        if(this.selectedList.isEmpty()){
-                            log.debug("List is empty");
-                        }
-                        closeButtonAction(ButtonViewList);
-                        PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+            if (!selectedList.isEmpty()) {
+                log.debug("Items were selected");
+                //setSelectedList(selectedList);
+                Controller.selectedList = selectedList;
+                if (Controller.selectedList.isEmpty()) {
+                    log.debug("List is empty");
+                }
+                closeButtonAction(ButtonViewList);
+                PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
 
-                        //FXMLLoader firstPaneLoader = new FXMLLoader(getClass().getResource("/fxml/ToDoList/ToDoListDashboard2.fxml"));
+                //FXMLLoader firstPaneLoader = new FXMLLoader(getClass().getResource("/fxml/ToDoList/ToDoListDashboard2.fxml"));
                         /*try {
                            // Parent firstPane = firstPaneLoader.load();
 
@@ -220,7 +208,7 @@ public class ToDoListController extends Controller implements Initializable {
                         }*/
 
 
-                        //setTableViewList(selectedList);
+                //setTableViewList(selectedList);
                         /*
                         public void setSelectedList(ObservableList<ToDoList> selectedList){
                                 this.selectedList=selectedList;
@@ -230,27 +218,30 @@ public class ToDoListController extends Controller implements Initializable {
                            }
                          */
 
-                    }else log.debug("nothing selected");
+            } else log.debug("nothing selected");
 
         }
     }
+
     @FXML
-    public void closeButtonAction(Button CloseButton){
+    public void closeButtonAction(Button CloseButton) {
         Stage stage = (Stage) CloseButton.getScene().getWindow();
         stage.close();
     }
+
     @FXML
     public void openSecondScene(ActionEvent actionEvent) {
-        Stage primaryStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         primaryStage.setScene(secondScene);
     }
+
     @FXML
     public void setSecondScene(Scene scene) {
         secondScene = scene;
     }
 
     @FXML
-    public ObservableList<ToDoList> getSelectedList(){
+    public ObservableList<ToDoList> getSelectedList() {
         return selectedList;
     }
 

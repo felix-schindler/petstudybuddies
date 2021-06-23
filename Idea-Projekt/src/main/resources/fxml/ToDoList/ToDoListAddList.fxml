@@ -1,74 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="171.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ToDoListControllerSecondWindow">
-   <children>
-      <HBox prefHeight="38.0" prefWidth="600.0">
-         <children>
-            <Button fx:id="ButtonBack" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png" />
-                     </image></ImageView>
-               </graphic>
-               <font>
-                  <Font name="Calibri" size="12.0" />
-               </font>
-            </Button>
-            <Pane prefHeight="38.0" prefWidth="370.0">
-               <children>
-                  <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0" text="New List" textFill="#fff0f0">
-                     <font>
-                        <Font name="Calibri" size="14.0" />
-                     </font>
-                  </Label>
-               </children></Pane>
-            <Button fx:id="ButtonCreateList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Create List" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
-                     </image></ImageView>
-               </graphic>
-               <font>
-                  <Font name="Calibri" size="12.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
-      <Pane layoutX="29.0" layoutY="39.0" prefHeight="125.0" prefWidth="495.0">
-         <children>
-            <VBox prefHeight="125.0" prefWidth="494.0">
-               <children>
-                  <Label prefHeight="42.0" prefWidth="518.0" text="New To-Do List" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri" size="22.0" />
-                     </font></Label>
-                  <HBox prefHeight="47.0" prefWidth="600.0">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="90.0" text="Name" textFill="WHITE">
-                           <font>
-                              <Font name="Calibri" size="18.0" />
-                           </font></Label>
-                        <TextField fx:id="TextFieldAddNewList" prefHeight="38.0" prefWidth="393.0" promptText="Enter a name for your To-Do List">
-                           <font>
-                              <Font name="Calibri" size="14.0" />
-                           </font></TextField>
-                     </children>
-                  </HBox>
-                  <Label fx:id="LabelValidInput" layoutX="10.0" layoutY="10.0" minWidth="200.0" prefHeight="42.0" prefWidth="518.0" textFill="RED">
-                     <font>
-                        <Font name="Calibri Bold" size="22.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-         </children>
-      </Pane>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="171.0" prefWidth="539.0" styleClass="linear-grad"
+            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ToDoListControllerSecondWindow">
+    <children>
+        <HBox prefHeight="38.0" prefWidth="600.0">
+            <children>
+                <Button fx:id="ButtonBack" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
+                        prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
+                        stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Calibri" size="12.0"/>
+                    </font>
+                </Button>
+                <Pane prefHeight="38.0" prefWidth="370.0">
+                    <children>
+                        <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0" text="New List"
+                               textFill="#fff0f0">
+                            <font>
+                                <Font name="Calibri" size="14.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Button fx:id="ButtonCreateList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
+                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
+                        stylesheets="@../../styles/fullpackstyling.css" text="Create List" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Calibri" size="12.0"/>
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+        <Pane layoutX="29.0" layoutY="39.0" prefHeight="125.0" prefWidth="495.0">
+            <children>
+                <VBox prefHeight="125.0" prefWidth="494.0">
+                    <children>
+                        <Label prefHeight="42.0" prefWidth="518.0" text="New To-Do List" textFill="WHITE">
+                            <font>
+                                <Font name="Calibri" size="22.0"/>
+                            </font>
+                        </Label>
+                        <HBox prefHeight="47.0" prefWidth="600.0">
+                            <children>
+                                <Label prefHeight="17.0" prefWidth="90.0" text="Name" textFill="WHITE">
+                                    <font>
+                                        <Font name="Calibri" size="18.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="TextFieldAddNewList" prefHeight="38.0" prefWidth="393.0"
+                                           promptText="Enter a name for your To-Do List">
+                                    <font>
+                                        <Font name="Calibri" size="14.0"/>
+                                    </font>
+                                </TextField>
+                            </children>
+                        </HBox>
+                        <Label fx:id="LabelValidInput" layoutX="10.0" layoutY="10.0" minWidth="200.0" prefHeight="42.0"
+                               prefWidth="518.0" textFill="RED">
+                            <font>
+                                <Font name="Calibri Bold" size="22.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

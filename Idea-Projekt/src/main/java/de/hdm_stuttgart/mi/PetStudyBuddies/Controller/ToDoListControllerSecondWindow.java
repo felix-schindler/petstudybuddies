@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 public class ToDoListControllerSecondWindow implements Initializable {
     private static final Logger log = LogManager.getLogger(ToDoListControllerSecondWindow.class);
     @FXML
-    Button ButtonCreateList,ButtonBack;
+    Button ButtonCreateList, ButtonBack;
     @FXML
     TextField TextFieldAddNewList;
     @FXML
@@ -30,28 +30,29 @@ public class ToDoListControllerSecondWindow implements Initializable {
     Label LabelValidInput;
 
 
-    public void buttonAction (ActionEvent actionEvent){
-        if(actionEvent.getSource()==ButtonCreateList) {
+    public void buttonAction(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == ButtonCreateList) {
             String eingabe = TextFieldAddNewList.getText();
             log.debug("neue");
             if (eingabe != null && !eingabe.isEmpty()) {
                 new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), eingabe}, true);
                 closeSecondScene(actionEvent);
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-            }else{
+            } else {
                 LabelValidInput.setText("Please enter a new Title for your List!");
                 log.debug("No New Title entered, Label set");
             }
         }
-        if(actionEvent.getSource()==ButtonBack){
+        if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");
 
         }
     }
+
     @FXML
     public void closeSecondScene(ActionEvent actionEvent) {
-        Stage secondStage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
     }
 

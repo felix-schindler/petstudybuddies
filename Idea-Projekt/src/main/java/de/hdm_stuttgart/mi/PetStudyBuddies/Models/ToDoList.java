@@ -31,6 +31,7 @@ public class ToDoList extends Model implements Shareable {
      * ToDoList ID
      */
     private int todoID;
+
     /**
      * Creates a new ToDoList linked to the ToDoLists database-entry via its ID
      *
@@ -42,8 +43,8 @@ public class ToDoList extends Model implements Shareable {
             ResultSet toDoList = new SelectQuery("ToDoList", "*", "ID=" + ID).fetchAll();
             owner = toDoList.getInt("UserID");
             title = toDoList.getString("Title");
-            flagged=toDoList.getBoolean("Flagged");
-            todoID=toDoList.getInt("ID");
+            flagged = toDoList.getBoolean("Flagged");
+            todoID = toDoList.getInt("ID");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -72,11 +73,12 @@ public class ToDoList extends Model implements Shareable {
     }
 
     /**
+     * Sets a new title for a ToDoList
      *
-     * @return Flagged of the ToDoList
+     * @param newTitle New title for ToDoList
      */
-    public boolean getFlagged(){
-        return flagged;
+    public void setTitle(String newTitle) {
+        title = newTitle;
     }
 
     /**
@@ -94,24 +96,20 @@ public class ToDoList extends Model implements Shareable {
     }*/
 
     /**
+     * @return Flagged of the ToDoList
+     */
+    public boolean getFlagged() {
+        return flagged;
+    }
+
+    /**
      * sets flagged
+     *
      * @param flagged
      */
     public void setFlagged(boolean flagged) {
         this.flagged = flagged;
     }
-
-    /**
-     * Sets a new title for a ToDoList
-     *
-     * @param newTitle New title for ToDoList
-     */
-    public void setTitle(String newTitle) {
-        title = newTitle;
-    }
-
-
-
 
     /**
      * TODO this.
@@ -130,7 +128,7 @@ public class ToDoList extends Model implements Shareable {
      */
     public boolean save() {
         log.debug("Trying to safe changes");
-        return new UpdateQuery(getTable(), new String[]{"Title","Flagged"}, new String[]{title,flagged ? "1" : "0"}, "ID=" + getID()).Count() == 1;
+        return new UpdateQuery(getTable(), new String[]{"Title", "Flagged"}, new String[]{title, flagged ? "1" : "0"}, "ID=" + getID()).Count() == 1;
         //return new UpdateQuery(getTable(), new String[]{"Title"}, new String[]{title}, "ID=" + getID()).Count() == 1;
     }
 }

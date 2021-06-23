@@ -15,17 +15,17 @@ public class User extends Model {
      * Log object for error handling
      */
     private static final Logger log = LogManager.getLogger(User.class);
-
+    // TODO remove after testing
+    //Tests if works
+    public static ObservableList<ToDoList> selectedList = null;
     /**
      * username of the user
      */
     private String username;
-
     /**
      * eMail of the user
      */
     private String eMail;
-
     /**
      * password of the user
      */
@@ -46,6 +46,14 @@ public class User extends Model {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ObservableList<ToDoList> getSelectedList() {
+        return selectedList;
+    }
+
+    public static void setSelectedList(ObservableList<ToDoList> selectedList) {
+        User.selectedList = selectedList;
     }
 
     /**
@@ -133,15 +141,5 @@ public class User extends Model {
         }
 
         return new UpdateQuery(getTable(), new String[]{"EMail", "Password"}, new String[]{eMail, password}, "ID=" + getID()).Count() == 1;
-    }
-
-    // TODO remove after testing
-    //Tests if works
-    public static ObservableList<ToDoList> selectedList = null;
-    public static void setSelectedList(ObservableList<ToDoList> selectedList) {
-        User.selectedList = selectedList;
-    }
-    public static ObservableList<ToDoList> getSelectedList(){
-        return selectedList;
     }
 }

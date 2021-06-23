@@ -1,42 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="202.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="202.0" prefWidth="539.0" styleClass="linear-grad"
+            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button fx:id="ButtonBackModifyTask" mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button fx:id="ButtonBackModifyTask" mnemonicParsing="false" prefHeight="29.0" prefWidth="66.0"
+                        style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
+                        stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png" />
-                            </image></ImageView>
+                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png"/>
+                            </image>
+                        </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
                 <Pane prefHeight="38.0" prefWidth="344.0">
                     <children>
-                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="344.0" text="Modify Task" textFill="#fff0f0">
+                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="344.0" text="Modify Task"
+                               textFill="#fff0f0">
                             <font>
-                                <Font name="Calibri" size="14.0" />
+                                <Font name="Calibri" size="14.0"/>
                             </font>
                         </Label>
-                    </children></Pane>
-                <Button fx:id="ButtonCreateModifiedTask" mnemonicParsing="false" prefHeight="28.0" prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Modify Task" textFill="WHITE">
+                    </children>
+                </Pane>
+                <Button fx:id="ButtonCreateModifiedTask" mnemonicParsing="false" prefHeight="28.0" prefWidth="129.0"
+                        style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
+                        stylesheets="@../../styles/fullpackstyling.css" text="Modify Task" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
-                            </image></ImageView>
+                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png"/>
+                            </image>
+                        </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
             </children>
@@ -45,39 +55,46 @@
             <children>
                 <VBox prefHeight="152.0" prefWidth="494.0">
                     <children>
-                        <Label prefHeight="42.0" prefWidth="518.0" text="Modify your Task for your To-Do List" textFill="WHITE">
+                        <Label prefHeight="42.0" prefWidth="518.0" text="Modify your Task for your To-Do List"
+                               textFill="WHITE">
                             <font>
-                                <Font name="Calibri" size="22.0" />
-                            </font></Label>
-                        <Pane layoutX="10.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0" />
+                                <Font name="Calibri" size="22.0"/>
+                            </font>
+                        </Label>
+                        <Pane layoutX="10.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0"/>
                         <HBox prefHeight="35.0" prefWidth="494.0">
                             <children>
                                 <Label prefHeight="24.0" prefWidth="161.0" text="Modify your Content" textFill="WHITE">
                                     <font>
-                                        <Font name="Calibri" size="18.0" />
-                                    </font></Label>
-                                <TextField fx:id="TextFieldModifyTask" prefHeight="27.0" prefWidth="337.0" promptText="Modified Content">
+                                        <Font name="Calibri" size="18.0"/>
+                                    </font>
+                                </Label>
+                                <TextField fx:id="TextFieldModifyTask" prefHeight="27.0" prefWidth="337.0"
+                                           promptText="Modified Content">
                                     <font>
-                                        <Font name="Calibri" size="14.0" />
-                                    </font></TextField>
+                                        <Font name="Calibri" size="14.0"/>
+                                    </font>
+                                </TextField>
                             </children>
                         </HBox>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                        <Pane prefHeight="200.0" prefWidth="200.0"/>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Label prefHeight="17.0" prefWidth="91.0" text="Deadline" textFill="WHITE">
                                     <font>
-                                        <Font name="Calibri" size="14.0" />
+                                        <Font name="Calibri" size="14.0"/>
                                     </font>
                                 </Label>
-                                <DatePicker fx:id="DatePickerModifyTask" prefHeight="25.0" prefWidth="176.0" promptText="Enter New Deadline" />
+                                <DatePicker fx:id="DatePickerModifyTask" prefHeight="25.0" prefWidth="176.0"
+                                            promptText="Enter New Deadline"/>
                             </children>
                         </HBox>
-                  <Label fx:id="LabelValidInputModifyTask" layoutX="10.0" layoutY="10.0" minWidth="200.0" prefHeight="42.0" prefWidth="518.0" textFill="RED">
-                     <font>
-                        <Font name="Calibri Bold" size="22.0" />
-                     </font>
-                  </Label>
+                        <Label fx:id="LabelValidInputModifyTask" layoutX="10.0" layoutY="10.0" minWidth="200.0"
+                               prefHeight="42.0" prefWidth="518.0" textFill="RED">
+                            <font>
+                                <Font name="Calibri Bold" size="22.0"/>
+                            </font>
+                        </Label>
                     </children>
                 </VBox>
             </children>

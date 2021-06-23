@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +17,8 @@ abstract class Controller {
      * Log object for error handling
      */
     private static final Logger log = LogManager.getLogger(Controller.class);
-
+    @FXML
+    public static ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
     @FXML
     protected Button ApplicationDashboard;
     @FXML
@@ -32,14 +32,12 @@ abstract class Controller {
     @FXML
     protected Button RegisterView;
 
-    @FXML
-    public static ObservableList<ToDoList> selectedList= FXCollections.observableArrayList();
-
-    public void setSelectedList(ObservableList<ToDoList> selectedList){
-        this.selectedList=selectedList;
-    }
-    public ObservableList<ToDoList> getSelectedList(){
+    public ObservableList<ToDoList> getSelectedList() {
         return selectedList;
+    }
+
+    public void setSelectedList(ObservableList<ToDoList> selectedList) {
+        Controller.selectedList = selectedList;
     }
 
     @FXML
@@ -55,18 +53,18 @@ abstract class Controller {
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do");
             closeButtonAction(event);
         } else if (event.getSource() == LoginView) {
-            PetStudyBuddies.setStage("/fxml/Login.fxml", "Login");
+            PetStudyBuddies.setStage("/fxml/User/Login.fxml", "Login");
         } else if (event.getSource() == RegisterView) {
-
-            PetStudyBuddies.setStage("/fxml/Register.fxml", "Register");
+            PetStudyBuddies.setStage("/fxml/User/Register.fxml", "Register");
         } else {
             log.error("No route specified");
         }
     }
+
     @FXML
-    public void closeButtonAction(ActionEvent actionEvent){
+    public void closeButtonAction(ActionEvent actionEvent) {
         Node node = (Node) actionEvent.getSource();
-        Stage stage = (Stage)node.getScene().getWindow();
+        Stage stage = (Stage) node.getScene().getWindow();
         stage.close();
     }
 }
