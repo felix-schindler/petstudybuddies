@@ -95,7 +95,6 @@ public class NotesController extends Controller implements Initializable {
         return null;
     }
 
-    @FXML
     public void editNote() {
         if (getSelectedNote() != null) {
             editNote = getSelectedNote().getID();
@@ -106,7 +105,6 @@ public class NotesController extends Controller implements Initializable {
         }
     }
 
-    @FXML
     public void createNewNote() {
         new InsertQuery("Note", new String[]{"UserID"}, new String[]{String.valueOf(Account.getLoggedUser().getID())});
         try {
@@ -118,7 +116,6 @@ public class NotesController extends Controller implements Initializable {
         goToEditNote();
     }
 
-    @FXML
     public void share() {
         Note selectedNote = getSelectedNote();
         String username = Dialog.showInput("Input username to share to: ");

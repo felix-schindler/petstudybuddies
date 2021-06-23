@@ -124,7 +124,7 @@ public class Note extends Model implements Shareable {
      * @see Shareable#share(int)
      */
     public boolean share(int ID) {
-        if (ID == Account.getLoggedUser().getID() ||new SelectQuery("NoteShare", "ID", "UserID=" + ID + " AND NoteID=" + getID()).fetch() != null) {
+        if (ID == Account.getLoggedUser().getID() || new SelectQuery("NoteShare", "ID", "UserID=" + ID + " AND NoteID=" + getID()).fetch() != null) {
             log.debug("User " + ID + " already got access");
             return true;    // User already has access
         }

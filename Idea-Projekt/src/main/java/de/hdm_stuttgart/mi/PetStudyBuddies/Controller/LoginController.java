@@ -18,7 +18,6 @@ import org.apache.logging.log4j.Logger;
  */
 public class LoginController extends Controller {
     private final static Logger log = LogManager.getLogger(LoginController.class);
-
     @FXML
     private TextField emailField;
     @FXML
@@ -42,10 +41,13 @@ public class LoginController extends Controller {
 
         if (bothMissing) {
             status.append("Bitte gebe e-Mail und Passwort ein.");
+            log.error("All fields are required");
         } else if (eMailMissing) {
             status.append("Bitte gebe eine e-Mail ein.");
+            log.error("EMail is empty");
         } else if (passwordMissing) {
             status.append("Bitte gebe ein Passwort ein");
+            log.error("Password is empty");
         } else {
             User user = null;
             String userID = new SelectQuery("User", "ID", "EMail='" + eMail + "' AND Password='" + Utils.sha1(password) + "'").fetch();
@@ -60,6 +62,7 @@ public class LoginController extends Controller {
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do List");
             } else {
                 Dialog.showError("EMail or Password is incorrect.");
+                log.error("EMail or Password is incorrect.");
                 log.warn(eMail + " tried to log in with wrong EMail / Password");
             }
         }

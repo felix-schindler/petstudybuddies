@@ -15,7 +15,6 @@ import org.apache.logging.log4j.Logger;
  */
 public class RegisterController extends Controller {
     private final static Logger log = LogManager.getLogger(RegisterController.class);
-
     @FXML
     private TextField emailField;
     @FXML
@@ -41,10 +40,13 @@ public class RegisterController extends Controller {
 
         if (eMail == null || username == null || password == null || repeatPassword == null) {
             status.append("Bitte fülle alle Felder aus.");
+            log.error("All fields are required");
         } else if (!Utils.verifyMail(eMail)) {
             status.append("Bitte gebe eine gültige e-Mail Adresse ein.");
+            log.error("EMail format not valid");
         } else if (!password.equals(repeatPassword)) {
             status.append("Die eingegebenen Passwörter stimmen nicht überein.");
+            log.error("Passwords don't match");
         } else {
             if (new InsertQuery("User", new String[]{"EMail", "Username", "Password"}, new String[]{eMail, username, Utils.sha1(password)}).Count() == 1) {
                 status.append("Registrierung war erfolgreich, sie können Sich nun einloggen!");
@@ -55,6 +57,7 @@ public class RegisterController extends Controller {
                 PetStudyBuddies.setStage("/fxml/Login.fxml", "Login");
             } else {
                 status.append("Registrierung war nicht erfolgreich, bitte versuch es später erneut.");
+                log.error("Failed to register");
             }
         }
 
