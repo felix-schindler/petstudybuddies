@@ -33,6 +33,7 @@ public class ToDoListController extends Controller implements Initializable {
      */
     private static final Logger log = LogManager.getLogger(ToDoListController.class);
     protected static ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
+    protected static int selectedListID;
     @FXML
     Label LabelUsername;
     @FXML
@@ -55,6 +56,35 @@ public class ToDoListController extends Controller implements Initializable {
 
     public static void setSelectedList(ObservableList<ToDoList> selectedList) {
         ToDoListController.selectedList = selectedList;
+    }
+    public static int getSelectedListID(){
+        return selectedListID;
+    }
+    public static void setSelectedListID(int ID){
+        ToDoListController.selectedListID=ID;
+    }
+    public static void updateSelectedList(){
+        CachedRowSet updatedList = new SelectQuery("ToDoList", "*", "ID=" + ToDoListController.getSelectedListID(), null, null, true).fetchAll();
+        ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
+        try {
+            if (!updatedList.first()) {
+                log.debug("Updated List is empty");
+                selectedList.clear();
+
+            } else {
+                updatedList.first();
+                do {
+                    selectedList.add(new ToDoList(updatedList.getInt("ID")));
+                    log.debug("ToDo List " + updatedList.getInt("ID") + " added");
+                } while (updatedList.next());
+            }
+            log.debug("Updated List is set");
+        } catch (SQLException e) {
+            log.catching(e);
+            log.error("Failed to update selected List");
+        }
+        log.debug("Selected List Size " + selectedList.size());
+        setSelectedList(selectedList);
     }
 
     @Override

@@ -38,6 +38,7 @@ public class TaskListController extends Controller implements Initializable {
     Label LabelToDoListName;
     Stage anotherStage = new Stage();
     ToDoList ToDoListSelected;
+    int selectedListId;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -62,41 +63,7 @@ public class TaskListController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<ToDoList> selectedList = ToDoListController.getSelectedList();
-        log.debug("Selected List Size " + selectedList.size());
-        if (ToDoListController.getSelectedList() != null) {
-            int ToDoListID = 0;
-            for (ToDoList todolist : selectedList) {
-                ToDoListID = todolist.getID();
-                this.ToDoListSelected = todolist;
-                LabelToDoListName.setText(ToDoListSelected.getTitle());
-            }
-            log.debug("ToDoList ID " + ToDoListID);
-            ObservableList<Task> tasks = FXCollections.observableArrayList();
-            int numberOfTasks = new SelectQuery("Task", "ID", "ToDoListID=" + ToDoListID, "ID", null, true).Count();
-            if(numberOfTasks!= 0) {
-                CachedRowSet TasksInSelectedList = new SelectQuery("Task", "ID", "ToDoListID=" + ToDoListID, "ID", null, true).fetchAll();
-                try {
-                    do {
-                        tasks.add(new Task(TasksInSelectedList.getInt("ID")));
-                        log.debug("Observable List Size " + tasks.size());
-                    } while (TasksInSelectedList.next());
-                } catch (SQLException e) {
-                    log.debug("Could not resolve Tasks from CachedRowSet");
-                }
-            }else{
-                tasks.clear();
-            }
-
-            TableViewSelectedList.setItems(tasks);
-            colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
-            colUntil.setCellValueFactory(new PropertyValueFactory<>("Until"));
-            colAssignedTo.setCellValueFactory(new PropertyValueFactory<>("AssignedTo"));
-
-            log.debug("TableView set");
-        } else {
-            log.debug("List was null");
-        }
+        setTableView();
     }
 
     public void openSecondScene(String filepath) {
@@ -116,5 +83,47 @@ public class TaskListController extends Controller implements Initializable {
     public void closeSecondScene(ActionEvent actionEvent) {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
+    }
+
+    public void updateTableView(){
+        ToDoListController.updateSelectedList();
+        setTableView();
+    }
+
+    public void setTableView() {
+        ObservableList<ToDoList> selectedList = ToDoListController.getSelectedList();
+        log.debug("Selected List Size " + selectedList.size());
+        if (ToDoListController.getSelectedList() != null) {
+            for (ToDoList todolist : selectedList) {
+                selectedListId = todolist.getID();
+                ToDoListController.setSelectedListID(selectedListId);
+                this.ToDoListSelected = todolist;
+                LabelToDoListName.setText(ToDoListSelected.getTitle());
+            }
+            log.debug("ToDoList ID " + selectedListId);
+            ObservableList<Task> tasks = FXCollections.observableArrayList();
+            int numberOfTasks = new SelectQuery("Task", "*", "ToDoListID=" + selectedListId, "ID", null, true).Count();
+            log.debug("Number of Tasks in List"+ numberOfTasks);
+            if (numberOfTasks != 0) {
+                CachedRowSet TasksInSelectedList = new SelectQuery("Task", "ID", "ToDoListID=" + selectedListId, "ID", null, true).fetchAll();
+                try {
+                    do {
+                        tasks.add(new Task(TasksInSelectedList.getInt("ID")));
+                        log.debug("Observable List Size " + tasks.size());
+                    } while (TasksInSelectedList.next());
+                } catch (SQLException e) {
+                    log.debug("Could not resolve Tasks from CachedRowSet");
+                }
+            } else {
+                tasks.clear();
+            }
+
+            TableViewSelectedList.setItems(tasks);
+            colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
+            colUntil.setCellValueFactory(new PropertyValueFactory<>("Until"));
+            colAssignedTo.setCellValueFactory(new PropertyValueFactory<>("AssignedTo"));
+
+            log.debug("TableView set");
+        }
     }
 }
