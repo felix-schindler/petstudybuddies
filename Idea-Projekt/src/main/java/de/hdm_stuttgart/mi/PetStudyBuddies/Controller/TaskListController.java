@@ -1,8 +1,10 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,6 +41,7 @@ public class TaskListController extends Controller implements Initializable {
     Stage anotherStage = new Stage();
     ToDoList ToDoListSelected;
     int selectedListId;
+    protected static Task selectedTask;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -54,7 +57,10 @@ public class TaskListController extends Controller implements Initializable {
             openSecondScene("/fxml/ToDoList/ToDoListAddTask.fxml");
         } else if (event.getSource() == ButtonModifyTask) {
             log.debug("ButtonModifyTask was clicked");
-            openSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
+            setSelectedTask();
+            if (selectedTask!=null) {
+                openSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
+            }
         } else if (event.getSource() == ButtonShareList) {
             log.debug("ButtonShareList was clicked");
             openSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
@@ -126,4 +132,14 @@ public class TaskListController extends Controller implements Initializable {
             log.debug("TableView set");
         }
     }
+    @FXML
+    public void setSelectedTask() {
+        ObservableList<Task> selectedTask = TableViewSelectedList.getSelectionModel().getSelectedItems();
+        if (!selectedTask.isEmpty()) {
+            this.selectedTask = selectedTask.get(0);
+        }else{
+            log.error("No task was selected");
+        }
+    }
+
 }

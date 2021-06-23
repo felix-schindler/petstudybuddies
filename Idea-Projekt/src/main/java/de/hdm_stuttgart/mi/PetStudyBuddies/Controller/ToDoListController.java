@@ -34,6 +34,7 @@ public class ToDoListController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(ToDoListController.class);
     protected static ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
     protected static int selectedListID;
+    protected static ToDoList selectedListAsObject;
     @FXML
     Label LabelUsername;
     @FXML
@@ -56,7 +57,14 @@ public class ToDoListController extends Controller implements Initializable {
 
     public static void setSelectedList(ObservableList<ToDoList> selectedList) {
         ToDoListController.selectedList = selectedList;
+        setSelectedListAsObject();
     }
+    public static void setSelectedListAsObject(){
+        selectedListAsObject= selectedList.get(0);
+        log.debug("selectedListAsObject getID:" + selectedListAsObject.getID());
+
+    }
+
     public static int getSelectedListID(){
         return selectedListID;
     }
@@ -199,5 +207,6 @@ public class ToDoListController extends Controller implements Initializable {
         TodayUserLists = new SelectQuery("ToDoList, Task", "*", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) = date('now')").fetchAll();
         ScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) IS NOT NULL").fetchAll();
         FlaggedUserLists = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'").fetchAll();
+
     }
 }

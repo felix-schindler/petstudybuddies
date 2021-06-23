@@ -1,7 +1,9 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Models;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -118,7 +120,12 @@ public class ToDoList extends Model implements Shareable {
      * @return
      */
     public boolean share(int ID) {
-        return false;
+        if (ID == Account.getLoggedUser().getID() || new SelectQuery("ToDoListShare", "ID", "UserID=" + ID + " AND ToDoListID=" + getID()).fetch() != null) {
+            log.debug("User " + ID + " already got access");
+            return true;    // User already has access
+        }
+        return new InsertQuery("ToDoListShare", new String[]{"UserID", "ToDoListID"}, new String[]{String.valueOf(ID), String.valueOf(getID())}).Count() == 1;
+
     }
 
     /**
