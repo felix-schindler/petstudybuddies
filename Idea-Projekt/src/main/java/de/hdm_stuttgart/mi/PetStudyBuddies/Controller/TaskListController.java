@@ -73,14 +73,19 @@ public class TaskListController extends Controller implements Initializable {
             }
             log.debug("ToDoList ID " + ToDoListID);
             ObservableList<Task> tasks = FXCollections.observableArrayList();
-            CachedRowSet TasksInSelectedList = new SelectQuery("Task", "ID", "ToDoListID=" + ToDoListID, "ID", null, true).fetchAll();
-            try {
-                do {
-                    tasks.add(new Task(TasksInSelectedList.getInt("ID")));
-                    log.debug("Observable List Size " + tasks.size());
-                } while (TasksInSelectedList.next());
-            } catch (SQLException e) {
-                log.debug("Could not resolve Tasks from CachedRowSet");
+            int numberOfTasks = new SelectQuery("Task", "ID", "ToDoListID=" + ToDoListID, "ID", null, true).Count();
+            if(numberOfTasks!= 0) {
+                CachedRowSet TasksInSelectedList = new SelectQuery("Task", "ID", "ToDoListID=" + ToDoListID, "ID", null, true).fetchAll();
+                try {
+                    do {
+                        tasks.add(new Task(TasksInSelectedList.getInt("ID")));
+                        log.debug("Observable List Size " + tasks.size());
+                    } while (TasksInSelectedList.next());
+                } catch (SQLException e) {
+                    log.debug("Could not resolve Tasks from CachedRowSet");
+                }
+            }else{
+                tasks.clear();
             }
 
             TableViewSelectedList.setItems(tasks);
