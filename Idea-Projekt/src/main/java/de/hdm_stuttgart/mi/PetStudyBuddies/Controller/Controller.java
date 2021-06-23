@@ -1,14 +1,9 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,8 +12,6 @@ abstract class Controller {
      * Log object for error handling
      */
     private static final Logger log = LogManager.getLogger(Controller.class);
-    @FXML
-    public static ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
     @FXML
     protected Button ApplicationDashboard;
     @FXML
@@ -32,14 +25,6 @@ abstract class Controller {
     @FXML
     protected Button RegisterView;
 
-    public ObservableList<ToDoList> getSelectedList() {
-        return selectedList;
-    }
-
-    public void setSelectedList(ObservableList<ToDoList> selectedList) {
-        Controller.selectedList = selectedList;
-    }
-
     @FXML
     private void handleMenu(ActionEvent event) {
         log.debug("Setting new stage...");
@@ -51,7 +36,6 @@ abstract class Controller {
             // TODO
         } else if (event.getSource() == ToDoDashboard) {
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do");
-            closeButtonAction(event);
         } else if (event.getSource() == LoginView) {
             PetStudyBuddies.setStage("/fxml/User/Login.fxml", "Login");
         } else if (event.getSource() == RegisterView) {
@@ -59,12 +43,5 @@ abstract class Controller {
         } else {
             log.error("No route specified");
         }
-    }
-
-    @FXML
-    public void closeButtonAction(ActionEvent actionEvent) {
-        Node node = (Node) actionEvent.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.close();
     }
 }

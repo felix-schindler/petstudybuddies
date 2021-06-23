@@ -38,7 +38,6 @@ public class EditNoteController extends Controller implements Initializable {
         }
     }
 
-    @FXML
     public void save() {
         note.setTitle(Utils.getInputString(title));
         note.setContent(Utils.getInputString(content));

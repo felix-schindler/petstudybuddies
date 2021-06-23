@@ -12,7 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -23,44 +26,21 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class ToDoListControllerViewList extends Controller implements Initializable {
-
-    private static final Logger log = LogManager.getLogger(ToDoListControllerViewList.class);
+public class TaskListController extends Controller implements Initializable {
+    private static final Logger log = LogManager.getLogger(TaskListController.class);
     @FXML
-    Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonCreateModifiedTask, ButtonBackModifyTask;
+    Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask;
     @FXML
-    TableView TableViewList;
+    TableColumn<Object, Object> colContent, colUntil, colAssignedTo;
     @FXML
-    Stage secondStage;
-    @FXML
-    TableColumn colContent, colUntil, colAssignedTo;
-    @FXML
-    TableView TableViewSelectedList;
+    TableView<Task> TableViewSelectedList;
     @FXML
     Label LabelToDoListName;
-    @FXML
     Stage anotherStage = new Stage();
     ToDoList ToDoListSelected;
-    @FXML
-    TextField TextFieldModifyTask;
-    @FXML
-    DatePicker DatePickerModifyTask;
 
     @FXML
-    public void setTableViewList(ActionEvent actionViewList) {
-        Node node = (Node) actionViewList.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-
-        //this.selectedList = ToDoList.;
-        TableViewList.setItems(selectedList);
-        colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
-        colUntil.setCellValueFactory(new PropertyValueFactory<>("Until"));
-        colAssignedTo.setCellValueFactory(new PropertyValueFactory<>("Assigned To"));
-        log.debug("Table View Data set");
-    }
-
-    @FXML
-    private void handleButtonAction(ActionEvent event) throws Exception {
+    private void handleButtonAction(ActionEvent event) {
         if (event.getSource() == ButtonSetFlag) {
             log.debug("ButtonSetFlag was clicked");
             ToDoListSelected.setFlagged(!ToDoListSelected.getFlagged());
@@ -78,48 +58,20 @@ public class ToDoListControllerViewList extends Controller implements Initializa
             log.debug("ButtonShareList was clicked");
             openSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
         }
-
-    }
-
-    @FXML
-    public void openSecondScene(String filepath) {
-        try {
-            FXMLLoader firstPaneLoader = new FXMLLoader(getClass().getResource("/fxml/ToDoList/ToDoListView2.fxml"));
-            Parent firstPane = firstPaneLoader.load();
-            FXMLLoader secondPageLoader = new FXMLLoader(getClass().getResource(filepath));
-
-            Parent secondPane = secondPageLoader.load();
-            Scene secondScene = new Scene(secondPane);
-
-            anotherStage.setScene(secondScene);
-            anotherStage.show();
-        } catch (Exception exc) {
-
-            exc.printStackTrace();
-
-        }
-    }
-
-    @FXML
-    public void closeSecondScene(ActionEvent actionEvent) {
-        Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        secondStage.close();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        log.debug("New Controller loaded");
-        ObservableList<ToDoList> selectedList = getSelectedList();
+        ObservableList<ToDoList> selectedList = ToDoListController.getSelectedList();
         log.debug("Selected List Size " + selectedList.size());
-        if (getSelectedList() != null) {
+        if (ToDoListController.getSelectedList() != null) {
             int ToDoListID = 0;
             for (ToDoList todolist : selectedList) {
                 ToDoListID = todolist.getID();
                 this.ToDoListSelected = todolist;
                 LabelToDoListName.setText(ToDoListSelected.getTitle());
             }
-            log.debug("ToDoList Id " + ToDoListID);
+            log.debug("ToDoList ID " + ToDoListID);
             ObservableList<Task> tasks = FXCollections.observableArrayList();
             CachedRowSet TasksInSelectedList = new SelectQuery("Task", "ID", "ToDoListID=" + ToDoListID, "ID", null, true).fetchAll();
             try {
@@ -137,8 +89,27 @@ public class ToDoListControllerViewList extends Controller implements Initializa
             colAssignedTo.setCellValueFactory(new PropertyValueFactory<>("AssignedTo"));
 
             log.debug("TableView set");
-        } else log.debug("List was null");
+        } else {
+            log.debug("List was null");
+        }
+    }
 
+    public void openSecondScene(String filepath) {
+        try {
+            FXMLLoader secondPageLoader = new FXMLLoader(getClass().getResource(filepath));
+            Parent secondPane = secondPageLoader.load();
+            Scene secondScene = new Scene(secondPane);
 
+            anotherStage.setScene(secondScene);
+            anotherStage.show();
+        } catch (Exception e) {
+            log.catching(e);
+            log.error("Failed to show dialog");
+        }
+    }
+
+    public void closeSecondScene(ActionEvent actionEvent) {
+        Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        secondStage.close();
     }
 }

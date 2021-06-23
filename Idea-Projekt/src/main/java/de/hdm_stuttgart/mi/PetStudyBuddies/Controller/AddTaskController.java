@@ -5,7 +5,6 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -15,17 +14,12 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class ToDoListControllerSecondWindowList implements Initializable {
-    private static final Logger log = LogManager.getLogger(ToDoListControllerSecondWindowList.class);
+public class AddTaskController {
+    private static final Logger log = LogManager.getLogger(AddTaskController.class);
     @FXML
     Button ButtonBackAddTask, ButtonCreateNewTask;
     @FXML
     TextField TextFieldAddNewTask;
-    @FXML
-    Stage secondStage;
     @FXML
     Label LabelValidInputAddTask;
     @FXML
@@ -33,10 +27,11 @@ public class ToDoListControllerSecondWindowList implements Initializable {
 
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonCreateNewTask) {
+            log.debug("Open create new ToDoList dialog");
             String eingabe = TextFieldAddNewTask.getText();
-            log.debug("neue");
+            log.debug("O");
             if (eingabe != null && !eingabe.isEmpty() && DatePickerAddNewTask.getValue() != null) {
-                //TODO
+                // TODO
                 new InsertQuery("Task", new String[]{"ToDoListID", "Content", "Until"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), eingabe, DatePickerAddNewTask.getValue().toString()}, true);
                 closeSecondScene(actionEvent);
                 PetStudyBuddies.setStage("/fxml/ToDoListViewList2.fxml");
@@ -44,11 +39,9 @@ public class ToDoListControllerSecondWindowList implements Initializable {
                 LabelValidInputAddTask.setText("Please enter a new Title for your List!");
                 log.debug("No New Title entered, Label set");
             }
-        }
-        if (actionEvent.getSource() == ButtonBackAddTask) {
+        } else if (actionEvent.getSource() == ButtonBackAddTask) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoListViewList2.fxml");
-
         }
     }
 
@@ -56,10 +49,5 @@ public class ToDoListControllerSecondWindowList implements Initializable {
     public void closeSecondScene(ActionEvent actionEvent) {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 }
