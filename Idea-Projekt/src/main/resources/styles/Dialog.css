@@ -1,0 +1,21 @@
+/* DIALOG */
+.dialog-pane, .dialog-pane .header-panel {
+    -fx-background-color: linear-gradient(to bottom left, #A868A0, #2D75E8);
+}
+
+.dialog-pane .button {
+    -fx-background-color: #bc8abb;
+    -fx-background-radius: 0 0 0 0;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #8075b6;
+}
+
+.dialog-pane .button:pressed {
+    -fx-background-color: #737083;
+}
+
+.dialog-pane .button, .dialog-pane .button:hover, .dialog-pane .button:pressed {
+    -fx-background-radius: 20 20 20 20;
+}

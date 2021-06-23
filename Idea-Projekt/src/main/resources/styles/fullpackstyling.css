@@ -1,3 +1,4 @@
+/* BUTTONS */
 .button1 {
     -fx-background-color: #393351;
     -fx-background-radius: 30 0 0 30;
@@ -147,7 +148,6 @@
 }
 
 /* chart properties */
-
 .chart {
     -fx-padding: 10px;
     -fx-background-color: transparent;

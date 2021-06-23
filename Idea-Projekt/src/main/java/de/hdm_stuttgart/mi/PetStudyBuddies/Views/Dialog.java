@@ -19,6 +19,10 @@ import java.util.Objects;
  * for further explanations.
  */
 public class Dialog {
+    private static void loadStyle(Alert alert) {
+        alert.getDialogPane().getScene().getStylesheets().add(Dialog.class.getResource("/styles/Dialog.css").toString());
+    }
+
     /**
      * Show a modal info box
      *
@@ -27,6 +31,7 @@ public class Dialog {
     public static void showInfo(final String title, final String msg) {
         final String realTitle = Objects.requireNonNullElse(title, "Info");
         final Alert alert = new Alert(AlertType.INFORMATION);
+        loadStyle(alert);
         alert.setTitle(realTitle);
         alert.setHeaderText(realTitle);
         alert.setContentText(msg);
@@ -46,6 +51,7 @@ public class Dialog {
     public static void showError(final String title, final String msg) {
         final String realTitle = Objects.requireNonNullElse(title, "Error");
         final Alert alert = new Alert(AlertType.ERROR);
+        loadStyle(alert);
         alert.setTitle(realTitle);
         alert.setHeaderText(realTitle);
         alert.setContentText(msg);
@@ -58,12 +64,14 @@ public class Dialog {
 
     public static String showInput(String title) {
         final Alert alert = new Alert(AlertType.CONFIRMATION);
+        loadStyle(alert);
         alert.setTitle("Input");
         alert.setHeaderText(title);
 
         final TextField username = new TextField();
         username.setPromptText("Username...");
         VBox root = new VBox();
+        // root.getStylesheets().add(Dialog.class.getResource("/styles/fullpackstyling.css").toString());
         root.getChildren().add(username);
         alert.setGraphic(root);
         alert.showAndWait();
@@ -79,6 +87,7 @@ public class Dialog {
      */
     public static void showExceptionAndExit(final String msg, final Exception ex, int exitCode) {
         final Alert alert = new Alert(AlertType.ERROR);
+        loadStyle(alert);
         alert.setTitle("Unrecoverable error");
         alert.setHeaderText("Application will be terminated!");
         alert.setContentText(msg);
