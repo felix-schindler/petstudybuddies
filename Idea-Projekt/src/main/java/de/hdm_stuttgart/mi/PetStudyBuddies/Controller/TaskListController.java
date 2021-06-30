@@ -1,10 +1,8 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,6 +28,7 @@ import java.util.ResourceBundle;
 
 public class TaskListController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(TaskListController.class);
+    protected static Task selectedTask;
     @FXML
     Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask;
     @FXML
@@ -41,7 +40,6 @@ public class TaskListController extends Controller implements Initializable {
     Stage anotherStage = new Stage();
     ToDoList ToDoListSelected;
     int selectedListId;
-    protected static Task selectedTask;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -58,7 +56,7 @@ public class TaskListController extends Controller implements Initializable {
         } else if (event.getSource() == ButtonModifyTask) {
             log.debug("ButtonModifyTask was clicked");
             setSelectedTask();
-            if (selectedTask!=null) {
+            if (selectedTask != null) {
                 openSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
             }
         } else if (event.getSource() == ButtonShareList) {
@@ -91,7 +89,7 @@ public class TaskListController extends Controller implements Initializable {
         secondStage.close();
     }
 
-    public void updateTableView(){
+    public void updateTableView() {
         ToDoListController.updateSelectedList();
         setTableView();
     }
@@ -109,7 +107,7 @@ public class TaskListController extends Controller implements Initializable {
             log.debug("ToDoList ID " + selectedListId);
             ObservableList<Task> tasks = FXCollections.observableArrayList();
             int numberOfTasks = new SelectQuery("Task", "*", "ToDoListID=" + selectedListId, "ID", null, true).Count();
-            log.debug("Number of Tasks in List"+ numberOfTasks);
+            log.debug("Number of Tasks in List" + numberOfTasks);
             if (numberOfTasks != 0) {
                 CachedRowSet TasksInSelectedList = new SelectQuery("Task", "ID", "ToDoListID=" + selectedListId, "ID", null, true).fetchAll();
                 try {
@@ -132,12 +130,13 @@ public class TaskListController extends Controller implements Initializable {
             log.debug("TableView set");
         }
     }
+
     @FXML
     public void setSelectedTask() {
         ObservableList<Task> selectedTask = TableViewSelectedList.getSelectionModel().getSelectedItems();
         if (!selectedTask.isEmpty()) {
-            this.selectedTask = selectedTask.get(0);
-        }else{
+            TaskListController.selectedTask = selectedTask.get(0);
+        } else {
             log.error("No task was selected");
         }
     }

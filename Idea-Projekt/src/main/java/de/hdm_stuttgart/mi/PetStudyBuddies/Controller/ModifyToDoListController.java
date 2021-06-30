@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -36,7 +35,7 @@ public class ModifyToDoListController implements Initializable {
             String eingabe = TextFieldNewTitle.getText();
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty()) {
-                new UpdateQuery("ToDoList", new String[]{ "Title"}, new String[]{ eingabe},"ID = "+ ToDoListController.selectedListID, true);
+                new UpdateQuery("ToDoList", new String[]{"Title"}, new String[]{eingabe}, "ID = " + ToDoListController.selectedListID, true);
                 closeSecondScene(actionEvent);
                 ToDoListController.updateSelectedList();
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
@@ -55,6 +54,7 @@ public class ModifyToDoListController implements Initializable {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.selectedList = ToDoListController.getSelectedList();

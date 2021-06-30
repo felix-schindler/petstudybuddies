@@ -1,8 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
@@ -12,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -25,7 +22,7 @@ import java.util.ResourceBundle;
 public class ShareToDoListController implements Initializable {
     private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
     @FXML
-    Button ButtonBackShareList, ButtonShareList,ButtonCheckforUser;
+    Button ButtonBackShareList, ButtonShareList, ButtonCheckforUser;
     @FXML
     TextField TextFieldEMailShare;
     @FXML

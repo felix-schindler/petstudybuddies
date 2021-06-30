@@ -38,7 +38,7 @@ public class AddToDoListController {
                 new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), eingabe}, true);
                 closeSecondScene(actionEvent);
                 ObservableList<ToDoList> newList = FXCollections.observableArrayList();
-                CachedRowSet newToDo = new SelectQuery("ToDoList","*","UserID = "+ Account.getLoggedUser().getID() + " AND Title= '"+eingabe + "'",null,null,true).fetchAll();
+                CachedRowSet newToDo = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Title= '" + eingabe + "'", null, null, true).fetchAll();
                 try {
                     newList.add(new ToDoList(newToDo.getInt("ID")));
                     ToDoListController.setSelectedList(newList);

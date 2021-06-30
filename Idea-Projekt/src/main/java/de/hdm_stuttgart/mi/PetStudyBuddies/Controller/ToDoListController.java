@@ -59,19 +59,22 @@ public class ToDoListController extends Controller implements Initializable {
         ToDoListController.selectedList = selectedList;
         setSelectedListAsObject();
     }
-    public static void setSelectedListAsObject(){
-        selectedListAsObject= selectedList.get(0);
+
+    public static void setSelectedListAsObject() {
+        selectedListAsObject = selectedList.get(0);
         log.debug("selectedListAsObject getID:" + selectedListAsObject.getID());
 
     }
 
-    public static int getSelectedListID(){
+    public static int getSelectedListID() {
         return selectedListID;
     }
-    public static void setSelectedListID(int ID){
-        ToDoListController.selectedListID=ID;
+
+    public static void setSelectedListID(int ID) {
+        ToDoListController.selectedListID = ID;
     }
-    public static void updateSelectedList(){
+
+    public static void updateSelectedList() {
         CachedRowSet updatedList = new SelectQuery("ToDoList", "*", "ID=" + ToDoListController.getSelectedListID(), null, null, true).fetchAll();
         ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
         try {
@@ -202,7 +205,7 @@ public class ToDoListController extends Controller implements Initializable {
         }
     }
 
-    public void updateUserToDoLists(){
+    public void updateUserToDoLists() {
         AllUserLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll();
         TodayUserLists = new SelectQuery("ToDoList, Task", "*", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) = date('now')").fetchAll();
         ScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) IS NOT NULL").fetchAll();

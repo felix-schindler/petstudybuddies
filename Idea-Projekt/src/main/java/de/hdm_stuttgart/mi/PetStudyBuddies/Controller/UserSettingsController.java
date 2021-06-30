@@ -5,44 +5,42 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserSettingsController extends Controller implements Initializable{
-
+public class UserSettingsController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(UserSettingsController.class);
-
+    private final User user = Account.getLoggedUser();
     @FXML
-    Label LabelUsername;
+    Label labelUsername;
     @FXML
-    TextField NewEmailAddress;
+    TextField newEmailAddress;
     @FXML
-    TextField NewPassword;
+    TextField newPassword;
     @FXML
-    TextField ConfirmNewPassword;
-    @FXML
-    private User user;
+    TextField confirmNewPassword;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        LabelUsername.setText(Account.getLoggedUser().getUsername());
+        labelUsername.setText(Account.getLoggedUser().getUsername());
     }
 
     public void save() {
         //if NewPassword and ConfirmNewPassword are equal
         //the new Password and the new Email Address will be saved
-        if (NewPassword == ConfirmNewPassword) {
-            user.setPassword(Utils.getInputString(NewPassword));
-            user.setEMail(Utils.getInputString(NewEmailAddress));
+        if (newPassword == confirmNewPassword) {
+            user.setPassword(Utils.getInputString(newPassword));
+            user.setEMail(Utils.getInputString(newEmailAddress));
             log.info("Email and password changed successfully");
         }
         //if NewPassword and ConfirmNewPassword does not equal
         //the log.error will trigger
-        else{
+        else {
             log.error("Failed to save (new Password and confirm new Password are different)");
         }
     }

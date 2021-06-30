@@ -1,10 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -34,10 +31,10 @@ public class ModifyTaskController {
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty() && DatePickerModifyTask.getValue() != null) {
                 // TODO
-                new UpdateQuery("Task", new String[]{ "Content", "Until"}, new String[]{ eingabe, DatePickerModifyTask.getValue().toString()},"ID = "+ TaskListController.selectedTask.getID(), true);
+                new UpdateQuery("Task", new String[]{"Content", "Until"}, new String[]{eingabe, DatePickerModifyTask.getValue().toString()}, "ID = " + TaskListController.selectedTask.getID(), true);
                 closeSecondScene(actionEvent);
                 ToDoListController.updateSelectedList();
-                TaskListController.selectedTask=null;
+                TaskListController.selectedTask = null;
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
                 LabelValidInputModifyTask.setText("Please enter a new Title for your Task!");
