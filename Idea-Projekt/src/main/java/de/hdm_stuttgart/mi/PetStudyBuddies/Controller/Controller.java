@@ -21,6 +21,8 @@ abstract class Controller {
     @FXML
     protected Button ToDoDashboard;
     @FXML
+    protected Button SettingsView;
+    @FXML
     protected Button LoginView;
     @FXML
     protected Button RegisterView;
@@ -36,6 +38,8 @@ abstract class Controller {
             // TODO
         } else if (event.getSource() == ToDoDashboard) {
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do");
+        } else if (event.getSource() == SettingsView) {
+            PetStudyBuddies.setStage("/fxml/User/UserSettings.fxml", "Settings");
         } else if (event.getSource() == LoginView) {
             PetStudyBuddies.setStage("/fxml/User/Login.fxml", "Login");
         } else if (event.getSource() == RegisterView) {
