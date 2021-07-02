@@ -130,7 +130,7 @@ public class Task extends Model {
      */
     public boolean assignPerson(int TaskID, int UserID) {
 
-        if (new SelectQuery(getTable(), "ID", "TaskID=" + TaskID + " AND UserID=" + UserID).fetch().equals(null) ) {
+        if (new SelectQuery(getTable(), "ID", "TaskID=" + TaskID + " AND UserID=" + UserID).fetch()==null) {
             log.debug("No User existing with that Username");
             return false;
         }

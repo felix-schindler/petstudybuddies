@@ -36,7 +36,6 @@ public class AssignTaskController implements Initializable{
             LabelNameTask.setText(TaskListController.selectedTaskAsObject.getContent());
             log.debug("Open create new ToDoList dialog");
             String eingabe = TextFieldUsernameShare.getText();
-            log.debug("O");
             if (eingabe != null && !eingabe.isEmpty()) {
                 // TODO
                 try {
