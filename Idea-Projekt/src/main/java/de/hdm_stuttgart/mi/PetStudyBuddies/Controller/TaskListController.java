@@ -4,6 +4,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
+import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +32,7 @@ import java.util.ResourceBundle;
 public class TaskListController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(TaskListController.class);
     @FXML
-    Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask;
+    Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask;
     @FXML
     TableColumn<Object, Object> colContent, colUntil, colAssignedTo;
     @FXML
@@ -40,8 +41,12 @@ public class TaskListController extends Controller implements Initializable {
     Label LabelToDoListName;
     Stage anotherStage = new Stage();
     ToDoList ToDoListSelected;
-    int selectedListId;
-    protected static Task selectedTask;
+    protected static int selectedListId;
+    protected static ObservableList<Task> selectedTask;
+
+    public void setSelectedTask(ObservableList<Task> selectedTask){
+        this.selectedTask = selectedTask;
+    }
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -64,6 +69,20 @@ public class TaskListController extends Controller implements Initializable {
         } else if (event.getSource() == ButtonShareList) {
             log.debug("ButtonShareList was clicked");
             openSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
+        }else if (event.getSource()==ButtonAssignTask){
+            ObservableList<Task> selectedTask = TableViewSelectedList.getSelectionModel().getSelectedItems();
+            log.debug("Observable List with selected Items was created");
+            if (!selectedTask.isEmpty()) {
+                log.debug("Items were selected");
+                setSelectedTask(selectedTask);
+                if (TaskListController.selectedTask.isEmpty()) {
+                    log.debug("List is empty");
+                }
+
+            } else {
+                // TODO maybe display error message / dialog(?)
+                log.debug("Nothing selected");
+            }
         }
     }
 
@@ -136,7 +155,7 @@ public class TaskListController extends Controller implements Initializable {
     public void setSelectedTask() {
         ObservableList<Task> selectedTask = TableViewSelectedList.getSelectionModel().getSelectedItems();
         if (!selectedTask.isEmpty()) {
-            this.selectedTask = selectedTask.get(0);
+            this.selectedTask = (ObservableList<Task>) selectedTask.get(0);
         }else{
             log.error("No task was selected");
         }

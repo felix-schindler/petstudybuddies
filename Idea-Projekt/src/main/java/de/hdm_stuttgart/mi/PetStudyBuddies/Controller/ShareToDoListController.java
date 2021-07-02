@@ -29,7 +29,7 @@ public class ShareToDoListController implements Initializable {
     @FXML
     TextField TextFieldEMailShare;
     @FXML
-    Label LabelNameToDoList;
+    Label LabelNameToDoList, ShareToDoListInvalidInput;
     ObservableList<ToDoList> selectedList;
 
     @FXML
@@ -42,16 +42,21 @@ public class ShareToDoListController implements Initializable {
                 // TODO
                 try {
                     if (ToDoListController.selectedListAsObject.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + TextFieldEMailShare.getText() + "'").fetch()))) {
+                        //if()
+                        new InsertQuery("ToDoListShare",new String[]{"UserID","ToDoListID"},new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(TaskListController.selectedListId)});
                         Dialog.showInfo("Success", "User added");
+                        closeSecondScene(actionEvent);
+                        ToDoListController.updateSelectedList();
+                        PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+                    }else{
+                        ShareToDoListInvalidInput.setText("Your sharing your To Do List with the same User. Please retry!");
                     }
                 } catch (NumberFormatException e) {
                     log.catching(e);
                     log.error("User not found");
                     Dialog.showError("Failed to add user", "User does not exists");
                 }
-                closeSecondScene(actionEvent);
-                ToDoListController.updateSelectedList();
-                PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+
             } else {
                 Dialog.showError("Failed to add user", "User does not exists");
 
