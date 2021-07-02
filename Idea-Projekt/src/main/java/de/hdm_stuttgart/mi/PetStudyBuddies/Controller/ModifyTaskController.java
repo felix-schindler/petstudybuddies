@@ -34,7 +34,7 @@ public class ModifyTaskController {
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty() && DatePickerModifyTask.getValue() != null) {
                 // TODO
-                new UpdateQuery("Task", new String[]{ "Content", "Until"}, new String[]{ eingabe, DatePickerModifyTask.getValue().toString()},"ID = "+ TaskListController.selectedTask.getID(), true);
+                new UpdateQuery("Task", new String[]{ "Content", "Until"}, new String[]{ eingabe, DatePickerModifyTask.getValue().toString()},"ID = "+ TaskListController.selectedTaskAsObject.getID(), true);
                 closeSecondScene(actionEvent);
                 ToDoListController.updateSelectedList();
                 TaskListController.selectedTask=null;

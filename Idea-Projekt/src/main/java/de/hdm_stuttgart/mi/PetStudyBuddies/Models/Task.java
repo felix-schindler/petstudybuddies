@@ -129,6 +129,11 @@ public class Task extends Model {
      * @return true if the person could be assigned, false otherwise
      */
     public boolean assignPerson(int TaskID, int UserID) {
+
+        if (new SelectQuery(getTable(), "ID", "TaskID=" + TaskID + " AND UserID=" + UserID).fetch().equals(null) ) {
+            log.debug("No User existing with that Username");
+            return false;
+        }
         // User is already assigned
         if (new SelectQuery(getTable(), "ID", "TaskID=" + TaskID + " AND UserID=" + UserID).fetch().equals(Integer.toString(UserID))) {
             log.debug("Newly assigned Person is the same as before.");

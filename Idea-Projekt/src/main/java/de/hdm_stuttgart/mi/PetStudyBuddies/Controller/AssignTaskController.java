@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -22,34 +21,34 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ShareToDoListController implements Initializable {
-    private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
+public class AssignTaskController implements Initializable{
+    private static final Logger log = LogManager.getLogger(AssignTaskController.class);
     @FXML
-    Button ButtonBackShareList, ButtonShareList;
+    Button ButtonBackAssignTask, ButtonAssignTask;
     @FXML
     TextField TextFieldUsernameShare;
     @FXML
-    Label LabelNameToDoList, ShareToDoListInvalidInput;
-    ObservableList<ToDoList> selectedList;
+    Label LabelNameTask, AssignTaskInvalidInput;
 
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == ButtonShareList) {
+        if (actionEvent.getSource() == ButtonAssignTask) {
+            LabelNameTask.setText(TaskListController.selectedTaskAsObject.getContent());
             log.debug("Open create new ToDoList dialog");
             String eingabe = TextFieldUsernameShare.getText();
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty()) {
                 // TODO
                 try {
-                    if (ToDoListController.selectedListAsObject.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + TextFieldUsernameShare.getText() + "'").fetch()))) {
-                        //if()
-                        new InsertQuery("ToDoListShare",new String[]{"UserID","ToDoListID"},new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(TaskListController.selectedListId)});
+                    if (TaskListController.selectedTaskAsObject.assignPerson(TaskListController.selectedTaskAsObject.getID(),Account.getLoggedUser().getID())){
+
                         Dialog.showInfo("Success", "User added");
                         closeSecondScene(actionEvent);
-                        ToDoListController.updateSelectedList();
+                        //TODO
+                        //ToDoListController.updateSelectedList();
                         PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
                     }else{
-                        ShareToDoListInvalidInput.setText("Your sharing your To Do List with the same User. Please retry!");
+                        AssignTaskInvalidInput.setText("User not found or your sharing your Task with the same User. Please retry!");
                     }
                 } catch (NumberFormatException e) {
                     log.catching(e);
@@ -61,7 +60,7 @@ public class ShareToDoListController implements Initializable {
                 Dialog.showError("Failed to add user", "User does not exists");
 
             }
-        } else if (actionEvent.getSource() == ButtonBackShareList) {
+        } else if (actionEvent.getSource() == ButtonBackAssignTask) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
 
@@ -75,14 +74,11 @@ public class ShareToDoListController implements Initializable {
         log.debug("Second Scene closed");
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.selectedList = ToDoListController.getSelectedList();
-        for (ToDoList todolist : selectedList) {
-            LabelNameToDoList.setText(todolist.getTitle());
-        }
+        LabelNameTask.setText(TaskListController.selectedTaskAsObject.getContent());
 
     }
+
 
 }
