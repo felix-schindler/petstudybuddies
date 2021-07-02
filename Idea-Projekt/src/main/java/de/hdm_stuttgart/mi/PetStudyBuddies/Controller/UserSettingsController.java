@@ -33,6 +33,10 @@ public class UserSettingsController extends Controller implements Initializable 
     public void save() {
         //if NewPassword and ConfirmNewPassword are equal
         //the new Password and the new Email Address will be saved
+        // TODO Du vergleichst hier die TextFields, NICHT den Inhalt.
+        //  zuerst Utils.getInputString, dann abprüfen ob != null, dann festlegen.
+        // TODO Außerdem wird nirgendwo die save funktion vom User aufgerufen,
+        //  daher werden die Änderung nie gespeichert.
         if (newPassword == confirmNewPassword) {
             user.setPassword(Utils.getInputString(newPassword));
             user.setEMail(Utils.getInputString(newEmailAddress));

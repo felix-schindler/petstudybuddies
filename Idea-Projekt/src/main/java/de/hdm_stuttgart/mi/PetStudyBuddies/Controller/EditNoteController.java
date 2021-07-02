@@ -28,7 +28,7 @@ public class EditNoteController extends Controller implements Initializable {
 
         if (ID != -1) {
             note = new Note(ID);
-            title.setText(note.getContent());
+            title.setText(note.getTitle());
             content.setText(note.getContent());
         } else {
             log.error("Failed to get a note");
