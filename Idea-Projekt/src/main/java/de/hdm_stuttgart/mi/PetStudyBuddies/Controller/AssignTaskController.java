@@ -19,6 +19,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AssignTaskController implements Initializable{
@@ -39,7 +41,9 @@ public class AssignTaskController implements Initializable{
             if (eingabe != null && !eingabe.isEmpty()) {
                 // TODO
                 try {
-                    if (TaskListController.selectedTaskAsObject.assignPerson(TaskListController.selectedTaskAsObject.getID(),Account.getLoggedUser().getID())){
+                    ResultSet assigneeID = new SelectQuery("User","ID","Username = '"+eingabe+"'").fetchAll();
+                    log.debug("Assignee ID = " + assigneeID);
+                    if (TaskListController.selectedTaskAsObject.assignPerson(TaskListController.selectedTaskAsObject.getID(),assigneeID.getInt("ID"))){
 
                         Dialog.showInfo("Success", "User added");
                         closeSecondScene(actionEvent);
@@ -53,6 +57,8 @@ public class AssignTaskController implements Initializable{
                     log.catching(e);
                     log.error("User not found");
                     Dialog.showError("Failed to add user", "User does not exists");
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
 
             } else {
