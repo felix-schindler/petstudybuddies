@@ -7,17 +7,25 @@
 
 [GitLab Repository](https://gitlab.mi.hdm-stuttgart.de/kb136/petstudybuddies)
 
+## Pipeline
+Wenn etwas im [Idea-Projekt Ordner](https://gitlab.mi.hdm-stuttgart.de/kb136/petstudybuddies/-/tree/master/Idea-Projekt) geändert wird, wird automatisch ein Code check ausgeführt
+
 ## Projektvorgaben
-- [x] Einsatz von Interfaces bzw. Vererbung Sinnvoller Einsatz einer Package-Struktur Verwendung von Exceptions
+[Aufgabenbeschreibung](https://kriha.pages.mi.hdm-stuttgart.de/se2_lecture/documents/aufgabe.pdf)
+- [x] Einsatz von Interfaces bzw. Vererbung
+- [ ] Sinnvoller Einsatz einer Package-Struktur
+- [ ] Verwendung von Exceptions
 - [x] Grafische Oberfläche (JavaFX)
 - [x] Logging mit sinnvollem Einsatz der Log-Stufen
 - [x] Dokumentation der Klassenstruktur mit UML-Klassendiagrammen
 - [ ] Threads
 - [ ] Einsatz von Streams und Lambda-Funktionen auf Collections (funktionale Programmierung)
-- [ ] Dokumentation und Test-Fälle Verwenden von Factories
+- [ ] Dokumentation und Test-Fälle
+- [ ] Verwenden von Factories
 
-## Pipeline
-Wenn etwas im [Idea-Projekt Ordner](https://gitlab.mi.hdm-stuttgart.de/kb136/petstudybuddies/-/tree/master/Idea-Projekt) geändert wird, wird automatisch ein Code check ausgeführt
+## Dokumentation
+[Vorgaben](https://kriha.pages.mi.hdm-stuttgart.de/se2_lecture/documents/doku-info.pdf)
+[Dokument (Google Docs)](https://docs.google.com/document/d/1EKYGdz1tgzMPT4ij7I_NfJPp0t_mCuDxCy43JGarFrE/edit)
 
 ## Diagramme
 ### Datenbank
