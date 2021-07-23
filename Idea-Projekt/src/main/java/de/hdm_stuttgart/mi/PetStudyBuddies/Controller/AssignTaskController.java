@@ -30,7 +30,7 @@ public class AssignTaskController implements Initializable{
     @FXML
     TextField TextFieldUsernameShare;
     @FXML
-    Label LabelNameTask, AssignTaskInvalidInput;
+    Label LabelNameTask;
 
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
@@ -43,15 +43,20 @@ public class AssignTaskController implements Initializable{
                 try {
                     ResultSet assigneeID = new SelectQuery("User","ID","Username = '"+eingabe+"'").fetchAll();
                     log.debug("Assignee ID = " + assigneeID);
-                    if (TaskListController.selectedTaskAsObject.assignPerson(TaskListController.selectedTaskAsObject.getID(),assigneeID.getInt("ID"))){
+                    if (assigneeID.first()) {
+                        if (TaskListController.selectedTaskAsObject.assignPerson(TaskListController.selectedTaskAsObject.getID(),assigneeID.getInt("ID"))){
 
-                        Dialog.showInfo("Success", "User added");
-                        closeSecondScene(actionEvent);
-                        //TODO
-                        //ToDoListController.updateSelectedList();
-                        PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-                    }else{
-                        AssignTaskInvalidInput.setText("User not found or your sharing your Task with the same User. Please retry!");
+                            Dialog.showInfo("Success", "User added");
+                            closeSecondScene(actionEvent);
+                            //TODO
+                            //ToDoListController.updateSelectedList();
+                            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+                        }else{
+                            Dialog.showError("User not found or your sharing your Task with the same User. Please retry!");
+                        }
+                    } else {
+                        log.error("User in Database not found");
+                        Dialog.showError("User not found or your sharing your Task with the same User. Please retry!");
                     }
                 } catch (NumberFormatException e) {
                     log.catching(e);

@@ -4,6 +4,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -182,7 +183,7 @@ public class ToDoListController extends Controller implements Initializable {
                 }
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
-                // TODO maybe display error message / dialog(?)
+                Dialog.showInfo("Please select a Task from your To Do List");
                 log.debug("Nothing selected");
             }
         } else if (actionEvent.getSource() == ButtonAddNewList) {

@@ -4,14 +4,12 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,8 +20,6 @@ public class ModifyTaskController {
     Button ButtonBackModifyTask, ButtonCreateModifiedTask;
     @FXML
     TextField TextFieldModifyTask;
-    @FXML
-    Label LabelValidInputModifyTask;
     @FXML
     DatePicker DatePickerModifyTask;
 
@@ -40,7 +36,7 @@ public class ModifyTaskController {
                 TaskListController.selectedTask=null;
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
-                LabelValidInputModifyTask.setText("Please enter a new Title for your Task!");
+                Dialog.showInfo("Please enter a valid Title and Date for your Task!");
                 log.debug("No New Title entered, Label set");
             }
         } else if (actionEvent.getSource() == ButtonBackModifyTask) {

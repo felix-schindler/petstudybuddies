@@ -4,6 +4,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -22,15 +23,12 @@ public class AddTaskController {
     @FXML
     TextField TextFieldAddNewTask;
     @FXML
-    Label LabelValidInputAddTask;
-    @FXML
     DatePicker DatePickerAddNewTask;
 
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonCreateNewTask) {
             log.debug("Open create new ToDoList dialog");
             String eingabe = TextFieldAddNewTask.getText();
-            log.debug("O");
             if (eingabe != null && !eingabe.isEmpty() && DatePickerAddNewTask.getValue() != null) {
                 // TODO
                 new InsertQuery("Task", new String[]{"ToDoListID", "Content", "Until"}, new String[]{String.valueOf(ToDoListController.getSelectedListID()), eingabe, DatePickerAddNewTask.getValue().toString()}, true);
@@ -38,8 +36,8 @@ public class AddTaskController {
                 ToDoListController.updateSelectedList();
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
-                LabelValidInputAddTask.setText("Please enter a new Title for your List!");
-                log.debug("No New Title entered, Label set");
+                Dialog.showError("Please enter a valid Title and Date!");
+                log.debug("No New Valid Title or Date, Dialog shown");
             }
         } else if (actionEvent.getSource() == ButtonBackAddTask) {
             closeSecondScene(actionEvent);

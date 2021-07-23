@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ModifyToDoListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ModifyToDoListController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
@@ -44,7 +44,7 @@
                 </Button>
             </children>
         </HBox>
-        <Pane layoutX="29.0" layoutY="39.0" prefHeight="219.0" prefWidth="495.0">
+        <Pane layoutX="29.0" layoutY="39.0" prefHeight="180.0" prefWidth="495.0">
             <children>
                 <VBox prefHeight="219.0" prefWidth="494.0">
                     <children>
@@ -65,7 +65,7 @@
                                         </Label>
                                         <Label fx:id="LabelCurrentTitle" prefHeight="25.0" prefWidth="427.0" text="Title of To-Do List" textFill="WHITE">
                                             <font>
-                                                <Font name="Calibri" size="18.0" />
+                                                <Font name="Calibri Bold" size="18.0" />
                                             </font>
                                         </Label>
                                     </children>
@@ -92,7 +92,7 @@
                             </children>
                         </VBox>
                         <Pane prefHeight="200.0" prefWidth="200.0" />
-                        <Label fx:id="LabelValidInputNewTitle" layoutX="10.0" layoutY="10.0" prefHeight="222.0" prefWidth="494.0" textFill="RED">
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="494.0" textFill="RED">
                             <font>
                                 <Font name="Calibri Bold" size="22.0" />
                             </font>

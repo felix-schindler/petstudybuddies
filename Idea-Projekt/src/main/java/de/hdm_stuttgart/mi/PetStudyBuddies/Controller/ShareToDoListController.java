@@ -29,7 +29,7 @@ public class ShareToDoListController implements Initializable {
     @FXML
     TextField TextFieldUsernameShare;
     @FXML
-    Label LabelNameToDoList, ShareToDoListInvalidInput;
+    Label LabelNameToDoList;
     ObservableList<ToDoList> selectedList;
 
     @FXML
@@ -49,7 +49,7 @@ public class ShareToDoListController implements Initializable {
                         ToDoListController.updateSelectedList();
                         PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
                     }else{
-                        ShareToDoListInvalidInput.setText("Your sharing your To Do List with the same User. Please retry!");
+                        Dialog.showError("Your sharing your To Do List with the same User. Please retry!");
                     }
                 } catch (NumberFormatException e) {
                     log.catching(e);

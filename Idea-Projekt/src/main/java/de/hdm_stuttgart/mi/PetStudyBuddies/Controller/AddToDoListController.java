@@ -5,6 +5,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 import javax.sql.rowset.CachedRowSet;
 import java.sql.SQLException;
 
-public class AddToDoListController {
+public class AddToDoListController extends Controller{
     private static final Logger log = LogManager.getLogger(AddToDoListController.class);
     @FXML
     Button ButtonCreateList, ButtonBack;
@@ -36,6 +37,7 @@ public class AddToDoListController {
             String eingabe = TextFieldAddNewList.getText();
             if (eingabe != null && !eingabe.isEmpty()) {
                 new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), eingabe}, true);
+
                 closeSecondScene(actionEvent);
                 ObservableList<ToDoList> newList = FXCollections.observableArrayList();
                 CachedRowSet newToDo = new SelectQuery("ToDoList","*","UserID = "+ Account.getLoggedUser().getID() + " AND Title= '"+eingabe + "'",null,null,true).fetchAll();
@@ -48,8 +50,8 @@ public class AddToDoListController {
                     log.debug(("Created List could not be set as selected List"));
                 }
             } else {
-                LabelValidInput.setText("Please enter a new Title for your List!");
-                log.debug("No New Title entered, Label set");
+                Dialog.showError("Please enter a new Title for your List!");
+                log.debug("No New Title entered, Dialog shown");
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);

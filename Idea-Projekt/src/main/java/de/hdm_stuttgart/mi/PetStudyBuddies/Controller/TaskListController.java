@@ -1,10 +1,8 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +18,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Border;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -77,23 +74,20 @@ public class TaskListController extends Controller implements Initializable {
             openSecondScene("/fxml/ToDoList/ToDoListAddTask.fxml");
         } else if (event.getSource() == ButtonModifyTask) {
             log.debug("ButtonModifyTask was clicked");
-            setSelectedTask();
-            if (selectedTaskAsObject!=null) {
+            if (setSelectedTask()) {
                 openSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
             }else{
                 Dialog.showInfo("Please select a Task from your To Do List");
             }
         } else if (event.getSource() == ButtonShareList) {
             log.debug("ButtonShareList was clicked");
-            openSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
+            openSecondScene("/fxml/ToDoList/ToDoListShareToDoList.fxml");
         }else if (event.getSource()==ButtonAssignTask){
             log.debug("ButtonAssignTask was clicked");
-            setSelectedTask();
-            if (selectedTask!=null) {
+
+            if (setSelectedTask()) {
                 log.debug("Task was selected");
                 openSecondScene("/fxml/ToDoList/ToDoListAssignTask.fxml");
-
-
             } else {
                 // TODO maybe display error message / dialog(?)
                 Dialog.showInfo("Please select a Task from your To Do List");
@@ -175,13 +169,15 @@ public class TaskListController extends Controller implements Initializable {
         }
     }
     @FXML
-    public void setSelectedTask() {
+    public boolean setSelectedTask() {
         ObservableList<Task> selectedTask = TableViewSelectedList.getSelectionModel().getSelectedItems();
         if (!selectedTask.isEmpty()) {
             this.selectedTaskAsObject =  selectedTask.get(0);
             setSelectedTask(selectedTaskAsObject);
+            return true;
         }else{
             log.error("No task was selected");
+            return false;
         }
     }
 

@@ -144,11 +144,11 @@ public class Task extends Model {
                 return false;
             }else{
                 ResultSet selectedTask = new SelectQuery("Task", "*", "ID= "+TaskID).fetchAll();
-                /*try {
+                try {
                     new InsertQuery("Task", new String[]{"UserID", "ToDoListID","Content","Until"}, new String[]{String.valueOf(UserID), String.valueOf(selectedTask.getInt("ToDoListID")),selectedTask.getString("Content"),selectedTask.getString("Until")});
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
-                }*/
+                }
                 new UpdateQuery("Task", "AssignedTo", String.valueOf(UserID), "ID = "+selectedTask.getInt("ID"));
                 return true;
             }
