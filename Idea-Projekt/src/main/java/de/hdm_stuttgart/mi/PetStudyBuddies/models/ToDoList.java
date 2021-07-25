@@ -84,20 +84,6 @@ public class ToDoList extends Model implements Shareable {
     }
 
     /**
-     * Changes value flagged to opposite of current value
-     */
-    /*public void changeFlagged() {
-        if(this.flagged){
-            new UpdateQuery("ToDoList",new String[]{"Flagged"},new String[]{"false"},"ID="+ todoID);
-
-            this.flagged=false;
-        }else {
-            new UpdateQuery("ToDoList",new String[]{"Flagged"},new String[]{"true"},"ID="+ todoID);
-            this.flagged = true;
-        }
-    }*/
-
-    /**
      * @return Flagged of the ToDoList
      */
     public boolean getFlagged() {
@@ -105,7 +91,7 @@ public class ToDoList extends Model implements Shareable {
     }
 
     /**
-     * sets flagged
+     * Sets flagged
      *
      * @param flagged
      */
@@ -114,10 +100,20 @@ public class ToDoList extends Model implements Shareable {
     }
 
     /**
-     * TODO this.
+     * Sets ToDo_List ID (Has to be same as in database!)
      *
-     * @param ID
-     * @return
+     * @param newTodoID
+     */
+    public void setTodoID(int newTodoID) {
+        todoID = newTodoID;
+    }
+
+    public int getTodoID() {
+        return todoID;
+    }
+
+    /**
+     * @see Shareable#share(int)
      */
     public boolean share(int ID) {
         if (ID == Account.getLoggedUser().getID() || new SelectQuery("ToDoListShare", "ID", "UserID=" + ID + " AND ToDoListID=" + getID()).fetch() != null) {
@@ -129,13 +125,16 @@ public class ToDoList extends Model implements Shareable {
     }
 
     /**
-     * TODO save -> Throw Exception if owner != UserID (in DB) weil Owner kann nicht geändert werden.
-     *
      * @see Model#save()
      */
-    public boolean save() {
+    public boolean save() throws Exception {
         log.debug("Trying to safe changes");
+        String realOwner = new SelectQuery("ToDoList", "UserID", "ID=" + getID()).fetch();
+        if (!realOwner.equals(String.valueOf(owner))) {
+            log.error("Owner of a note can't be changed!");
+            log.info("Tried to change owner of ToDoList " + getID() + " from " + realOwner + " to " + owner);
+            throw new Exception("Owner of a note can't be changed!");
+        }
         return new UpdateQuery(getTable(), new String[]{"Title", "Flagged"}, new String[]{title, flagged ? "1" : "0"}, "ID=" + getID()).Count() == 1;
-        //return new UpdateQuery(getTable(), new String[]{"Title"}, new String[]{title}, "ID=" + getID()).Count() == 1;
     }
 }

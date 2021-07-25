@@ -27,8 +27,8 @@ public class Calendar extends Model {
     /**
      * @see Model#save()
      */
-    public boolean save() {
+    public boolean save() throws Exception {
         log.debug("Trying to save");
-        return false;
+        throw new Exception("Not implemented!");
     }
 }

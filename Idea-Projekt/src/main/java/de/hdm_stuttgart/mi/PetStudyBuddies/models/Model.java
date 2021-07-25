@@ -26,7 +26,7 @@ abstract class Model {
     /**
      * @return true if saved successfully, false otherwise
      */
-    public abstract boolean save();
+    public abstract boolean save() throws Exception;
 
     /**
      * @return The ID of the database entry

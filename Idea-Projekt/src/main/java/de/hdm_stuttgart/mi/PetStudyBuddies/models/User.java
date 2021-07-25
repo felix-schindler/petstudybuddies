@@ -125,19 +125,19 @@ public class User extends Model {
      *
      * @see Model#save()
      */
-    public boolean save() {
+    public boolean save() throws Exception {
         log.debug("Trying to safe changes");
         if (password.length() != 40) {
             log.error("Password has to be SHA1 encrypted");
             log.info("The password has not the SHA1 length and is therefore not encrypted.");
-            return false;
+            throw new Exception("Password has to be SHA1 encrypted");
         }
 
         String realUsername = getField("Username");
         if (username.equals(realUsername)) {
             log.error("Username is not changeable");
             log.info(realUsername + " tried to change username to " + username);
-            return false;
+            throw new Exception("Username is not changeable");
         }
 
         return new UpdateQuery(getTable(), new String[]{"EMail", "Password"}, new String[]{eMail, password}, "ID=" + getID()).Count() == 1;
