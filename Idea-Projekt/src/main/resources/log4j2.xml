@@ -29,25 +29,25 @@
 
     <Loggers>
         <!-- You my want to define class or package level per-logger rules -->
-        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Controller" level="debug">
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.controller" level="debug">
             <AppenderRef ref="Controller"/>
         </Logger>
-        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils" level="debug">
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils" level="debug">
             <AppenderRef ref="Utils"/>
         </Logger>
-        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Models" level="debug">
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.models" level="debug">
             <AppenderRef ref="Models"/>
         </Logger>
-        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery" level="debug">
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery" level="debug">
             <AppenderRef ref="SelectQuery"/>
         </Logger>
-        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery" level="debug">
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery" level="debug">
             <AppenderRef ref="InsertQuery"/>
         </Logger>
-        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery" level="debug">
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery" level="debug">
             <AppenderRef ref="UpdateQuery"/>
         </Logger>
-        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.DeleteQuery" level="debug">
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery" level="debug">
             <AppenderRef ref="DeleteQuery"/>
         </Logger>
         <Root level="info">

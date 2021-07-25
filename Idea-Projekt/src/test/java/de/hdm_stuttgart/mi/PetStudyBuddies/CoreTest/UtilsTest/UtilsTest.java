@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.CoreTest.UtilsTest;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import org.junit.Assert;
 import org.junit.Test;
 

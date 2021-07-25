@@ -1,9 +1,9 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.CoreTest.DBTest;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.DeleteQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import org.junit.Assert;
 import org.junit.Test;
 

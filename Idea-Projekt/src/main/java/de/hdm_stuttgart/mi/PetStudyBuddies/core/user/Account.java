@@ -1,0 +1,24 @@
+package de.hdm_stuttgart.mi.PetStudyBuddies.core.user;
+
+import de.hdm_stuttgart.mi.PetStudyBuddies.models.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+/**
+ * Account - This class holds the current User and the token
+ */
+public class Account {
+    private static final Logger log = LogManager.getLogger(Account.class);
+    private static User user = null;
+
+    public static void setUser(User user) {
+        if (user == null)
+            return;
+        Account.user = user;
+        log.info("New User set");
+    }
+
+    public static User getLoggedUser() {
+        return user;
+    }
+}

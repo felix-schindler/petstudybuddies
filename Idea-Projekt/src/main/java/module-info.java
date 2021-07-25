@@ -9,10 +9,10 @@ module gui {
 
     opens de.hdm_stuttgart.mi.PetStudyBuddies to javafx.fxml;
     exports de.hdm_stuttgart.mi.PetStudyBuddies;
-    opens de.hdm_stuttgart.mi.PetStudyBuddies.Core to javafx.fxml;
-    exports de.hdm_stuttgart.mi.PetStudyBuddies.Core;
-    opens de.hdm_stuttgart.mi.PetStudyBuddies.Controller to javafx.fxml;
-    exports de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
-    opens de.hdm_stuttgart.mi.PetStudyBuddies.Models to javafx.fxml;
-    exports de.hdm_stuttgart.mi.PetStudyBuddies.Models;
+    opens de.hdm_stuttgart.mi.PetStudyBuddies.core to javafx.fxml;
+    exports de.hdm_stuttgart.mi.PetStudyBuddies.core;
+    opens de.hdm_stuttgart.mi.PetStudyBuddies.controller to javafx.fxml;
+    exports de.hdm_stuttgart.mi.PetStudyBuddies.controller;
+    opens de.hdm_stuttgart.mi.PetStudyBuddies.models to javafx.fxml;
+    exports de.hdm_stuttgart.mi.PetStudyBuddies.models;
 }
