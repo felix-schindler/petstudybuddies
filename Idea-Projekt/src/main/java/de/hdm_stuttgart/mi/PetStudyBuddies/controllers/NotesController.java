@@ -24,9 +24,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-/**
- * Sample Skeleton for 'Untitled' Controller Class
- */
 public class NotesController extends Controller implements Initializable {
     private final static Logger log = LogManager.getLogger(NotesController.class);
     private static int editNote = -1;

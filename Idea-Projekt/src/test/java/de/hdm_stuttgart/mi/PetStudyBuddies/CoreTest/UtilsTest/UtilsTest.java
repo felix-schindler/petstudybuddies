@@ -42,13 +42,12 @@ public class UtilsTest {
         Assert.assertFalse(Utils.verifyMail("eexamble@.de"));
     }
 
-    /**
+    /*
      * Test utils getInputString
-     */
     @Test
     public void testGetInputString() {
         TextField testTextField = new TextField();
-        // PasswordField testPasswordField = new PasswordField();
+        PasswordField testPasswordField = new PasswordField();
         // TextArea testTextArea = new TextArea();
 
         testTextField.setText("");
@@ -61,10 +60,12 @@ public class UtilsTest {
         Assert.assertEquals("sup?", Utils.getInputString(testTextField));
         testTextField.setText("     abc.");
         Assert.assertEquals("abc.", Utils.getInputString(testTextField));
-        /*Assert.assertEquals("", Utils.getInputString(testPasswordField));
+
         Assert.assertEquals("", Utils.getInputString(testPasswordField));
         Assert.assertEquals("", Utils.getInputString(testPasswordField));
         Assert.assertEquals("", Utils.getInputString(testPasswordField));
-        Assert.assertEquals("", Utils.getInputString(testPasswordField));*/
+        Assert.assertEquals("", Utils.getInputString(testPasswordField));
+        Assert.assertEquals("", Utils.getInputString(testPasswordField));
     }
+     */
 }
