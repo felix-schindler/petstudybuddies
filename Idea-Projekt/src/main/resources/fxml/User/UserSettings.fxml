@@ -44,7 +44,8 @@
                     <children>
                         <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;"/>
                         <Button fx:id="ApplicationDashboard" contentDisplay="TOP" mnemonicParsing="false"
-                                onAction="#handleMenu" prefHeight="66.0" prefWidth="74.0" styleClass="button3" text="Start" textFill="#a868a0">
+                                onAction="#handleMenu" prefHeight="66.0" prefWidth="74.0" styleClass="button3"
+                                text="Start" textFill="#a868a0">
                             <graphic>
                                 <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

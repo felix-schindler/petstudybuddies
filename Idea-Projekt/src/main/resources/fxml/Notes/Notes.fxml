@@ -133,7 +133,8 @@
                         <VBox alignment="CENTER" layoutY="2.0" prefHeight="185.0" prefWidth="100.0" spacing="10.0">
                             <children>
                                 <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false"
-                                        onAction="#share" prefHeight="50.0" prefWidth="90.0" styleClass="button5" text="Share">
+                                        onAction="#share" prefHeight="50.0" prefWidth="90.0" styleClass="button5"
+                                        text="Share">
                                     <graphic>
                                         <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true"
                                                    preserveRatio="true">
@@ -144,7 +145,8 @@
                                     </graphic>
                                 </Button>
                                 <Button alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false"
-                                        onAction="#editNote" prefHeight="50.0" prefWidth="90.0" styleClass="button5" text="Edit">
+                                        onAction="#editNote" prefHeight="50.0" prefWidth="90.0" styleClass="button5"
+                                        text="Edit">
                                     <graphic>
                                         <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true"
                                                    preserveRatio="true">

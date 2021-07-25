@@ -36,7 +36,8 @@
                     </children>
                 </Pane>
                 <Button fx:id="ButtonShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
-                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" text="Share List" textFill="WHITE">
+                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
+                        text="Share List" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -105,7 +106,8 @@
                                         </TextField>
                                         <Pane prefHeight="27.0" prefWidth="56.0"/>
                                         <Button fx:id="ButtonCheckforUser" alignment="CENTER" mnemonicParsing="false"
-                                                prefHeight="25.0" prefWidth="177.0" styleClass="button5" text="Check for User">
+                                                prefHeight="25.0" prefWidth="177.0" styleClass="button5"
+                                                text="Check for User">
                                             <graphic>
                                                 <ImageView fitHeight="19.0" fitWidth="23.0" pickOnBounds="true"
                                                            preserveRatio="true">
