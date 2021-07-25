@@ -74,10 +74,13 @@ public class NotesController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // Delete empty notes
         new DeleteQuery("Note", "UserID=" + Account.getLoggedUser().getID() + " AND (Title IS NULL OR Title='null' OR Title='') AND (Content IS NULL OR Content='null' OR Content='')");
-
-        noteTable.setItems(getNotes());
-
         labelUsername.setText(Account.getLoggedUser().getUsername());
+
+        update();
+    }
+
+    public void update() {
+        noteTable.setItems(getNotes());
 
         colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
         colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
@@ -92,17 +95,10 @@ public class NotesController extends Controller implements Initializable {
         if (!selectedNote.isEmpty()) {
             return selectedNote.get(0);
         }
-        return null;
-    }
 
-    public void editNote() {
-        if (getSelectedNote() != null) {
-            editNote = getSelectedNote().getID();
-            goToEditNote();
-        } else {
-            log.error("Note could not be selected");
-            Dialog.showError("Note selection error", "Note could not be selected");
-        }
+        log.error("Note could not be selected");
+        Dialog.showError("Note selection error", "Note could not be selected, please try again.");
+        return null;
     }
 
     public void createNewNote() {
@@ -110,10 +106,28 @@ public class NotesController extends Controller implements Initializable {
         try {
             editNote = Integer.parseInt(new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID() + " AND Title IS NULL AND Content IS NULL").fetch());
         } catch (NumberFormatException e) {
+            log.catching(e);
             log.error("Failed to select and set new note");
         }
 
         goToEditNote();
+    }
+
+    public void editNote() {
+        if (getSelectedNote() != null) {
+            editNote = getSelectedNote().getID();
+            goToEditNote();
+        }
+    }
+
+    public void deleteNote() {
+        if (getSelectedNote() != null) {
+            DeleteQuery q = new DeleteQuery("Note", "ID=" + getSelectedNote().getID());
+            if (q.Count() <= -1) {
+                Dialog.showError("Failed to delete selected note, please try again.");
+            }
+            update();
+        }
     }
 
     public void share() {
@@ -132,6 +146,7 @@ public class NotesController extends Controller implements Initializable {
             log.error("User not found");
             Dialog.showError("Failed to add user", "User does not exists");
         }
+        update();
     }
 
     public void goToEditNote() {
