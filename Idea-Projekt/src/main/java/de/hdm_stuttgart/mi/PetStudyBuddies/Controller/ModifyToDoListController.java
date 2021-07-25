@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 public class ModifyToDoListController implements Initializable {
     private static final Logger log = LogManager.getLogger(ModifyToDoListController.class);
     @FXML
-    Button ButtonBackChangeTitle, ButtonChangeTitle;
+    Button ButtonBack, ButtonChangeTitle;
     @FXML
     TextField TextFieldNewTitle;
     @FXML
@@ -43,7 +43,7 @@ public class ModifyToDoListController implements Initializable {
                 LabelValidInputNewTitle.setText("Please enter a new Title for your ToDList!");
                 log.debug("No New Title entered, Label set");
             }
-        } else if (actionEvent.getSource() == ButtonBackChangeTitle) {
+        } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
         }

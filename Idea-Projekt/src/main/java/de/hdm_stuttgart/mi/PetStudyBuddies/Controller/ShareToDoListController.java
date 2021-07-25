@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class ShareToDoListController implements Initializable {
     private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
     @FXML
-    Button ButtonBackShareList, ButtonShareList, ButtonCheckforUser;
+    Button ButtonBack, ButtonShareList, ButtonCheckforUser;
     @FXML
     TextField TextFieldEMailShare;
     @FXML
@@ -53,7 +53,7 @@ public class ShareToDoListController implements Initializable {
                 Dialog.showError("Failed to add user", "User does not exists");
 
             }
-        } else if (actionEvent.getSource() == ButtonBackShareList) {
+        } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
 

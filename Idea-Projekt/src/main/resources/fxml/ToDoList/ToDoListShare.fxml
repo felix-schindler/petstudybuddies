@@ -4,16 +4,16 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
             prefHeight="327.0" prefWidth="539.0" styleClass="linear-grad"
-            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
+            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/16"
             fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ShareToDoListController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button fx:id="ButtonBackShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
-                        prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button fx:id="ButtonBack" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
+                        style="-fx-background-radius: 0 0 10 0;" styleClass="button3" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -36,8 +36,7 @@
                     </children>
                 </Pane>
                 <Button fx:id="ButtonShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
-                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Share List" textFill="WHITE">
+                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" text="Share List" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -106,8 +105,7 @@
                                         </TextField>
                                         <Pane prefHeight="27.0" prefWidth="56.0"/>
                                         <Button fx:id="ButtonCheckforUser" alignment="CENTER" mnemonicParsing="false"
-                                                prefHeight="25.0" prefWidth="177.0" styleClass="button5"
-                                                stylesheets="@../../styles/fullpackstyling.css" text="Check for User">
+                                                prefHeight="25.0" prefWidth="177.0" styleClass="button5" text="Check for User">
                                             <graphic>
                                                 <ImageView fitHeight="19.0" fitWidth="23.0" pickOnBounds="true"
                                                            preserveRatio="true">
@@ -125,12 +123,10 @@
                                             <children>
                                                 <ToolBar prefHeight="42.0" prefWidth="616.0"
                                                          style="-fx-background-radius: 20 20 20 20;"
-                                                         styleClass="combo-box"
-                                                         stylesheets="@../../styles/fullpackstyling.css">
+                                                         styleClass="combo-box">
                                                     <items>
                                                         <Button fx:id="ButtonSelectUser" mnemonicParsing="false"
                                                                 prefHeight="30.0" prefWidth="114.0" styleClass="button5"
-                                                                stylesheets="@../../styles/fullpackstyling.css"
                                                                 text="Select User">
                                                             <graphic>
                                                                 <ImageView fitHeight="22.0" fitWidth="22.0"
@@ -143,8 +139,7 @@
                                                         </Button>
                                                         <TextField fx:id="TextFieldMatch" promptText="Match"/>
                                                         <Button fx:id="ButtonUp" mnemonicParsing="false"
-                                                                styleClass="button5"
-                                                                stylesheets="@../../styles/fullpackstyling.css">
+                                                                styleClass="button5">
                                                             <graphic>
                                                                 <ImageView fitHeight="17.0" fitWidth="64.0"
                                                                            pickOnBounds="true" preserveRatio="true">
@@ -155,8 +150,7 @@
                                                             </graphic>
                                                         </Button>
                                                         <Button fx:id="ButtonDown" mnemonicParsing="false"
-                                                                styleClass="button5"
-                                                                stylesheets="@../../styles/fullpackstyling.css">
+                                                                styleClass="button5">
                                                             <graphic>
                                                                 <ImageView fitHeight="24.0" fitWidth="17.0"
                                                                            pickOnBounds="true" preserveRatio="true">

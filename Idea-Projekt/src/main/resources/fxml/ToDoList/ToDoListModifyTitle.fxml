@@ -5,16 +5,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
             prefHeight="268.0" prefWidth="539.0" styleClass="linear-grad"
             stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ModifyToDoListController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button fx:id="ButtonBackChangeTitle" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
-                        prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button fx:id="ButtonBack" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
+                        style="-fx-background-radius: 0 0 10 0;" styleClass="button3" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -37,8 +37,7 @@
                     </children>
                 </Pane>
                 <Button fx:id="ButtonChangeTitle" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
-                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Change Title" textFill="WHITE">
+                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" text="Change Title" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>

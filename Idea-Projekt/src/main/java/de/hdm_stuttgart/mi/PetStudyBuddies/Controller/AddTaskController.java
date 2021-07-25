@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 public class AddTaskController {
     private static final Logger log = LogManager.getLogger(AddTaskController.class);
     @FXML
-    Button ButtonBackAddTask, ButtonCreateNewTask;
+    Button ButtonBack, ButtonCreateNewTask;
     @FXML
     TextField TextFieldAddNewTask;
     @FXML
@@ -39,7 +39,7 @@ public class AddTaskController {
                 LabelValidInputAddTask.setText("Please enter a new Title for your List!");
                 log.debug("No New Title entered, Label set");
             }
-        } else if (actionEvent.getSource() == ButtonBackAddTask) {
+        } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
         }
