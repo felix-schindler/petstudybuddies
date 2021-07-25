@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.controller.ToDoListController;
+import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ToDoListController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

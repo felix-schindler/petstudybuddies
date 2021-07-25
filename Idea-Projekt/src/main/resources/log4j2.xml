@@ -29,7 +29,7 @@
 
     <Loggers>
         <!-- You my want to define class or package level per-logger rules -->
-        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.controller" level="debug">
+        <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.controllers" level="debug">
             <AppenderRef ref="Controller"/>
         </Logger>
         <Logger name="de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils" level="debug">

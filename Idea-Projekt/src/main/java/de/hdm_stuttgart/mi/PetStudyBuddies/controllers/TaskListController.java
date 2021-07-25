@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.controller;
+package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;

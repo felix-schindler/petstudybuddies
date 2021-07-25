@@ -1,6 +1,6 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.controller;
+package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,33 +13,34 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AddTaskController {
-    private static final Logger log = LogManager.getLogger(AddTaskController.class);
+public class ModifyTaskController {
+    private static final Logger log = LogManager.getLogger(ModifyTaskController.class);
     @FXML
-    Button ButtonBack, ButtonCreateNewTask;
+    Button ButtonBackModifyTask, ButtonCreateModifiedTask;
     @FXML
-    TextField TextFieldAddNewTask;
+    TextField TextFieldModifyTask;
     @FXML
-    Label LabelValidInputAddTask;
+    Label LabelValidInputModifyTask;
     @FXML
-    DatePicker DatePickerAddNewTask;
+    DatePicker DatePickerModifyTask;
 
     public void buttonAction(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == ButtonCreateNewTask) {
-            log.debug("Open create new ToDoList dialog");
-            String eingabe = TextFieldAddNewTask.getText();
+        if (actionEvent.getSource() == ButtonCreateModifiedTask) {
+            log.debug("Open create new Task dialog");
+            String eingabe = TextFieldModifyTask.getText();
             log.debug("O");
-            if (eingabe != null && !eingabe.isEmpty() && DatePickerAddNewTask.getValue() != null) {
+            if (eingabe != null && !eingabe.isEmpty() && DatePickerModifyTask.getValue() != null) {
                 // TODO
-                new InsertQuery("Task", new String[]{"ToDoListID", "Content", "Until"}, new String[]{String.valueOf(ToDoListController.getSelectedListID()), eingabe, DatePickerAddNewTask.getValue().toString()}, true);
+                new UpdateQuery("Task", new String[]{"Content", "Until"}, new String[]{eingabe, DatePickerModifyTask.getValue().toString()}, "ID = " + TaskListController.selectedTask.getID(), true);
                 closeSecondScene(actionEvent);
                 ToDoListController.updateSelectedList();
+                TaskListController.selectedTask = null;
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
-                LabelValidInputAddTask.setText("Please enter a new Title for your List!");
+                LabelValidInputModifyTask.setText("Please enter a new Title for your Task!");
                 log.debug("No New Title entered, Label set");
             }
-        } else if (actionEvent.getSource() == ButtonBack) {
+        } else if (actionEvent.getSource() == ButtonBackModifyTask) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
         }
@@ -50,4 +51,5 @@ public class AddTaskController {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
     }
+
 }

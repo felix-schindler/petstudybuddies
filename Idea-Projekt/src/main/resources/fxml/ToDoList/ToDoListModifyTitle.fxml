@@ -9,7 +9,7 @@
             minWidth="-Infinity"
             prefHeight="268.0" prefWidth="539.0" styleClass="linear-grad"
             stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controller.ModifyToDoListController">
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ModifyToDoListController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>

@@ -1,9 +1,8 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.controller;
+package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,44 +18,34 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ShareToDoListController implements Initializable {
-    private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
+public class ModifyToDoListController implements Initializable {
+    private static final Logger log = LogManager.getLogger(ModifyToDoListController.class);
     @FXML
-    Button ButtonBack, ButtonShareList, ButtonCheckforUser;
+    Button ButtonBack, ButtonChangeTitle;
     @FXML
-    TextField TextFieldEMailShare;
+    TextField TextFieldNewTitle;
     @FXML
-    Label LabelNameToDoList;
+    Label LabelCurrentTitle, LabelValidInputNewTitle;
     ObservableList<ToDoList> selectedList;
 
-    @FXML
+
     public void buttonAction(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == ButtonShareList) {
-            log.debug("Open create new ToDoList dialog");
-            String eingabe = TextFieldEMailShare.getText();
+        if (actionEvent.getSource() == ButtonChangeTitle) {
+            log.debug("Open create new Task dialog");
+            String eingabe = TextFieldNewTitle.getText();
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty()) {
-                // TODO
-                try {
-                    if (ToDoListController.selectedListAsObject.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + TextFieldEMailShare.getText() + "'").fetch()))) {
-                        Dialog.showInfo("Success", "User added");
-                    }
-                } catch (NumberFormatException e) {
-                    log.catching(e);
-                    log.error("User not found");
-                    Dialog.showError("Failed to add user", "User does not exists");
-                }
+                new UpdateQuery("ToDoList", new String[]{"Title"}, new String[]{eingabe}, "ID = " + ToDoListController.selectedListID, true);
                 closeSecondScene(actionEvent);
                 ToDoListController.updateSelectedList();
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
-                Dialog.showError("Failed to add user", "User does not exists");
-
+                LabelValidInputNewTitle.setText("Please enter a new Title for your ToDList!");
+                log.debug("No New Title entered, Label set");
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-
         }
     }
 
@@ -64,15 +53,13 @@ public class ShareToDoListController implements Initializable {
     public void closeSecondScene(ActionEvent actionEvent) {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
-        log.debug("Second Scene closed");
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.selectedList = ToDoListController.getSelectedList();
         for (ToDoList todolist : selectedList) {
-            LabelNameToDoList.setText(todolist.getTitle());
+            LabelCurrentTitle.setText(todolist.getTitle());
         }
 
     }

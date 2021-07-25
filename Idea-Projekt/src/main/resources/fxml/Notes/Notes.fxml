@@ -8,7 +8,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
             stylesheets="@../../styles/fullpackstyling.css"
             style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/16"
-            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controller.NotesController">
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.NotesController">
     <children>
         <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" styleClass="linear-grad">
             <children>
