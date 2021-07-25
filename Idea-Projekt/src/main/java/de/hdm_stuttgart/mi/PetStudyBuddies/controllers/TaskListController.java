@@ -3,6 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
+import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -46,7 +47,11 @@ public class TaskListController extends Controller implements Initializable {
         if (event.getSource() == ButtonSetFlag) {
             log.debug("ButtonSetFlag was clicked");
             ToDoListSelected.setFlagged(!ToDoListSelected.getFlagged());
-            ToDoListSelected.save();
+            try {
+                ToDoListSelected.save();
+            } catch (Exception ignored) {
+                Dialog.showError("Failed to save task, please try again.");
+            }
         } else if (event.getSource() == ButtonChangeTitle) {
             log.debug("ButtonChangeTitle was clicked");
             openSecondScene("/fxml/ToDoList/ToDoListModifyTitle.fxml");

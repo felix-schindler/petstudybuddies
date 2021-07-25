@@ -24,6 +24,7 @@ abstract class Model {
     public abstract String getTable();
 
     /**
+     * @throws Exception Throws exception when data is invalid
      * @return true if saved successfully, false otherwise
      */
     public abstract boolean save() throws Exception;

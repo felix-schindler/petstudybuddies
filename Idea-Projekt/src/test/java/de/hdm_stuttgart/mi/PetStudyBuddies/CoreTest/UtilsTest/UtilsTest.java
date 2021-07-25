@@ -3,6 +3,9 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.CoreTest.UtilsTest;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import org.junit.Assert;
 import org.junit.Test;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class UtilsTest {
     /**
@@ -37,5 +40,31 @@ public class UtilsTest {
         Assert.assertFalse(Utils.verifyMail("here.is@.felix"));
         Assert.assertFalse(Utils.verifyMail("sha.@de"));
         Assert.assertFalse(Utils.verifyMail("eexamble@.de"));
+    }
+
+    /**
+     * Test utils getInputString
+     */
+    @Test
+    public void testGetInputString() {
+        TextField testTextField = new TextField();
+        // PasswordField testPasswordField = new PasswordField();
+        // TextArea testTextArea = new TextArea();
+
+        testTextField.setText("");
+        Assert.assertNull(Utils.getInputString(testTextField));
+        testTextField.setText(null);
+        Assert.assertNull(Utils.getInputString(testTextField));
+        testTextField.setText("   Hellu        ");
+        Assert.assertEquals("Hellu", Utils.getInputString(testTextField));
+        testTextField.setText("sup? ");
+        Assert.assertEquals("sup?", Utils.getInputString(testTextField));
+        testTextField.setText("     abc.");
+        Assert.assertEquals("abc.", Utils.getInputString(testTextField));
+        /*Assert.assertEquals("", Utils.getInputString(testPasswordField));
+        Assert.assertEquals("", Utils.getInputString(testPasswordField));
+        Assert.assertEquals("", Utils.getInputString(testPasswordField));
+        Assert.assertEquals("", Utils.getInputString(testPasswordField));
+        Assert.assertEquals("", Utils.getInputString(testPasswordField));*/
     }
 }
