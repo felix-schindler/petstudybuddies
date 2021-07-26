@@ -27,15 +27,14 @@ public class AddToDoListController extends Controller {
     Button ButtonCreateList, ButtonBack;
     @FXML
     TextField TextFieldAddNewList;
-    @FXML
-    Label LabelValidInput;
+
 
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonCreateList) {
             log.debug("Open create new ToDoList dialog");
             String eingabe = TextFieldAddNewList.getText();
-            if (eingabe != null && !eingabe.isEmpty()) {
+            if (eingabe != null && !eingabe.isEmpty() && new SelectQuery("ToDoList","*","Title='"+eingabe+"' ",null,null,true).Count()==0) {
                 new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), eingabe}, true);
 
                 closeSecondScene(actionEvent);
