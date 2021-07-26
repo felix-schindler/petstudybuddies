@@ -4,6 +4,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -59,22 +60,19 @@ public class ToDoListController extends Controller implements Initializable {
         ToDoListController.selectedList = selectedList;
         setSelectedListAsObject();
     }
-
-    public static void setSelectedListAsObject() {
-        selectedListAsObject = selectedList.get(0);
+    public static void setSelectedListAsObject(){
+        selectedListAsObject= selectedList.get(0);
         log.debug("selectedListAsObject getID:" + selectedListAsObject.getID());
 
     }
 
-    public static int getSelectedListID() {
+    public static int getSelectedListID(){
         return selectedListID;
     }
-
-    public static void setSelectedListID(int ID) {
-        ToDoListController.selectedListID = ID;
+    public static void setSelectedListID(int ID){
+        ToDoListController.selectedListID=ID;
     }
-
-    public static void updateSelectedList() {
+    public static void updateSelectedList(){
         CachedRowSet updatedList = new SelectQuery("ToDoList", "*", "ID=" + ToDoListController.getSelectedListID(), null, null, true).fetchAll();
         ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
         try {
@@ -185,7 +183,7 @@ public class ToDoListController extends Controller implements Initializable {
                 }
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
-                // TODO maybe display error message / dialog(?)
+                Dialog.showInfo("Please select a Task from your To Do List");
                 log.debug("Nothing selected");
             }
         } else if (actionEvent.getSource() == ButtonAddNewList) {
@@ -205,7 +203,7 @@ public class ToDoListController extends Controller implements Initializable {
         }
     }
 
-    public void updateUserToDoLists() {
+    public void updateUserToDoLists(){
         AllUserLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll();
         TodayUserLists = new SelectQuery("ToDoList, Task", "*", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) = date('now')").fetchAll();
         ScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) IS NOT NULL").fetchAll();

@@ -1,12 +1,8 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,48 +15,58 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class ShareToDoListController implements Initializable {
-    private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
+public class AssignTaskController implements Initializable{
+    private static final Logger log = LogManager.getLogger(AssignTaskController.class);
     @FXML
-    Button ButtonBackShareList, ButtonShareList;
+    Button ButtonBackAssignTask, ButtonAssignTask;
     @FXML
     TextField TextFieldUsernameShare;
     @FXML
-    Label LabelNameToDoList;
-    ObservableList<ToDoList> selectedList;
+    Label LabelNameTask;
 
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == ButtonShareList) {
+        if (actionEvent.getSource() == ButtonAssignTask) {
+            LabelNameTask.setText(TaskListController.selectedTaskAsObject.getContent());
             log.debug("Open create new ToDoList dialog");
             String eingabe = TextFieldUsernameShare.getText();
-            log.debug("O");
             if (eingabe != null && !eingabe.isEmpty()) {
                 // TODO
                 try {
-                    if (ToDoListController.selectedListAsObject.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + TextFieldUsernameShare.getText() + "'").fetch()))) {
-                        //if()
-                        new InsertQuery("ToDoListShare",new String[]{"UserID","ToDoListID"},new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(TaskListController.selectedListId)});
-                        Dialog.showInfo("Success", "User added");
-                        closeSecondScene(actionEvent);
-                        ToDoListController.updateSelectedList();
-                        PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-                    }else{
-                        Dialog.showError("Your sharing your To Do List with the same User. Please retry!");
+                    ResultSet assigneeID = new SelectQuery("User","ID","Username = '"+eingabe+"'").fetchAll();
+                    log.debug("Assignee ID = " + assigneeID);
+                    if (assigneeID.first()) {
+                        if (TaskListController.selectedTaskAsObject.assignPerson(TaskListController.selectedTaskAsObject.getID(),assigneeID.getInt("ID"))){
+
+                            Dialog.showInfo("Success", "User added");
+                            closeSecondScene(actionEvent);
+                            //TODO
+                            //ToDoListController.updateSelectedList();
+                            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+                        }else{
+                            Dialog.showError("User not found or your sharing your Task with the same User. Please retry!");
+                        }
+                    } else {
+                        log.error("User in Database not found");
+                        Dialog.showError("User not found or your sharing your Task with the same User. Please retry!");
                     }
                 } catch (NumberFormatException e) {
                     log.catching(e);
                     log.error("User not found");
                     Dialog.showError("Failed to add user", "User does not exists");
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
 
             } else {
                 Dialog.showError("Failed to add user", "User does not exists");
 
             }
-        } else if (actionEvent.getSource() == ButtonBackShareList) {
+        } else if (actionEvent.getSource() == ButtonBackAssignTask) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
 
@@ -74,14 +80,11 @@ public class ShareToDoListController implements Initializable {
         log.debug("Second Scene closed");
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.selectedList = ToDoListController.getSelectedList();
-        for (ToDoList todolist : selectedList) {
-            LabelNameToDoList.setText(todolist.getTitle());
-        }
+        LabelNameTask.setText(TaskListController.selectedTaskAsObject.getContent());
 
     }
+
 
 }

@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS ToDoList
 	UserID INTEGER
 		references User
 			on delete cascade,
-	Title VARCHAR(255),
+	Title VARCHAR(255) unique ,
 	Flagged BOOLEAN DEFAULT false
 );
 

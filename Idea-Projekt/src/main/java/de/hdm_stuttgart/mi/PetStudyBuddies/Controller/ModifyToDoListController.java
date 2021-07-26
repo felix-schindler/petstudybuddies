@@ -3,6 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.Controller;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +26,7 @@ public class ModifyToDoListController implements Initializable {
     @FXML
     TextField TextFieldNewTitle;
     @FXML
-    Label LabelCurrentTitle, LabelValidInputNewTitle;
+    Label LabelCurrentTitle;
     ObservableList<ToDoList> selectedList;
 
 
@@ -35,12 +36,12 @@ public class ModifyToDoListController implements Initializable {
             String eingabe = TextFieldNewTitle.getText();
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty()) {
-                new UpdateQuery("ToDoList", new String[]{"Title"}, new String[]{eingabe}, "ID = " + ToDoListController.selectedListID, true);
+                new UpdateQuery("ToDoList", new String[]{ "Title"}, new String[]{ eingabe},"ID = "+ ToDoListController.selectedListID, true);
                 closeSecondScene(actionEvent);
                 ToDoListController.updateSelectedList();
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
-                LabelValidInputNewTitle.setText("Please enter a new Title for your ToDList!");
+                Dialog.showInfo("Please enter a new Title for your ToDList!");
                 log.debug("No New Title entered, Label set");
             }
         } else if (actionEvent.getSource() == ButtonBackChangeTitle) {
@@ -54,7 +55,6 @@ public class ModifyToDoListController implements Initializable {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.selectedList = ToDoListController.getSelectedList();

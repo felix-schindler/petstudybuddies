@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ModifyToDoListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ShareToDoListController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button fx:id="ButtonBackChangeTitle" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button fx:id="ButtonBackShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -23,14 +23,14 @@
                 </Button>
                 <Pane prefHeight="38.0" prefWidth="370.0">
                     <children>
-                        <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0" text="New To-Do List Title" textFill="#fff0f0">
+                        <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0" text="Share To Do-List" textFill="#fff0f0">
                             <font>
                                 <Font name="Calibri" size="14.0" />
                             </font>
                         </Label>
                     </children>
                 </Pane>
-                <Button fx:id="ButtonChangeTitle" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Change Title" textFill="WHITE">
+                <Button fx:id="ButtonShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Share List" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -44,59 +44,69 @@
                 </Button>
             </children>
         </HBox>
-        <Pane layoutX="29.0" layoutY="39.0" prefHeight="180.0" prefWidth="495.0">
+        <Pane layoutX="29.0" layoutY="39.0" prefHeight="212.0" prefWidth="495.0">
             <children>
-                <VBox prefHeight="219.0" prefWidth="494.0">
+                <VBox prefHeight="277.0" prefWidth="494.0">
                     <children>
-                        <Label prefHeight="222.0" prefWidth="494.0" text="New To-Do List Title" textFill="WHITE">
+                        <Label prefHeight="45.0" prefWidth="494.0" text="Share To-Do List:" textFill="WHITE">
                             <font>
                                 <Font name="Calibri" size="22.0" />
                             </font>
                         </Label>
-                        <Pane prefHeight="200.0" prefWidth="494.0" />
-                        <Pane prefHeight="200.0" prefWidth="200.0">
+                        <Pane prefHeight="189.0" prefWidth="494.0" />
+                        <Pane prefHeight="206.0" prefWidth="494.0">
                             <children>
-                                <HBox prefHeight="25.0" prefWidth="494.0">
+                                <HBox prefHeight="33.0" prefWidth="494.0">
                                     <children>
-                                        <Label prefHeight="17.0" prefWidth="350.0" text="Current Title:" textFill="WHITE">
+                                        <Label prefHeight="38.0" prefWidth="304.0" text="With whom would you like to share" textFill="WHITE">
                                             <font>
                                                 <Font name="Calibri" size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="LabelCurrentTitle" prefHeight="25.0" prefWidth="427.0" text="Title of To-Do List" textFill="WHITE">
+                                        <Label fx:id="LabelNameToDoList" prefHeight="33.0" prefWidth="244.0" text="Title of selected Task" textFill="WHITE">
                                             <font>
                                                 <Font name="Calibri Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="43.0" text="?" textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri" size="18.0" />
                                             </font>
                                         </Label>
                                     </children>
                                 </HBox>
                             </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="494.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <Pane prefHeight="34.0" prefWidth="494.0" />
+                        <VBox prefHeight="324.0" prefWidth="494.0">
                             <children>
-                                <Label prefHeight="28.0" prefWidth="182.0" text="New Title:" textFill="WHITE">
+                                <Label prefHeight="45.0" prefWidth="494.0" text="Username:" textFill="WHITE">
                                     <font>
                                         <Font name="Calibri" size="24.0" />
                                     </font>
                                 </Label>
-                                <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="600.0">
+                                <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="494.0">
                                     <children>
-                                        <TextField fx:id="TextFieldNewTitle" prefHeight="27.0" prefWidth="389.0" promptText="Enter a name for your To-Do List">
+                                        <TextField fx:id="TextFieldUsernameShare" prefHeight="25.0" prefWidth="345.0" promptText="Enter Username of the User ">
                                             <font>
                                                 <Font name="Calibri" size="14.0" />
                                             </font>
                                         </TextField>
+                                        <Pane prefHeight="27.0" prefWidth="56.0" />
                                     </children>
                                 </HBox>
+                                <Pane prefHeight="54.0" prefWidth="494.0">
+                           <children>
+                              <Label fx:id="ShareToDoListInvalidInput" prefHeight="15.0" prefWidth="495.0" textFill="RED">
+                                 <font>
+                                    <Font name="Calibri Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                                </Pane>
                             </children>
                         </VBox>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="494.0" textFill="RED">
-                            <font>
-                                <Font name="Calibri Bold" size="22.0" />
-                            </font>
-                        </Label>
+                        <Pane layoutX="10.0" layoutY="74.0" prefHeight="14.0" prefWidth="494.0" />
                     </children>
                 </VBox>
             </children>
