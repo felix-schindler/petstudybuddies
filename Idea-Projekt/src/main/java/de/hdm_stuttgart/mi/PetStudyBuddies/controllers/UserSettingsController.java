@@ -3,6 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.User;
+import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -31,21 +32,32 @@ public class UserSettingsController extends Controller implements Initializable 
     }
 
     public void save() {
-        //if NewPassword and ConfirmNewPassword are equal
-        //the new Password and the new Email Address will be saved
-        // TODO Du vergleichst hier die TextFields, NICHT den Inhalt.
-        //  zuerst Utils.getInputString, dann abprüfen ob != null, dann festlegen.
-        // TODO Außerdem wird nirgendwo die save funktion vom User aufgerufen,
-        //  daher werden die Änderung nie gespeichert.
-        if (newPassword == confirmNewPassword) {
-            user.setPassword(Utils.getInputString(newPassword));
-            user.setEMail(Utils.getInputString(newEmailAddress));
-            log.info("Email and password changed successfully");
+        String  newPassStr = Utils.getInputString(newPassword),
+                confirmPassStr = Utils.getInputString(confirmNewPassword),
+                newMailStr = Utils.getInputString(newEmailAddress);
+
+        // Change password
+        if (newPassStr != null) {
+            if (newPassStr.equals(confirmPassStr)) {
+                user.setPassword(newPassStr);
+                log.debug("New password was set for user " + user.getUsername());
+            } else Dialog.showError("Password do not match", "The given passwords do not match, please check and try again.");
         }
-        //if NewPassword and ConfirmNewPassword does not equal
-        //the log.error will trigger
-        else {
-            log.error("Failed to save (new Password and confirm new Password are different)");
+
+        // Change email
+        if (newMailStr != null) {
+            user.setEMail(Utils.getInputString(newEmailAddress));
+            if (Utils.verifyMail(newMailStr)) {
+                user.setEMail(newMailStr);
+                log.debug("New email was set for user " + user.getUsername());
+            } else Dialog.showError("Invalid mail", "'" + newMailStr + "' is not a valid email address.");
+        }
+
+        try {
+            user.save();
+        } catch (Exception e) {
+            log.catching(e);
+            Dialog.showError("Failed to save changes, please try again.");
         }
     }
 }

@@ -15,9 +15,6 @@ public class User extends Model {
      * Log object for error handling
      */
     private static final Logger log = LogManager.getLogger(User.class);
-    // TODO remove after testing
-    //Tests if works
-    public static ObservableList<ToDoList> selectedList = null;
     /**
      * username of the user
      */
@@ -46,14 +43,6 @@ public class User extends Model {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    public static ObservableList<ToDoList> getSelectedList() {
-        return selectedList;
-    }
-
-    public static void setSelectedList(ObservableList<ToDoList> selectedList) {
-        User.selectedList = selectedList;
     }
 
     /**
@@ -100,20 +89,6 @@ public class User extends Model {
     }
 
     /**
-     * Updates the users EMail in the database
-     */
-    public void setEMailDB(String newMail) {
-        setField("EMail", newMail);
-    }
-
-    /**
-     * Updates the users password
-     */
-    public void setPasswordDB(String newPass) {
-        setField("Password", newPass);
-    }
-
-    /**
      * @throws Exception if username is changed
      */
     public void setUsername() throws Exception {
@@ -134,7 +109,7 @@ public class User extends Model {
         }
 
         String realUsername = getField("Username");
-        if (username.equals(realUsername)) {
+        if (!username.equals(realUsername)) {
             log.error("Username is not changeable");
             log.info(realUsername + " tried to change username to " + username);
             throw new Exception("Username is not changeable");
