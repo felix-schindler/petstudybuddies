@@ -1,12 +1,8 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AssignTaskController implements Initializable{
+public class AssignTaskController implements Initializable {
     private static final Logger log = LogManager.getLogger(AssignTaskController.class);
     @FXML
     Button ButtonBackAssignTask, ButtonAssignTask;
@@ -41,17 +37,17 @@ public class AssignTaskController implements Initializable{
             if (eingabe != null && !eingabe.isEmpty()) {
                 // TODO
                 try {
-                    ResultSet assigneeID = new SelectQuery("User","ID","Username = '"+eingabe+"'").fetchAll();
+                    ResultSet assigneeID = new SelectQuery("User", "ID", "Username = '" + eingabe + "'").fetchAll();
                     log.debug("Assignee ID = " + assigneeID);
                     if (assigneeID.first()) {
-                        if (TaskListController.selectedTaskAsObject.assignPerson(TaskListController.selectedTaskAsObject.getID(),assigneeID.getInt("ID"))){
+                        if (TaskListController.selectedTaskAsObject.assignPerson(TaskListController.selectedTaskAsObject.getID(), assigneeID.getInt("ID"))) {
 
                             Dialog.showInfo("Success", "User added");
                             closeSecondScene(actionEvent);
                             //TODO
                             //ToDoListController.updateSelectedList();
                             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-                        }else{
+                        } else {
                             Dialog.showError("User not found or your sharing your Task with the same User. Please retry!");
                         }
                     } else {

@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ShareToDoListController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="246.0" prefWidth="539.0" styleClass="linear-grad"
+            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ShareToDoListController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button fx:id="ButtonBackShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button fx:id="ButtonBackShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
+                        prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
+                        stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png" />
+                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
                 <Pane prefHeight="38.0" prefWidth="370.0">
                     <children>
-                        <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0" text="Share To Do-List" textFill="#fff0f0">
+                        <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0"
+                               text="Share To Do-List" textFill="#fff0f0">
                             <font>
-                                <Font name="Calibri" size="14.0" />
+                                <Font name="Calibri" size="14.0"/>
                             </font>
                         </Label>
                     </children>
                 </Pane>
-                <Button fx:id="ButtonShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Share List" textFill="WHITE">
+                <Button fx:id="ButtonShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
+                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
+                        stylesheets="@../../styles/fullpackstyling.css" text="Share List" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
+                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
             </children>
@@ -50,63 +59,68 @@
                     <children>
                         <Label prefHeight="45.0" prefWidth="494.0" text="Share To-Do List:" textFill="WHITE">
                             <font>
-                                <Font name="Calibri" size="22.0" />
+                                <Font name="Calibri" size="22.0"/>
                             </font>
                         </Label>
-                        <Pane prefHeight="189.0" prefWidth="494.0" />
+                        <Pane prefHeight="189.0" prefWidth="494.0"/>
                         <Pane prefHeight="206.0" prefWidth="494.0">
                             <children>
                                 <HBox prefHeight="33.0" prefWidth="494.0">
                                     <children>
-                                        <Label prefHeight="38.0" prefWidth="304.0" text="With whom would you like to share" textFill="WHITE">
+                                        <Label prefHeight="38.0" prefWidth="304.0"
+                                               text="With whom would you like to share" textFill="WHITE">
                                             <font>
-                                                <Font name="Calibri" size="18.0" />
+                                                <Font name="Calibri" size="18.0"/>
                                             </font>
                                         </Label>
-                                        <Label fx:id="LabelNameToDoList" prefHeight="33.0" prefWidth="244.0" text="Title of selected Task" textFill="WHITE">
+                                        <Label fx:id="LabelNameToDoList" prefHeight="33.0" prefWidth="244.0"
+                                               text="Title of selected Task" textFill="WHITE">
                                             <font>
-                                                <Font name="Calibri Bold" size="18.0" />
+                                                <Font name="Calibri Bold" size="18.0"/>
                                             </font>
                                         </Label>
-                                        <Label layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="43.0" text="?" textFill="WHITE">
+                                        <Label layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="43.0" text="?"
+                                               textFill="WHITE">
                                             <font>
-                                                <Font name="Calibri" size="18.0" />
+                                                <Font name="Calibri" size="18.0"/>
                                             </font>
                                         </Label>
                                     </children>
                                 </HBox>
                             </children>
                         </Pane>
-                        <Pane prefHeight="34.0" prefWidth="494.0" />
+                        <Pane prefHeight="34.0" prefWidth="494.0"/>
                         <VBox prefHeight="324.0" prefWidth="494.0">
                             <children>
                                 <Label prefHeight="45.0" prefWidth="494.0" text="Username:" textFill="WHITE">
                                     <font>
-                                        <Font name="Calibri" size="24.0" />
+                                        <Font name="Calibri" size="24.0"/>
                                     </font>
                                 </Label>
                                 <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="494.0">
                                     <children>
-                                        <TextField fx:id="TextFieldUsernameShare" prefHeight="25.0" prefWidth="345.0" promptText="Enter Username of the User ">
+                                        <TextField fx:id="TextFieldUsernameShare" prefHeight="25.0" prefWidth="345.0"
+                                                   promptText="Enter Username of the User ">
                                             <font>
-                                                <Font name="Calibri" size="14.0" />
+                                                <Font name="Calibri" size="14.0"/>
                                             </font>
                                         </TextField>
-                                        <Pane prefHeight="27.0" prefWidth="56.0" />
+                                        <Pane prefHeight="27.0" prefWidth="56.0"/>
                                     </children>
                                 </HBox>
                                 <Pane prefHeight="54.0" prefWidth="494.0">
-                           <children>
-                              <Label fx:id="ShareToDoListInvalidInput" prefHeight="15.0" prefWidth="495.0" textFill="RED">
-                                 <font>
-                                    <Font name="Calibri Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                           </children>
+                                    <children>
+                                        <Label fx:id="ShareToDoListInvalidInput" prefHeight="15.0" prefWidth="495.0"
+                                               textFill="RED">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0"/>
+                                            </font>
+                                        </Label>
+                                    </children>
                                 </Pane>
                             </children>
                         </VBox>
-                        <Pane layoutX="10.0" layoutY="74.0" prefHeight="14.0" prefWidth="494.0" />
+                        <Pane layoutX="10.0" layoutY="74.0" prefHeight="14.0" prefWidth="494.0"/>
                     </children>
                 </VBox>
             </children>

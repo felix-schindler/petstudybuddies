@@ -1,13 +1,14 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +29,7 @@ public class ModifyTaskController {
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty() && DatePickerModifyTask.getValue() != null) {
                 // TODO
-                new UpdateQuery("Task", new String[]{"Content", "Until"}, new String[]{ eingabe, DatePickerModifyTask.getValue().toString()},"ID = " + TaskListController.selectedTaskAsObject.getID());
+                new UpdateQuery("Task", new String[]{"Content", "Until"}, new String[]{eingabe, DatePickerModifyTask.getValue().toString()}, "ID = " + TaskListController.selectedTaskAsObject.getID());
                 closeSecondScene(actionEvent);
                 ToDoListController.updateSelectedList();
                 TaskListController.selectedTask = null;

@@ -1,8 +1,8 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

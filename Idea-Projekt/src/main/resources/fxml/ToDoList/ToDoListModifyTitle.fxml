@@ -5,10 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-        prefHeight="229.0" prefWidth="539.0" styleClass="linear-grad"
-        stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/16"
-        fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ModifyToDoListController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="229.0" prefWidth="539.0" styleClass="linear-grad"
+            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/16"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ModifyToDoListController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
@@ -74,7 +75,7 @@
                                         <Label fx:id="LabelCurrentTitle" prefHeight="25.0" prefWidth="427.0"
                                                text="Title of To-Do List" textFill="WHITE">
                                             <font>
-                                                <Font name="Calibri Bold" size="18.0" />
+                                                <Font name="Calibri Bold" size="18.0"/>
                                             </font>
                                         </Label>
                                     </children>
@@ -101,7 +102,7 @@
                                 </HBox>
                             </children>
                         </VBox>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                        <Pane prefHeight="200.0" prefWidth="200.0"/>
                         <Label layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="494.0" textFill="RED">
                             <font>
                                 <Font name="Calibri Bold" size="22.0"/>

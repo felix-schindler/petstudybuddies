@@ -1,10 +1,10 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -42,12 +42,12 @@ public class ShareToDoListController implements Initializable {
                 try {
                     if (ToDoListController.selectedListAsObject.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + TextFieldUsernameShare.getText() + "'").fetch()))) {
                         //if()
-                        new InsertQuery("ToDoListShare",new String[]{"UserID","ToDoListID"},new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(TaskListController.selectedListId)});
+                        new InsertQuery("ToDoListShare", new String[]{"UserID", "ToDoListID"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(TaskListController.selectedListId)});
                         Dialog.showInfo("Success", "User added");
                         closeSecondScene(actionEvent);
                         ToDoListController.updateSelectedList();
                         PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-                    }else{
+                    } else {
                         Dialog.showError("Your sharing your To Do List with the same User. Please retry!");
                     }
                 } catch (NumberFormatException e) {

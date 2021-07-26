@@ -30,6 +30,9 @@ import java.util.ResourceBundle;
 public class TaskListController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(TaskListController.class);
     protected static Task selectedTask;
+    protected static int selectedListId;
+    protected static ObservableList<Task> selectedTaskList = FXCollections.observableArrayList();
+    protected static Task selectedTaskAsObject;
     @FXML
     Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask;
     @FXML
@@ -40,22 +43,20 @@ public class TaskListController extends Controller implements Initializable {
     Label LabelToDoListName;
     Stage anotherStage = new Stage();
     ToDoList ToDoListSelected;
-    protected static int selectedListId;
-    protected static ObservableList<Task> selectedTaskList = FXCollections.observableArrayList();
-    protected static Task selectedTaskAsObject;
 
-    public void setSelectedTask(ObservableList<Task> selectedTask){
+    public static void setSelectedListAsObject() {
+        selectedTaskAsObject = selectedTaskList.get(0);
+        log.debug("selectedTaskAsObject getID:" + selectedTaskAsObject.getID());
+    }
+
+    public void setSelectedTask(ObservableList<Task> selectedTask) {
         selectedTaskList = selectedTask;
         setSelectedListAsObject();
     }
-    public void setSelectedTask(Task selectedTask){
+
+    public void setSelectedTask(Task selectedTask) {
         selectedTaskList.add(selectedTask);
         setSelectedListAsObject();
-    }
-
-    public static void setSelectedListAsObject(){
-        selectedTaskAsObject= selectedTaskList.get(0);
-        log.debug("selectedTaskAsObject getID:" + selectedTaskAsObject.getID());
     }
 
     @FXML
@@ -86,7 +87,7 @@ public class TaskListController extends Controller implements Initializable {
         } else if (event.getSource() == ButtonShareList) {
             log.debug("ButtonShareList was clicked");
             openSecondScene("/fxml/ToDoList/ToDoListShareToDoList.fxml");
-        }else if (event.getSource()==ButtonAssignTask){
+        } else if (event.getSource() == ButtonAssignTask) {
             log.debug("ButtonAssignTask was clicked");
 
             if (setSelectedTask()) {
@@ -106,10 +107,11 @@ public class TaskListController extends Controller implements Initializable {
         setTableView();
         setButtonFlagged();
     }
-    public void setButtonFlagged(){
-        if(ToDoListSelected.getFlagged()){
+
+    public void setButtonFlagged() {
+        if (ToDoListSelected.getFlagged()) {
             ButtonSetFlag.setStyle("-fx-background-color: #8c78e3; ");
-        }else ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
+        } else ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
     }
 
     public void openSecondScene(String filepath) {
@@ -177,7 +179,7 @@ public class TaskListController extends Controller implements Initializable {
     public boolean setSelectedTask() {
         ObservableList<Task> selectedTask = TableViewSelectedList.getSelectionModel().getSelectedItems();
         if (!selectedTask.isEmpty()) {
-            this.selectedTaskAsObject = selectedTask.get(0);
+            selectedTaskAsObject = selectedTask.get(0);
             setSelectedTask(selectedTaskAsObject);
             return true;
         } else {

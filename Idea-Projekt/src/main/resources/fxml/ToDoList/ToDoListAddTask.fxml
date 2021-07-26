@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-        minWidth="-Infinity"
-        prefHeight="202.0" prefWidth="539.0" styleClass="linear-grad"
-        stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/16"
-        fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.AddTaskController">
+            minWidth="-Infinity"
+            prefHeight="202.0" prefWidth="539.0" styleClass="linear-grad"
+            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/16"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.AddTaskController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
@@ -17,33 +18,36 @@
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png" />
+                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
                 <Pane prefHeight="38.0" prefWidth="344.0">
                     <children>
-                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="344.0" text="Add Task" textFill="#fff0f0">
+                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="344.0" text="Add Task"
+                               textFill="#fff0f0">
                             <font>
-                                <Font name="Calibri" size="14.0" />
+                                <Font name="Calibri" size="14.0"/>
                             </font>
                         </Label>
                     </children>
                 </Pane>
-                <Button fx:id="ButtonCreateNewTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0" prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Create New Task" textFill="WHITE">
+                <Button fx:id="ButtonCreateNewTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
+                        prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
+                        stylesheets="@../../styles/fullpackstyling.css" text="Create New Task" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
+                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
             </children>
@@ -54,38 +58,40 @@
                     <children>
                         <Label prefHeight="42.0" prefWidth="518.0" text="Add a new Task" textFill="WHITE">
                             <font>
-                                <Font name="Calibri" size="22.0" />
+                                <Font name="Calibri" size="22.0"/>
                             </font>
                         </Label>
-                        <Pane layoutX="10.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0" />
+                        <Pane layoutX="10.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0"/>
                         <HBox prefHeight="47.0" prefWidth="600.0">
                             <children>
                                 <Label prefHeight="17.0" prefWidth="90.0" text="Name" textFill="WHITE">
                                     <font>
-                                        <Font name="Calibri" size="18.0" />
+                                        <Font name="Calibri" size="18.0"/>
                                     </font>
                                 </Label>
-                                <TextField fx:id="TextFieldAddNewTask" prefHeight="38.0" prefWidth="393.0" promptText="New Task for your To-Do List">
+                                <TextField fx:id="TextFieldAddNewTask" prefHeight="38.0" prefWidth="393.0"
+                                           promptText="New Task for your To-Do List">
                                     <font>
-                                        <Font name="Calibri" size="14.0" />
+                                        <Font name="Calibri" size="14.0"/>
                                     </font>
                                 </TextField>
                             </children>
                         </HBox>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                        <Pane prefHeight="200.0" prefWidth="200.0"/>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
                                 <Label prefHeight="17.0" prefWidth="91.0" text="Deadline" textFill="WHITE">
                                     <font>
-                                        <Font name="Calibri" size="14.0" />
+                                        <Font name="Calibri" size="14.0"/>
                                     </font>
                                 </Label>
-                                <DatePicker fx:id="DatePickerAddNewTask" prefHeight="25.0" prefWidth="176.0" promptText="Enter Deadline" />
+                                <DatePicker fx:id="DatePickerAddNewTask" prefHeight="25.0" prefWidth="176.0"
+                                            promptText="Enter Deadline"/>
                             </children>
                         </HBox>
                         <Label layoutX="10.0" layoutY="10.0" prefHeight="42.0" prefWidth="518.0" textFill="WHITE">
                             <font>
-                                <Font name="Calibri" size="22.0" />
+                                <Font name="Calibri" size="22.0"/>
                             </font>
                         </Label>
                     </children>

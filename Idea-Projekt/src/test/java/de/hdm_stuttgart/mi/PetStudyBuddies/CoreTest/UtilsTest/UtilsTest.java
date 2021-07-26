@@ -3,9 +3,6 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.CoreTest.UtilsTest;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import org.junit.Assert;
 import org.junit.Test;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 public class UtilsTest {
     /**

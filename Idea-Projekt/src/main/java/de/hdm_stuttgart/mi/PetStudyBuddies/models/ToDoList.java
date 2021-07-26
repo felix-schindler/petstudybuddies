@@ -99,6 +99,10 @@ public class ToDoList extends Model implements Shareable {
         this.flagged = flagged;
     }
 
+    public int getTodoID() {
+        return todoID;
+    }
+
     /**
      * Sets ToDo_List ID (Has to be same as in database!)
      *
@@ -106,10 +110,6 @@ public class ToDoList extends Model implements Shareable {
      */
     public void setTodoID(int newTodoID) {
         todoID = newTodoID;
-    }
-
-    public int getTodoID() {
-        return todoID;
     }
 
     /**
