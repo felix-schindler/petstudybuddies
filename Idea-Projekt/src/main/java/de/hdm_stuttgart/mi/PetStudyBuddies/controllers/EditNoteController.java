@@ -22,6 +22,10 @@ public class EditNoteController extends Controller implements Initializable {
     private TextArea content;
     private Note note;
 
+    /**
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         note = NotesController.getEditNote();
@@ -37,6 +41,9 @@ public class EditNoteController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Saves the current note, shows a dialog on error
+     */
     public void save() {
         note.setTitle(Utils.getInputString(title));
         note.setContent(Utils.getInputString(content));

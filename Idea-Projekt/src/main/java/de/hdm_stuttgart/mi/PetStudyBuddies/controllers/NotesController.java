@@ -38,7 +38,7 @@ public class NotesController extends Controller implements Initializable {
     @FXML
     private TableView<Note> noteTable;
 
-    Runnable updateView = () -> {
+     Runnable updateView = () -> {
         log.debug("Updating view...");
         noteTable.setItems(getNotes());
 
@@ -101,6 +101,9 @@ public class NotesController extends Controller implements Initializable {
         return notes;
     }
 
+    /**
+     * @return The currently selected note from the list
+     */
     @FXML
     public Note getSelectedNote() {
         ObservableList<Note> selectedNote = noteTable.getSelectionModel().getSelectedItems();
@@ -113,6 +116,9 @@ public class NotesController extends Controller implements Initializable {
         return null;
     }
 
+    /**
+     * Opens a dialog window and waits for user input, then adds the UserID and NoteID to the NoteShare table
+     */
     public void share() {
         Note selectedNote = getSelectedNote();
         String username = Dialog.showInput("Input username to share to: ");
@@ -132,6 +138,11 @@ public class NotesController extends Controller implements Initializable {
         new Thread(updateView).start();
     }
 
+    /**
+     * Creates a new note, selects it as editNote, then redirects to edit note
+     * @see NotesController#editNote
+     * @see NotesController#goToEditNote()
+     */
     public void createNewNote() {
         new InsertQuery("Note", new String[]{"UserID"}, new String[]{String.valueOf(Account.getLoggedUser().getID())});
         try {
@@ -144,6 +155,9 @@ public class NotesController extends Controller implements Initializable {
         goToEditNote();
     }
 
+    /**
+     * Deletes the selected note, then refreshes the note list in a new Thread
+     */
     public void deleteNote() {
         if (getSelectedNote() != null) {
             DeleteQuery q = new DeleteQuery("Note", "ID=" + getSelectedNote().getID());
@@ -154,10 +168,10 @@ public class NotesController extends Controller implements Initializable {
         }
     }
 
-    public void goToEditNote() {
-        PetStudyBuddies.setStage("/fxml/Notes/EditNote.fxml", "Edit note");
-    }
-
+    /**
+     * Checks if a note is selected, then redirects to edit note
+     * @see NotesController#goToEditNote()
+     */
     public void editNote() {
         if (getSelectedNote() != null) {
             editNote = getSelectedNote();
@@ -165,6 +179,16 @@ public class NotesController extends Controller implements Initializable {
         }
     }
 
+    /**
+     * Redirects the user to the edit note screen
+     */
+    public void goToEditNote() {
+        PetStudyBuddies.setStage("/fxml/Notes/EditNote.fxml", "Edit note");
+    }
+
+    /**
+     * @return The current note chosen to be edited
+     */
     public static Note getEditNote() {
         return editNote;
     }
