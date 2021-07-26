@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
-            style="-fx-background-color: #030307; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/16"
-            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.LoginController">
+            style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/16"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.LoginController">
     <children>
-        <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" style="-fx-background-radius: 15 15 0 0;"
+        <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0"
               styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                 <Label layoutX="690.0" layoutY="1.0" prefHeight="79.0" prefWidth="224.0" text="Welcome">
@@ -30,8 +30,7 @@
                 </ImageView>
             </children>
         </Pane>
-        <VBox prefHeight="609.0" prefWidth="79.0"
-              style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;">
+        <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022;">
             <children>
                 <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;"/>
                 <Button fx:id="LoginView" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"

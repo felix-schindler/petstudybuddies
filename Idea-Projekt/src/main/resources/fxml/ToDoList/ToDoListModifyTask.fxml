@@ -4,12 +4,25 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<<<<<<< HEAD
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="202.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ModifyTaskController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
                 <Button fx:id="ButtonBackModifyTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+=======
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="202.0" prefWidth="539.0" styleClass="linear-grad"
+            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/16"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ModifyTaskController">
+    <children>
+        <HBox prefHeight="38.0" prefWidth="600.0">
+            <children>
+                <Button fx:id="ButtonBackModifyTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
+                        style="-fx-background-radius: 0 0 10 0;" styleClass="button3" text="Back" textFill="WHITE">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -30,7 +43,14 @@
                         </Label>
                     </children>
                 </Pane>
+<<<<<<< HEAD
                 <Button fx:id="ButtonCreateModifiedTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0" prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Modify Task" textFill="WHITE">
+=======
+                <Button fx:id="ButtonCreateModifiedTask" mnemonicParsing="false" onAction="#buttonAction"
+                        prefHeight="28.0" prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;"
+                        styleClass="button3" text="Modify Task"
+                        textFill="WHITE">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -79,7 +99,12 @@
                                 <DatePicker fx:id="DatePickerModifyTask" prefHeight="25.0" prefWidth="176.0" promptText="Enter New Deadline" />
                             </children>
                         </HBox>
+<<<<<<< HEAD
                         <Label layoutX="10.0" layoutY="10.0" minWidth="200.0" prefHeight="42.0" prefWidth="518.0" textFill="RED">
+=======
+                        <Label layoutX="10.0" layoutY="10.0" minWidth="200.0" prefHeight="42.0" prefWidth="518.0"
+                               textFill="RED">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                             <font>
                                 <Font name="Calibri Bold" size="22.0" />
                             </font>

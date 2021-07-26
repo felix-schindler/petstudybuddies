@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
-            style="-fx-background-color: #030307; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/16"
-            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.EditNoteController">
+            stylesheets="@../../styles/fullpackstyling.css"
+            style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/16"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.EditNoteController">
     <children>
-        <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" style="-fx-background-radius: 15 15 0 0;"
-              styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css">
+        <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" styleClass="linear-grad">
             <children>
                 <Label layoutX="690.0" layoutY="1.0" prefHeight="79.0" prefWidth="224.0" text="New Note">
                     <font>
@@ -37,13 +37,11 @@
                 </ImageView>
             </children>
         </Pane>
-        <VBox prefHeight="609.0" prefWidth="79.0"
-              style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;">
+        <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022;">
             <children>
                 <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;"/>
                 <Button fx:id="ApplicationDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
-                        prefHeight="66.0" prefWidth="80.0" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Start" textFill="#a868a0">
+                        prefHeight="66.0" prefWidth="80.0" styleClass="button3" text="Start" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -56,8 +54,7 @@
                     </font>
                 </Button>
                 <Button fx:id="NotesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
-                        prefHeight="66.0" prefWidth="81.0" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Notizen" textFill="#a868a0">
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Notizen" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -70,8 +67,7 @@
                     </font>
                 </Button>
                 <Button fx:id="StudiesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
-                        prefHeight="66.0" prefWidth="81.0" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Vorlesungen" textFill="#a868a0">
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Vorlesungen" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -84,8 +80,7 @@
                     </font>
                 </Button>
                 <Button fx:id="ToDoDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
-                        prefHeight="66.0" prefWidth="81.0" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="To Do" textFill="#a868a0">
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -98,8 +93,7 @@
                     </font>
                 </Button>
                 <Button fx:id="SettingsView" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
-                        prefHeight="66.0" prefWidth="81.0" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="To Do" textFill="#a868a0">
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -114,8 +108,7 @@
             </children>
         </VBox>
         <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0"
-                    style="-fx-background-color: #131022; -fx-background-radius: 10;"
-                    stylesheets="@../../styles/fullpackstyling.css">
+                    style="-fx-background-color: #131022; -fx-background-radius: 10;">
             <children>
                 <Label layoutX="28.0" layoutY="27.0" text="Edit Note:" textFill="#fffbfb">
                     <font>
@@ -129,8 +122,7 @@
                             <children>
                                 <Button fx:id="save" alignment="BOTTOM_CENTER" contentDisplay="TOP"
                                         mnemonicParsing="false" onAction="#save" prefHeight="84.0" prefWidth="93.0"
-                                        styleClass="button5" stylesheets="@../../styles/fullpackstyling.css"
-                                        text="Save">
+                                        styleClass="button5" text="Save">
                                     <graphic>
                                         <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true"
                                                    preserveRatio="true">

@@ -4,12 +4,25 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<<<<<<< HEAD
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.ModifyToDoListController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
                 <Button fx:id="ButtonBackChangeTitle" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0" prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+=======
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="229.0" prefWidth="539.0" styleClass="linear-grad"
+            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/16"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ModifyToDoListController">
+    <children>
+        <HBox prefHeight="38.0" prefWidth="600.0">
+            <children>
+                <Button fx:id="ButtonBack" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
+                        style="-fx-background-radius: 0 0 10 0;" styleClass="button3" text="Back" textFill="WHITE">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -30,7 +43,13 @@
                         </Label>
                     </children>
                 </Pane>
+<<<<<<< HEAD
                 <Button fx:id="ButtonChangeTitle" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Change Title" textFill="WHITE">
+=======
+                <Button fx:id="ButtonChangeTitle" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
+                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
+                        text="Change Title" textFill="WHITE">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -65,7 +84,11 @@
                                         </Label>
                                         <Label fx:id="LabelCurrentTitle" prefHeight="25.0" prefWidth="427.0" text="Title of To-Do List" textFill="WHITE">
                                             <font>
+<<<<<<< HEAD
                                                 <Font name="Calibri Bold" size="18.0" />
+=======
+                                                <Font name="Calibri Bold" size="18.0"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                                             </font>
                                         </Label>
                                     </children>
@@ -91,7 +114,11 @@
                                 </HBox>
                             </children>
                         </VBox>
+<<<<<<< HEAD
                         <Pane prefHeight="200.0" prefWidth="200.0" />
+=======
+                        <Pane prefHeight="200.0" prefWidth="200.0"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                         <Label layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="494.0" textFill="RED">
                             <font>
                                 <Font name="Calibri Bold" size="22.0" />

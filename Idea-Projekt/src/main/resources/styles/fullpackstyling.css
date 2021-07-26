@@ -76,6 +76,10 @@
 flaggedButton:empty{
     -fx-background-color: #24cd9d;}
 
+flaggedButton:empty {
+    -fx-background-color: #24cd9d;
+}
+
 .combo-box {
     -fx-background-color: #141124;
     -fx-border-color: #515658;

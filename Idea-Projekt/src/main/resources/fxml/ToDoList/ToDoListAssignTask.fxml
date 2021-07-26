@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<<<<<<< HEAD
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -14,32 +15,78 @@
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png" />
+=======
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
+            prefHeight="199.0" prefWidth="539.0" styleClass="linear-grad"
+            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.AssignTaskController">
+    <children>
+        <HBox prefHeight="38.0" prefWidth="600.0">
+            <children>
+                <Button fx:id="ButtonBackAssignTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
+                        prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
+                        stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
+<<<<<<< HEAD
                         <Font name="Calibri" size="12.0" />
+=======
+                        <Font name="Calibri" size="12.0"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     </font>
                 </Button>
                 <Pane prefHeight="38.0" prefWidth="370.0">
                     <children>
+<<<<<<< HEAD
                         <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0" text="Assign Task" textFill="#fff0f0">
                             <font>
                                 <Font name="Calibri" size="14.0" />
+=======
+                        <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0" text="Assign Task"
+                               textFill="#fff0f0">
+                            <font>
+                                <Font name="Calibri" size="14.0"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                             </font>
                         </Label>
                     </children>
                 </Pane>
+<<<<<<< HEAD
                 <Button fx:id="ButtonAssignTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0" prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Assign Task" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
+=======
+                <Button fx:id="ButtonAssignTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
+                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
+                        stylesheets="@../../styles/fullpackstyling.css" text="Assign Task" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
+<<<<<<< HEAD
                         <Font name="Calibri" size="12.0" />
+=======
+                        <Font name="Calibri" size="12.0"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     </font>
                 </Button>
             </children>
@@ -50,13 +97,18 @@
                     <children>
                         <Label prefHeight="45.0" prefWidth="494.0" text="Assign Task:" textFill="WHITE">
                             <font>
+<<<<<<< HEAD
                                 <Font name="Calibri" size="22.0" />
+=======
+                                <Font name="Calibri" size="22.0"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                             </font>
                         </Label>
                         <Pane prefHeight="137.0" prefWidth="494.0">
                             <children>
                                 <HBox prefHeight="33.0" prefWidth="494.0">
                                     <children>
+<<<<<<< HEAD
                                         <Label prefHeight="33.0" prefWidth="238.0" text="Who would you like to assign" textFill="WHITE">
                                             <font>
                                                 <Font name="Calibri" size="18.0" />
@@ -70,12 +122,31 @@
                                         <Label layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="43.0" text="?" textFill="WHITE">
                                             <font>
                                                 <Font name="Calibri" size="18.0" />
+=======
+                                        <Label prefHeight="33.0" prefWidth="238.0" text="Who would you like to assign"
+                                               textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri" size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="LabelNameTask" prefHeight="33.0" prefWidth="237.0"
+                                               text="Title of selected Task" textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Label layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="43.0" text="?"
+                                               textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri" size="18.0"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                                             </font>
                                         </Label>
                                     </children>
                                 </HBox>
                             </children>
                         </Pane>
+<<<<<<< HEAD
                         <Pane prefHeight="198.0" prefWidth="494.0" />
                           <Label prefHeight="107.0" prefWidth="494.0" text="Username:" textFill="WHITE">
                               <font>
@@ -98,6 +169,31 @@
                         </Pane>
                               </children>
                           </HBox>
+=======
+                        <Pane prefHeight="198.0" prefWidth="494.0"/>
+                        <Label prefHeight="107.0" prefWidth="494.0" text="Username:" textFill="WHITE">
+                            <font>
+                                <Font name="Calibri" size="24.0"/>
+                            </font>
+                        </Label>
+                        <Pane prefHeight="163.0" prefWidth="494.0"/>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="494.0">
+                            <children>
+                                <TextField fx:id="TextFieldUsernameShare" prefHeight="339.0" prefWidth="345.0"
+                                           promptText="Enter Username of the User ">
+                                    <font>
+                                        <Font name="Calibri" size="14.0"/>
+                                    </font>
+                                </TextField>
+                                <Pane prefHeight="27.0" prefWidth="56.0">
+                                    <children>
+                                        <Pane prefHeight="14.0" prefWidth="494.0"/>
+                                        <Pane prefHeight="54.0" prefWidth="494.0"/>
+                                    </children>
+                                </Pane>
+                            </children>
+                        </HBox>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     </children>
                 </VBox>
             </children>

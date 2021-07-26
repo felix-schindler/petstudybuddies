@@ -13,8 +13,8 @@ Wenn etwas im [Idea-Projekt Ordner](https://gitlab.mi.hdm-stuttgart.de/kb136/pet
 ## Projektvorgaben
 [Aufgabenbeschreibung](https://kriha.pages.mi.hdm-stuttgart.de/se2_lecture/documents/aufgabe.pdf)
 - [x] Einsatz von Interfaces bzw. Vererbung
-- [ ] Sinnvoller Einsatz einer Package-Struktur
-- [ ] Verwendung von Exceptions
+- [x] Sinnvoller Einsatz einer Package-Struktur
+- [x] Verwendung von Exceptions
 - [x] Grafische Oberfläche (JavaFX)
 - [x] Logging mit sinnvollem Einsatz der Log-Stufen
 - [x] Dokumentation der Klassenstruktur mit UML-Klassendiagrammen
@@ -24,7 +24,7 @@ Wenn etwas im [Idea-Projekt Ordner](https://gitlab.mi.hdm-stuttgart.de/kb136/pet
 - [ ] Verwenden von Factories
 
 ## Dokumentation
-[Vorgaben](https://kriha.pages.mi.hdm-stuttgart.de/se2_lecture/documents/doku-info.pdf)
+[Vorgaben](https://kriha.pages.mi.hdm-stuttgart.de/se2_lecture/documents/doku-info.pdf)<br>
 [Dokument (Google Docs)](https://docs.google.com/document/d/1EKYGdz1tgzMPT4ij7I_NfJPp0t_mCuDxCy43JGarFrE/edit)
 
 ## Diagramme

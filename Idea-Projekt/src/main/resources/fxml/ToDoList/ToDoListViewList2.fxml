@@ -5,10 +5,19 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<<<<<<< HEAD
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #030307; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.TaskListController">
     <children>
         <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" style="-fx-background-radius: 15 15 0 0;" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css">
+=======
+<?import java.lang.String?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/16"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.TaskListController">
+    <children>
+        <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" styleClass="linear-grad">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
             <children>
                 <Label layoutX="690.0" layoutY="1.0" prefHeight="79.0" prefWidth="224.0" text="To Do Lists">
                     <font>
@@ -32,10 +41,31 @@
                 </ImageView>
             </children>
         </Pane>
+<<<<<<< HEAD
         <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;">
             <children>
                 <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
                 <Button fx:id="ApplicationDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="80.0" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Start" textFill="#a868a0">
+=======
+        <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022;">
+            <children>
+                <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;"/>
+                <Button fx:id="ApplicationDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="80.0" styleClass="button3" text="Start" textFill="#a868a0">
+                    <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/ToDoListDashboardImages/cat.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Calibri" size="12.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="NotesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Notizen" textFill="#a868a0">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -47,7 +77,12 @@
                         <Font name="Calibri" size="12.0" />
                     </font>
                 </Button>
+<<<<<<< HEAD
                 <Button fx:id="NotesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Notizen" textFill="#a868a0">
+=======
+                <Button fx:id="StudiesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Vorlesungen" textFill="#a868a0">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -59,7 +94,12 @@
                         <Font name="Calibri" size="12.0" />
                     </font>
                 </Button>
+<<<<<<< HEAD
                 <Button fx:id="StudiesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="Vorlesungen" textFill="#a868a0">
+=======
+                <Button fx:id="ToDoDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -71,7 +111,12 @@
                         <Font name="Calibri" size="12.0" />
                     </font>
                 </Button>
+<<<<<<< HEAD
                 <Button fx:id="ToDoDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" stylesheets="@../../styles/fullpackstyling.css" text="To Do" textFill="#a868a0">
+=======
+                <Button fx:id="SettingsView" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -85,11 +130,21 @@
                 </Button>
             </children>
         </VBox>
+<<<<<<< HEAD
         <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../../styles/fullpackstyling.css">
             <children>
                 <Pane layoutX="25.0" layoutY="107.0" prefHeight="373.0" prefWidth="647.0">
                     <children>
                         <ScrollPane prefHeight="380.0" prefWidth="648.0" style="-fx-background-color: transparent; -fx-background-radius: 10 10 10 10;" stylesheets="@../../styles/fullpackstyling.css">
+=======
+        <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0"
+                    style="-fx-background-color: #131022; -fx-background-radius: 10;">
+            <children>
+                <Pane layoutX="25.0" layoutY="107.0" prefHeight="373.0" prefWidth="647.0">
+                    <children>
+                        <ScrollPane prefHeight="380.0" prefWidth="648.0"
+                                    style="-fx-background-color: transparent; -fx-background-radius: 10 10 10 10;">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                             <content>
                                 <TableView fx:id="TableViewSelectedList" prefHeight="379.0" prefWidth="646.0">
                                     <columns>
@@ -121,15 +176,26 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="473.0" prefWidth="153.0">
                             <children>
+<<<<<<< HEAD
                                 <Pane prefHeight="200.0" prefWidth="200.0" />
                                 <Button fx:id="ButtonSetFlag" alignment="BOTTOM_CENTER" contentDisplay="TOP" minWidth="70.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="67.0" prefWidth="98.0" stylesheets="@../../styles/fullpackstyling.css" text="Set Flag">
                                     <graphic>
                                         <ImageView fitHeight="38.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+=======
+                                <Pane prefHeight="200.0" prefWidth="200.0"/>
+                                <Button fx:id="ButtonSetFlag" alignment="BOTTOM_CENTER" contentDisplay="TOP"
+                                        minWidth="70.0" mnemonicParsing="false" onAction="#handleButtonAction"
+                                        prefHeight="67.0" prefWidth="98.0" text="Set Flag">
+                                    <graphic>
+                                        <ImageView fitHeight="38.0" fitWidth="47.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                                             <image>
                                                 <Image url="@../../images/ToDoListView/icons8-flag-2-100.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
+<<<<<<< HEAD
                            <styleClass>
                               <String fx:value="button5" />
                               <String fx:value="flaggedButton:empty" />
@@ -139,42 +205,93 @@
                                 <Button fx:id="ButtonShareList" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="72.0" prefWidth="94.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Share List">
                                     <graphic>
                                         <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+=======
+                                    <styleClass>
+                                        <String fx:value="button5"/>
+                                        <String fx:value="flaggedButton:empty"/>
+                                    </styleClass>
+                                </Button>
+                                <Pane prefHeight="200.0" prefWidth="200.0"/>
+                                <Button fx:id="ButtonShareList" alignment="BOTTOM_CENTER" contentDisplay="TOP"
+                                        layoutX="14.0" layoutY="18.0" mnemonicParsing="false"
+                                        onAction="#handleButtonAction" prefHeight="72.0" prefWidth="94.0"
+                                        styleClass="button5" text="Share List">
+                                    <graphic>
+                                        <ImageView fitHeight="40.0" fitWidth="44.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                                             <image>
                                                 <Image url="@../../images/ToDoListView/icons8-teilen-100.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
+<<<<<<< HEAD
                                 <Pane prefHeight="200.0" prefWidth="200.0" />
                                 <Button fx:id="ButtonChangeTitle" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="94.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Change Title">
                                     <graphic>
                                         <ImageView fitHeight="44.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+=======
+                                <Pane prefHeight="200.0" prefWidth="200.0"/>
+                                <Button fx:id="ButtonChangeTitle" alignment="BOTTOM_CENTER" contentDisplay="TOP"
+                                        layoutX="14.0" layoutY="94.0" mnemonicParsing="false"
+                                        onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0"
+                                        styleClass="button5" text="Change Title">
+                                    <graphic>
+                                        <ImageView fitHeight="44.0" fitWidth="45.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                                             <image>
                                                 <Image url="@../../images/ToDoListView/icons8-titel-100.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
+<<<<<<< HEAD
                                 <Pane prefHeight="200.0" prefWidth="200.0" />
                                 <Button fx:id="ButtonAddNewTask" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="14.0" layoutY="178.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Add New Task">
                                     <graphic>
                                         <ImageView fitHeight="41.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+=======
+                                <Pane prefHeight="200.0" prefWidth="200.0"/>
+                                <Button fx:id="ButtonAddNewTask" alignment="BOTTOM_CENTER" contentDisplay="TOP"
+                                        layoutX="14.0" layoutY="178.0" mnemonicParsing="false"
+                                        onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0"
+                                        styleClass="button5" text="Add New Task">
+                                    <graphic>
+                                        <ImageView fitHeight="41.0" fitWidth="44.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                                             <image>
                                                 <Image url="@../../images/ToDoListView/icons8-spalte-hinzufügen-100.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
+<<<<<<< HEAD
                                 <Pane prefHeight="200.0" prefWidth="200.0" />
                                 <Button fx:id="ButtonModifyTask" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="40.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Modify Task">
                                     <graphic>
                                         <ImageView fitHeight="41.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../images/ToDoListTaskView/icons8-aufgabe-80.png" />
+=======
+                                <Pane prefHeight="200.0" prefWidth="200.0"/>
+                                <Button fx:id="ButtonModifyTask" alignment="BOTTOM_CENTER" contentDisplay="TOP"
+                                        layoutX="40.0" layoutY="371.0" mnemonicParsing="false"
+                                        onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0"
+                                        styleClass="button5" text="Modify Task">
+                                    <graphic>
+                                        <ImageView fitHeight="41.0" fitWidth="43.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../images/ToDoListTaskView/icons8-aufgabe-80.png"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
+<<<<<<< HEAD
                                 <Pane layoutX="10.0" layoutY="262.0" prefHeight="200.0" prefWidth="200.0" />
                         <Button fx:id="ButtonAssignTask" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="42.0" layoutY="391.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0" styleClass="button5" stylesheets="@../../styles/fullpackstyling.css" text="Assign Task">
                            <graphic>
@@ -186,6 +303,24 @@
                            </graphic>
                         </Button>
                         <Pane prefHeight="200.0" prefWidth="200.0" />
+=======
+                                <Pane layoutX="10.0" layoutY="262.0" prefHeight="200.0" prefWidth="200.0"/>
+                                <Button fx:id="ButtonAssignTask" alignment="BOTTOM_CENTER" contentDisplay="TOP"
+                                        layoutX="42.0" layoutY="391.0" mnemonicParsing="false"
+                                        onAction="#handleButtonAction" prefHeight="50.0" prefWidth="90.0"
+                                        styleClass="button5" stylesheets="@../../styles/fullpackstyling.css"
+                                        text="Assign Task">
+                                    <graphic>
+                                        <ImageView fitHeight="39.0" fitWidth="44.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../images/ToDoListTaskView/icons8-batch-zuweisen-96.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Pane prefHeight="200.0" prefWidth="200.0"/>
+>>>>>>> 6013476976fac4d355d853df1c462930f78c2777
                             </children>
                         </VBox>
                     </children>
