@@ -41,20 +41,20 @@ public class TaskListController extends Controller implements Initializable {
     Stage anotherStage = new Stage();
     ToDoList ToDoListSelected;
     protected static int selectedListId;
-    protected static ObservableList<Task> selectedTask = FXCollections.observableArrayList();
+    protected static ObservableList<Task> selectedTaskList = FXCollections.observableArrayList();
     protected static Task selectedTaskAsObject;
 
     public void setSelectedTask(ObservableList<Task> selectedTask){
-        this.selectedTask = selectedTask;
+        selectedTaskList = selectedTask;
         setSelectedListAsObject();
     }
     public void setSelectedTask(Task selectedTask){
-        this.selectedTask.add(selectedTask);
+        selectedTaskList.add(selectedTask);
         setSelectedListAsObject();
     }
 
     public static void setSelectedListAsObject(){
-        selectedTaskAsObject= selectedTask.get(0);
+        selectedTaskAsObject= selectedTaskList.get(0);
         log.debug("selectedTaskAsObject getID:" + selectedTaskAsObject.getID());
     }
 
