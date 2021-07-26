@@ -1,12 +1,8 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/AddTaskController.java
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
-=======
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/AddTaskController.java
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -23,10 +19,6 @@ public class AddTaskController {
     Button ButtonBack, ButtonCreateNewTask;
     @FXML
     TextField TextFieldAddNewTask;
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/AddTaskController.java
-
-=======
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/AddTaskController.java
     @FXML
     DatePicker DatePickerAddNewTask;
 

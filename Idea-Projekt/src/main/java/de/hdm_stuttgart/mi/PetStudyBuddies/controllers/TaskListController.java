@@ -1,16 +1,9 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/TaskListController.java
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.Task;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
-=======
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/TaskListController.java
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,13 +29,10 @@ import java.util.ResourceBundle;
 
 public class TaskListController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(TaskListController.class);
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/TaskListController.java
-=======
     protected static Task selectedTask;
     protected static int selectedListId;
     protected static ObservableList<Task> selectedTaskList = FXCollections.observableArrayList();
     protected static Task selectedTaskAsObject;
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/TaskListController.java
     @FXML
     Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask;
     @FXML
@@ -53,26 +43,6 @@ public class TaskListController extends Controller implements Initializable {
     Label LabelToDoListName;
     Stage anotherStage = new Stage();
     ToDoList ToDoListSelected;
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/TaskListController.java
-    protected static int selectedListId;
-    protected static ObservableList<Task> selectedTask = FXCollections.observableArrayList();
-    protected static Task selectedTaskAsObject;
-
-    public void setSelectedTask(ObservableList<Task> selectedTask){
-        this.selectedTask = selectedTask;
-        setSelectedListAsObject();
-    }
-    public void setSelectedTask(Task selectedTask){
-        this.selectedTask.add(selectedTask);
-        setSelectedListAsObject();
-    }
-
-    public static void setSelectedListAsObject(){
-        selectedTaskAsObject= selectedTask.get(0);
-        log.debug("selectedTaskAsObject getID:" + selectedTaskAsObject.getID());
-    }
-
-=======
 
     public static void setSelectedListAsObject() {
         selectedTaskAsObject = selectedTaskList.get(0);
@@ -88,22 +58,17 @@ public class TaskListController extends Controller implements Initializable {
         selectedTaskList.add(selectedTask);
         setSelectedListAsObject();
     }
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/TaskListController.java
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
         if (event.getSource() == ButtonSetFlag) {
             log.debug("ButtonSetFlag was clicked");
             ToDoListSelected.setFlagged(!ToDoListSelected.getFlagged());
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/TaskListController.java
-            ToDoListSelected.save();
-=======
             try {
                 ToDoListSelected.save();
             } catch (Exception ignored) {
                 Dialog.showError("Failed to save task, please try again.");
             }
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/TaskListController.java
             setButtonFlagged();
             Dialog.showInfo("Taskflag was changed");
         } else if (event.getSource() == ButtonChangeTitle) {
@@ -116,21 +81,13 @@ public class TaskListController extends Controller implements Initializable {
             log.debug("ButtonModifyTask was clicked");
             if (setSelectedTask()) {
                 openSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/TaskListController.java
-            }else{
-=======
             } else {
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/TaskListController.java
                 Dialog.showInfo("Please select a Task from your To Do List");
             }
         } else if (event.getSource() == ButtonShareList) {
             log.debug("ButtonShareList was clicked");
             openSecondScene("/fxml/ToDoList/ToDoListShareToDoList.fxml");
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/TaskListController.java
-        }else if (event.getSource()==ButtonAssignTask){
-=======
         } else if (event.getSource() == ButtonAssignTask) {
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/TaskListController.java
             log.debug("ButtonAssignTask was clicked");
 
             if (setSelectedTask()) {
@@ -150,18 +107,10 @@ public class TaskListController extends Controller implements Initializable {
         setTableView();
         setButtonFlagged();
     }
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/TaskListController.java
-    public void setButtonFlagged(){
-        if(ToDoListSelected.getFlagged()){
-            ButtonSetFlag.setStyle("-fx-background-color: #8c78e3; ");
-        }else ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
-=======
-
     public void setButtonFlagged() {
         if (ToDoListSelected.getFlagged()) {
             ButtonSetFlag.setStyle("-fx-background-color: #8c78e3; ");
         } else ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/TaskListController.java
     }
 
     public void openSecondScene(String filepath) {
@@ -228,17 +177,10 @@ public class TaskListController extends Controller implements Initializable {
     public boolean setSelectedTask() {
         ObservableList<Task> selectedTask = TableViewSelectedList.getSelectionModel().getSelectedItems();
         if (!selectedTask.isEmpty()) {
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/TaskListController.java
-            this.selectedTaskAsObject =  selectedTask.get(0);
-            setSelectedTask(selectedTaskAsObject);
-            return true;
-        }else{
-=======
             selectedTaskAsObject = selectedTask.get(0);
             setSelectedTask(selectedTaskAsObject);
             return true;
         } else {
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/TaskListController.java
             log.error("No task was selected");
             return false;
         }

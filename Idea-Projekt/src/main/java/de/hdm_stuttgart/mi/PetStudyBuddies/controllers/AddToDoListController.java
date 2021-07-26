@@ -1,15 +1,11 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/AddToDoListController.java
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
-=======
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/AddToDoListController.java
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,11 +21,7 @@ import org.apache.logging.log4j.Logger;
 import javax.sql.rowset.CachedRowSet;
 import java.sql.SQLException;
 
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/AddToDoListController.java
-public class AddToDoListController extends Controller{
-=======
 public class AddToDoListController extends Controller {
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/AddToDoListController.java
     private static final Logger log = LogManager.getLogger(AddToDoListController.class);
     @FXML
     Button ButtonCreateList, ButtonBack;

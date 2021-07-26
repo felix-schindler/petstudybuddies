@@ -1,18 +1,10 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Models/Task.java
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.UpdateQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.Utils;
-=======
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/models/Task.java
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -150,30 +142,6 @@ public class Task extends Model {
      * @return true if the person could be assigned, false otherwise
      */
     public boolean assignPerson(int TaskID, int UserID) throws SQLException {
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Models/Task.java
-        log.debug("Logged User=" + Account.getLoggedUser().getID()+ "Assignee = " + UserID);
-        if (UserID == Account.getLoggedUser().getID()) {
-            log.debug("User " + UserID + " does not exist");
-            return false;    // User does not exist
-        }
-        else{
-            ResultSet assignedTask =new SelectQuery("Task", "*", "AssignedTo = " + UserID +" AND ID= "+TaskID).fetchAll();
-            if(assignedTask.first()){
-                log.debug("User " + UserID + " already got access to the selected Task");
-                return false;
-            }else{
-                ResultSet selectedTask = new SelectQuery("Task", "*", "ID= "+TaskID).fetchAll();
-                try {
-                    new InsertQuery("Task", new String[]{"UserID", "ToDoListID","Content","Until"}, new String[]{String.valueOf(UserID), String.valueOf(selectedTask.getInt("ToDoListID")),selectedTask.getString("Content"),selectedTask.getString("Until")});
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                new UpdateQuery("Task", "AssignedTo", String.valueOf(UserID), "ID = "+selectedTask.getInt("ID"));
-                return true;
-            }
-
-        }
-=======
         log.debug("Logged User=" + Account.getLoggedUser().getID() + "Assignee = " + UserID);
         if (UserID == Account.getLoggedUser().getID()) {
             log.debug("User " + UserID + " does not exist");
@@ -196,27 +164,8 @@ public class Task extends Model {
             }
 
         }
-
-        /*if (new SelectQuery(getTable(), "ID", "ID=" + TaskID + " AND UserID=" + UserID).fetch()==null) {
-            log.debug("No User existing with that Username");
-            return false;
-        }
-        // User is already assigned
-        if (new SelectQuery(getTable(), "ID", "TaskID=" + TaskID + " AND UserID=" + UserID).fetch().equals(Integer.toString(UserID))) {
-            log.debug("Newly assigned Person is the same as before.");
-            return true;
-        }*/
-
-        // TODO default wert?? -> change with -1
-        /*if (assignedPerson != -1 && new SelectQuery(getTable(), "ID", "TaskID=" + TaskID + " AND UserID=" + UserID).fetch() != null) {
-            log.debug("Try to insert newly assigned person");
-            return new InsertQuery(getTable(), new String[]{"NoteID", "UserID"}, new String[]{Integer.toString(TaskID), Integer.toString(UserID)}).Count() == 1;
-        } else {
-            log.debug("Try to update assigned person");
-            return new UpdateQuery(getTable(), new String[]{"UserID"}, new String[]{Integer.toString(UserID)}, "ID=" + TaskID).Count() == 1;
-        }*/
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/models/Task.java
     }
+
     /**
      * returns Tasks in future
      */

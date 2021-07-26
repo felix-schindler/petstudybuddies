@@ -1,14 +1,10 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/ToDoListController.java
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
-=======
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/ToDoListController.java
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

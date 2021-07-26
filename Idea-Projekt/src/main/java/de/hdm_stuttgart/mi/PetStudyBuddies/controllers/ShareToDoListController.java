@@ -1,12 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/ShareToDoListController.java
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.InsertQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.DB.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Core.User.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.Models.ToDoList;
-=======
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/ShareToDoListController.java
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
@@ -31,11 +24,7 @@ import java.util.ResourceBundle;
 public class ShareToDoListController implements Initializable {
     private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
     @FXML
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/ShareToDoListController.java
-    Button ButtonBackShareList, ButtonShareList;
-=======
     Button ButtonBack, ButtonShareList;
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/ShareToDoListController.java
     @FXML
     TextField TextFieldUsernameShare;
     @FXML
@@ -53,20 +42,12 @@ public class ShareToDoListController implements Initializable {
                 try {
                     if (ToDoListController.selectedListAsObject.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + TextFieldUsernameShare.getText() + "'").fetch()))) {
                         //if()
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/ShareToDoListController.java
-                        new InsertQuery("ToDoListShare",new String[]{"UserID","ToDoListID"},new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(TaskListController.selectedListId)});
-=======
                         new InsertQuery("ToDoListShare", new String[]{"UserID", "ToDoListID"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(TaskListController.selectedListId)});
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/ShareToDoListController.java
                         Dialog.showInfo("Success", "User added");
                         closeSecondScene(actionEvent);
                         ToDoListController.updateSelectedList();
                         PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/ShareToDoListController.java
-                    }else{
-=======
                     } else {
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/ShareToDoListController.java
                         Dialog.showError("Your sharing your To Do List with the same User. Please retry!");
                     }
                 } catch (NumberFormatException e) {
@@ -102,5 +83,4 @@ public class ShareToDoListController implements Initializable {
         }
 
     }
-
 }

@@ -1,13 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/ModifyTaskController.java
-import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.*;
-=======
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.event.ActionEvent;
@@ -16,7 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/ModifyTaskController.java
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -37,11 +29,7 @@ public class ModifyTaskController {
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty() && DatePickerModifyTask.getValue() != null) {
                 // TODO
-<<<<<<< HEAD:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/Controller/ModifyTaskController.java
-                new UpdateQuery("Task", new String[]{ "Content", "Until"}, new String[]{ eingabe, DatePickerModifyTask.getValue().toString()},"ID = "+ TaskListController.selectedTaskAsObject.getID(), true);
-=======
                 new UpdateQuery("Task", new String[]{"Content", "Until"}, new String[]{eingabe, DatePickerModifyTask.getValue().toString()}, "ID = " + TaskListController.selectedTaskAsObject.getID());
->>>>>>> 6013476976fac4d355d853df1c462930f78c2777:Idea-Projekt/src/main/java/de/hdm_stuttgart/mi/PetStudyBuddies/controllers/ModifyTaskController.java
                 closeSecondScene(actionEvent);
                 ToDoListController.updateSelectedList();
                 TaskListController.selectedTask=null;
