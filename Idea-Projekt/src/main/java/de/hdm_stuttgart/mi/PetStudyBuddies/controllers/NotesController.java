@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 public class NotesController extends Controller implements Initializable {
     private final static Logger log = LogManager.getLogger(NotesController.class);
-    private static int editNote = -1;
+    private static Note editNote = null;
     @FXML
     private TableColumn<Note, String> colTitle;
     @FXML
@@ -38,30 +38,16 @@ public class NotesController extends Controller implements Initializable {
     @FXML
     private TableView<Note> noteTable;
 
-    public static int getEditNote() {
-        return editNote;
-    }
+    Runnable updateView = () -> {
+        log.debug("Updating view...");
+        noteTable.setItems(getNotes());
 
-    public ObservableList<Note> getNotes() {
-        ObservableList<Note> notes = FXCollections.observableArrayList();
-
-        try {
-            CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "DATETIME(LastEditedOn)", null).fetchAll();
-            do {
-                notes.add(new Note(notesSet.getInt("ID")));
-            } while (notesSet.next());
-
-            CachedRowSet sharedNotesSet = new SelectQuery("NoteShare", "NoteID", "UserID=" + Account.getLoggedUser().getID()).fetchAll();
-            do {
-                notes.add(new Note(sharedNotesSet.getInt("NoteID")));
-            } while (sharedNotesSet.next());
-            log.debug("Added own and shared notes");
-        } catch (SQLException e) {
-            log.catching(e);
-            log.error("Failed to load notes");
-        }
-        return notes;
-    }
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
+        colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
+        colLastEdited.setCellValueFactory(new PropertyValueFactory<>("LastEditedOn"));
+        noteTable.setEditable(true);
+        noteTable.getSelectionModel().setCellSelectionEnabled(true);
+    };
 
     /**
      * @param location  URL location of the FXML file that was given to the FXMLLoader
@@ -73,17 +59,46 @@ public class NotesController extends Controller implements Initializable {
         new DeleteQuery("Note", "UserID=" + Account.getLoggedUser().getID() + " AND (Title IS NULL OR Title='null' OR Title='') AND (Content IS NULL OR Content='null' OR Content='')");
         labelUsername.setText(Account.getLoggedUser().getUsername());
 
-        update();
+        new Thread(updateView).start();
     }
 
-    public void update() {
-        noteTable.setItems(getNotes());
+    public ObservableList<Note> getNotes() {
+        ObservableList<Note> notes = FXCollections.observableArrayList();
 
-        colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
-        colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
-        colLastEdited.setCellValueFactory(new PropertyValueFactory<>("LastEditedOn"));
-        noteTable.setEditable(true);
-        noteTable.getSelectionModel().setCellSelectionEnabled(true);
+        /*
+        try {
+            new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "DATETIME(LastEditedOn)", null)
+                    .fetchAll()
+                    .toCollection("ID")
+                    .forEach(n -> notes.add(new Note((int)n)));
+
+            new SelectQuery("NoteShare", "NoteID", "UserID=" + Account.getLoggedUser().getID())
+                    .fetchAll()
+                    .toCollection("NoteID")
+                    .forEach(sn -> notes.add(new Note((int)sn)));
+
+            log.debug("Added own and shared notes");
+        } catch (SQLException e) {
+            log.catching(e);
+            log.error("Failed to load notes");
+        }
+        */
+
+        try {
+            CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "DATETIME(LastEditedOn)", null).fetchAll();
+            do {
+                notes.add(new Note(notesSet.getInt("ID")));
+            } while (notesSet.next());
+
+            CachedRowSet sharedNotesSet = new SelectQuery("NoteShare", "NoteID", "UserID=" + Account.getLoggedUser().getID()).fetchAll();
+            do {
+                notes.add(new Note(sharedNotesSet.getInt("NoteID")));
+            } while (sharedNotesSet.next());
+        } catch (SQLException e) {
+            log.catching(e);
+            log.error("Failed to load notes");
+        }
+        return notes;
     }
 
     @FXML
@@ -96,35 +111,6 @@ public class NotesController extends Controller implements Initializable {
         log.error("Note could not be selected");
         Dialog.showError("Note selection error", "Note could not be selected, please try again.");
         return null;
-    }
-
-    public void createNewNote() {
-        new InsertQuery("Note", new String[]{"UserID"}, new String[]{String.valueOf(Account.getLoggedUser().getID())});
-        try {
-            editNote = Integer.parseInt(new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID() + " AND Title IS NULL AND Content IS NULL").fetch());
-        } catch (NumberFormatException e) {
-            log.catching(e);
-            log.error("Failed to select and set new note");
-        }
-
-        goToEditNote();
-    }
-
-    public void editNote() {
-        if (getSelectedNote() != null) {
-            editNote = getSelectedNote().getID();
-            goToEditNote();
-        }
-    }
-
-    public void deleteNote() {
-        if (getSelectedNote() != null) {
-            DeleteQuery q = new DeleteQuery("Note", "ID=" + getSelectedNote().getID());
-            if (q.Count() <= -1) {
-                Dialog.showError("Failed to delete selected note, please try again.");
-            }
-            update();
-        }
     }
 
     public void share() {
@@ -143,10 +129,43 @@ public class NotesController extends Controller implements Initializable {
             log.error("User not found");
             Dialog.showError("Failed to add user", "User does not exists");
         }
-        update();
+        new Thread(updateView).start();
+    }
+
+    public void createNewNote() {
+        new InsertQuery("Note", new String[]{"UserID"}, new String[]{String.valueOf(Account.getLoggedUser().getID())});
+        try {
+            editNote = new Note(Integer.parseInt(new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID() + " AND Title IS NULL AND Content IS NULL").fetch()));
+        } catch (NumberFormatException e) {
+            log.catching(e);
+            log.error("Failed to select and set new note");
+        }
+
+        goToEditNote();
+    }
+
+    public void deleteNote() {
+        if (getSelectedNote() != null) {
+            DeleteQuery q = new DeleteQuery("Note", "ID=" + getSelectedNote().getID());
+            if (q.Count() <= -1) {
+                Dialog.showError("Failed to delete selected note, please try again.");
+            }
+            new Thread(updateView).start();
+        }
     }
 
     public void goToEditNote() {
         PetStudyBuddies.setStage("/fxml/Notes/EditNote.fxml", "Edit note");
+    }
+
+    public void editNote() {
+        if (getSelectedNote() != null) {
+            editNote = getSelectedNote();
+            goToEditNote();
+        }
+    }
+
+    public static Note getEditNote() {
+        return editNote;
     }
 }

@@ -24,17 +24,16 @@ public class EditNoteController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int ID = NotesController.getEditNote();
+        note = NotesController.getEditNote();
 
-        if (ID != -1) {
-            note = new Note(ID);
+        if (note != null) {
             title.setText(note.getTitle());
             content.setText(note.getContent());
         } else {
             log.error("Failed to get a note");
             log.info("Tipp: Check if you have set the ID");
-            log.debug("Redirecting to home screen");
-            PetStudyBuddies.setStage("");
+            log.debug("Redirecting to note screen");
+            PetStudyBuddies.setStage("/fxml/Notes/Notes.fxml");
         }
     }
 
@@ -45,8 +44,8 @@ public class EditNoteController extends Controller implements Initializable {
         if (note.save()) {
             PetStudyBuddies.setStage("/fxml/Notes/Notes.fxml");
         } else {
-            Dialog.showError("Failed to save note");
             log.error("Failed to save note");
+            Dialog.showError("Failed to save note");
         }
     }
 }
