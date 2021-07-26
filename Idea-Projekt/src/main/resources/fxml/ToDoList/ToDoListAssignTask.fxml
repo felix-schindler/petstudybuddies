@@ -9,12 +9,12 @@
             minWidth="-Infinity"
             prefHeight="199.0" prefWidth="539.0" styleClass="linear-grad"
             stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.Controller.AssignTaskController">
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.AssignTaskController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button fx:id="ButtonBackAssignTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
-                        prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
+                <Button fx:id="ButtonBack" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
+                        style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
                         stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">

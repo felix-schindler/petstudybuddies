@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class AssignTaskController implements Initializable{
     private static final Logger log = LogManager.getLogger(AssignTaskController.class);
     @FXML
-    Button ButtonBackAssignTask, ButtonAssignTask;
+    Button ButtonBack, ButtonAssignTask;
     @FXML
     TextField TextFieldUsernameShare;
     @FXML
@@ -66,7 +66,7 @@ public class AssignTaskController implements Initializable{
                 Dialog.showError("Failed to add user", "User does not exists");
 
             }
-        } else if (actionEvent.getSource() == ButtonBackAssignTask) {
+        } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
             PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
 
