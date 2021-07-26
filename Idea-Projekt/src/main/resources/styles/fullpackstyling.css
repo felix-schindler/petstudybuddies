@@ -73,6 +73,8 @@
 .button5:pressed, .button5:hover, .button5 {
     -fx-background-radius: 20 20 20 20;
 }
+flaggedButton:empty{
+    -fx-background-color: #24cd9d;}
 
 .combo-box {
     -fx-background-color: #141124;

@@ -91,8 +91,7 @@
                                             promptText="Enter New Deadline"/>
                             </children>
                         </HBox>
-                        <Label fx:id="LabelValidInputModifyTask" layoutX="10.0" layoutY="10.0" minWidth="200.0"
-                               prefHeight="42.0" prefWidth="518.0" textFill="RED">
+                        <Label layoutX="10.0" layoutY="10.0" minWidth="200.0" prefHeight="42.0" prefWidth="518.0" textFill="RED">
                             <font>
                                 <Font name="Calibri Bold" size="22.0"/>
                             </font>

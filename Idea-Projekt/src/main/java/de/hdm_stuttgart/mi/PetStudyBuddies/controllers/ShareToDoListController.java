@@ -22,9 +22,9 @@ import java.util.ResourceBundle;
 public class ShareToDoListController implements Initializable {
     private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
     @FXML
-    Button ButtonBack, ButtonShareList, ButtonCheckforUser;
+    Button ButtonBack, ButtonShareList;
     @FXML
-    TextField TextFieldEMailShare;
+    TextField TextFieldUsernameShare;
     @FXML
     Label LabelNameToDoList;
     ObservableList<ToDoList> selectedList;
@@ -33,22 +33,27 @@ public class ShareToDoListController implements Initializable {
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonShareList) {
             log.debug("Open create new ToDoList dialog");
-            String eingabe = TextFieldEMailShare.getText();
+            String eingabe = TextFieldUsernameShare.getText();
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty()) {
                 // TODO
                 try {
-                    if (ToDoListController.selectedListAsObject.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + TextFieldEMailShare.getText() + "'").fetch()))) {
+                    if (ToDoListController.selectedListAsObject.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + TextFieldUsernameShare.getText() + "'").fetch()))) {
+                        //if()
+                        new InsertQuery("ToDoListShare",new String[]{"UserID","ToDoListID"},new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(TaskListController.selectedListId)});
                         Dialog.showInfo("Success", "User added");
+                        closeSecondScene(actionEvent);
+                        ToDoListController.updateSelectedList();
+                        PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+                    }else{
+                        Dialog.showError("Your sharing your To Do List with the same User. Please retry!");
                     }
                 } catch (NumberFormatException e) {
                     log.catching(e);
                     log.error("User not found");
                     Dialog.showError("Failed to add user", "User does not exists");
                 }
-                closeSecondScene(actionEvent);
-                ToDoListController.updateSelectedList();
-                PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+
             } else {
                 Dialog.showError("Failed to add user", "User does not exists");
 

@@ -2,13 +2,12 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.Views.Dialog;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,8 +19,6 @@ public class ModifyTaskController {
     @FXML
     TextField TextFieldModifyTask;
     @FXML
-    Label LabelValidInputModifyTask;
-    @FXML
     DatePicker DatePickerModifyTask;
 
     public void buttonAction(ActionEvent actionEvent) {
@@ -31,13 +28,13 @@ public class ModifyTaskController {
             log.debug("O");
             if (eingabe != null && !eingabe.isEmpty() && DatePickerModifyTask.getValue() != null) {
                 // TODO
-                new UpdateQuery("Task", new String[]{"Content", "Until"}, new String[]{eingabe, DatePickerModifyTask.getValue().toString()}, "ID = " + TaskListController.selectedTask.getID(), true);
+                new UpdateQuery("Task", new String[]{"Content", "Until"}, new String[]{ eingabe, DatePickerModifyTask.getValue().toString()},"ID = " + TaskListController.selectedTaskAsObject.getID());
                 closeSecondScene(actionEvent);
                 ToDoListController.updateSelectedList();
                 TaskListController.selectedTask = null;
                 PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
-                LabelValidInputModifyTask.setText("Please enter a new Title for your Task!");
+                Dialog.showInfo("Please enter a valid Title and Date for your Task!");
                 log.debug("No New Title entered, Label set");
             }
         } else if (actionEvent.getSource() == ButtonBackModifyTask) {
