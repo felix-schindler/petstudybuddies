@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
@@ -41,7 +42,7 @@ public class ToDoListController extends Controller implements Initializable {
     @FXML
     Label LabelCountToDoToday, LabelCountToDoScheduled, LabelCountToDoFlagged, LabelCountToDoAll;
     @FXML
-    Button ButtonToDoToday, ButtonToDoScheduled, ButtonToDoFlagged, ButtonToDoAll, ButtonAddNewList, ButtonViewList;
+    Button ButtonToDoToday, ButtonToDoScheduled, ButtonToDoFlagged, ButtonToDoAll, ButtonAddNewList, ButtonViewList, ButtonDeleteList;
     @FXML
     TableView<ToDoList> TableViewTest;
     @FXML
@@ -69,9 +70,11 @@ public class ToDoListController extends Controller implements Initializable {
     public static int getSelectedListID(){
         return selectedListID;
     }
+
     public static void setSelectedListID(int ID){
         ToDoListController.selectedListID=ID;
     }
+
     public static void updateSelectedList(){
         CachedRowSet updatedList = new SelectQuery("ToDoList", "*", "ID=" + ToDoListController.getSelectedListID(), null, null, true).fetchAll();
         ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
@@ -199,6 +202,24 @@ public class ToDoListController extends Controller implements Initializable {
             } catch (Exception e) {
                 log.catching(e);
                 log.error("Failed to load input dialog");
+            }
+        }else if(actionEvent.getSource() ==ButtonDeleteList){
+            ObservableList<ToDoList> selectedList = TableViewTest.getSelectionModel().getSelectedItems();
+            log.debug("Observable List with selected Items was created");
+            if (!selectedList.isEmpty()) {
+                log.debug("Items were selected");
+                ToDoListController.setSelectedList(selectedList);
+                if (ToDoListController.selectedList.isEmpty()) {
+                    log.debug("List is empty");
+                }
+                DeleteQuery q = new DeleteQuery("ToDoList", "ID=" + selectedListAsObject.getID());
+                if (q.Count() <= -1) {
+                    Dialog.showError("Failed to delete selected ToDoList, please try again.");
+                }
+                setTableViewTest(new SelectQuery("ToDoList","*","UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll());
+            }else{
+                Dialog.showInfo("Please select a List.");
+                log.debug("Nothing selected");
             }
         }
     }

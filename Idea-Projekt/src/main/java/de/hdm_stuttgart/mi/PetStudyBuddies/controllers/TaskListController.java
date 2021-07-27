@@ -1,6 +1,8 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
@@ -34,7 +36,7 @@ public class TaskListController extends Controller implements Initializable {
     protected static ObservableList<Task> selectedTaskList = FXCollections.observableArrayList();
     protected static Task selectedTaskAsObject;
     @FXML
-    Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask;
+    Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask, ButtonDeleteTask;
     @FXML
     TableColumn<Object, Object> colContent, colUntil, colAssignedTo;
     @FXML
@@ -98,6 +100,17 @@ public class TaskListController extends Controller implements Initializable {
                 Dialog.showInfo("Please select a Task from your To Do List");
                 log.debug("Selected Task was null");
 
+            }
+        }else if(event.getSource() ==ButtonDeleteTask) {
+            if (setSelectedTask()) {
+                    DeleteQuery q = new DeleteQuery("Task", "ID=" + selectedTaskAsObject.getID());
+                    if (q.Count() <= -1) {
+                        Dialog.showError("Failed to delete selected Task, please try again.");
+                    }else updateTableView();
+
+            } else {
+                Dialog.showInfo("Please select a Task.");
+                log.debug("Nothing selected");
             }
         }
     }
