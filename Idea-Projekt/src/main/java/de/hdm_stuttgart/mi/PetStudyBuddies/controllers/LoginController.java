@@ -59,7 +59,7 @@ public class LoginController extends Controller {
                 Account.setUser(user);
 
                 // Redirect to Dashboard
-                PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do List");
+                PetStudyBuddies.setStage("/fxml/Dashboard/Dashboard.fxml", "Dashboard");
             } else {
                 Dialog.showError("EMail or Password is incorrect.");
                 log.error("EMail or Password is incorrect.");
