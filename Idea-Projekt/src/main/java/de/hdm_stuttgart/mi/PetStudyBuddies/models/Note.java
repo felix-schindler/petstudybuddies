@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Note extends Model implements Shareable {
@@ -31,12 +32,12 @@ public class Note extends Model implements Shareable {
     /**
      * Date when the note was last edited
      */
-    private Date lastEditedOn;
+    private LocalDate lastEditedOn;
 
     /**
      * Date when the note was created
      */
-    private Date createdOn;
+    private LocalDate createdOn;
 
     /**
      * @param ID
@@ -98,14 +99,14 @@ public class Note extends Model implements Shareable {
     /**
      * @see Note#lastEditedOn
      */
-    public Date getLastEditedOn() {
+    public LocalDate getLastEditedOn() {
         return lastEditedOn;
     }
 
     /**
      * @see Note#createdOn
      */
-    public Date getCreatedOn() {
+    public LocalDate getCreatedOn() {
         return createdOn;
     }
 

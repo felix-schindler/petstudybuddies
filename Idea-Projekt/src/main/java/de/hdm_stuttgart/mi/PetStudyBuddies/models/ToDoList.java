@@ -99,6 +99,13 @@ public class ToDoList extends Model implements Shareable {
         this.flagged = flagged;
     }
 
+    /**
+     * Changes flagged to the opposite
+     */
+    public void setFlagged() {
+        flagged = !flagged;
+    }
+
     public int getTodoID() {
         return todoID;
     }
@@ -126,6 +133,7 @@ public class ToDoList extends Model implements Shareable {
 
     /**
      * @see Model#save()
+     * @throws Exception When trying to change owner
      */
     public boolean save() throws Exception {
         log.debug("Trying to safe changes");
@@ -133,7 +141,7 @@ public class ToDoList extends Model implements Shareable {
         if (!realOwner.equals(String.valueOf(owner))) {
             log.error("Owner of a note can't be changed!");
             log.info("Tried to change owner of ToDoList " + getID() + " from " + realOwner + " to " + owner);
-            throw new Exception("Owner of a note can't be changed!");
+            throw new Exception("Owner of a ToDoList can't be changed!");
         }
         return new UpdateQuery(getTable(), new String[]{"Title", "Flagged"}, new String[]{title, flagged ? "1" : "0"}, "ID=" + getID()).Count() == 1;
     }

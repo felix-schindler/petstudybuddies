@@ -119,8 +119,8 @@ CREATE TABLE IF NOT EXISTS Task
 	ToDoListID INTEGER
 		references ToDoList
 			on delete cascade,
-	Content TEXT not null,
-	Until INTEGER DEFAULT NULL,
+	Content TEXT NOT NULL,
+	Until INTEGER NOT NULL,
 	AssignedTo INTEGER DEFAULT NULL
 		references User
 			on delete cascade

@@ -25,7 +25,6 @@ import org.apache.logging.log4j.Logger;
 
 import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -34,9 +33,10 @@ public class ToDoListController extends Controller implements Initializable {
      * Log object for error handling
      */
     private static final Logger log = LogManager.getLogger(ToDoListController.class);
-    protected static ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
-    protected static int selectedListID;
-    protected static ToDoList selectedListAsObject;
+    /**
+     * Selected ToDoList for viewing tasks, ...
+     */
+    private static ToDoList editTodo = null;
     @FXML
     Label LabelUsername;
     @FXML
@@ -44,117 +44,97 @@ public class ToDoListController extends Controller implements Initializable {
     @FXML
     Button ButtonToDoToday, ButtonToDoScheduled, ButtonToDoFlagged, ButtonToDoAll, ButtonAddNewList, ButtonViewList, ButtonDeleteList;
     @FXML
-    TableView<ToDoList> TableViewTest;
+    TableView<ToDoList> TodoTable;
     @FXML
     TableColumn<Object, Object> colTitle;
-    int NToday, NScheduled, NFlagged, NAll;
-    CachedRowSet AllUserLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll();
-    CachedRowSet TodayUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND Task.Until = CURRENT_DATE").fetchAll();
-    CachedRowSet ScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) IS NOT NULL").fetchAll();
-    CachedRowSet FlaggedUserLists = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'").fetchAll();
 
-    public static ObservableList<ToDoList> getSelectedList() {
-        return selectedList;
-    }
+    SelectQuery queryToDoLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null);
+    SelectQuery querySharedToDoLists = new SelectQuery("ToDoListShare", "ToDoListID", "UserID=" + Account.getLoggedUser().getID());
+    SelectQuery queryTodayUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND Task.Until = CURRENT_DATE");
+    SelectQuery queryScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) IS NOT NULL");
+    SelectQuery queryFlaggedUserLists = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'");
 
-    public static void setSelectedList(ObservableList<ToDoList> selectedList) {
-        ToDoListController.selectedList = selectedList;
-        setSelectedListAsObject();
-    }
-    public static void setSelectedListAsObject(){
-        selectedListAsObject= selectedList.get(0);
-        log.debug("selectedListAsObject getID:" + selectedListAsObject.getID());
-
-    }
-
-    public static int getSelectedListID(){
-        return selectedListID;
-    }
-
-    public static void setSelectedListID(int ID){
-        ToDoListController.selectedListID=ID;
-    }
-
-    public static void updateSelectedList(){
-        CachedRowSet updatedList = new SelectQuery("ToDoList", "*", "ID=" + ToDoListController.getSelectedListID(), null, null, true).fetchAll();
-        ObservableList<ToDoList> selectedList = FXCollections.observableArrayList();
+    public ObservableList<ToDoList> getUserTodoLists() {
+        ObservableList<ToDoList> todosList = FXCollections.observableArrayList();
+        CachedRowSet todosSet = queryToDoLists.fetchAll();
+        CachedRowSet sharedTodosSet = querySharedToDoLists.fetchAll();
         try {
-            if (!updatedList.first()) {
-                log.debug("Updated List is empty");
-                selectedList.clear();
+            do {
+                todosList.add(new ToDoList(todosSet.getInt("ID")));
+            } while (todosSet.next());
 
-            } else {
-                updatedList.first();
-                do {
-                    selectedList.add(new ToDoList(updatedList.getInt("ID")));
-                    log.debug("ToDo List " + updatedList.getInt("ID") + " added");
-                } while (updatedList.next());
-            }
-            log.debug("Updated List is set");
+            do {
+                todosList.add(new ToDoList(sharedTodosSet.getInt("ToDoListID")));
+            } while (sharedTodosSet.next());
         } catch (SQLException e) {
             log.catching(e);
-            log.error("Failed to update selected List");
+            log.error("Failed to add ToDoLists");
         }
-        log.debug("Selected List Size " + selectedList.size());
-        setSelectedList(selectedList);
+
+        return todosList;
     }
+
+    Runnable updateUserToDoLists = () -> {
+        log.debug("Updating ToDoList table...");
+        TodoTable.setItems(getUserTodoLists());
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
+    };
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         LabelUsername.setText(Account.getLoggedUser().getUsername());
-        ObservableList<ToDoList> data = FXCollections.observableArrayList();
-        //updateUserToDoLists();
-        try {
-            do {
-                data.add(new ToDoList(AllUserLists.getInt("ID")));
-                log.debug("ToDo List " + AllUserLists.getInt("ID") + " added");
-            } while (AllUserLists.next());
 
-            TableViewTest.setItems(data);
-            colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
-            log.debug("Table View Data set");
+        new Thread(updateUserToDoLists).start();
 
-            this.NAll = AllUserLists.size();
-            log.debug("Number of All To Do Lists " + NAll);
-            LabelCountToDoAll.setText(String.valueOf(NAll));
-
-            this.NFlagged = FlaggedUserLists.size();
-            log.debug("Number of Flagged To Do Lists " + NFlagged);
-            LabelCountToDoFlagged.setText(String.valueOf(NFlagged));
-
-            this.NScheduled = ScheduledUserLists.size();
-            log.debug("Number of To Do Lists " + NScheduled);
-            LabelCountToDoScheduled.setText(String.valueOf(NScheduled));
-
-            this.NToday = TodayUserLists.size();
-            log.debug("Number of To Do Lists " + NToday);
-            LabelCountToDoToday.setText(String.valueOf(NToday));
-
-        } catch (SQLException e) {
-            log.catching(e);
-            log.error("Beim Hinzufügen von ToDoLists zum TableView  ist ein Fehler aufgetreten");
-        }
+        LabelCountToDoAll.setText(String.valueOf(queryToDoLists.Count()));
+        LabelCountToDoFlagged.setText(String.valueOf(queryFlaggedUserLists.Count()));
+        LabelCountToDoScheduled.setText(String.valueOf(queryScheduledUserLists.Count()));
+        LabelCountToDoToday.setText(String.valueOf(queryTodayUserLists.Count()));
     }
 
+    /**
+     * @return The currently selected ToDoList as Object
+     */
+    private ToDoList getSelectedTodo() {
+        ObservableList<ToDoList> selectedList = TodoTable.getSelectionModel().getSelectedItems();
+        log.debug("Observable List with selected Items was created");
+        if (!selectedList.isEmpty()) {
+            editTodo = selectedList.get(0);
+            return editTodo;
+        }
+        return null;
+    }
+
+    /**
+     * @return The ToDoList to be edited (add tasks, ...)
+     */
+    public static ToDoList getEditTodo() {
+        return editTodo;
+    }
 
     @FXML
-    public void setTableViewTest(ResultSet QueryResult) {
+    public void setTableData(CachedRowSet queryResult) {
         ObservableList<ToDoList> data = FXCollections.observableArrayList();
-        try {
-            if (!QueryResult.first()) {
-                log.debug("Data is empty");
-                data.clear();
-                TableViewTest.setItems(data);
-            } else {
-                QueryResult.first();
-                do {
-                    data.add(new ToDoList(QueryResult.getInt("ID")));
-                    log.debug("ToDo List " + QueryResult.getInt("ID") + " added");
-                } while (QueryResult.next());
 
-                TableViewTest.setItems(data);
-                colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
+        try {
+            if (!queryResult.first()) {
+                Dialog.showError("List is empty", "The chosen list is empty, please choose another one.");
+                return;
             }
+        } catch (SQLException e) {
+            log.catching(e);
+            Dialog.showError("An unknown error occurred, please try again.");
+            return;
+        }
+
+        try {
+            do {
+                data.add(new ToDoList(queryResult.getInt("ID")));
+                log.debug("ToDo List " + queryResult.getInt("ID") + " added");
+            } while (queryResult.next());
+
+            TodoTable.setItems(data);
+            colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
             log.debug("Table view data set");
         } catch (SQLException e) {
             log.catching(e);
@@ -167,28 +147,38 @@ public class ToDoListController extends Controller implements Initializable {
     void filterButtons(ActionEvent actionEvent) {
         log.debug("Button Event Handler called");
         if (actionEvent.getSource() == ButtonToDoAll) {
-            setTableViewTest(AllUserLists);
+            setTableData(queryToDoLists.fetchAll());
         } else if (actionEvent.getSource() == ButtonToDoScheduled) {
-            setTableViewTest(ScheduledUserLists);
+            setTableData(queryScheduledUserLists.fetchAll());
         } else if (actionEvent.getSource() == ButtonToDoFlagged) {
-            setTableViewTest(FlaggedUserLists);
+            setTableData(queryFlaggedUserLists.fetchAll());
         } else if (actionEvent.getSource() == ButtonToDoToday) {
-            setTableViewTest(TodayUserLists);
+            setTableData(queryTodayUserLists.fetchAll());
         } else if (actionEvent.getSource() == ButtonViewList) {
+            editTodo = getSelectedTodo();
+            if (editTodo == null) {
+                log.error("No list selected");
+                Dialog.showError("Please select a ToDo List.");
+            }
+
+            PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
+
+            /*
             log.debug("ButtonViewList was clicked on");
             ObservableList<ToDoList> selectedList = TableViewTest.getSelectionModel().getSelectedItems();
             log.debug("Observable List with selected Items was created");
             if (!selectedList.isEmpty()) {
                 log.debug("Items were selected");
-                ToDoListController.setSelectedList(selectedList);
-                if (ToDoListController.selectedList.isEmpty()) {
+                selectedListData = selectedList;
+                if (selectedListData.isEmpty()) {
                     log.debug("List is empty");
                 }
-                PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+                PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
             } else {
                 Dialog.showInfo("Please select a Task from your To Do List");
                 log.debug("Nothing selected");
             }
+             */
         } else if (actionEvent.getSource() == ButtonAddNewList) {
             Stage anotherStage = new Stage();
             log.debug("ButtonAddList was clicked");
@@ -203,32 +193,18 @@ public class ToDoListController extends Controller implements Initializable {
                 log.catching(e);
                 log.error("Failed to load input dialog");
             }
-        }else if(actionEvent.getSource() ==ButtonDeleteList){
-            ObservableList<ToDoList> selectedList = TableViewTest.getSelectionModel().getSelectedItems();
-            log.debug("Observable List with selected Items was created");
-            if (!selectedList.isEmpty()) {
-                log.debug("Items were selected");
-                ToDoListController.setSelectedList(selectedList);
-                if (ToDoListController.selectedList.isEmpty()) {
-                    log.debug("List is empty");
-                }
-                DeleteQuery q = new DeleteQuery("ToDoList", "ID=" + selectedListAsObject.getID());
-                if (q.Count() <= -1) {
+        } else if (actionEvent.getSource() == ButtonDeleteList) {
+            ToDoList selected = getSelectedTodo();
+            if (selected != null) {
+                DeleteQuery qTodo = new DeleteQuery("ToDoList", "ID=" + selected.getID());
+                if (qTodo.Count() <= -1) {
+                    log.error("Failed to delete ToDoList");
                     Dialog.showError("Failed to delete selected ToDoList, please try again.");
-                }
-                setTableViewTest(new SelectQuery("ToDoList","*","UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll());
-            }else{
-                Dialog.showInfo("Please select a List.");
-                log.debug("Nothing selected");
+                } else new Thread(updateUserToDoLists).start();
+            } else {
+                log.error("Nothing selected");
+                Dialog.showError("Please select a list.");
             }
         }
-    }
-
-    public void updateUserToDoLists(){
-        AllUserLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null).fetchAll();
-        TodayUserLists = new SelectQuery("ToDoList, Task", "*", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) = date('now')").fetchAll();
-        ScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) IS NOT NULL").fetchAll();
-        FlaggedUserLists = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'").fetchAll();
-
     }
 }

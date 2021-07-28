@@ -1,7 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ToDoListController;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
+import de.hdm_stuttgart.mi.PetStudyBuddies.models.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,7 +15,13 @@ import java.awt.*;
 import java.io.IOException;
 
 public class PetStudyBuddies extends Application {
-    private static final Logger log = LogManager.getLogger(ToDoListController.class);
+    /**
+     * Logger for smart (error) loggin
+     */
+    private static final Logger log = LogManager.getLogger(PetStudyBuddies.class);
+    /**
+     * The main window of the application
+     */
     private static Stage window;
 
     /**
@@ -25,6 +31,7 @@ public class PetStudyBuddies extends Application {
      * @param args Command line arguments - gets passed to launch
      */
     public static void main(String[] args) {
+        Account.setUser(new User(101));     // TODO REMOVE auto login!!!!
         launch(args);
     }
 
@@ -100,7 +107,7 @@ public class PetStudyBuddies extends Application {
         if (Account.getLoggedUser() == null) {
             setStage("/fxml/User/Login.fxml", "Login");
         } else {
-            setStage("/fxml/User/Login.fxml", "Login");
+            setStage("/fxml/Dashboard/Dashboard.fxml", "Dashboard");
         }
         log.debug("PetStudyBuddies gestartet");
     }

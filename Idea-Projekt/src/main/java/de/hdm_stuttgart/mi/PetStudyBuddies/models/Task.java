@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Task extends Model {
@@ -17,22 +18,18 @@ public class Task extends Model {
      * log object for error handling
      */
     private static final Logger log = LogManager.getLogger(Task.class);
-
     /**
      * ID of the parent ToDoList
      */
     private int toDoList;
-
     /**
      * Content of the task
      */
     private String content;
-
     /**
      * Due to date
      */
-    private Date until;
-
+    private LocalDate until;
     /**
      * UserID of the assigned person
      */
@@ -100,14 +97,14 @@ public class Task extends Model {
     /**
      * @see Task#until
      */
-    public Date getUntil() {
+    public LocalDate getUntil() {
         return until;
     }
 
     /**
      * Set due to date
      */
-    public void setUntil(Date newUntil) {
+    public void setUntil(LocalDate newUntil) {
         until = newUntil;
     }
 
@@ -130,40 +127,6 @@ public class Task extends Model {
      */
     public void setAssignedPerson(int UserID) {
         assignedPerson = UserID;
-    }
-
-
-    /**
-     * TODO das kommt entweder in the save funktion selbst oder wird dort aufgerufen. wahrscheinlich aber eher in die save funktion selbst
-     * Assigns the task to a person
-     *
-     * @param TaskID ID of the note to be shared
-     * @param UserID ID of the user to be assigned to
-     * @return true if the person could be assigned, false otherwise
-     */
-    public boolean assignPerson(int TaskID, int UserID) throws SQLException {
-        log.debug("Logged User=" + Account.getLoggedUser().getID() + "Assignee = " + UserID);
-        if (UserID == Account.getLoggedUser().getID()) {
-            log.debug("User " + UserID + " does not exist");
-            return false;    // User does not exist
-        } else {
-            //ResultSet selectedTask = new SelectQuery("Task", "*", "AssignedTo = " + UserID +" AND ID= "+TaskID).fetchAll();
-            ResultSet assignedTask = new SelectQuery("Task", "*", "AssignedTo = " + UserID + " AND ID= " + TaskID).fetchAll();
-            if (assignedTask.first()) {
-                log.debug("User " + UserID + " already got access to the selected Task");
-                return false;
-            } else {
-                ResultSet selectedTask = new SelectQuery("Task", "*", "ID= " + TaskID).fetchAll();
-                try {
-                    new InsertQuery("Task", new String[]{"UserID", "ToDoListID", "Content", "Until"}, new String[]{String.valueOf(UserID), String.valueOf(selectedTask.getInt("ToDoListID")), selectedTask.getString("Content"), selectedTask.getString("Until")});
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                new UpdateQuery("Task", "AssignedTo", String.valueOf(UserID), "ID = " + selectedTask.getInt("ID"));
-                return true;
-            }
-
-        }
     }
 
     /**
@@ -195,25 +158,23 @@ public class Task extends Model {
     public void setTaskBalance() {
         try{
             if (checkTasks())
-                this.taskBalance = tasksInFuture/sumAllTasks;
+                taskBalance = tasksInFuture/sumAllTasks;
         }catch(Exception o){
             log.debug("Invalid Tasks. Could not calculate Balance.");
         }
     }
 
-    private boolean checkTasks(){
-        if(tasksInFuture!=-1 && (sumAllTasks!=-1 || sumAllTasks!=0)) return true;
-        return false;
-
-
+    private boolean checkTasks() {
+        return tasksInFuture != -1 && (sumAllTasks != -1 || sumAllTasks != 0);
     }
+
     /**
      * @see Model#save()
      */
     public boolean save() {
         log.debug("Trying to safe...");
         return new UpdateQuery(getTable(), new String[]{"ToDoListID", "Content", "Until", "AssignedTo"},
-                new String[]{Integer.toString(toDoList), content, until.toString(), Integer.toString(assignedPerson)},
+                new String[]{Integer.toString(toDoList), content, String.valueOf(until), Integer.toString(assignedPerson)},
                 "ID=" + getID()).Count() == 1;
     }
 }

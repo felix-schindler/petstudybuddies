@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.event.ActionEvent;
@@ -25,25 +26,26 @@ public class AddTaskController {
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonCreateNewTask) {
             log.debug("Open create new ToDoList dialog");
-            String eingabe = TextFieldAddNewTask.getText();
-            if (eingabe != null && !eingabe.isEmpty() && DatePickerAddNewTask.getValue() != null) {
-                // TODO
-                new InsertQuery("Task", new String[]{"ToDoListID", "Content", "Until"}, new String[]{String.valueOf(ToDoListController.getSelectedListID()), eingabe, DatePickerAddNewTask.getValue().toString()}, true);
-                closeSecondScene(actionEvent);
-                ToDoListController.updateSelectedList();
-                PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-            } else {
+            String content = Utils.getInputString(TextFieldAddNewTask);
+            if (content == null || DatePickerAddNewTask.getValue() == null) {
+                log.error("No valid date or title entered.");
                 Dialog.showError("Please enter a valid Title and Date!");
-                log.debug("No New Valid Title or Date, Dialog shown");
+            } else {
+                new InsertQuery(
+                    "Task",
+                    new String[]{"ToDoListID", "Content", "Until"},
+                    new String[]{String.valueOf(ToDoListController.getEditTodo().getID()), content, DatePickerAddNewTask.getValue().toString()}
+                );
+                closeSecondScene(actionEvent);
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
-            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
         }
     }
 
     @FXML
     public void closeSecondScene(ActionEvent actionEvent) {
+        PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
     }

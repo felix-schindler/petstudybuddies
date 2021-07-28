@@ -10,7 +10,9 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Utility functions you can use everywhere
@@ -104,20 +106,19 @@ public class Utils {
      * Parses a given String to a date
      *
      * @param dateStr string to be parsed
-     * @return Date as an valid object
+     * @return Date as a valid object
      */
-    public static Date parseDate(String dateStr) {
-        Date date = null;
+    public static LocalDate parseDate(String dateStr) {
+        LocalDate date = null;
         try {
-            date = new Date(Long.parseLong(dateStr));
+            date = LocalDate.ofEpochDay(Long.parseLong(dateStr));
         } catch (NumberFormatException ignored) {
             try {
-                date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateStr);
-            } catch (ParseException ignored1) {
-                try {
-                    date = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr);
-                } catch (ParseException ignored2) {
-                }
+                int year = Integer.parseInt(dateStr.substring(0,4));
+                int month = Integer.parseInt(dateStr.substring(5,7));
+                int day = Integer.parseInt(dateStr.substring(8,10));
+                date = LocalDate.of(year, month, day);
+            } catch (NumberFormatException ignored1) {
             }
         }
 

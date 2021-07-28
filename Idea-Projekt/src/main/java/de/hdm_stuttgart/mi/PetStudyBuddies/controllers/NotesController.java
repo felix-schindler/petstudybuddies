@@ -25,7 +25,13 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class NotesController extends Controller implements Initializable {
+    /**
+     * Logger object for smart logging
+     */
     private final static Logger log = LogManager.getLogger(NotesController.class);
+    /**
+     * Note to be edited
+     */
     private static Note editNote = null;
     @FXML
     private TableColumn<Note, String> colTitle;
@@ -64,26 +70,6 @@ public class NotesController extends Controller implements Initializable {
 
     public ObservableList<Note> getNotes() {
         ObservableList<Note> notes = FXCollections.observableArrayList();
-
-        /*
-        try {
-            new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "DATETIME(LastEditedOn)", null)
-                    .fetchAll()
-                    .toCollection("ID")
-                    .forEach(n -> notes.add(new Note((int)n)));
-
-            new SelectQuery("NoteShare", "NoteID", "UserID=" + Account.getLoggedUser().getID())
-                    .fetchAll()
-                    .toCollection("NoteID")
-                    .forEach(sn -> notes.add(new Note((int)sn)));
-
-            log.debug("Added own and shared notes");
-        } catch (SQLException e) {
-            log.catching(e);
-            log.error("Failed to load notes");
-        }
-        */
-
         try {
             CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "DATETIME(LastEditedOn)", null).fetchAll();
             do {

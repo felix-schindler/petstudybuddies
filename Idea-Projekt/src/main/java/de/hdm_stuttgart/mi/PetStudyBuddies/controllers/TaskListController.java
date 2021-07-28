@@ -2,7 +2,6 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
@@ -12,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,97 +29,138 @@ import java.util.ResourceBundle;
 
 public class TaskListController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(TaskListController.class);
-    protected static Task selectedTask;
-    protected static int selectedListId;
-    protected static ObservableList<Task> selectedTaskList = FXCollections.observableArrayList();
-    protected static Task selectedTaskAsObject;
+    protected static Task editTask;
+    Stage anotherStage = new Stage();
+
     @FXML
     Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask, ButtonDeleteTask;
     @FXML
     TableColumn<Object, Object> colContent, colUntil, colAssignedTo;
     @FXML
-    TableView<Task> TableViewSelectedList;
+    TableView<Task> TaskTable;
     @FXML
     Label LabelToDoListName;
-    Stage anotherStage = new Stage();
-    ToDoList ToDoListSelected;
-
-    public static void setSelectedListAsObject() {
-        selectedTaskAsObject = selectedTaskList.get(0);
-        log.debug("selectedTaskAsObject getID:" + selectedTaskAsObject.getID());
-    }
-
-    public void setSelectedTask(ObservableList<Task> selectedTask) {
-        selectedTaskList = selectedTask;
-        setSelectedListAsObject();
-    }
-
-    public void setSelectedTask(Task selectedTask) {
-        selectedTaskList.add(selectedTask);
-        setSelectedListAsObject();
-    }
-
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        if (event.getSource() == ButtonSetFlag) {
-            log.debug("ButtonSetFlag was clicked");
-            ToDoListSelected.setFlagged(!ToDoListSelected.getFlagged());
-            try {
-                ToDoListSelected.save();
-            } catch (Exception ignored) {
-                Dialog.showError("Failed to save task, please try again.");
-            }
-            setButtonFlagged();
-            Dialog.showInfo("Taskflag was changed");
-        } else if (event.getSource() == ButtonChangeTitle) {
-            log.debug("ButtonChangeTitle was clicked");
-            openSecondScene("/fxml/ToDoList/ToDoListModifyTitle.fxml");
-        } else if (event.getSource() == ButtonAddNewTask) {
-            log.debug("ButtonAddNewTask was clicked");
-            openSecondScene("/fxml/ToDoList/ToDoListAddTask.fxml");
-        } else if (event.getSource() == ButtonModifyTask) {
-            log.debug("ButtonModifyTask was clicked");
-            if (setSelectedTask()) {
-                openSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
-            } else {
-                Dialog.showInfo("Please select a Task from your To Do List");
-            }
-        } else if (event.getSource() == ButtonShareList) {
-            log.debug("ButtonShareList was clicked");
-            openSecondScene("/fxml/ToDoList/ToDoListShareToDoList.fxml");
-        } else if (event.getSource() == ButtonAssignTask) {
-            log.debug("ButtonAssignTask was clicked");
-
-            if (setSelectedTask()) {
-                log.debug("Task was selected");
-                openSecondScene("/fxml/ToDoList/ToDoListAssignTask.fxml");
-            } else {
-                // TODO maybe display error message / dialog(?)
-                Dialog.showInfo("Please select a Task from your To Do List");
-                log.debug("Selected Task was null");
-
-            }
-        }else if(event.getSource() ==ButtonDeleteTask) {
-            if (setSelectedTask()) {
-                    DeleteQuery q = new DeleteQuery("Task", "ID=" + selectedTaskAsObject.getID());
-                    if (q.Count() <= -1) {
-                        Dialog.showError("Failed to delete selected Task, please try again.");
-                    }else updateTableView();
-
-            } else {
-                Dialog.showInfo("Please select a Task.");
-                log.debug("Nothing selected");
-            }
-        }
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setTableView();
+        new Thread(updateTable).start();
         setButtonFlagged();
     }
+
+    Runnable updateTable = () -> {
+        LabelToDoListName.setText(ToDoListController.getEditTodo().getTitle());
+
+        TaskTable.setItems(getTasks());
+        colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
+        colUntil.setCellValueFactory(new PropertyValueFactory<>("Until"));
+        colAssignedTo.setCellValueFactory(new PropertyValueFactory<>("AssignedTo"));
+
+        log.debug("TableView set");
+    };
+
+    /**
+     * @return List of all tasks for the selected ToDoList
+     */
+    private ObservableList<Task> getTasks() {
+        ToDoList selectedList = ToDoListController.getEditTodo();
+        ObservableList<Task> tasks = FXCollections.observableArrayList();
+
+        if (selectedList != null) {
+            SelectQuery qTasks = new SelectQuery("Task", "ID", "ToDoListID=" + selectedList.getID());
+            int nTasks = qTasks.Count();
+            if (nTasks > 0) {
+                log.debug("Number of tasks in list " + qTasks.Count());
+                CachedRowSet TasksInSelectedList = qTasks.fetchAll();
+                try {
+                    do {
+                        tasks.add(new Task(TasksInSelectedList.getInt("ID")));
+                        log.debug("Observable list size " + tasks.size());
+                    } while (TasksInSelectedList.next());
+                } catch (SQLException e) {
+                    log.debug("Could not resolve Tasks from CachedRowSet");
+                }
+            } else {
+                log.debug("No tasks in this ToDoList.");
+            }
+        }
+        return tasks;
+    }
+
+    /**
+     * Handles all button actions (Right side menu)
+     *
+     * @param event Button click
+     */
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
+        // Flag parent ToDoList
+        if (event.getSource() == ButtonSetFlag) {
+            log.debug("ButtonSetFlag was clicked");
+            ToDoList td = ToDoListController.getEditTodo();
+            td.setFlagged();
+            try {
+                td.save();
+                setButtonFlagged();
+                if (td.getFlagged()) Dialog.showInfo("ToDoList was flagged");
+                else Dialog.showInfo("Flag was removed from ToDoList");
+            } catch (Exception ignored) {
+                Dialog.showError("The owner can't be changed.");
+            }
+        }
+
+        // Open change title dialog
+        else if (event.getSource() == ButtonChangeTitle) {
+            log.debug("ButtonChangeTitle was clicked");
+            openSecondScene("/fxml/ToDoList/ToDoListModifyTitle.fxml");
+        }
+
+        // Open add task dialog
+        else if (event.getSource() == ButtonAddNewTask) {
+            log.debug("ButtonAddNewTask was clicked");
+            openSecondScene("/fxml/ToDoList/ToDoListAddTask.fxml");
+        }
+
+        // Open modify task dialog
+        else if (event.getSource() == ButtonModifyTask) {
+            log.debug("ButtonModifyTask was clicked");
+            if (getSelectedTask() != null) {
+                openSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
+            }
+        }
+
+        // Open share dialog
+        else if (event.getSource() == ButtonShareList) {
+            log.debug("ButtonShareList was clicked");
+            if (getSelectedTask() != null) {
+                openSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
+            }
+        }
+
+        // Open assign dialog
+        else if (event.getSource() == ButtonAssignTask) {
+            log.debug("ButtonAssignTask was clicked");
+            if (getSelectedTask() != null) {
+                openSecondScene("/fxml/ToDoList/ToDoListAssignTask.fxml");
+            }
+        }
+
+        // Delete Task
+        else if(event.getSource() == ButtonDeleteTask) {
+            // Update table after delete, display error if none selected
+            if (getSelectedTask() != null) {
+                DeleteQuery q = new DeleteQuery("Task", "ID=" + editTask.getID());
+                if (q.Count() <= -1) {
+                    Dialog.showError("Failed to delete selected Task, please try again.");
+                }
+            }
+        }
+
+        // Bc sth was probably edited, refresh the task table
+        new Thread(updateTable).start();
+    }
+
     public void setButtonFlagged() {
-        if (ToDoListSelected.getFlagged()) {
+        if (ToDoListController.getEditTodo().getFlagged()) {
             ButtonSetFlag.setStyle("-fx-background-color: #8c78e3; ");
         } else ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
     }
@@ -140,63 +179,19 @@ public class TaskListController extends Controller implements Initializable {
         }
     }
 
-    public void closeSecondScene(ActionEvent actionEvent) {
-        Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        secondStage.close();
-    }
-
-    public void updateTableView(){
-        ToDoListController.updateSelectedList();
-        setTableView();
-    }
-
-    public void setTableView() {
-        ObservableList<ToDoList> selectedList = ToDoListController.getSelectedList();
-        log.debug("Selected List Size " + selectedList.size());
-        if (ToDoListController.getSelectedList() != null) {
-            for (ToDoList todolist : selectedList) {
-                selectedListId = todolist.getID();
-                ToDoListController.setSelectedListID(selectedListId);
-                this.ToDoListSelected = todolist;
-                LabelToDoListName.setText(ToDoListSelected.getTitle());
-            }
-            log.debug("ToDoList ID " + selectedListId);
-            ObservableList<Task> tasks = FXCollections.observableArrayList();
-            int numberOfTasks = new SelectQuery("Task", "*", "ToDoListID=" + selectedListId, "ID", null, true).Count();
-            log.debug("Number of Tasks in List"+ numberOfTasks);
-            if (numberOfTasks != 0) {
-                CachedRowSet TasksInSelectedList = new SelectQuery("Task", "ID", "ToDoListID=" + selectedListId, "ID", null, true).fetchAll();
-                try {
-                    do {
-                        tasks.add(new Task(TasksInSelectedList.getInt("ID")));
-                        log.debug("Observable List Size " + tasks.size());
-                    } while (TasksInSelectedList.next());
-                } catch (SQLException e) {
-                    log.debug("Could not resolve Tasks from CachedRowSet");
-                }
-            } else {
-                tasks.clear();
-            }
-
-            TableViewSelectedList.setItems(tasks);
-            colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
-            colUntil.setCellValueFactory(new PropertyValueFactory<>("Until"));
-            colAssignedTo.setCellValueFactory(new PropertyValueFactory<>("AssignedTo"));
-
-            log.debug("TableView set");
-        }
-    }
-    @FXML
-    public boolean setSelectedTask() {
-        ObservableList<Task> selectedTask = TableViewSelectedList.getSelectionModel().getSelectedItems();
+    public Task getSelectedTask() {
+        ObservableList<Task> selectedTask = TaskTable.getSelectionModel().getSelectedItems();
         if (!selectedTask.isEmpty()) {
-            selectedTaskAsObject = selectedTask.get(0);
-            setSelectedTask(selectedTaskAsObject);
-            return true;
+            editTask = selectedTask.get(0);
+            return editTask;
         } else {
             log.error("No task was selected");
-            return false;
+            Dialog.showError("No task selected", "Please select a Task from your To Do List");
         }
+        return null;
     }
 
+    public static Task getEditTask() {
+        return editTask;
+    }
 }

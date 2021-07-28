@@ -265,7 +265,7 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="698.0">
                                     <children>
-                                        <TableView fx:id="TableViewTest" prefHeight="200.0" prefWidth="699.0">
+                                        <TableView fx:id="TodoTable" prefHeight="200.0" prefWidth="699.0">
                                             <columns>
                                                 <TableColumn fx:id="colTitle" minWidth="700.0" text="Title" />
                                             </columns>

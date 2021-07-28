@@ -13,9 +13,9 @@
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
-                <Button fx:id="ButtonBackShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
-                        prefWidth="66.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                <Button fx:id="ButtonBack" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
+                        style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
+                        text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>

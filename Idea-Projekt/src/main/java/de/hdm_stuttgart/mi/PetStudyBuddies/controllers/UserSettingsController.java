@@ -15,7 +15,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class UserSettingsController extends Controller implements Initializable {
+    /**
+     * Logger object for smart (error) logging
+     */
     private static final Logger log = LogManager.getLogger(UserSettingsController.class);
+    /**
+     * Logged-in user
+     */
     private final User user = Account.getLoggedUser();
     @FXML
     Label labelUsername;
@@ -28,9 +34,12 @@ public class UserSettingsController extends Controller implements Initializable 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        labelUsername.setText(Account.getLoggedUser().getUsername());
+        labelUsername.setText(user.getUsername());
     }
 
+    /**
+     * Saves the new password / email
+     */
     public void save() {
         String  newPassStr = Utils.getInputString(newPassword),
                 confirmPassStr = Utils.getInputString(confirmNewPassword),

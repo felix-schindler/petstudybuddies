@@ -1,7 +1,9 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,12 +16,13 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AssignTaskController implements Initializable{
+public class AssignTaskController implements Initializable {
     private static final Logger log = LogManager.getLogger(AssignTaskController.class);
     @FXML
     Button ButtonBack, ButtonAssignTask;
@@ -28,48 +31,41 @@ public class AssignTaskController implements Initializable{
     @FXML
     Label LabelNameTask;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        log.debug("Open create new ToDoList dialog");
+        LabelNameTask.setText(TaskListController.getEditTask().getContent());
+    }
+
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
+        // Assign a task to a user
         if (actionEvent.getSource() == ButtonAssignTask) {
-            LabelNameTask.setText(TaskListController.selectedTaskAsObject.getContent());
-            log.debug("Open create new ToDoList dialog");
-            String eingabe = TextFieldUsernameShare.getText();
-            if (eingabe != null && !eingabe.isEmpty()) {
-                // TODO
-                try {
-                    ResultSet assigneeID = new SelectQuery("User","ID","Username = '"+eingabe+"'").fetchAll();
-                    log.debug("Assignee ID = " + assigneeID);
-                    if (assigneeID.first()) {
-                        if (TaskListController.selectedTaskAsObject.assignPerson(TaskListController.selectedTaskAsObject.getID(),assigneeID.getInt("ID"))){
+            String username = Utils.getInputString(TextFieldUsernameShare);
+            if (username != null) {
+                Task task = TaskListController.getEditTask();
 
-                            Dialog.showInfo("Success", "User added");
+                try {
+                    String assigneeID = new SelectQuery("User","ID","Username = '" + username + "'").fetch();
+                    if (assigneeID != null) {
+                        task.setAssignedPerson(Integer.parseInt(assigneeID));
+                        if (task.save()) {
+                            Dialog.showInfo("Success", "Assigned " + username + " to this task.");
                             closeSecondScene(actionEvent);
-                            //TODO
-                            //ToDoListController.updateSelectedList();
-                            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-                        }else{
-                            Dialog.showError("User not found or your sharing your Task with the same User. Please retry!");
                         }
                     } else {
-                        log.error("User in Database not found");
-                        Dialog.showError("User not found or your sharing your Task with the same User. Please retry!");
+                        Dialog.showError("User not found or you're sharing the Task with the same User. Please retry!");
                     }
                 } catch (NumberFormatException e) {
                     log.catching(e);
                     log.error("User not found");
                     Dialog.showError("Failed to add user", "User does not exists");
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
                 }
-
             } else {
                 Dialog.showError("Failed to add user", "User does not exists");
-
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
-            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
-
         }
     }
 
@@ -77,12 +73,6 @@ public class AssignTaskController implements Initializable{
     public void closeSecondScene(ActionEvent actionEvent) {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
-        log.debug("Second Scene closed");
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        LabelNameTask.setText(TaskListController.selectedTaskAsObject.getContent());
-
+        PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
     }
 }

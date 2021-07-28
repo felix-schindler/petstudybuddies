@@ -103,7 +103,7 @@
                     <children>
                         <ScrollPane prefHeight="380.0" prefWidth="648.0" style="-fx-background-color: transparent; -fx-background-radius: 10 10 10 10;">
                             <content>
-                                <TableView fx:id="TableViewSelectedList" prefHeight="379.0" prefWidth="646.0">
+                                <TableView fx:id="TaskTable" prefHeight="379.0" prefWidth="646.0">
                                     <columns>
                                         <TableColumn fx:id="colContent" minWidth="300.0" prefWidth="75.0" text="Content" />
                                         <TableColumn fx:id="colUntil" minWidth="170.0" prefWidth="75.0" text="Until" />

@@ -1,10 +1,11 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,41 +28,38 @@ public class ModifyToDoListController implements Initializable {
     TextField TextFieldNewTitle;
     @FXML
     Label LabelCurrentTitle;
-    ObservableList<ToDoList> selectedList;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        LabelCurrentTitle.setText(ToDoListController.getEditTodo().getTitle());
+    }
 
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonChangeTitle) {
             log.debug("Open create new Task dialog");
-            String eingabe = TextFieldNewTitle.getText();
-            log.debug("O");
-            if (eingabe != null && !eingabe.isEmpty()) {
-                new UpdateQuery("ToDoList", new String[]{ "Title"}, new String[]{ eingabe},"ID = "+ ToDoListController.selectedListID, true);
+            String title = Utils.getInputString(TextFieldNewTitle);
+            if (title != null) {
+                ToDoList todo = ToDoListController.getEditTodo();
+                todo.setTitle(title);
+                try {
+                    todo.save();
+                } catch (Exception e) {
+                    log.catching(e);
+                    log.error("Failed to save new ToDoList title");
+                }
                 closeSecondScene(actionEvent);
-                ToDoListController.updateSelectedList();
-                PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
             } else {
-                Dialog.showInfo("Please enter a new Title for your ToDList!");
+                Dialog.showInfo("Please enter a new Title for your ToDoList!");
                 log.debug("No New Title entered, Label set");
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
-            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
         }
     }
 
-    @FXML
     public void closeSecondScene(ActionEvent actionEvent) {
+        PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.selectedList = ToDoListController.getSelectedList();
-        for (ToDoList todolist : selectedList) {
-            LabelCurrentTitle.setText(todolist.getTitle());
-        }
-
-    }
-
 }

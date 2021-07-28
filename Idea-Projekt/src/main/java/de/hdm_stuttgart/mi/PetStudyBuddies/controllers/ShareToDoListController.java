@@ -1,12 +1,12 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,24 +29,21 @@ public class ShareToDoListController implements Initializable {
     TextField TextFieldUsernameShare;
     @FXML
     Label LabelNameToDoList;
-    ObservableList<ToDoList> selectedList;
+    ToDoList selectedList;
 
-    @FXML
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonShareList) {
             log.debug("Open create new ToDoList dialog");
-            String eingabe = TextFieldUsernameShare.getText();
-            log.debug("O");
-            if (eingabe != null && !eingabe.isEmpty()) {
-                // TODO
+            String username = Utils.getInputString(TextFieldUsernameShare);
+            if (username != null) {
                 try {
-                    if (ToDoListController.selectedListAsObject.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + TextFieldUsernameShare.getText() + "'").fetch()))) {
-                        //if()
-                        new InsertQuery("ToDoListShare", new String[]{"UserID", "ToDoListID"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(TaskListController.selectedListId)});
+                    // If share to username successfull
+                    if (ToDoListController.getEditTodo().share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + username + "'").fetch()))) {
+                        new InsertQuery("ToDoListShare", new String[]{"UserID", "ToDoListID"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(ToDoListController.getEditTodo().getID())});
                         Dialog.showInfo("Success", "User added");
                         closeSecondScene(actionEvent);
-                        ToDoListController.updateSelectedList();
-                        PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+                        // ToDoListController.updateSelectedList();
+                        PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
                     } else {
                         Dialog.showError("Your sharing your To Do List with the same User. Please retry!");
                     }
@@ -62,25 +59,20 @@ public class ShareToDoListController implements Initializable {
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
-            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListViewList2.fxml");
+            PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
 
         }
     }
 
-    @FXML
     public void closeSecondScene(ActionEvent actionEvent) {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
         log.debug("Second Scene closed");
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.selectedList = ToDoListController.getSelectedList();
-        for (ToDoList todolist : selectedList) {
-            LabelNameToDoList.setText(todolist.getTitle());
-        }
-
+        selectedList = ToDoListController.getEditTodo();
+        LabelNameToDoList.setText(selectedList.getTitle());
     }
 }
