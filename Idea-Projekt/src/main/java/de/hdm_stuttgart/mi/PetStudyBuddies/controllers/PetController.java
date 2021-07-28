@@ -3,6 +3,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
+import de.hdm_stuttgart.mi.PetStudyBuddies.models.Pet;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,22 +29,32 @@ public class PetController extends Controller implements Initializable {
     @FXML
     private Button  ButtonTakeCare, ButtonChangeName, ButtonDeletePet, ButtonEasterEgg;
 
+    private CachedRowSet pet;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*if(setPet()){
-            PetStudyBuddies.setStage("/fxml/Pet/PetDashboard.fxml");
-        }else{
-            PetStudyBuddies.setStage("/fxml/Pet/AddPet.fxml");
-            //loadSecondScene("/fxml/Pet/AddPet.fxml");
-        }*/
+        log.debug("Setting Pet");
+        CachedRowSet pet = new SelectQuery("Pet","*","UserID="+ Account.getLoggedUser().getID()+" ").fetchAll();
+        log.debug(pet.size());
+        this.pet =pet;
+        log.debug("Query successful");
+
+        try {
+            if(!pet.first()){
+                PetStudyBuddies.setStage("/fxml/Pet/AddPet.fxml");
+            }else{
+                LabelPetname.setText(pet.getString("Name"));
+                LabelPetname2.setText(pet.getString("Name"));
+                LabelEmotion.setText(pet.getString("Emotion"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
     @FXML
     public boolean setPet(){
-        log.debug("Setting Pet");
-        CachedRowSet pet = new SelectQuery("Pet","*","UserID="+ Account.getLoggedUser().getID()+" ").fetchAll();
-        log.debug("Query successful");
+
         /*try {
             if(pet.first()) {
                 LabelPetname.setText(pet.getString("Name"));
