@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
@@ -59,13 +60,17 @@ public class ToDoListController extends Controller implements Initializable {
         CachedRowSet todosSet = queryToDoLists.fetchAll();
         CachedRowSet sharedTodosSet = querySharedToDoLists.fetchAll();
         try {
-            do {
-                todosList.add(new ToDoList(todosSet.getInt("ID")));
-            } while (todosSet.next());
+            if (queryToDoLists.Count() > 0) {
+                do {
+                    todosList.add(new ToDoList(todosSet.getInt("ID")));
+                } while (todosSet.next());
+            }
 
-            do {
-                todosList.add(new ToDoList(sharedTodosSet.getInt("ToDoListID")));
-            } while (sharedTodosSet.next());
+            if (querySharedToDoLists.Count() > 0) {
+                do {
+                    todosList.add(new ToDoList(sharedTodosSet.getInt("ToDoListID")));
+                } while (sharedTodosSet.next());
+            }
         } catch (SQLException e) {
             log.catching(e);
             log.error("Failed to add ToDoLists");
@@ -159,26 +164,7 @@ public class ToDoListController extends Controller implements Initializable {
             if (editTodo == null) {
                 log.error("No list selected");
                 Dialog.showError("Please select a ToDo List.");
-            }
-
-            PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
-
-            /*
-            log.debug("ButtonViewList was clicked on");
-            ObservableList<ToDoList> selectedList = TableViewTest.getSelectionModel().getSelectedItems();
-            log.debug("Observable List with selected Items was created");
-            if (!selectedList.isEmpty()) {
-                log.debug("Items were selected");
-                selectedListData = selectedList;
-                if (selectedListData.isEmpty()) {
-                    log.debug("List is empty");
-                }
-                PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
-            } else {
-                Dialog.showInfo("Please select a Task from your To Do List");
-                log.debug("Nothing selected");
-            }
-             */
+            } else PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
         } else if (actionEvent.getSource() == ButtonAddNewList) {
             Stage anotherStage = new Stage();
             log.debug("ButtonAddList was clicked");
