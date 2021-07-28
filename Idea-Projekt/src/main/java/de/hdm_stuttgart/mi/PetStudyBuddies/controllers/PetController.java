@@ -16,6 +16,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.sql.rowset.CachedRowSet;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -41,7 +42,7 @@ public class PetController extends Controller implements Initializable {
 
         try {
             if(!pet.first()){
-                PetStudyBuddies.setStage("/fxml/Pet/AddPet.fxml");
+                loadSecondScene("/fxml/Pet/AddPet.fxml");
             }else{
                 LabelPetname.setText(pet.getString("Name"));
                 LabelPetname2.setText(pet.getString("Name"));

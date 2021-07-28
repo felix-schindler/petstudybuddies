@@ -54,7 +54,7 @@ public class RegisterController extends Controller {
                     Thread.sleep(1000);
                 } catch (InterruptedException ignored) {
                 }
-                PetStudyBuddies.setStage("/fxml/Login.fxml", "Login");
+                PetStudyBuddies.setStage("/fxml/User/Login.fxml", "Login");
             } else {
                 status.append("Registrierung war nicht erfolgreich, bitte versuch es später erneut.");
                 log.error("Failed to register");
