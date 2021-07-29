@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
@@ -37,7 +36,7 @@ public class EditNoteController extends Controller implements Initializable, Con
             log.error("Failed to get a note");
             log.info("Tipp: Check if you have set the ID");
             log.debug("Redirecting to note screen");
-            ScreensController.setStage(ScreensFramework.NoteFilename,ScreensFramework.NoteID);
+            ScreensController.setStage(ScreensFramework.NotesFilename,ScreensFramework.NotesID);
         }
     }
 
@@ -49,7 +48,7 @@ public class EditNoteController extends Controller implements Initializable, Con
         note.setContent(Utils.getInputString(content));
 
         if (note.save()) {
-            ScreensController.setStage(ScreensFramework.NoteFilename,ScreensFramework.NoteID);
+            ScreensController.setStage(ScreensFramework.NotesFilename,ScreensFramework.NotesID);
         } else {
             log.error("Failed to save note");
             Dialog.showError("Failed to save note");

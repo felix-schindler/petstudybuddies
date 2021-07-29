@@ -153,7 +153,7 @@
                                     </font>
                                 </Label>
                                 <Button fx:id="ButtonNotes" layoutX="300.0" layoutY="107.0" mnemonicParsing="false"
-                                        prefHeight="50.0" prefWidth="117.0" styleClass="button1">
+                                        prefHeight="50.0" prefWidth="117.0" styleClass="button1" onAction="#handleButton">
                                     <graphic>
                                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true"
                                                    preserveRatio="true">
@@ -188,7 +188,7 @@
                                     </font>
                                 </Label>
                                 <Button fx:id="ButtonToDoLists" layoutX="300.0" layoutY="107.0" mnemonicParsing="false"
-                                        prefHeight="50.0" prefWidth="117.0" styleClass="button1">
+                                        prefHeight="50.0" prefWidth="117.0" styleClass="button1" onAction="#handleButton">
                                     <graphic>
                                         <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true"
                                                    preserveRatio="true">
@@ -241,7 +241,7 @@
                                 </ImageView>
                                 <Button fx:id="ButtonPet" mnemonicParsing="false" prefHeight="50.0" prefWidth="105.0"
                                         styleClass="button1" GridPane.columnIndex="1" GridPane.halignment="RIGHT"
-                                        GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                        GridPane.rowIndex="2" GridPane.valignment="CENTER" onAction="#handleButton">
                                     <graphic>
                                         <ImageView fitHeight="40.0" fitWidth="82.0" pickOnBounds="true"
                                                    preserveRatio="true">

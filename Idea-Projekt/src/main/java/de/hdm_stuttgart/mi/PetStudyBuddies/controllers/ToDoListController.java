@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ResourceBundle;
 
 public class ToDoListController extends Controller implements Initializable, ControlledScreen {
     /**

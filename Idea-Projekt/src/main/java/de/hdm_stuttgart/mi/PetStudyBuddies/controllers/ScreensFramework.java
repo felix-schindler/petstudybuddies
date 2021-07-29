@@ -14,8 +14,8 @@ public class ScreensFramework {
     public static String DashboardFilename = "/fxml/Dashboard/Dashboard.fxml";
     public static String EditNoteID = "Edit Note";
     public static String EditNoteFilename = "/fxml/Notes/EditNote.fxml";
-    public static String NoteID = "Note";
-    public static String NoteFilename = "/fxml/Notes/Note.fxml";
+    public static String NotesID = "Note";
+    public static String NotesFilename = "/fxml/Notes/Note.fxml";
     public static String AddPetID = "Add Pet";
     public static String AddPetFilename = "/fxml/Pet/AddPet.fxml";
     public static String PetDashboardID = "Add Pet";
