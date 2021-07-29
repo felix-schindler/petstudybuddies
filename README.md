@@ -18,7 +18,7 @@ Wenn etwas im [Idea-Projekt Ordner](https://gitlab.mi.hdm-stuttgart.de/kb136/pet
 - [x] Grafische Oberfläche (JavaFX)
 - [x] Logging mit sinnvollem Einsatz der Log-Stufen
 - [x] Dokumentation der Klassenstruktur mit UML-Klassendiagrammen
-- [ ] Threads
+- [x] Threads
 - [ ] Einsatz von Streams und Lambda-Funktionen auf Collections (funktionale Programmierung)
 - [ ] Dokumentation und Test-Fälle
 - [ ] Verwenden von Factories
