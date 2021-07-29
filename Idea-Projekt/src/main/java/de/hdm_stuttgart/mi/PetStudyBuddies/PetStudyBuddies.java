@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class PetStudyBuddies extends Application {
     /**
-     * Logger for smart (error) loggin
+     * Logger for smart (error) logging
      */
     private static final Logger log = LogManager.getLogger(PetStudyBuddies.class);
     /**
