@@ -114,14 +114,18 @@ public class NotesController extends Controller implements Initializable {
      */
     public void share() {
         Note selectedNote = getSelectedNote();
+
+        if (selectedNote == null)
+            return;
+
         String username = Dialog.showInput("Input username to share to: ");
 
-        if (selectedNote == null || username == null)
+        if (username == null)
             return;
 
         try {
             if (selectedNote.share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + username + "'").fetch()))) {
-                Dialog.showInfo("Success", "User added");
+                Dialog.showInfo("Success", "User " + username + " added");
             }
         } catch (NumberFormatException e) {
             log.catching(e);
