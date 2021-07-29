@@ -161,13 +161,13 @@ public class ToDoListController extends Controller implements Initializable, Con
                 log.error("No list selected");
                 Dialog.showError("Please select a ToDo List.");
             } else
-                ScreensController.setStage(ScreensFramework.TaskListFilename, ScreensFramework.TaskListID);   // Hard reload
+                ScreensController.setStage(TaskListID);   // Hard reload
         }
 
         // Add new list (dialog)
         else if (actionEvent.getSource() == ButtonAddNewList) {
             loadSecondScene("/fxml/ToDoList/ToDoListAddList.fxml");
-            ScreensController.setStage(ScreensFramework.ToDoListDashbboardFilename, ScreensFramework.ToDoListDashboardID);   // Hard reload
+            ScreensController.setStage(ToDoListDashboardID);   // Hard reload
         }
 
         // Delete ToDoList
@@ -179,7 +179,7 @@ public class ToDoListController extends Controller implements Initializable, Con
                     log.error("Failed to delete ToDoList");
                     Dialog.showError("Failed to delete selected ToDoList, please try again.");
                 } else
-                    ScreensController.setStage(ScreensFramework.ToDoListDashbboardFilename, ScreensFramework.ToDoListDashboardID);
+                    ScreensController.setStage(ToDoListDashboardID);
             } else {
                 log.error("Nothing selected");
                 Dialog.showError("Please select a list.");

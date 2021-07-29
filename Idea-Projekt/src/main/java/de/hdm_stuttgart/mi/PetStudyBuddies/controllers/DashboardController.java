@@ -42,11 +42,11 @@ public class DashboardController extends Controller implements Initializable, Co
     @FXML
     public void handleButton(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonPet) {
-            ScreensController.setStage(ScreensFramework.PetDashboardFilename, ScreensFramework.PetDashboardID);
+            ScreensController.setStage(DashboardID);
         } else if (actionEvent.getSource() == ButtonToDoLists) {
-            ScreensController.setStage(ScreensFramework.ToDoListDashbboardFilename, ScreensFramework.ToDoListDashboardID);
+            ScreensController.setStage(ToDoListDashboardID);
         } else if (actionEvent.getSource() == ButtonNotes) {
-            ScreensController.setStage(ScreensFramework.NotesFilename, ScreensFramework.NotesID);
+            ScreensController.setStage(NoteID);
         }
     }
 }

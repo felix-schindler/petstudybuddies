@@ -67,8 +67,4 @@ public class ModifyTaskController implements Initializable, ControlledScreen {
         }
     }
 
-    public void closeSecondScene(ActionEvent actionEvent) {
-        Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        secondStage.close();
-    }
 }
