@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
@@ -73,11 +74,11 @@ public class TaskListController extends Controller implements Initializable {
             int nTasks = qTasks.Count();
             if (nTasks > 0) {
                 log.debug("Number of tasks in list " + qTasks.Count());
-                CachedRowSet TasksInSelectedList = qTasks.fetchAll();
+                CachedRowSet taskSet = qTasks.fetchAll();
                 try {
                     do {
-                        tasks.add(new Task(TasksInSelectedList.getInt("ID")));
-                    } while (TasksInSelectedList.next());
+                        tasks.add(new Task(taskSet.getInt("ID")));
+                    } while (taskSet.next());
                     log.debug("Observable list size " + tasks.size());
                 } catch (SQLException e) {
                     log.debug("Could not resolve Tasks from CachedRowSet");
@@ -130,15 +131,15 @@ public class TaskListController extends Controller implements Initializable {
             log.debug("ButtonModifyTask was clicked");
             if (getSelectedTask() != null) {
                 openSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
+                PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
+                return;     // Hard reload
             }
         }
 
         // Share Task (dialog)
         else if (event.getSource() == ButtonShareList) {
             log.debug("ButtonShareList was clicked");
-            if (getSelectedTask() != null) {
-                openSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
-            }
+            openSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
         }
 
         // Assign Task (dialog)
@@ -165,9 +166,10 @@ public class TaskListController extends Controller implements Initializable {
     }
 
     public void setButtonFlagged() {
-        if (ToDoListController.getEditTodo().getFlagged()) {
-            ButtonSetFlag.setStyle("-fx-background-color: #8c78e3; ");
-        } else ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
+        if (ToDoListController.getEditTodo().getFlagged())
+            ButtonSetFlag.setStyle("-fx-background-color: #8c78e3;");
+        else
+            ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
     }
 
     public void openSecondScene(String filepath) {
@@ -177,6 +179,7 @@ public class TaskListController extends Controller implements Initializable {
             Scene secondScene = new Scene(secondPane);
 
             anotherStage.setScene(secondScene);
+            anotherStage.setResizable(false);
             anotherStage.showAndWait();
         } catch (Exception e) {
             log.catching(e);

@@ -133,7 +133,7 @@
                         <Font name="Calibri" size="25.0"/>
                     </font>
                 </Label>
-                <Label fx:id="LabelToDoListName" layoutX="140.0" layoutY="19.0" prefHeight="40.0" prefWidth="240.0"
+                <Label fx:id="LabelToDoListName" layoutX="150.0" layoutY="19.0" prefHeight="40.0" prefWidth="240.0"
                        text="Name To-Do List" textFill="#a868a0">
                     <font>
                         <Font name="Calibri" size="34.0"/>

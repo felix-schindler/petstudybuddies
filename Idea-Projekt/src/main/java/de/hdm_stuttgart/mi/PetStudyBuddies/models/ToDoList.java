@@ -123,9 +123,11 @@ public class ToDoList extends Model implements Shareable {
      * @see Shareable#share(int)
      */
     public boolean share(int ID) {
+        if (owner == ID)
+            return false;   // User already has access
         if (ID == Account.getLoggedUser().getID() || new SelectQuery("ToDoListShare", "ID", "UserID=" + ID + " AND ToDoListID=" + getID()).fetch() != null) {
             log.debug("User " + ID + " already got access");
-            return false;    // User already has access
+            return false;   // User already has access
         }
         return new InsertQuery("ToDoListShare", new String[]{"UserID", "ToDoListID"}, new String[]{String.valueOf(ID), String.valueOf(getID())}).Count() == 1;
 

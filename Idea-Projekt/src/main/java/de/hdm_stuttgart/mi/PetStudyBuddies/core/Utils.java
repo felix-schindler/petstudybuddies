@@ -15,6 +15,19 @@ import java.time.LocalDate;
  */
 public class Utils {
     /**
+     * Check if a value exists in a given array
+     *
+     * @return True if does, otherwise false
+     */
+    public static boolean inArray(int[] arr, int value) {
+        for (int i : arr) {
+            if (i == value)
+                return true;
+        }
+        return false;
+    }
+
+    /**
      * Validates the user input in the text fields.
      *
      * @return the trimmed input string

@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
@@ -45,7 +44,6 @@ public class AddTaskController {
 
     @FXML
     public void closeSecondScene(ActionEvent actionEvent) {
-        PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
     }

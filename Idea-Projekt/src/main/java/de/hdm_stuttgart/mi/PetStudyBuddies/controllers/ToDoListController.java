@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
@@ -26,7 +27,7 @@ import org.apache.logging.log4j.Logger;
 import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ToDoListController extends Controller implements Initializable {
     /**
@@ -37,6 +38,11 @@ public class ToDoListController extends Controller implements Initializable {
      * Selected ToDoList for viewing tasks, ...
      */
     private static ToDoList editTodo = null;
+    SelectQuery queryToDoLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null);
+    SelectQuery querySharedToDoLists = new SelectQuery("ToDoListShare", "ToDoListID", "UserID=" + Account.getLoggedUser().getID());
+    SelectQuery queryTodayUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND Task.Until = CURRENT_DATE");
+    SelectQuery queryScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "ToDoList.UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) AND Task.ToDoListID=ToDoList.ID");
+    SelectQuery queryFlaggedUserLists = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'");
     @FXML
     Label LabelUsername;
     @FXML
@@ -48,11 +54,6 @@ public class ToDoListController extends Controller implements Initializable {
     @FXML
     TableColumn<Object, Object> colTitle;
 
-    SelectQuery queryToDoLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null);
-    SelectQuery querySharedToDoLists = new SelectQuery("ToDoListShare", "ToDoListID", "UserID=" + Account.getLoggedUser().getID());
-    SelectQuery queryTodayUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND Task.Until = CURRENT_DATE");
-    SelectQuery queryScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "ToDoList.UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) AND Task.ToDoListID=ToDoList.ID");
-    SelectQuery queryFlaggedUserLists = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'");
     Runnable updateUserToDoLists = () -> {
         log.debug("Updating ToDoList table...");
         TodoTable.setItems(getUserTodoLists());

@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
@@ -40,10 +39,8 @@ public class ShareToDoListController implements Initializable {
                     // If share to username successfull
                     if (ToDoListController.getEditTodo().share(Integer.parseInt(new SelectQuery("User", "ID", "Username='" + username + "'").fetch()))) {
                         new InsertQuery("ToDoListShare", new String[]{"UserID", "ToDoListID"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), String.valueOf(ToDoListController.getEditTodo().getID())});
-                        Dialog.showInfo("Success", "User added");
+                        Dialog.showInfo("Success", "User " + username + " added");
                         closeSecondScene(actionEvent);
-                        // ToDoListController.updateSelectedList();
-                        PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
                     } else {
                         Dialog.showError("Your sharing your To Do List with the same User. Please retry!");
                     }
@@ -52,22 +49,17 @@ public class ShareToDoListController implements Initializable {
                     log.error("User not found");
                     Dialog.showError("Failed to add user", "User does not exists");
                 }
-
             } else {
                 Dialog.showError("Failed to add user", "User does not exists");
-
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
-            PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
-
         }
     }
 
     public void closeSecondScene(ActionEvent actionEvent) {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
-        log.debug("Second Scene closed");
     }
 
     @Override

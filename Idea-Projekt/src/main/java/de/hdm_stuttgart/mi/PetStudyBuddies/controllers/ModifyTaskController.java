@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
@@ -71,6 +70,5 @@ public class ModifyTaskController implements Initializable {
     public void closeSecondScene(ActionEvent actionEvent) {
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
-        PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
     }
 }
