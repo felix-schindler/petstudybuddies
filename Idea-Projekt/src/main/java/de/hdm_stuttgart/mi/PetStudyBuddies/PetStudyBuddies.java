@@ -39,15 +39,6 @@ public class PetStudyBuddies extends Application implements ControlledScreen {
      */
     @Override
     public void start(Stage stage) {
-        // Set application icon
-        // Windows
-        stage.getIcons().add(new Image("file:data/icon.png"));
-        // Mac
-        ImageIcon logo = new ImageIcon("data/icon.png");
-        if (Taskbar.isTaskbarSupported())
-            if (Taskbar.getTaskbar().isSupported(Taskbar.Feature.ICON_IMAGE))
-                Taskbar.getTaskbar().setIconImage(logo.getImage());
-
         stage.setMinWidth(854);
         stage.setMinHeight(480);
         stage.setResizable(false);

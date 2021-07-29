@@ -8,7 +8,10 @@ import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.time.*;
+import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Utility functions you can use everywhere
@@ -122,13 +125,17 @@ public class Utils {
         LocalDate date = null;
         try {
             date = LocalDate.ofEpochDay(Long.parseLong(dateStr));
-        } catch (NumberFormatException ignored) {
+        } catch (NumberFormatException | DateTimeException ignored) {
             try {
                 int year = Integer.parseInt(dateStr.substring(0, 4));
                 int month = Integer.parseInt(dateStr.substring(5, 7));
                 int day = Integer.parseInt(dateStr.substring(8, 10));
                 date = LocalDate.of(year, month, day);
-            } catch (NumberFormatException ignored1) {
+            } catch (NumberFormatException | DateTimeException ignored1) {
+                try {
+                    date = LocalDateTime.ofInstant(Instant.ofEpochMilli(Long.parseLong(dateStr)), TimeZone.getDefault().toZoneId()).toLocalDate();
+                } catch (NumberFormatException | DateTimeException ignored2) {
+                }
             }
         }
 

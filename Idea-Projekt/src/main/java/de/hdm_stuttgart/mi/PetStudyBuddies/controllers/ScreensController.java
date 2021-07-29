@@ -3,11 +3,14 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -37,6 +40,15 @@ public class ScreensController {
 
     public static void setStage(Stage newStage, String newTitle) {
         window = newStage;
+        // Set application icon
+        // Windows
+        window.getIcons().add(new Image("file:data/icon.png"));
+        // Mac
+        ImageIcon logo = new ImageIcon("data/icon.png");
+        if (Taskbar.isTaskbarSupported())
+            if (Taskbar.getTaskbar().isSupported(Taskbar.Feature.ICON_IMAGE))
+                Taskbar.getTaskbar().setIconImage(logo.getImage());
+
         window.setTitle(newTitle);
         window.centerOnScreen();
         window.show();
