@@ -3,6 +3,8 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.core.db;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+
 public class UpdateQuery extends Query {
     /**
      * log object for error handling
@@ -97,10 +99,11 @@ public class UpdateQuery extends Query {
         query.append("UPDATE ").append(table).append(" SET ");
 
         for (; lengthValues > 1 && lengthFields > 1; lengthValues--, lengthFields--) {
-            query.append(fields[lengthFields - 1]).append(" = '").append(values[lengthValues - 1]).append("' , ");
+            query.append(appendField(fields[lengthFields - 1], values[lengthValues - 1]));
         }
 
-        query.append(fields[0]).append(" = '").append(values[0]).append("'   ");
+        if (values[0] == null || values[0].equals("null")) query.append(fields[0]).append("=NULL ");
+        else query.append(fields[0]).append("='").append(values[0]).append("' ");
 
         if (where != null) {
             query.append(" WHERE ").append(where);
@@ -109,6 +112,20 @@ public class UpdateQuery extends Query {
 
         log.debug("Query string was built");
         return query.toString();
+    }
+
+    /**
+     * Prepares a single field with value for a query (not the last value!)
+     * @param field Name of field
+     * @param value Value to be set
+     * @return The prepared string
+     */
+    private String appendField(String field, String value) {
+        if (value == null || value.equals("null")) {
+            return field + "=NULL, ";
+        }
+
+        return field + "='" + value + "', ";
     }
 
     /**

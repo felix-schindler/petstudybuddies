@@ -97,6 +97,7 @@ public class Utils {
                 }
                 System.out.println();
             }
+            rs.first();
         } catch (SQLException e) {
             System.err.println("Didn't work");
         }

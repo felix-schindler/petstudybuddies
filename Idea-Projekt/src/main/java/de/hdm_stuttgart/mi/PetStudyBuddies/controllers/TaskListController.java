@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
@@ -25,7 +26,9 @@ import org.apache.logging.log4j.Logger;
 import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class TaskListController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(TaskListController.class);
@@ -55,7 +58,7 @@ public class TaskListController extends Controller implements Initializable {
         colUntil.setCellValueFactory(new PropertyValueFactory<>("Until"));
         colAssignedTo.setCellValueFactory(new PropertyValueFactory<>("AssignedTo"));
 
-        log.debug("TableView set");
+        log.debug("TaskList table updated");
     };
 
     /**
@@ -74,8 +77,8 @@ public class TaskListController extends Controller implements Initializable {
                 try {
                     do {
                         tasks.add(new Task(TasksInSelectedList.getInt("ID")));
-                        log.debug("Observable list size " + tasks.size());
                     } while (TasksInSelectedList.next());
+                    log.debug("Observable list size " + tasks.size());
                 } catch (SQLException e) {
                     log.debug("Could not resolve Tasks from CachedRowSet");
                 }
@@ -103,24 +106,26 @@ public class TaskListController extends Controller implements Initializable {
                 setButtonFlagged();
                 if (td.getFlagged()) Dialog.showInfo("ToDoList was flagged");
                 else Dialog.showInfo("Flag was removed from ToDoList");
+                return;     // No reload
             } catch (Exception ignored) {
-                Dialog.showError("The owner can't be changed.");
+                Dialog.showError("The owner of a task can't be changed.");
             }
         }
 
-        // Open change title dialog
+        // Change ToDoList title (dialog)
         else if (event.getSource() == ButtonChangeTitle) {
             log.debug("ButtonChangeTitle was clicked");
             openSecondScene("/fxml/ToDoList/ToDoListModifyTitle.fxml");
+            return;     // No reload
         }
 
-        // Open add task dialog
+        // Add task (dialog)
         else if (event.getSource() == ButtonAddNewTask) {
             log.debug("ButtonAddNewTask was clicked");
             openSecondScene("/fxml/ToDoList/ToDoListAddTask.fxml");
         }
 
-        // Open modify task dialog
+        // Modify Task (dialog)
         else if (event.getSource() == ButtonModifyTask) {
             log.debug("ButtonModifyTask was clicked");
             if (getSelectedTask() != null) {
@@ -128,7 +133,7 @@ public class TaskListController extends Controller implements Initializable {
             }
         }
 
-        // Open share dialog
+        // Share Task (dialog)
         else if (event.getSource() == ButtonShareList) {
             log.debug("ButtonShareList was clicked");
             if (getSelectedTask() != null) {
@@ -136,7 +141,7 @@ public class TaskListController extends Controller implements Initializable {
             }
         }
 
-        // Open assign dialog
+        // Assign Task (dialog)
         else if (event.getSource() == ButtonAssignTask) {
             log.debug("ButtonAssignTask was clicked");
             if (getSelectedTask() != null) {
@@ -155,7 +160,7 @@ public class TaskListController extends Controller implements Initializable {
             }
         }
 
-        // Bc sth was probably edited, refresh the task table
+        // Bc sth changed refresh the task table
         new Thread(updateTable).start();
     }
 
@@ -172,7 +177,7 @@ public class TaskListController extends Controller implements Initializable {
             Scene secondScene = new Scene(secondPane);
 
             anotherStage.setScene(secondScene);
-            anotherStage.show();
+            anotherStage.showAndWait();
         } catch (Exception e) {
             log.catching(e);
             log.error("Failed to show dialog");

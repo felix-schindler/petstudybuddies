@@ -89,12 +89,12 @@ CREATE TABLE IF NOT EXISTS ToDoList
 (
 	ID INTEGER
 		constraint ToDoList_pk
-			primary key autoincrement,
+			PRIMARY KEY AUTOINCREMENT,
 	UserID INTEGER
-		references User
-			on delete cascade,
-	Title VARCHAR(255) unique ,
-	Flagged BOOLEAN DEFAULT false
+		REFERENCES User
+			ON DELETE CASCADE,
+	Title VARCHAR(255) UNIQUE,
+	Flagged BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE IF NOT EXISTS ToDoListShare
@@ -114,16 +114,16 @@ CREATE TABLE IF NOT EXISTS ToDoListShare
 CREATE TABLE IF NOT EXISTS Task
 (
 	ID INTEGER
-		constraint Task_pk
-			primary key autoincrement,
+		CONSTRAINT Task_pk
+			PRIMARY KEY AUTOINCREMENT,
 	ToDoListID INTEGER
-		references ToDoList
-			on delete cascade,
+		REFERENCES ToDoList
+			ON DELETE CASCADE,
 	Content TEXT NOT NULL,
 	Until INTEGER NOT NULL,
 	AssignedTo INTEGER DEFAULT NULL
 		references User
-			on delete cascade
+			ON DELETE CASCADE
 );
 
 CREATE UNIQUE INDEX User_Username_uindex

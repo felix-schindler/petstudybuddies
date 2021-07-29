@@ -55,7 +55,7 @@ public class Task extends Model {
     public Task(int ID) {
         super(ID);
         try {
-            ResultSet task = new SelectQuery("Task", "*", "ID=" + ID, null, null).fetchAll();
+            ResultSet task = new SelectQuery("Task", "*", "ID=" + ID).fetchAll();
             toDoList = task.getInt("ToDoListID");
             content = task.getString("Content");
             until = Utils.parseDate(task.getString("Until"));
@@ -174,7 +174,7 @@ public class Task extends Model {
     public boolean save() {
         log.debug("Trying to safe...");
         return new UpdateQuery(getTable(), new String[]{"ToDoListID", "Content", "Until", "AssignedTo"},
-                new String[]{Integer.toString(toDoList), content, String.valueOf(until), Integer.toString(assignedPerson)},
+                new String[]{Integer.toString(toDoList), content, String.valueOf(until), String.valueOf(assignedPerson == 0 ? null : assignedPerson)},
                 "ID=" + getID()).Count() == 1;
     }
 }

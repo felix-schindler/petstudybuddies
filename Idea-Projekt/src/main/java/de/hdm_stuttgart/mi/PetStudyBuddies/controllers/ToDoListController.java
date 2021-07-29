@@ -59,7 +59,6 @@ public class ToDoListController extends Controller implements Initializable {
         ObservableList<ToDoList> todosList = FXCollections.observableArrayList();
         CachedRowSet todosSet = queryToDoLists.fetchAll();
         CachedRowSet sharedTodosSet = querySharedToDoLists.fetchAll();
-        Utils.printResultSet(todosSet);
         try {
             if (queryToDoLists.Count() > 0) {
                 do {

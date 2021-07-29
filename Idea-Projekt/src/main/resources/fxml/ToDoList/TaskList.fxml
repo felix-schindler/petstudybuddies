@@ -114,12 +114,12 @@
                         </ScrollPane>
                     </children>
                 </Pane>
-                <Label layoutX="25.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" text="To-Do List" textFill="WHITE">
+                <Label layoutX="25.0" layoutY="25.0" prefHeight="32.0" text="To-Do List" textFill="WHITE">
                     <font>
                         <Font name="Calibri" size="25.0" />
                     </font>
                 </Label>
-                <Label fx:id="LabelToDoListName" layoutX="135.0" layoutY="19.0" prefHeight="40.0" prefWidth="240.0" text="Name To-Do List" textFill="#a868a0">
+                <Label fx:id="LabelToDoListName" layoutX="140.0" layoutY="19.0" prefHeight="40.0" prefWidth="240.0" text="Name To-Do List" textFill="#a868a0">
                     <font>
                         <Font name="Calibri" size="34.0" />
                     </font>
