@@ -37,6 +37,7 @@ public class PetStudyBuddies extends Application {
 
     /**
      * Sets a new stage and shows it in the main window
+     *
      * @param newStage New stage
      */
     public static void setStage(Stage newStage) {
@@ -46,6 +47,7 @@ public class PetStudyBuddies extends Application {
 
     /**
      * Sets a new stage and title and shows it in the main window
+     *
      * @param newStage New stage
      * @param newTitle New title
      */
@@ -58,6 +60,7 @@ public class PetStudyBuddies extends Application {
 
     /**
      * Sets a new stage with the title "PetStudyBuddies" and shows it in the main window
+     *
      * @param fileName Filename of the FXML file
      */
     public static void setStage(String fileName) {
@@ -66,8 +69,9 @@ public class PetStudyBuddies extends Application {
 
     /**
      * Sets a new stage and title and shows it in the main window
+     *
      * @param fileName Filename of the FXML file
-     * @param title New title
+     * @param title    New title
      */
     public static void setStage(String fileName, String title) {
         try {
@@ -85,6 +89,7 @@ public class PetStudyBuddies extends Application {
 
     /**
      * Gets called at the start of the application
+     *
      * @param stage First stage to be set
      */
     @Override

@@ -132,8 +132,8 @@ public class ToDoList extends Model implements Shareable {
     }
 
     /**
-     * @see Model#save()
      * @throws Exception When trying to change owner
+     * @see Model#save()
      */
     public boolean save() throws Exception {
         log.debug("Trying to safe changes");

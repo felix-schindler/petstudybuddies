@@ -32,9 +32,9 @@ public class AddTaskController {
                 Dialog.showError("Please enter a valid Title and Date!");
             } else {
                 new InsertQuery(
-                    "Task",
-                    new String[]{"ToDoListID", "Content", "Until"},
-                    new String[]{String.valueOf(ToDoListController.getEditTodo().getID()), content, DatePickerAddNewTask.getValue().toString()}
+                        "Task",
+                        new String[]{"ToDoListID", "Content", "Until"},
+                        new String[]{String.valueOf(ToDoListController.getEditTodo().getID()), content, DatePickerAddNewTask.getValue().toString()}
                 );
                 closeSecondScene(actionEvent);
             }

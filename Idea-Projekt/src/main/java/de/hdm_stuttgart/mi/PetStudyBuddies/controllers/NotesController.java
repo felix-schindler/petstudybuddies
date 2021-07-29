@@ -44,7 +44,7 @@ public class NotesController extends Controller implements Initializable {
     @FXML
     private TableView<Note> noteTable;
 
-     Runnable updateView = () -> {
+    Runnable updateView = () -> {
         log.debug("Updating view...");
         noteTable.setItems(getNotes());
 
@@ -54,6 +54,13 @@ public class NotesController extends Controller implements Initializable {
         noteTable.setEditable(true);
         noteTable.getSelectionModel().setCellSelectionEnabled(true);
     };
+
+    /**
+     * @return The current note chosen to be edited
+     */
+    public static Note getEditNote() {
+        return editNote;
+    }
 
     /**
      * @param location  URL location of the FXML file that was given to the FXMLLoader
@@ -126,6 +133,7 @@ public class NotesController extends Controller implements Initializable {
 
     /**
      * Creates a new note, selects it as editNote, then redirects to edit note
+     *
      * @see NotesController#editNote
      * @see NotesController#goToEditNote()
      */
@@ -156,6 +164,7 @@ public class NotesController extends Controller implements Initializable {
 
     /**
      * Checks if a note is selected, then redirects to edit note
+     *
      * @see NotesController#goToEditNote()
      */
     public void editNote() {
@@ -170,12 +179,5 @@ public class NotesController extends Controller implements Initializable {
      */
     public void goToEditNote() {
         PetStudyBuddies.setStage("/fxml/Notes/EditNote.fxml", "Edit note");
-    }
-
-    /**
-     * @return The current note chosen to be edited
-     */
-    public static Note getEditNote() {
-        return editNote;
     }
 }

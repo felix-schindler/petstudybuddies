@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
@@ -26,9 +25,7 @@ import org.apache.logging.log4j.Logger;
 import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class TaskListController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(TaskListController.class);
@@ -43,13 +40,6 @@ public class TaskListController extends Controller implements Initializable {
     TableView<Task> TaskTable;
     @FXML
     Label LabelToDoListName;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        new Thread(updateTable).start();
-        setButtonFlagged();
-    }
-
     Runnable updateTable = () -> {
         LabelToDoListName.setText(ToDoListController.getEditTodo().getTitle());
 
@@ -60,6 +50,16 @@ public class TaskListController extends Controller implements Initializable {
 
         log.debug("TaskList table updated");
     };
+
+    public static Task getEditTask() {
+        return editTask;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        new Thread(updateTable).start();
+        setButtonFlagged();
+    }
 
     /**
      * @return List of all tasks for the selected ToDoList
@@ -150,7 +150,7 @@ public class TaskListController extends Controller implements Initializable {
         }
 
         // Delete Task
-        else if(event.getSource() == ButtonDeleteTask) {
+        else if (event.getSource() == ButtonDeleteTask) {
             // Update table after delete, display error if none selected
             if (getSelectedTask() != null) {
                 DeleteQuery q = new DeleteQuery("Task", "ID=" + editTask.getID());
@@ -194,9 +194,5 @@ public class TaskListController extends Controller implements Initializable {
             Dialog.showError("No task selected", "Please select a Task from your To Do List");
         }
         return null;
-    }
-
-    public static Task getEditTask() {
-        return editTask;
     }
 }

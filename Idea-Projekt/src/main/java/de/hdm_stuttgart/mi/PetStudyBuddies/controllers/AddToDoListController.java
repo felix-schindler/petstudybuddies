@@ -29,7 +29,7 @@ public class AddToDoListController extends Controller {
         if (actionEvent.getSource() == ButtonCreateList) {
             log.debug("Open create new ToDoList dialog");
             String title = Utils.getInputString(TextFieldAddNewList);
-            if (title != null && new SelectQuery("ToDoList","ID","Title='" + title + "' ").Count() == 0) {
+            if (title != null && new SelectQuery("ToDoList", "ID", "Title='" + title + "' ").Count() == 0) {
                 new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), title});
 
                 closeSecondScene(actionEvent);

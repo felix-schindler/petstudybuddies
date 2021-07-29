@@ -23,7 +23,7 @@ public class EditNoteController extends Controller implements Initializable {
     private Note note;
 
     /**
-     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param url            URL location of the FXML file that was given to the FXMLLoader
      * @param resourceBundle ResourceBundle that was given to the FXMLLoader
      */
     @Override

@@ -1,17 +1,14 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Task extends Model {
     /**
@@ -45,7 +42,7 @@ public class Task extends Model {
     /**
      * average Task Balance
      */
-    private double taskBalance=-1;
+    private double taskBalance = -1;
 
     /**
      * Creates a new task linked to the tasks database-entry via its ID
@@ -132,23 +129,23 @@ public class Task extends Model {
     /**
      * returns Tasks in future
      */
-    public int getTasksInFuture(){
+    public int getTasksInFuture() {
         return tasksInFuture;
     }
 
     /**
      * returns Tasks in Past
      */
-    public int getTasksInPast(){
-        return sumAllTasks-tasksInFuture;
+    public int getTasksInPast() {
+        return sumAllTasks - tasksInFuture;
     }
 
     /**
      * updates @tasksInFuture and @sumAllTasks with SelectQuery
      */
-    public void updateTasks(){
-            tasksInFuture = new SelectQuery("Task","*","Until >= CURRENT_DATE",null,null,true).Count();
-            sumAllTasks = new SelectQuery("Task","*",null,null,null,true).Count();
+    public void updateTasks() {
+        tasksInFuture = new SelectQuery("Task", "*", "Until >= CURRENT_DATE", null, null, true).Count();
+        sumAllTasks = new SelectQuery("Task", "*", null, null, null, true).Count();
     }
 
     public double getTaskBalance() {
@@ -156,10 +153,10 @@ public class Task extends Model {
     }
 
     public void setTaskBalance() {
-        try{
+        try {
             if (checkTasks())
-                taskBalance = tasksInFuture/sumAllTasks;
-        }catch(Exception o){
+                taskBalance = tasksInFuture / sumAllTasks;
+        } catch (Exception o) {
             log.debug("Invalid Tasks. Could not calculate Balance.");
         }
     }

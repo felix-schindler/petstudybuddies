@@ -78,16 +78,14 @@ public class Pet extends Model {
         this.emotion = emotion;
     }
 
-    public void setEmotion(double average){
-            if (average >= 1.1){
-                this.emotion = "sad";
-            }
-            else if (average < 1.1 && average >=0.9){
-                this.emotion = "content";
-            }
-            else{
-                this.emotion = "happy";
-            }
+    public void setEmotion(double average) {
+        if (average >= 1.1) {
+            this.emotion = "sad";
+        } else if (average < 1.1 && average >= 0.9) {
+            this.emotion = "content";
+        } else {
+            this.emotion = "happy";
+        }
 
     }
 

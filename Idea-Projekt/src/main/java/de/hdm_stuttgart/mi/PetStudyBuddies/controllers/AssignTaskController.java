@@ -16,10 +16,7 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AssignTaskController implements Initializable {
@@ -46,7 +43,7 @@ public class AssignTaskController implements Initializable {
                 Task task = TaskListController.getEditTask();
 
                 try {
-                    String assigneeID = new SelectQuery("User","ID","Username = '" + username + "'").fetch();
+                    String assigneeID = new SelectQuery("User", "ID", "Username = '" + username + "'").fetch();
                     if (assigneeID != null) {
                         task.setAssignedPerson(Integer.parseInt(assigneeID));
                         if (task.save()) {

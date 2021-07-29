@@ -3,8 +3,6 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.core.db;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
-
 public class UpdateQuery extends Query {
     /**
      * log object for error handling
@@ -116,6 +114,7 @@ public class UpdateQuery extends Query {
 
     /**
      * Prepares a single field with value for a query (not the last value!)
+     *
      * @param field Name of field
      * @param value Value to be set
      * @return The prepared string

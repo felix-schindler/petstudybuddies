@@ -41,7 +41,7 @@ public class UserSettingsController extends Controller implements Initializable 
      * Saves the new password / email
      */
     public void save() {
-        String  newPassStr = Utils.getInputString(newPassword),
+        String newPassStr = Utils.getInputString(newPassword),
                 confirmPassStr = Utils.getInputString(confirmNewPassword),
                 newMailStr = Utils.getInputString(newEmailAddress);
 
@@ -50,7 +50,8 @@ public class UserSettingsController extends Controller implements Initializable 
             if (newPassStr.equals(confirmPassStr)) {
                 user.setPassword(newPassStr);
                 log.debug("New password was set for user " + user.getUsername());
-            } else Dialog.showError("Password do not match", "The given passwords do not match, please check and try again.");
+            } else
+                Dialog.showError("Password do not match", "The given passwords do not match, please check and try again.");
         }
 
         // Change email

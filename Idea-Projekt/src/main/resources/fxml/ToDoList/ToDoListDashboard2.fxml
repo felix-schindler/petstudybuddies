@@ -4,236 +4,269 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #030307;" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ToDoListController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            style="-fx-background-color: #030307;" stylesheets="@../../styles/fullpackstyling.css"
+            xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ToDoListController">
     <children>
         <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" styleClass="linear-grad">
             <children>
                 <Label layoutX="690.0" layoutY="1.0" prefHeight="79.0" prefWidth="224.0" text="To Do Lists">
                     <font>
-                        <Font name="Calibri" size="43.0" />
+                        <Font name="Calibri" size="43.0"/>
                     </font>
                 </Label>
-                <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <image>
-                        <Image url="@../../images/ToDoListDashboardImages/to-do-list.png" />
+                        <Image url="@../../images/ToDoListDashboardImages/to-do-list.png"/>
                     </image>
                 </ImageView>
-                <Label layoutX="176.0" prefHeight="79.0" prefWidth="164.0" text="PetStuddyBuddies" textAlignment="CENTER">
+                <Label layoutX="176.0" prefHeight="79.0" prefWidth="164.0" text="PetStuddyBuddies"
+                       textAlignment="CENTER">
                     <font>
-                        <Font name="Calibri" size="21.0" />
+                        <Font name="Calibri" size="21.0"/>
                     </font>
                 </Label>
-                <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <image>
-                        <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png" />
+                        <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png"/>
                     </image>
                 </ImageView>
             </children>
         </Pane>
         <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022;">
             <children>
-                <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
-                <Button fx:id="ApplicationDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="80.0" styleClass="button3" text="Start" textFill="#a868a0">
+                <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;"/>
+                <Button fx:id="ApplicationDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="80.0" styleClass="button3" text="Start" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/cat.png" />
+                                <Image url="@../../images/ToDoListDashboardImages/cat.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
-                <Button fx:id="NotesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Notizen" textFill="#a868a0">
+                <Button fx:id="NotesDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Notizen" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/time.png" />
+                                <Image url="@../../images/ToDoListDashboardImages/time.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
-                <Button fx:id="PetDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Pet" textFill="#a868a0">
+                <Button fx:id="PetDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Pet" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/cat.png" />
+                                <Image url="@../../images/ToDoListDashboardImages/cat.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
-                <Button fx:id="ToDoDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
+                <Button fx:id="ToDoDashboard" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/group.png" />
+                                <Image url="@../../images/ToDoListDashboardImages/group.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
-                <Button fx:id="SettingsView" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu" prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
+                <Button fx:id="SettingsView" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleMenu"
+                        prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
                     <graphic>
                         <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/settings.png" />
+                                <Image url="@../../images/settings.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
             </children>
         </VBox>
-        <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0" style="-fx-background-color: #131022; -fx-background-radius: 10;">
+        <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0"
+                    style="-fx-background-color: #131022; -fx-background-radius: 10;">
             <children>
-                <Label layoutX="25.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" text="Welcome" textFill="WHITE">
+                <Label layoutX="25.0" layoutY="25.0" prefHeight="32.0" prefWidth="110.0" text="Welcome"
+                       textFill="WHITE">
                     <font>
-                        <Font name="Calibri" size="25.0" />
+                        <Font name="Calibri" size="25.0"/>
                     </font>
                 </Label>
-                <Label fx:id="LabelUsername" layoutX="135.0" layoutY="19.0" prefHeight="32.0" prefWidth="164.0" text="Username" textFill="#a868a0">
+                <Label fx:id="LabelUsername" layoutX="135.0" layoutY="19.0" prefHeight="32.0" prefWidth="164.0"
+                       text="Username" textFill="#a868a0">
                     <font>
-                        <Font name="Calibri" size="34.0" />
+                        <Font name="Calibri" size="34.0"/>
                     </font>
                 </Label>
                 <Label layoutX="25.0" layoutY="246.0" text="These are your To-Do Lists:" textFill="#fffbfb">
                     <font>
-                        <Font name="Calibri" size="18.0" />
+                        <Font name="Calibri" size="18.0"/>
                     </font>
                 </Label>
-                <Pane layoutX="35.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                <Pane layoutX="35.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0"
+                      style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                     <children>
                         <Label layoutX="14.0" layoutY="116.0" text="Today" textFill="#d3cccc">
                             <font>
-                                <Font name="Calibri" size="28.0" />
+                                <Font name="Calibri" size="28.0"/>
                             </font>
                         </Label>
-                        <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="9.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="9.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/icons8-heute-64.png" />
+                                <Image url="@../../images/ToDoListDashboardImages/icons8-heute-64.png"/>
                             </image>
                         </ImageView>
-                        <Label fx:id="LabelCountToDoToday" layoutX="110.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
+                        <Label fx:id="LabelCountToDoToday" layoutX="110.0" layoutY="31.0" prefHeight="60.0"
+                               prefWidth="47.0" text="Number" textFill="#9e9797">
                             <font>
-                                <Font name="Calibri" size="28.0" />
+                                <Font name="Calibri" size="28.0"/>
                             </font>
                         </Label>
-                        <Button fx:id="ButtonToDoToday" layoutX="127.0" layoutY="91.0" mnemonicParsing="false" onAction="#filterButtons" prefHeight="50.0" prefWidth="60.0" styleClass="button1">
+                        <Button fx:id="ButtonToDoToday" layoutX="127.0" layoutY="91.0" mnemonicParsing="false"
+                                onAction="#filterButtons" prefHeight="50.0" prefWidth="60.0" styleClass="button1">
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
+                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
                     </children>
                 </Pane>
-                <Pane layoutX="663.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                <Pane layoutX="663.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0"
+                      style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                     <children>
                         <Label layoutX="20.0" layoutY="119.0" text="All" textFill="#d3cccc">
                             <font>
-                                <Font name="Calibri" size="28.0" />
+                                <Font name="Calibri" size="28.0"/>
                             </font>
                         </Label>
-                        <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="10.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="10.0" layoutY="24.0" pickOnBounds="true"
+                                   preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/icons8-box-128.png" />
+                                <Image url="@../../images/ToDoListDashboardImages/icons8-box-128.png"/>
                             </image>
                         </ImageView>
-                        <Label fx:id="LabelCountToDoAll" layoutX="103.0" layoutY="33.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
+                        <Label fx:id="LabelCountToDoAll" layoutX="103.0" layoutY="33.0" prefHeight="60.0"
+                               prefWidth="47.0" text="Number" textFill="#9e9797">
                             <font>
-                                <Font name="Calibri" size="28.0" />
+                                <Font name="Calibri" size="28.0"/>
                             </font>
                         </Label>
-                        <Button fx:id="ButtonToDoAll" layoutX="127.0" layoutY="94.0" mnemonicParsing="false" onAction="#filterButtons" prefHeight="50.0" prefWidth="60.0" styleClass="button1">
+                        <Button fx:id="ButtonToDoAll" layoutX="127.0" layoutY="94.0" mnemonicParsing="false"
+                                onAction="#filterButtons" prefHeight="50.0" prefWidth="60.0" styleClass="button1">
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
+                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
                     </children>
                 </Pane>
-                <Pane layoutX="448.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                <Pane layoutX="448.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0"
+                      style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                     <children>
                         <Label layoutX="10.0" layoutY="116.0" text="Flagged" textFill="#d3cccc">
                             <font>
-                                <Font name="Calibri" size="28.0" />
+                                <Font name="Calibri" size="28.0"/>
                             </font>
                         </Label>
-                        <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/icons8-flag-2-64.png" />
+                                <Image url="@../../images/ToDoListDashboardImages/icons8-flag-2-64.png"/>
                             </image>
                         </ImageView>
-                        <Label fx:id="LabelCountToDoFlagged" layoutX="98.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
+                        <Label fx:id="LabelCountToDoFlagged" layoutX="98.0" layoutY="31.0" prefHeight="60.0"
+                               prefWidth="47.0" text="Number" textFill="#9e9797">
                             <font>
-                                <Font name="Calibri" size="28.0" />
+                                <Font name="Calibri" size="28.0"/>
                             </font>
                         </Label>
-                        <Button fx:id="ButtonToDoFlagged" layoutX="122.0" layoutY="91.0" mnemonicParsing="false" onAction="#filterButtons" prefHeight="50.0" prefWidth="60.0" styleClass="button1">
+                        <Button fx:id="ButtonToDoFlagged" layoutX="122.0" layoutY="91.0" mnemonicParsing="false"
+                                onAction="#filterButtons" prefHeight="50.0" prefWidth="60.0" styleClass="button1">
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
+                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
                     </children>
                 </Pane>
-                <Pane layoutX="239.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                <Pane layoutX="239.0" layoutY="68.0" prefHeight="162.0" prefWidth="190.0"
+                      style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                     <children>
                         <Label layoutX="11.0" layoutY="116.0" text="Scheduled" textFill="#d3cccc">
                             <font>
-                                <Font name="Calibri" size="28.0" />
+                                <Font name="Calibri" size="28.0"/>
                             </font>
                         </Label>
-                        <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/icons8-zeit-80.png" />
+                                <Image url="@../../images/ToDoListDashboardImages/icons8-zeit-80.png"/>
                             </image>
                         </ImageView>
-                        <Label fx:id="LabelCountToDoScheduled" layoutX="105.0" layoutY="31.0" prefHeight="60.0" prefWidth="47.0" text="Number" textFill="#9e9797">
+                        <Label fx:id="LabelCountToDoScheduled" layoutX="105.0" layoutY="31.0" prefHeight="60.0"
+                               prefWidth="47.0" text="Number" textFill="#9e9797">
                             <font>
-                                <Font name="Calibri" size="28.0" />
+                                <Font name="Calibri" size="28.0"/>
                             </font>
                         </Label>
-                        <Button fx:id="ButtonToDoScheduled" layoutX="129.0" layoutY="91.0" mnemonicParsing="false" onAction="#filterButtons" prefHeight="50.0" prefWidth="60.0" styleClass="button1">
+                        <Button fx:id="ButtonToDoScheduled" layoutX="129.0" layoutY="91.0" mnemonicParsing="false"
+                                onAction="#filterButtons" prefHeight="50.0" prefWidth="60.0" styleClass="button1">
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
+                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
                         </Button>
                     </children>
                 </Pane>
-                <Pane layoutX="772.0" layoutY="325.0" prefHeight="79.0" prefWidth="88.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                <Pane layoutX="772.0" layoutY="325.0" prefHeight="79.0" prefWidth="88.0"
+                      style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                     <children>
                         <VBox alignment="CENTER" prefHeight="75.0" prefWidth="88.0">
                             <children>
-                                <Button fx:id="ButtonAddNewList" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#filterButtons" prefHeight="83.0" prefWidth="88.0" styleClass="button5" text="Add New List">
+                                <Button fx:id="ButtonAddNewList" alignment="BOTTOM_CENTER" contentDisplay="TOP"
+                                        mnemonicParsing="false" onAction="#filterButtons" prefHeight="83.0"
+                                        prefWidth="88.0" styleClass="button5" text="Add New List">
                                     <graphic>
-                                        <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/ToDoListDashboardImages/add.png" />
+                                                <Image url="@../../images/ToDoListDashboardImages/add.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -242,15 +275,19 @@
                         </VBox>
                     </children>
                 </Pane>
-                <Pane layoutX="772.0" layoutY="239.0" prefHeight="79.0" prefWidth="88.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                <Pane layoutX="772.0" layoutY="239.0" prefHeight="79.0" prefWidth="88.0"
+                      style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                     <children>
                         <VBox alignment="CENTER" layoutX="-4.0" layoutY="2.0" prefHeight="75.0" prefWidth="88.0">
                             <children>
-                                <Button fx:id="ButtonViewList" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#filterButtons" prefHeight="75.0" prefWidth="98.0" styleClass="button5" text="View List">
+                                <Button fx:id="ButtonViewList" alignment="BOTTOM_CENTER" contentDisplay="TOP"
+                                        mnemonicParsing="false" onAction="#filterButtons" prefHeight="75.0"
+                                        prefWidth="98.0" styleClass="button5" text="View List">
                                     <graphic>
-                                        <ImageView fitHeight="46.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="46.0" fitWidth="49.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/ToDoListView/icons8-titel-100.png" />
+                                                <Image url="@../../images/ToDoListView/icons8-titel-100.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -267,7 +304,7 @@
                                     <children>
                                         <TableView fx:id="TodoTable" prefHeight="200.0" prefWidth="699.0">
                                             <columns>
-                                                <TableColumn fx:id="colTitle" minWidth="700.0" text="Title" />
+                                                <TableColumn fx:id="colTitle" minWidth="700.0" text="Title"/>
                                             </columns>
                                         </TableView>
                                     </children>
@@ -276,23 +313,27 @@
                         </ScrollPane>
                     </children>
                 </Pane>
-            <Pane layoutX="772.0" layoutY="410.0" prefHeight="79.0" prefWidth="88.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
-               <children>
-                  <VBox alignment="CENTER" layoutX="-4.0" layoutY="2.0" prefHeight="75.0" prefWidth="88.0">
-                     <children>
-                        <Button fx:id="ButtonDeleteList" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#filterButtons" prefHeight="94.0" prefWidth="103.0" styleClass="button5" text="Delete List">
-                           <graphic>
-                              <ImageView fitHeight="46.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/ToDoListDashboardImages/icons8-eigenschaft-löschen-100.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </VBox>
-               </children>
-            </Pane>
+                <Pane layoutX="772.0" layoutY="410.0" prefHeight="79.0" prefWidth="88.0"
+                      style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                    <children>
+                        <VBox alignment="CENTER" layoutX="-4.0" layoutY="2.0" prefHeight="75.0" prefWidth="88.0">
+                            <children>
+                                <Button fx:id="ButtonDeleteList" alignment="BOTTOM_CENTER" contentDisplay="TOP"
+                                        mnemonicParsing="false" onAction="#filterButtons" prefHeight="94.0"
+                                        prefWidth="103.0" styleClass="button5" text="Delete List">
+                                    <graphic>
+                                        <ImageView fitHeight="46.0" fitWidth="49.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../images/ToDoListDashboardImages/icons8-eigenschaft-löschen-100.png"/>
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </Pane>
             </children>
         </AnchorPane>
     </children>

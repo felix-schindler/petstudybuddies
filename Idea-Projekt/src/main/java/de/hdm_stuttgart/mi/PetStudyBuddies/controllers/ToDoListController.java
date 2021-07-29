@@ -1,7 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
@@ -54,6 +53,18 @@ public class ToDoListController extends Controller implements Initializable {
     SelectQuery queryTodayUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND Task.Until = CURRENT_DATE");
     SelectQuery queryScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "ToDoList.UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) AND Task.ToDoListID=ToDoList.ID");
     SelectQuery queryFlaggedUserLists = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'");
+    Runnable updateUserToDoLists = () -> {
+        log.debug("Updating ToDoList table...");
+        TodoTable.setItems(getUserTodoLists());
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
+    };
+
+    /**
+     * @return The ToDoList to be edited (add tasks, ...)
+     */
+    public static ToDoList getEditTodo() {
+        return editTodo;
+    }
 
     public ObservableList<ToDoList> getUserTodoLists() {
         ObservableList<ToDoList> todosList = FXCollections.observableArrayList();
@@ -79,12 +90,6 @@ public class ToDoListController extends Controller implements Initializable {
         return todosList;
     }
 
-    Runnable updateUserToDoLists = () -> {
-        log.debug("Updating ToDoList table...");
-        TodoTable.setItems(getUserTodoLists());
-        colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
-    };
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         LabelUsername.setText(Account.getLoggedUser().getUsername());
@@ -108,13 +113,6 @@ public class ToDoListController extends Controller implements Initializable {
             return editTodo;
         }
         return null;
-    }
-
-    /**
-     * @return The ToDoList to be edited (add tasks, ...)
-     */
-    public static ToDoList getEditTodo() {
-        return editTodo;
     }
 
     @FXML
@@ -186,7 +184,8 @@ public class ToDoListController extends Controller implements Initializable {
                 if (qTodo.Count() <= 0) {
                     log.error("Failed to delete ToDoList");
                     Dialog.showError("Failed to delete selected ToDoList, please try again.");
-                } else PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");      // TODO reloading in a new thread doesn't work
+                } else
+                    PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");      // TODO reloading in a new thread doesn't work
             } else {
                 log.error("Nothing selected");
                 Dialog.showError("Please select a list.");

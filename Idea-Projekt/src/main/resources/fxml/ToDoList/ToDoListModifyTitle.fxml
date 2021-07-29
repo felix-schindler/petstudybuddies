@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
@@ -17,19 +18,20 @@
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png" />
+                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
                 <Pane prefHeight="38.0" prefWidth="370.0">
                     <children>
-                        <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0" text="New To-Do List Title" textFill="#fff0f0">
+                        <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0"
+                               text="New To-Do List Title" textFill="#fff0f0">
                             <font>
-                                <Font name="Calibri" size="14.0" />
+                                <Font name="Calibri" size="14.0"/>
                             </font>
                         </Label>
                     </children>
@@ -40,12 +42,12 @@
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
+                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Calibri" size="12.0" />
+                        <Font name="Calibri" size="12.0"/>
                     </font>
                 </Button>
             </children>
@@ -56,20 +58,22 @@
                     <children>
                         <Label prefHeight="222.0" prefWidth="494.0" text="New To-Do List Title" textFill="WHITE">
                             <font>
-                                <Font name="Calibri" size="22.0" />
+                                <Font name="Calibri" size="22.0"/>
                             </font>
                         </Label>
-                        <Pane prefHeight="200.0" prefWidth="494.0" />
+                        <Pane prefHeight="200.0" prefWidth="494.0"/>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                             <children>
                                 <HBox prefHeight="25.0" prefWidth="494.0">
                                     <children>
-                                        <Label prefHeight="17.0" prefWidth="350.0" text="Current Title:" textFill="WHITE">
+                                        <Label prefHeight="17.0" prefWidth="350.0" text="Current Title:"
+                                               textFill="WHITE">
                                             <font>
-                                                <Font name="Calibri" size="18.0" />
+                                                <Font name="Calibri" size="18.0"/>
                                             </font>
                                         </Label>
-                                        <Label fx:id="LabelCurrentTitle" prefHeight="25.0" prefWidth="427.0" text="Title of To-Do List" textFill="WHITE">
+                                        <Label fx:id="LabelCurrentTitle" prefHeight="25.0" prefWidth="427.0"
+                                               text="Title of To-Do List" textFill="WHITE">
                                             <font>
                                                 <Font name="Calibri Bold" size="18.0"/>
                                             </font>
@@ -78,29 +82,30 @@
                                 </HBox>
                             </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="494.0" />
+                        <Pane prefHeight="200.0" prefWidth="494.0"/>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                             <children>
                                 <Label prefHeight="28.0" prefWidth="182.0" text="New Title:" textFill="WHITE">
                                     <font>
-                                        <Font name="Calibri" size="24.0" />
+                                        <Font name="Calibri" size="24.0"/>
                                     </font>
                                 </Label>
                                 <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="600.0">
                                     <children>
-                                        <TextField fx:id="TextFieldNewTitle" prefHeight="27.0" prefWidth="389.0" promptText="Enter a name for your To-Do List">
+                                        <TextField fx:id="TextFieldNewTitle" prefHeight="27.0" prefWidth="389.0"
+                                                   promptText="Enter a name for your To-Do List">
                                             <font>
-                                                <Font name="Calibri" size="14.0" />
+                                                <Font name="Calibri" size="14.0"/>
                                             </font>
                                         </TextField>
                                     </children>
                                 </HBox>
                             </children>
                         </VBox>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                        <Pane prefHeight="200.0" prefWidth="200.0"/>
                         <Label layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="494.0" textFill="RED">
                             <font>
-                                <Font name="Calibri Bold" size="22.0" />
+                                <Font name="Calibri Bold" size="22.0"/>
                             </font>
                         </Label>
                     </children>

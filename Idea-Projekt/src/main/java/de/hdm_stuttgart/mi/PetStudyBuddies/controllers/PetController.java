@@ -1,9 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.models.Pet;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,7 +14,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.sql.rowset.CachedRowSet;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -28,22 +25,22 @@ public class PetController extends Controller implements Initializable {
     private Label LabelPetname, LabelPetname2, LabelEmotion;
 
     @FXML
-    private Button  ButtonTakeCare, ButtonChangeName, ButtonDeletePet, ButtonEasterEgg;
+    private Button ButtonTakeCare, ButtonChangeName, ButtonDeletePet, ButtonEasterEgg;
 
     private CachedRowSet pet;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         log.debug("Setting Pet");
-        CachedRowSet pet = new SelectQuery("Pet","*","UserID="+ Account.getLoggedUser().getID()+" ").fetchAll();
+        CachedRowSet pet = new SelectQuery("Pet", "*", "UserID=" + Account.getLoggedUser().getID() + " ").fetchAll();
         log.debug(pet.size());
-        this.pet =pet;
+        this.pet = pet;
         log.debug("Query successful");
 
         try {
-            if(!pet.first()){
+            if (!pet.first()) {
                 loadSecondScene("/fxml/Pet/AddPet.fxml");
-            }else{
+            } else {
                 LabelPetname.setText(pet.getString("Name"));
                 LabelPetname2.setText(pet.getString("Name"));
                 LabelEmotion.setText(pet.getString("Emotion"));
@@ -53,8 +50,9 @@ public class PetController extends Controller implements Initializable {
         }
 
     }
+
     @FXML
-    public boolean setPet(){
+    public boolean setPet() {
 
         /*try {
             if(pet.first()) {
@@ -68,12 +66,13 @@ public class PetController extends Controller implements Initializable {
             return false;
         }*/
         try {
-            if (pet.first() ) {
+            if (pet.first()) {
                 log.debug("Pet exists");
                 return true;
-            }else {
+            } else {
                 log.debug("Pet does not exist");
-                return false;}
+                return false;
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             log.debug("Pet does not exist");
@@ -81,8 +80,9 @@ public class PetController extends Controller implements Initializable {
         }
 
     }
+
     @FXML
-    public void loadSecondScene(String filename){
+    public void loadSecondScene(String filename) {
         try {
             Stage anotherStage = new Stage();
             FXMLLoader secondPageLoader = new FXMLLoader(getClass().getResource(filename));

@@ -8,11 +8,7 @@ import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Locale;
 
 /**
  * Utility functions you can use everywhere
@@ -115,9 +111,9 @@ public class Utils {
             date = LocalDate.ofEpochDay(Long.parseLong(dateStr));
         } catch (NumberFormatException ignored) {
             try {
-                int year = Integer.parseInt(dateStr.substring(0,4));
-                int month = Integer.parseInt(dateStr.substring(5,7));
-                int day = Integer.parseInt(dateStr.substring(8,10));
+                int year = Integer.parseInt(dateStr.substring(0, 4));
+                int month = Integer.parseInt(dateStr.substring(5, 7));
+                int day = Integer.parseInt(dateStr.substring(8, 10));
                 date = LocalDate.of(year, month, day);
             } catch (NumberFormatException ignored1) {
             }
