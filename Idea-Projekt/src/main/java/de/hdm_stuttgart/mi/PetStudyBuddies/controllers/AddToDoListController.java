@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AddToDoListController extends Controller {
+public class AddToDoListController extends Controller implements ControlledScreen {
     private static final Logger log = LogManager.getLogger(AddToDoListController.class);
     @FXML
     Button ButtonCreateList, ButtonBack;
@@ -54,11 +54,5 @@ public class AddToDoListController extends Controller {
         } else if (actionEvent.getSource() == ButtonBack) {     // Close dialog
             closeSecondScene(actionEvent);
         }
-    }
-
-    public void closeSecondScene(ActionEvent actionEvent) {
-        PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");
-        Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        secondStage.close();
     }
 }

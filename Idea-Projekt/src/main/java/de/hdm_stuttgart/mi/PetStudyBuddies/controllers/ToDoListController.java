@@ -1,7 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
@@ -11,16 +9,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,7 +23,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
 
-public class ToDoListController extends Controller implements Initializable {
+public class ToDoListController extends Controller implements Initializable, ControlledScreen {
     /**
      * Log object for error handling
      */
@@ -158,35 +152,32 @@ public class ToDoListController extends Controller implements Initializable {
             setTableData(queryFlaggedUserLists.fetchAll());
         } else if (actionEvent.getSource() == ButtonToDoToday) {
             setTableData(queryTodayUserLists.fetchAll());
-        } else if (actionEvent.getSource() == ButtonViewList) {
+        }
+
+        // View a ToDoList
+        else if (actionEvent.getSource() == ButtonViewList) {
             editTodo = getSelectedTodo();
             if (editTodo == null) {
                 log.error("No list selected");
                 Dialog.showError("Please select a ToDo List.");
-            } else PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
-        } else if (actionEvent.getSource() == ButtonAddNewList) {
-            Stage anotherStage = new Stage();
-            log.debug("ButtonAddList was clicked");
-            try {
-                // Load dialog for input
-                FXMLLoader secondPageLoader = new FXMLLoader(getClass().getResource("/fxml/ToDoList/ToDoListAddList.fxml"));
-                Parent secondPane = secondPageLoader.load();
-                Scene secondScene = new Scene(secondPane);
-                anotherStage.setScene(secondScene);
-                anotherStage.show();
-            } catch (Exception e) {
-                log.catching(e);
-                log.error("Failed to load input dialog");
-            }
-        } else if (actionEvent.getSource() == ButtonDeleteList) {
+            } else ScreensController.setStage(ScreensFramework.TaskListFilename,ScreensFramework.TaskListID);   // Hard reload
+        }
+
+        // Add new list (dialog)
+        else if (actionEvent.getSource() == ButtonAddNewList) {
+            loadSecondScene("/fxml/ToDoList/ToDoListAddList.fxml");
+            ScreensController.setStage(ScreensFramework.ToDoListDashbboardFilename,ScreensFramework.ToDoListDashboardID);   // Hard reload
+        }
+
+        // Delete ToDoList
+        else if (actionEvent.getSource() == ButtonDeleteList) {
             ToDoList selected = getSelectedTodo();
             if (selected != null) {
                 DeleteQuery qTodo = new DeleteQuery("ToDoList", "ID=" + selected.getID());
                 if (qTodo.Count() <= 0) {
                     log.error("Failed to delete ToDoList");
                     Dialog.showError("Failed to delete selected ToDoList, please try again.");
-                } else
-                    PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");      // TODO reloading in a new thread doesn't work
+                } else ScreensController.setStage(ScreensFramework.ToDoListDashbboardFilename,ScreensFramework.ToDoListDashboardID);
             } else {
                 log.error("Nothing selected");
                 Dialog.showError("Please select a list.");

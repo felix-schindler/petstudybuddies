@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditNoteController extends Controller implements Initializable {
+public class EditNoteController extends Controller implements Initializable, ControlledScreen {
     private final static Logger log = LogManager.getLogger(EditNoteController.class);
     @FXML
     private TextField title;
@@ -37,7 +37,7 @@ public class EditNoteController extends Controller implements Initializable {
             log.error("Failed to get a note");
             log.info("Tipp: Check if you have set the ID");
             log.debug("Redirecting to note screen");
-            PetStudyBuddies.setStage("/fxml/Notes/Notes.fxml");
+            ScreensController.setStage(ScreensFramework.NoteFilename,ScreensFramework.NoteID);
         }
     }
 
@@ -49,7 +49,7 @@ public class EditNoteController extends Controller implements Initializable {
         note.setContent(Utils.getInputString(content));
 
         if (note.save()) {
-            PetStudyBuddies.setStage("/fxml/Notes/Notes.fxml");
+            ScreensController.setStage(ScreensFramework.NoteFilename,ScreensFramework.NoteID);
         } else {
             log.error("Failed to save note");
             Dialog.showError("Failed to save note");

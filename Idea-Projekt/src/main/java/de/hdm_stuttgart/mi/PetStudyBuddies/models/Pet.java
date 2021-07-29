@@ -2,9 +2,11 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.sql.rowset.CachedRowSet;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -23,6 +25,11 @@ public class Pet extends Model {
      * Emotion of the pet
      */
     private String emotion;
+
+    /**
+     * Pet as CachedRowSet
+     */
+    CachedRowSet pet;
 
     /**
      * @param ID
@@ -69,24 +76,45 @@ public class Pet extends Model {
         return emotion;
     }
 
-    /**
-     * Sets the emotion
-     *
-     * @param emotion new emotion
-     */
-    public void setEmotion(String emotion) {
-        this.emotion = emotion;
-    }
-
-    public void setEmotion(double average) {
-        if (average >= 1.1) {
+    public void setEmotion(double average){
+        if (average >= 1.1){
             this.emotion = "sad";
-        } else if (average < 1.1 && average >= 0.9) {
+        }
+        else if (average < 1.1 && average >=0.9){
             this.emotion = "content";
-        } else {
+        }
+        else{
             this.emotion = "happy";
         }
 
+    }
+
+    public boolean setPet() {
+        try {
+            if (pet.first()) {
+                log.debug("Pet exists");
+                return true;
+            }else {
+                log.debug("Pet does not exist");
+                return false;}
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            log.debug("Pet does not exist");
+            return false;
+        }
+    }
+
+    /* public void setPet(){
+        log.debug("Reloading/Setting Pet");
+        CachedRowSet pet = new SelectQuery("Pet","*","UserID="+ Account.getLoggedUser().getID()+" ").fetchAll();
+        log.debug(pet.size());
+        this.pet =pet;
+        log.debug("Reload successful");
+    }*/
+
+
+    public Pet getPet(){
+        return (Pet) pet;
     }
 
     /**

@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AssignTaskController implements Initializable {
+public class AssignTaskController implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(AssignTaskController.class);
     @FXML
     Button ButtonBack, ButtonAssignTask;
@@ -63,11 +63,5 @@ public class AssignTaskController implements Initializable {
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
         }
-    }
-
-    @FXML
-    public void closeSecondScene(ActionEvent actionEvent) {
-        Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        secondStage.close();
     }
 }

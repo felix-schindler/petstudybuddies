@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * A simple controller providing a callback method {@link #register()}
  */
-public class RegisterController extends Controller {
+public class RegisterController extends Controller implements ControlledScreen {
     private final static Logger log = LogManager.getLogger(RegisterController.class);
     @FXML
     private TextField emailField;
@@ -54,7 +54,7 @@ public class RegisterController extends Controller {
                     Thread.sleep(1000);
                 } catch (InterruptedException ignored) {
                 }
-                PetStudyBuddies.setStage("/fxml/User/Login.fxml", "Login");
+                ScreensController.setStage(ScreensFramework.LoginFilename,ScreensFramework.LoginID);
             } else {
                 status.append("Registrierung war nicht erfolgreich, bitte versuch es später erneut.");
                 log.error("Failed to register");

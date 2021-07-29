@@ -31,19 +31,19 @@ abstract class Controller {
     private void handleMenu(ActionEvent event) {
         log.debug("Setting new stage...");
         if (event.getSource() == ApplicationDashboard) {
-            PetStudyBuddies.setStage("/fxml/Dashboard/Dashboard.fxml", "Dashboard");
+            ScreensController.setStage("/fxml/Dashboard/Dashboard.fxml", "Dashboard");
         } else if (event.getSource() == NotesDashboard) {
-            PetStudyBuddies.setStage("/fxml/Notes/Notes.fxml", "Notes");
+            ScreensController.setStage("/fxml/Notes/Notes.fxml", "Notes");
         } else if (event.getSource() == PetDashboard) {
-            PetStudyBuddies.setStage("/fxml/Pet/PetDashboard.fxml", "Pet");
+            ScreensController.setStage("/fxml/Pet/PetDashboard.fxml", "Pet");
         } else if (event.getSource() == ToDoDashboard) {
-            PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do");
+            ScreensController.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do");
         } else if (event.getSource() == SettingsView) {
-            PetStudyBuddies.setStage("/fxml/User/UserSettings.fxml", "Settings");
+            ScreensController.setStage("/fxml/User/UserSettings.fxml", "Settings");
         } else if (event.getSource() == LoginView) {
-            PetStudyBuddies.setStage("/fxml/User/Login.fxml", "Login");
+            ScreensController.setStage("/fxml/User/Login.fxml", "Login");
         } else if (event.getSource() == RegisterView) {
-            PetStudyBuddies.setStage("/fxml/User/Register.fxml", "Register");
+            ScreensController.setStage("/fxml/User/Register.fxml", "Register");
         } else {
             log.error("No route specified");
         }

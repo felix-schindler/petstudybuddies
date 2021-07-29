@@ -20,7 +20,7 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ShareToDoListController implements Initializable {
+public class ShareToDoListController implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
     @FXML
     Button ButtonBack, ButtonShareList;
@@ -55,11 +55,6 @@ public class ShareToDoListController implements Initializable {
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
         }
-    }
-
-    public void closeSecondScene(ActionEvent actionEvent) {
-        Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        secondStage.close();
     }
 
     @Override

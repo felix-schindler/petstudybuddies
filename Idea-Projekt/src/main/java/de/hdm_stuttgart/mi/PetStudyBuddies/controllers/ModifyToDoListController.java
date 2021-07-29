@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ModifyToDoListController implements Initializable {
+public class ModifyToDoListController implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(ModifyToDoListController.class);
     @FXML
     Button ButtonBack, ButtonChangeTitle;

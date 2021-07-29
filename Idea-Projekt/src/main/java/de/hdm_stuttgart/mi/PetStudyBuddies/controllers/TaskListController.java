@@ -28,10 +28,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class TaskListController extends Controller implements Initializable {
+public class TaskListController extends Controller implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(TaskListController.class);
     protected static Task editTask;
-    Stage anotherStage = new Stage();
 
     @FXML
     Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask, ButtonDeleteTask;
@@ -41,6 +40,7 @@ public class TaskListController extends Controller implements Initializable {
     TableView<Task> TaskTable;
     @FXML
     Label LabelToDoListName;
+
     Runnable updateTable = () -> {
         LabelToDoListName.setText(ToDoListController.getEditTodo().getTitle());
 
@@ -116,22 +116,22 @@ public class TaskListController extends Controller implements Initializable {
         // Change ToDoList title (dialog)
         else if (event.getSource() == ButtonChangeTitle) {
             log.debug("ButtonChangeTitle was clicked");
-            openSecondScene("/fxml/ToDoList/ToDoListModifyTitle.fxml");
+            loadSecondScene("/fxml/ToDoList/ToDoListModifyTitle.fxml");
             return;     // No reload
         }
 
         // Add task (dialog)
         else if (event.getSource() == ButtonAddNewTask) {
             log.debug("ButtonAddNewTask was clicked");
-            openSecondScene("/fxml/ToDoList/ToDoListAddTask.fxml");
+            loadSecondScene("/fxml/ToDoList/ToDoListAddTask.fxml");
         }
 
         // Modify Task (dialog)
         else if (event.getSource() == ButtonModifyTask) {
             log.debug("ButtonModifyTask was clicked");
             if (getSelectedTask() != null) {
-                openSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
-                PetStudyBuddies.setStage("/fxml/ToDoList/TaskList.fxml");
+                loadSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
+                ScreensController.setStage(ScreensFramework.TaskListFilename,ScreensFramework.TaskListID);
                 return;     // Hard reload
             }
         }
@@ -139,14 +139,14 @@ public class TaskListController extends Controller implements Initializable {
         // Share Task (dialog)
         else if (event.getSource() == ButtonShareList) {
             log.debug("ButtonShareList was clicked");
-            openSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
+            loadSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
         }
 
         // Assign Task (dialog)
         else if (event.getSource() == ButtonAssignTask) {
             log.debug("ButtonAssignTask was clicked");
             if (getSelectedTask() != null) {
-                openSecondScene("/fxml/ToDoList/ToDoListAssignTask.fxml");
+                loadSecondScene("/fxml/ToDoList/ToDoListAssignTask.fxml");
             }
         }
 
@@ -170,21 +170,6 @@ public class TaskListController extends Controller implements Initializable {
             ButtonSetFlag.setStyle("-fx-background-color: #8c78e3;");
         else
             ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
-    }
-
-    public void openSecondScene(String filepath) {
-        try {
-            FXMLLoader secondPageLoader = new FXMLLoader(getClass().getResource(filepath));
-            Parent secondPane = secondPageLoader.load();
-            Scene secondScene = new Scene(secondPane);
-
-            anotherStage.setScene(secondScene);
-            anotherStage.setResizable(false);
-            anotherStage.showAndWait();
-        } catch (Exception e) {
-            log.catching(e);
-            log.error("Failed to show dialog");
-        }
     }
 
     public Task getSelectedTask() {

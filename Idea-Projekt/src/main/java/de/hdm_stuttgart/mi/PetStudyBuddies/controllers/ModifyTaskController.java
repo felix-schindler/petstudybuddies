@@ -18,7 +18,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class ModifyTaskController implements Initializable {
+public class ModifyTaskController implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(ModifyTaskController.class);
     Task edit = TaskListController.getEditTask();
     @FXML

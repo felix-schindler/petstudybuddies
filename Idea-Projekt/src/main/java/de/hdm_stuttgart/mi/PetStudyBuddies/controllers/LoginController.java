@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * A simple controller providing a callback method {@link #login()}
  */
-public class LoginController extends Controller {
+public class LoginController extends Controller implements ControlledScreen {
     private final static Logger log = LogManager.getLogger(LoginController.class);
     @FXML
     private TextField emailField;
@@ -59,7 +59,7 @@ public class LoginController extends Controller {
                 Account.setUser(user);
 
                 // Redirect to Dashboard
-                PetStudyBuddies.setStage("/fxml/Dashboard/Dashboard.fxml", "Dashboard");
+                ScreensController.setStage(ScreensFramework.DashboardFilename,ScreensFramework.DashboardID);
             } else {
                 Dialog.showError("EMail or Password is incorrect.");
                 log.error("EMail or Password is incorrect.");

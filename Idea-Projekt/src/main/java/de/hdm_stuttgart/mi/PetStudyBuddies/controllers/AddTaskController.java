@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AddTaskController {
+public class AddTaskController implements ControlledScreen {
     private static final Logger log = LogManager.getLogger(AddTaskController.class);
     @FXML
     Button ButtonBack, ButtonCreateNewTask;
@@ -40,11 +40,5 @@ public class AddTaskController {
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
         }
-    }
-
-    @FXML
-    public void closeSecondScene(ActionEvent actionEvent) {
-        Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        secondStage.close();
     }
 }
