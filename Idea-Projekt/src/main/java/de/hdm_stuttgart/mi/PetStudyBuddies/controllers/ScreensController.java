@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class ScreensController extends StackPane {
+public class ScreensController {
     private static final Logger log = LogManager.getLogger(ScreensController.class);
     private HashMap<String, Stage> stages = new HashMap<>();
     public static Stage window = new Stage();
@@ -25,10 +25,11 @@ public class ScreensController extends StackPane {
         return stages.get(name);
     }
 
-    public static void setStage(String fileName, String title) {
+    public static void setStage(String title) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(PetStudyBuddies.class.getResource(fileName));
+            loader.setLocation(PetStudyBuddies.class.getResource(ScreensFramework.screens.get(title)));
+            log.debug("title is " + title + " Filename is "+ ScreensFramework.screens.get(title));
             Scene newScene = new Scene(loader.load());
             window.setScene(newScene);
             ScreensController.setStage(window, title);

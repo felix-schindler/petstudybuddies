@@ -6,40 +6,23 @@ public class ScreensFramework {
     public static HashMap<String, String> screens = new HashMap<>();
 
     public static Runnable init = () -> {
-        screens.put("Dashboard", "/fxml/Dashboard/Dashboard.fxml");
-        screens.put("", "");
+        screens.put("Dashboard","/fxml/Dashboard/Dashboard.fxml");
+        screens.put("Edit Note", "/fxml/Notes/EditNote.fxml");
+        screens.put("Note","/fxml/Notes/Notes.fxml");
+        screens.put("Add Pet","/fxml/Pet/AddPet.fxml");
+        screens.put("Pet","/fxml/Pet/PetDashboard.fxml");
+        screens.put("Add List","/fxml/ToDoList/ToDoListAddList.fxml");
+        screens.put("Add Task","/fxml/ToDoList/ToDoListAddTask.fxml");
+        screens.put("Assign Task","/fxml/ToDoList/ToDoListAssignTask.fxml");
+        screens.put("ToDoList Dashboard","/fxml/ToDoList/ToDoListDashboard2.fxml");
+        screens.put("Modify Task","/fxml/ToDoList/ToDoListModifyTask.fxml");
+        screens.put("Modify Title","/fxml/ToDoList/ToDoListModifyTitle.fxml");
+        screens.put("Share To Do List","/fxml/ToDoList/ToDoListShare.fxml");
+        screens.put("Lists","/fxml/ToDoList/TaskList.fxml");
+        screens.put("Login","/fxml/User/Login.fxml");
+        screens.put("Register","/fxml/User/Register.fxml");
+        screens.put("User Settings","/fxml/User/UserSettings.fxml");
     };
 
-    public static String DashboardID = "Dashboard";
-    public static String DashboardFilename = "/fxml/Dashboard/Dashboard.fxml";
-    public static String EditNoteID = "Edit Note";
-    public static String EditNoteFilename = "/fxml/Notes/EditNote.fxml";
-    public static String NoteID = "Note";
-    public static String NoteFilename = "/fxml/Notes/Note.fxml";
-    public static String AddPetID = "Add Pet";
-    public static String AddPetFilename = "/fxml/Pet/AddPet.fxml";
-    public static String PetDashboardID = "Add Pet";
-    public static String PetDashboardFilename = "/fxml/Pet/PetDashboard.fxml";
-    public static String ToDoListAddListID ="Add List";
-    public static String ToDoListAddListFilename ="/fxml/ToDoList/ToDoListAddList.fxml";
-    public static String ToDoListAddTaskID ="Add Task";
-    public static String ToDoListAddTaskFilename ="/fxml/ToDoList/ToDoListAddTask.fxml";
-    public static String ToDoListAssignTaskID ="Assign Task";
-    public static String ToDoListAssignTaskFilename ="/fxml/ToDoList/ToDoListAssignTask.fxml";
-    public static String ToDoListDashboardID ="ToDoList Dashboard";
-    public static String ToDoListDashbboardFilename ="/fxml/ToDoList/ToDoListDashboard2.fxml";
-    public static String ToDoListModifyTask ="Modify Task";
-    public static String ToDoListModifyTaskFilename ="/fxml/ToDoList/ToDoListModifyTask.fxml";
-    public static String ToDoListModifyTitleID ="Modify Title";
-    public static String ToDoListModifyTitleFilename ="/fxml/ToDoList/ToDoListModifyTitle.fxml";
-    public static String ToDoListShareListID ="Share To Do List";
-    public static String ToDoListShareListFilename ="/fxml/ToDoList/ToDoListShareToDoList.fxml";
-    public static String TaskListID ="View Lists";
-    public static String TaskListFilename ="/fxml/ToDoList/TaskList.fxml";
-    public static String LoginID = "Login";
-    public static String LoginFilename = "/fxml/User/Login.fxml";
-    public static String RegisterID= "Register";
-    public static String RegisterFilename = "/fxml/User/Register.fxml";
-    public static String UserSettingsID = "User Settings";
-    public static String UserSettingsFilename = "/fxml/User/UserSettings.fxml";
+
 }

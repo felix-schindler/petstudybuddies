@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-abstract class Controller {
+abstract class Controller implements ControlledScreen{
     /**
      * Log object for error handling
      */
@@ -31,19 +31,19 @@ abstract class Controller {
     private void handleMenu(ActionEvent event) {
         log.debug("Setting new stage...");
         if (event.getSource() == ApplicationDashboard) {
-            ScreensController.setStage("/fxml/Dashboard/Dashboard.fxml", "Dashboard");
+            ScreensController.setStage(DashboardID);
         } else if (event.getSource() == NotesDashboard) {
-            ScreensController.setStage("/fxml/Notes/Notes.fxml", "Notes");
+            ScreensController.setStage(NoteID);
         } else if (event.getSource() == PetDashboard) {
-            ScreensController.setStage("/fxml/Pet/PetDashboard.fxml", "Pet");
+            ScreensController.setStage(PetDashboardID);
         } else if (event.getSource() == ToDoDashboard) {
-            ScreensController.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml", "To Do");
+            ScreensController.setStage(ToDoListDashboardID);
         } else if (event.getSource() == SettingsView) {
-            ScreensController.setStage("/fxml/User/UserSettings.fxml", "Settings");
+            ScreensController.setStage(UserSettingsID);
         } else if (event.getSource() == LoginView) {
-            ScreensController.setStage("/fxml/User/Login.fxml", "Login");
+            ScreensController.setStage(LoginID);
         } else if (event.getSource() == RegisterView) {
-            ScreensController.setStage("/fxml/User/Register.fxml", "Register");
+            ScreensController.setStage(RegisterID);
         } else {
             log.error("No route specified");
         }

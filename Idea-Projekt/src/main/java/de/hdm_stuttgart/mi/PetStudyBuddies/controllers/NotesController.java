@@ -182,6 +182,6 @@ public class NotesController extends Controller implements Initializable {
      * Redirects the user to the edit note screen
      */
     public void goToEditNote() {
-        ScreensController.setStage(ScreensFramework.EditNoteFilename,ScreensFramework.EditNoteID);
+        ScreensController.setStage(EditNoteID);
     }
 }

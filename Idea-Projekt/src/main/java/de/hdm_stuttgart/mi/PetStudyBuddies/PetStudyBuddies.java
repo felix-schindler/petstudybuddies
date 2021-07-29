@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ControlledScreen;
 import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ScreensController;
 import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ScreensFramework;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
@@ -16,7 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class PetStudyBuddies extends Application {
+public class PetStudyBuddies extends Application implements ControlledScreen {
     /**
      * Logger for smart (error) logging
      */
@@ -55,9 +56,9 @@ public class PetStudyBuddies extends Application {
         stage.setResizable(false);
         stage.setFullScreen(false);
         if (Account.getLoggedUser() == null) {
-            ScreensController.setStage(ScreensFramework.LoginFilename, ScreensFramework.LoginID);
+            ScreensController.setStage(LoginID);
         } else {
-            ScreensController.setStage(ScreensFramework.DashboardFilename, ScreensFramework.DashboardID);
+            ScreensController.setStage(DashboardID);
         }
         log.debug("PetStudyBuddies gestartet");
     }
