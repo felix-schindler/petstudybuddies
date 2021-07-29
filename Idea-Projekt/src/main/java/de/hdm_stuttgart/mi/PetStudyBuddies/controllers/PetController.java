@@ -22,21 +22,10 @@ public class PetController extends Controller implements Initializable, Controll
     @FXML
     private Button ButtonTakeCare, ButtonChangeName, ButtonDeletePet, ButtonEasterEgg;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Pet myPet = getPet();
-
-        if (myPet != null) {
-            LabelPetname.setText(myPet.getName());
-            LabelPetname2.setText(myPet.getName());
-            LabelEmotion.setText(myPet.getEmotion());
-        }
-    }
-
     public static Pet getPet() {
         log.debug("Getting pet of user...");
 
-        String id = new SelectQuery("Pet","ID","UserID="+ Account.getLoggedUser().getID()).fetch();
+        String id = new SelectQuery("Pet", "ID", "UserID=" + Account.getLoggedUser().getID()).fetch();
         if (id == null) {
             return null;
         }
@@ -46,10 +35,21 @@ public class PetController extends Controller implements Initializable, Controll
     public static String getEmotion(double average) {
         if (average >= 1.1) {
             return "sad";
-        } else if (average < 1.1 && average >=0.9) {
+        } else if (average < 1.1 && average >= 0.9) {
             return "content";
         } else {
             return "happy";
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Pet myPet = getPet();
+
+        if (myPet != null) {
+            LabelPetname.setText(myPet.getName());
+            LabelPetname2.setText(myPet.getName());
+            LabelEmotion.setText(myPet.getEmotion());
         }
     }
 }

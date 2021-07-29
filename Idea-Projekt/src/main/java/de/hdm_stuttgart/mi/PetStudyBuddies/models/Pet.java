@@ -2,11 +2,9 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.models;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.UpdateQuery;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.sql.rowset.CachedRowSet;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

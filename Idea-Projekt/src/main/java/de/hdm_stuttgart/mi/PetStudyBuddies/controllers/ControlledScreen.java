@@ -20,7 +20,7 @@ public interface ControlledScreen {
     }
 
     @FXML
-    default void loadSecondScene(String filename){
+    default void loadSecondScene(String filename) {
         try {
             Stage anotherStage = new Stage();
             FXMLLoader secondPageLoader = new FXMLLoader(getClass().getResource(filename));

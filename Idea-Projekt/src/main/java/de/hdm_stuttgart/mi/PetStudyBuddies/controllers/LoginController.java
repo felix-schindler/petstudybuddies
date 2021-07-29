@@ -58,7 +58,7 @@ public class LoginController extends Controller implements ControlledScreen {
                 Account.setUser(user);
 
                 // Redirect to Dashboard
-                ScreensController.setStage(ScreensFramework.DashboardFilename,ScreensFramework.DashboardID);
+                ScreensController.setStage(ScreensFramework.DashboardFilename, ScreensFramework.DashboardID);
             } else {
                 Dialog.showError("EMail or Password is incorrect.");
                 log.error("EMail or Password is incorrect.");

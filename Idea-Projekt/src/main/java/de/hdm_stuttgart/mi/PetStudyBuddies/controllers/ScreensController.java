@@ -13,16 +13,8 @@ import java.util.HashMap;
 
 public class ScreensController extends StackPane {
     private static final Logger log = LogManager.getLogger(ScreensController.class);
-    private HashMap<String, Stage> stages = new HashMap<>();
     public static Stage window = new Stage();
-
-    public void addStage(String name, Stage screen) {
-        stages.put(name, screen);
-    }
-
-    public Stage getStage(String name) {
-        return stages.get(name);
-    }
+    private final HashMap<String, Stage> stages = new HashMap<>();
 
     public static void setStage(String fileName, String title) {
         try {
@@ -37,6 +29,7 @@ public class ScreensController extends StackPane {
             log.error("Error occurred while loading scene");
         }
     }
+
     public static void setStage(Stage newStage) {
         setStage(newStage, "PetStudyBuddies");
     }
@@ -46,5 +39,13 @@ public class ScreensController extends StackPane {
         window.setTitle(newTitle);
         window.centerOnScreen();
         window.show();
+    }
+
+    public void addStage(String name, Stage screen) {
+        stages.put(name, screen);
+    }
+
+    public Stage getStage(String name) {
+        return stages.get(name);
     }
 }

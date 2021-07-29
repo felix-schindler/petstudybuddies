@@ -126,7 +126,7 @@ public class TaskListController extends Controller implements Initializable, Con
             log.debug("ButtonModifyTask was clicked");
             if (getSelectedTask() != null) {
                 loadSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
-                ScreensController.setStage(ScreensFramework.TaskListFilename,ScreensFramework.TaskListID);
+                ScreensController.setStage(ScreensFramework.TaskListFilename, ScreensFramework.TaskListID);
                 return;     // Hard reload
             }
         }

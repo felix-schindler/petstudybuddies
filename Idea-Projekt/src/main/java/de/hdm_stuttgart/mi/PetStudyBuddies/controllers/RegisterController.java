@@ -53,7 +53,7 @@ public class RegisterController extends Controller implements ControlledScreen {
                     Thread.sleep(1000);
                 } catch (InterruptedException ignored) {
                 }
-                ScreensController.setStage(ScreensFramework.LoginFilename,ScreensFramework.LoginID);
+                ScreensController.setStage(ScreensFramework.LoginFilename, ScreensFramework.LoginID);
             } else {
                 status.append("Registrierung war nicht erfolgreich, bitte versuch es später erneut.");
                 log.error("Failed to register");
