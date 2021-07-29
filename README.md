@@ -29,7 +29,7 @@ Wenn etwas im [Idea-Projekt Ordner](https://gitlab.mi.hdm-stuttgart.de/kb136/pet
 
 ## Diagramme
 ### Datenbank
-https://drawsql.app/student-166/diagrams/se2-petstudybuddies
+https://drawsql.app/student-166/diagrams/se2-petstudybuddies<br>
 https://docs.google.com/spreadsheets/d/1yNHLHqaoyHtrKktgf7sQXvNQ3Kyl0OwEt04BNAFnznA/edit?usp=sharing
 
 ### UML-Klassendiagramm
