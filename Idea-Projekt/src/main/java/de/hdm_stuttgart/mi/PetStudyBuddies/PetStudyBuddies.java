@@ -28,7 +28,7 @@ public class PetStudyBuddies extends Application implements ControlledScreen {
      */
     public static void main(String[] args) {
         new Thread(ScreensFramework.init).start();
-        Account.setUser(new User(101));     // TODO REMOVE auto login!!!!
+        //Account.setUser(new User(101));     // TODO REMOVE auto login!!!!
         launch(args);
     }
 
