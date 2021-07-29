@@ -24,5 +24,4 @@ public class ScreensFramework {
         screens.put("User Settings","/fxml/User/UserSettings.fxml");
     };
 
-
 }

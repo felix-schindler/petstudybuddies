@@ -3,27 +3,18 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 import java.io.IOException;
 import java.util.HashMap;
 
 public class ScreensController {
     private static final Logger log = LogManager.getLogger(ScreensController.class);
-    private HashMap<String, Stage> stages = new HashMap<>();
     public static Stage window = new Stage();
-
-    public void addStage(String name, Stage screen) {
-        stages.put(name, screen);
-    }
-
-    public Stage getStage(String name) {
-        return stages.get(name);
-    }
+    private final HashMap<String, Stage> stages = new HashMap<>();
 
     public static void setStage(String title) {
         try {
@@ -39,6 +30,7 @@ public class ScreensController {
             log.error("Error occurred while loading scene");
         }
     }
+
     public static void setStage(Stage newStage) {
         setStage(newStage, "PetStudyBuddies");
     }
@@ -48,5 +40,13 @@ public class ScreensController {
         window.setTitle(newTitle);
         window.centerOnScreen();
         window.show();
+    }
+
+    public void addStage(String name, Stage screen) {
+        stages.put(name, screen);
+    }
+
+    public Stage getStage(String name) {
+        return stages.get(name);
     }
 }

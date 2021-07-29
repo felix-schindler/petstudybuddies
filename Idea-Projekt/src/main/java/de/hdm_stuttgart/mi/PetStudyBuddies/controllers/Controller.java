@@ -1,6 +1,5 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
