@@ -52,13 +52,14 @@ public class ToDoListController extends Controller implements Initializable {
     SelectQuery queryToDoLists = new SelectQuery("ToDoList", "ID", "UserID = " + Account.getLoggedUser().getID(), "ID", null);
     SelectQuery querySharedToDoLists = new SelectQuery("ToDoListShare", "ToDoListID", "UserID=" + Account.getLoggedUser().getID());
     SelectQuery queryTodayUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND Task.Until = CURRENT_DATE");
-    SelectQuery queryScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) IS NOT NULL");
+    SelectQuery queryScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "ToDoList.UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) AND Task.ToDoListID=ToDoList.ID");
     SelectQuery queryFlaggedUserLists = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'");
 
     public ObservableList<ToDoList> getUserTodoLists() {
         ObservableList<ToDoList> todosList = FXCollections.observableArrayList();
         CachedRowSet todosSet = queryToDoLists.fetchAll();
         CachedRowSet sharedTodosSet = querySharedToDoLists.fetchAll();
+        Utils.printResultSet(todosSet);
         try {
             if (queryToDoLists.Count() > 0) {
                 do {
@@ -71,7 +72,7 @@ public class ToDoListController extends Controller implements Initializable {
                     todosList.add(new ToDoList(sharedTodosSet.getInt("ToDoListID")));
                 } while (sharedTodosSet.next());
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ArrayIndexOutOfBoundsException e) {
             log.catching(e);
             log.error("Failed to add ToDoLists");
         }
@@ -183,10 +184,10 @@ public class ToDoListController extends Controller implements Initializable {
             ToDoList selected = getSelectedTodo();
             if (selected != null) {
                 DeleteQuery qTodo = new DeleteQuery("ToDoList", "ID=" + selected.getID());
-                if (qTodo.Count() <= -1) {
+                if (qTodo.Count() <= 0) {
                     log.error("Failed to delete ToDoList");
                     Dialog.showError("Failed to delete selected ToDoList, please try again.");
-                } else new Thread(updateUserToDoLists).start();
+                } else PetStudyBuddies.setStage("/fxml/ToDoList/ToDoListDashboard2.fxml");      // TODO reloading in a new thread doesn't work
             } else {
                 log.error("Nothing selected");
                 Dialog.showError("Please select a list.");

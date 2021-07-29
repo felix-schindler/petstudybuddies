@@ -58,6 +58,7 @@ public class DeleteQuery extends Query {
     }
 
     /**
+     * @return Number of changed rows OR -1 if no rows are affected (1 if insert is successful)
      * @see Query#WriteData()
      */
     public int Count() {
