@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -60,6 +61,7 @@ public class RegisterController extends Controller implements ControlledScreen {
             }
         }
 
+        statusLabel.setTextFill(Color.web("#FF0000"));
         statusLabel.setText(status.toString());
     }
 }
