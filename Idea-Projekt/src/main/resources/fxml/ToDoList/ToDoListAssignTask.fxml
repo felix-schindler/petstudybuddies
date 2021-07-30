@@ -8,14 +8,13 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
             prefHeight="199.0" prefWidth="539.0" styleClass="linear-grad"
-            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
+            stylesheets="@../../styles/FullStyling.css" xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.AssignTaskController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
             <children>
                 <Button fx:id="ButtonBack" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0"
-                        style="-fx-background-radius: 0 0 10 0;" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Back" textFill="WHITE">
+                        style="-fx-background-radius: 0 0 10 0;" styleClass="button3" text="Back" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -38,8 +37,7 @@
                     </children>
                 </Pane>
                 <Button fx:id="ButtonAssignTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
-                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Assign Task" textFill="WHITE">
+                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" text="Assign Task" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>

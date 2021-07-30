@@ -8,7 +8,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
             prefHeight="246.0" prefWidth="539.0" styleClass="linear-grad"
-            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
+            stylesheets="@../../styles/FullStyling.css" xmlns="http://javafx.com/javafx/11.0.1"
             fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ShareToDoListController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
@@ -38,8 +38,7 @@
                     </children>
                 </Pane>
                 <Button fx:id="ButtonShareList" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
-                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Share List" textFill="WHITE">
+                        prefWidth="103.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" text="Share List" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>

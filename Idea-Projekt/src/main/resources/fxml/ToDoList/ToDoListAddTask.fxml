@@ -8,7 +8,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
             prefHeight="202.0" prefWidth="539.0" styleClass="linear-grad"
-            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/16"
+            stylesheets="@../../styles/FullStyling.css" xmlns="http://javafx.com/javafx/16"
             fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.AddTaskController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
@@ -37,8 +37,7 @@
                     </children>
                 </Pane>
                 <Button fx:id="ButtonCreateNewTask" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0"
-                        prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3"
-                        stylesheets="@../../styles/fullpackstyling.css" text="Create New Task" textFill="WHITE">
+                        prefWidth="129.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" text="Create New Task" textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="17.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
             style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/16"
-            stylesheets="@../../styles/fullpackstyling.css"
+            stylesheets="@../../styles/FullStyling.css"
             fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.LoginController">
     <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" styleClass="linear-grad">
         <Label layoutX="690.0" layoutY="1.0" prefHeight="79.0" prefWidth="224.0" text="Welcome">
@@ -22,7 +22,7 @@
         </Label>
         <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true"
                    preserveRatio="true">
-            <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png"/>
+            <Image url="@../../images/ToDoList/icons8-lehrplan-160.png"/>
         </ImageView>
     </Pane>
     <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022;">

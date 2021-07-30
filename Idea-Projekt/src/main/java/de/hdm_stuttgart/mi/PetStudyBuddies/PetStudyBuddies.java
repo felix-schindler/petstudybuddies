@@ -1,9 +1,9 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ControlledScreen;
-import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.PictureFramework;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.PictureFramework;
 import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ScreensController;
-import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ScreensFramework;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.ScreensFramework;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import javafx.application.Application;
 import javafx.stage.Stage;

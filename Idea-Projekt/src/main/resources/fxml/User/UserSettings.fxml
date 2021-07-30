@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
-            style="-fx-background-color: #030307;" stylesheets="@../../styles/fullpackstyling.css"
+            style="-fx-background-color: #030307;" stylesheets="@../../styles/FullStyling.css"
             xmlns="http://javafx.com/javafx/16"
             fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.UserSettingsController">
     <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" styleClass="linear-grad">
@@ -16,7 +16,7 @@
         </Label>
         <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true"
                    preserveRatio="true">
-            <Image url="@../../images/ToDoListDashboardImages/to-do-list.png"/>
+            <Image url="@../../images/ToDoList/to-do-list.png"/>
         </ImageView>
         <Label layoutX="176.0" minHeight="79.0" minWidth="164.0" prefHeight="79.0" text="PetStuddyBuddies"
                textAlignment="CENTER">
@@ -26,7 +26,7 @@
         </Label>
         <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true"
                    preserveRatio="true">
-            <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png"/>
+            <Image url="@../../images/ToDoList/icons8-lehrplan-160.png"/>
         </ImageView>
     </Pane>
     <VBox prefHeight="609.0" prefWidth="79.0" style="-fx-background-color: #131022;">
@@ -35,7 +35,7 @@
                 prefHeight="66.0" prefWidth="80.0" styleClass="button3" text="Start" textFill="#a868a0">
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../images/ToDoListDashboardImages/cat.png"/>
+                    <Image url="@../../images/Menu/cat.png"/>
                 </ImageView>
             </graphic>
             <font>
@@ -46,7 +46,7 @@
                 prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Notizen" textFill="#a868a0">
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../images/ToDoListDashboardImages/time.png"/>
+                    <Image url="@../../images/Menu/time.png"/>
                 </ImageView>
             </graphic>
             <font>
@@ -57,7 +57,7 @@
                 prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Pet" textFill="#a868a0">
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../images/ToDoListDashboardImages/cat.png"/>
+                    <Image url="@../../images/Menu/cat.png"/>
                 </ImageView>
             </graphic>
             <font>
@@ -68,7 +68,7 @@
                 prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../images/ToDoListDashboardImages/group.png"/>
+                    <Image url="@../../images/Menu/group.png"/>
                 </ImageView>
             </graphic>
             <font>
@@ -79,7 +79,7 @@
                 prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Settings" textFill="#a868a0">
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../images/User/settings.png"/>
+                    <Image url="@../../images/Menu/settings.png"/>
                 </ImageView>
             </graphic>
             <font>
@@ -90,7 +90,7 @@
                 prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Logout" textFill="#a868a0">
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../images/User/logout.png"/>
+                    <Image url="@../../images/Menu/logout.png"/>
                 </ImageView>
             </graphic>
             <font>
@@ -117,7 +117,7 @@
                 text="Save">
             <graphic>
                 <ImageView fitHeight="55.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../../images/ToDoListDashboardImages/add.png"/>
+                    <Image url="@../../images/ToDoList/add.png"/>
                 </ImageView>
             </graphic>
         </Button>

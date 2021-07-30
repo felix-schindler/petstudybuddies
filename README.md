@@ -19,8 +19,8 @@ Wenn etwas im [Idea-Projekt Ordner](https://gitlab.mi.hdm-stuttgart.de/kb136/pet
 - [x] Logging mit sinnvollem Einsatz der Log-Stufen
 - [x] Dokumentation der Klassenstruktur mit UML-Klassendiagrammen
 - [x] Threads
-- [ ] Einsatz von Streams und Lambda-Funktionen auf Collections (funktionale Programmierung)
-- [ ] Dokumentation und Test-Fälle
+- [x] Einsatz von Streams und Lambda-Funktionen auf Collections (funktionale Programmierung)
+- [x] Dokumentation und Test-Fälle
 - [ ] Verwenden von Factories
 
 ## Dokumentation
