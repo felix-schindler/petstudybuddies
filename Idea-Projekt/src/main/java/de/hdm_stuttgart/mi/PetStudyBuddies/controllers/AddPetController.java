@@ -31,20 +31,23 @@ public class AddPetController extends Controller implements ControlledScreen {
                 InsertQuery q = new InsertQuery(
                         "Pet",
                         new String[]{"Name", "Emotion", "UserID"},
-                        new String[]{petName, "content", String.valueOf(Account.getLoggedUser().getID())}
+                        new String[]{petName, "Content", String.valueOf(Account.getLoggedUser().getID())}
                 );
 
                 if (q.Count() == 1) {
                     Pet myPet = PetController.getPet();
-                    assert myPet != null;
                     log.debug("Pet existing? " + myPet.getName());
                     myPet.setEmotion();
                     closeSecondScene(actionEvent);
                     ScreensController.setStage(PetDashboardID);
+                }else{
+                    closeSecondScene(actionEvent);
+                    ScreensController.setStage(DashboardID);
                 }
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
+
         }
     }
 }
