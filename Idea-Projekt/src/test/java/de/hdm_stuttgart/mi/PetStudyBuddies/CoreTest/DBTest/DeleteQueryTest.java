@@ -33,28 +33,25 @@ public class DeleteQueryTest {
 
     @Test
     public void testDBDeleteSeveralTables() throws SQLException {
-        new DeleteQuery("ToDoList", "UserID='1' AND Title='testNote2'");
-        new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{"1", "TestNote2"}).GetQueryString();
+        new DeleteQuery("ToDoList", "UserID=101 AND LOWER(Title)=LOWER('TestNote2')");
+        new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{"101", "TestNote2"}).GetQueryString();
+        new DeleteQuery("ToDoList", "UserID=101 AND Title='TestNote2'");
+
         ResultSet ToDoListID = new SelectQuery("ToDoList", "ID", "Title='TestNote2'").fetchAll();
-        ArrayList<Integer> IDs = new ArrayList<Integer>();
+        ArrayList<Integer> IDs = new ArrayList<>();
         while (ToDoListID.next()) {
             IDs.add(ToDoListID.getInt(1));
         }
+
         for (int i : IDs) {
-            new DeleteQuery("ToDoListShare", "UserID='2' AND ToDoListID='" + i + "'");
-            new InsertQuery("ToDoListShare", new String[]{"UserID", "ToDoListID"}, new String[]{"2", Integer.toString(i)});
+            new DeleteQuery("ToDoListShare", "UserID='102' AND ToDoListID='" + i + "'");
+            new InsertQuery("ToDoListShare", new String[]{"UserID", "ToDoListID"}, new String[]{"102", Integer.toString(i)});
         }
-        // System.out.println(IDs);
-        // Assert.assertEquals("DELETE FROM ToDoList WHERE Title='TestNote2';",new DeleteQuery("ToDoList","Title='TestNote2'").GetQueryString());
-        // Assert.assertNull("", new SelectQuery("ToDoList","*","Title='TestNote2'",null,null,true));
-        ArrayList<String> IDsShare = new ArrayList<>();
+
         for (int i : IDs) {
             String selectedID = new SelectQuery("ToDoListShare", "ID", "ToDoListID='" + i + "'").fetch();
-            IDsShare.add(selectedID);
-            new DeleteQuery("ToDoListShare", "ID = " + selectedID + "");
+            Assert.assertEquals(1, new DeleteQuery("ToDoListShare", "ID = " + selectedID + "").Count());
             Assert.assertNull(new SelectQuery("ToDoListShare", "ID", "ToDoListID='" + i + "'").fetch());
-            //new DeleteQuery("ToDoList","ID = " + i + "");
-            // Assert.assertNull(new SelectQuery("ToDoListShare","ID","ToDoListID='" + i + "'").fetch());
         }
     }
 }

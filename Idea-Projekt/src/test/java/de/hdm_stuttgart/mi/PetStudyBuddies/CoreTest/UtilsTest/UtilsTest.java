@@ -4,6 +4,9 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 public class UtilsTest {
     /**
      * Test utils valid mail
@@ -39,30 +42,32 @@ public class UtilsTest {
         Assert.assertFalse(Utils.verifyMail("eexamble@.de"));
     }
 
-    /*
-     * Test utils getInputString
     @Test
-    public void testGetInputString() {
-        TextField testTextField = new TextField();
-        PasswordField testPasswordField = new PasswordField();
-        // TextArea testTextArea = new TextArea();
-
-        testTextField.setText("");
-        Assert.assertNull(Utils.getInputString(testTextField));
-        testTextField.setText(null);
-        Assert.assertNull(Utils.getInputString(testTextField));
-        testTextField.setText("   Hellu        ");
-        Assert.assertEquals("Hellu", Utils.getInputString(testTextField));
-        testTextField.setText("sup? ");
-        Assert.assertEquals("sup?", Utils.getInputString(testTextField));
-        testTextField.setText("     abc.");
-        Assert.assertEquals("abc.", Utils.getInputString(testTextField));
-
-        Assert.assertEquals("", Utils.getInputString(testPasswordField));
-        Assert.assertEquals("", Utils.getInputString(testPasswordField));
-        Assert.assertEquals("", Utils.getInputString(testPasswordField));
-        Assert.assertEquals("", Utils.getInputString(testPasswordField));
-        Assert.assertEquals("", Utils.getInputString(testPasswordField));
+    public void testInArray() {
+        Assert.assertTrue(Utils.inArray(new int[]{1, 2, 3}, 1));
+        Assert.assertTrue(Utils.inArray(new int[]{1, 2, 3}, 2));
+        Assert.assertTrue(Utils.inArray(new int[]{1, 2, 3}, 3));
+        Assert.assertFalse(Utils.inArray(new int[]{1, 2, 3}, 5));
+        Assert.assertFalse(Utils.inArray(new int[]{1, 2, 3}, 6));
     }
-     */
+
+    @Test
+    public void testParseDate() {
+        Assert.assertNull(Utils.parseDate("YYYY-MM-DD"));
+        Assert.assertNull(Utils.parseDate(""));
+        Assert.assertNull(Utils.parseDate("abc"));
+
+        Assert.assertNotNull(Utils.parseDate("2018-12-06"));
+        Assert.assertNotNull(Utils.parseDate(String.valueOf(LocalDate.parse("2021-12-06").toEpochDay())));
+        Assert.assertNotNull(Utils.parseDate(String.valueOf(System.currentTimeMillis())));
+    }
+
+    @Test
+    public void testSHA1() {
+        Assert.assertEquals(40, Objects.requireNonNull(Utils.sha1("a")).length());
+        Assert.assertEquals(40, Objects.requireNonNull(Utils.sha1("a9993e364706816aba3e25717850c26c9cd0d89d")).length());
+        Assert.assertEquals(40, Objects.requireNonNull(Utils.sha1("abcdefghijklmnopqrstuvwxyz")).length());
+        Assert.assertEquals(40, Objects.requireNonNull(Utils.sha1("here is something")).length());
+        Assert.assertEquals(40, Objects.requireNonNull(Utils.sha1("123456")).length());
+    }
 }

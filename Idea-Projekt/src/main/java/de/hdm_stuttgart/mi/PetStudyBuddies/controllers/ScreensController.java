@@ -4,7 +4,6 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,11 +22,11 @@ public class ScreensController {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(PetStudyBuddies.class.getResource(ScreensFramework.screens.get(title)));
-            log.debug("title is " + title + " Filename is "+ ScreensFramework.screens.get(title));
+            log.debug("title is " + title + " Filename is " + ScreensFramework.screens.get(title));
             Scene newScene = new Scene(loader.load());
             window.setScene(newScene);
             ScreensController.setStage(window, title);
-            log.debug("Scene was successfully loaded");
+            log.debug("Scene " + title + " was successfully loaded");
         } catch (IOException e) {
             log.catching(e);
             log.error("Error occurred while loading scene");

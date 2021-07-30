@@ -8,9 +8,10 @@ import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.*;
-import java.util.Date;
+import java.time.DateTimeException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.TimeZone;
 
 /**
@@ -36,7 +37,7 @@ public class Utils {
      * @return the trimmed input string
      */
     public static String getInputString(TextField textField) {
-        if (textField.getText() == null || textField.getText().trim().length() == 0)
+        if (textField.getText() == null || textField.getText().trim().isEmpty())
             return null;
         return textField.getText().trim();
     }
@@ -47,7 +48,7 @@ public class Utils {
      * @return the trimmed input string
      */
     public static String getInputString(TextArea textField) {
-        if (textField.getText() == null || textField.getText().trim().length() == 0)
+        if (textField.getText() == null || textField.getText().trim().isEmpty())
             return null;
         return textField.getText().trim();
     }
@@ -58,7 +59,7 @@ public class Utils {
      * @return the input string
      */
     public static String getInputString(PasswordField textField) {
-        if (textField.getText() == null || textField.getText().length() == 0)
+        if (textField.getText() == null || textField.getText().isEmpty())
             return null;
         return textField.getText();
     }
@@ -131,7 +132,7 @@ public class Utils {
                 int month = Integer.parseInt(dateStr.substring(5, 7));
                 int day = Integer.parseInt(dateStr.substring(8, 10));
                 date = LocalDate.of(year, month, day);
-            } catch (NumberFormatException | DateTimeException ignored1) {
+            } catch (NumberFormatException | DateTimeException | IndexOutOfBoundsException ignored1) {
                 try {
                     date = LocalDateTime.ofInstant(Instant.ofEpochMilli(Long.parseLong(dateStr)), TimeZone.getDefault().toZoneId()).toLocalDate();
                 } catch (NumberFormatException | DateTimeException ignored2) {

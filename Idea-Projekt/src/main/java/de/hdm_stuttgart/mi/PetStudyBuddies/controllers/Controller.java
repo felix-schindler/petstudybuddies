@@ -1,12 +1,13 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-abstract class Controller implements ControlledScreen{
+abstract class Controller implements ControlledScreen {
     /**
      * Log object for error handling
      */
@@ -25,6 +26,11 @@ abstract class Controller implements ControlledScreen{
     protected Button LoginView;
     @FXML
     protected Button RegisterView;
+
+    public void logout() {
+        Account.setUser(null);
+        ScreensController.setStage(LoginID);
+    }
 
     @FXML
     private void handleMenu(ActionEvent event) {

@@ -7,55 +7,44 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.models.Pet;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class AddPetController extends Controller implements Initializable, ControlledScreen {
-
+public class AddPetController extends Controller implements ControlledScreen {
     private static final Logger log = LogManager.getLogger(AddToDoListController.class);
     @FXML
     Button ButtonCreatePet, ButtonBack;
     @FXML
     TextField TextFieldAddPet;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonCreatePet) {
-            log.debug("Open create new Pet dialog");
-            String content = Utils.getInputString(TextFieldAddPet);
-            if (content == null) {
-                log.error("No valid date or title entered.");
+            log.debug("Open create create pet dialog");
+            String petName = Utils.getInputString(TextFieldAddPet);
+
+            if (petName == null) {
+                log.error("No valid pet name entered.");
                 Dialog.showError("Please enter a valid Petname!");
             } else {
-                new InsertQuery(
+                InsertQuery q = new InsertQuery(
                         "Pet",
                         new String[]{"Name", "Emotion", "UserID"},
-                        new String[]{content,"content", String.valueOf(Account.getLoggedUser().getID())}
+                        new String[]{petName, "content", String.valueOf(Account.getLoggedUser().getID())}
                 );
-                Pet mypet = PetController.getPet();
-                log.debug("Pet existing? " + mypet.getName());
-                mypet.setEmotion();
-                log.debug("Emotion set");
-                closeSecondScene(actionEvent);
-                log.debug("second Scene closed");
-                ScreensController.setStage(PetDashboardID);
-                log.debug("Stage set Pet Dashboard");
+
+                if (q.Count() == 1) {
+                    Pet myPet = PetController.getPet();
+                    assert myPet != null;
+                    log.debug("Pet existing? " + myPet.getName());
+                    myPet.setEmotion();
+                    closeSecondScene(actionEvent);
+                    ScreensController.setStage(PetDashboardID);
+                }
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
-            ScreensController.setStage(DashboardID);
-            log.debug("Stage set Dashboard");
         }
     }
-
 }
