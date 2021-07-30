@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;

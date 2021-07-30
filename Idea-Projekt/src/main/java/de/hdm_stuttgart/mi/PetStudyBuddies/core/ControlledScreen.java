@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
+package de.hdm_stuttgart.mi.PetStudyBuddies.core;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

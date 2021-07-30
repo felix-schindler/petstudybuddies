@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import javafx.fxml.FXML;
