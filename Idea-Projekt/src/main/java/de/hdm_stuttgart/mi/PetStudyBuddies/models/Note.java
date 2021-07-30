@@ -111,6 +111,18 @@ public class Note extends Model implements Shareable {
     }
 
     /**
+     * @see Shareable#share(int)
+     */
+    @Override
+    public boolean share(int ID) {
+        if (ID == Account.getLoggedUser().getID() || new SelectQuery("NoteShare", "ID", "UserID=" + ID + " AND NoteID=" + getID()).fetch() != null) {
+            log.debug("User " + ID + " already got access");
+            return true;    // User already has access
+        }
+        return new InsertQuery("NoteShare", new String[]{"UserID", "NoteID"}, new String[]{String.valueOf(ID), String.valueOf(getID())}).Count() == 1;
+    }
+
+    /**
      * @see Model#save()
      */
     public boolean save() {
@@ -119,16 +131,5 @@ public class Note extends Model implements Shareable {
                 new String[]{"Title", "Content", "LastEditedOn"},
                 new String[]{title, content, String.valueOf(new Date(System.currentTimeMillis()).getTime())},
                 "ID=" + getID()).Count() == 1;
-    }
-
-    /**
-     * @see Shareable#share(int)
-     */
-    public boolean share(int ID) {
-        if (ID == Account.getLoggedUser().getID() || new SelectQuery("NoteShare", "ID", "UserID=" + ID + " AND NoteID=" + getID()).fetch() != null) {
-            log.debug("User " + ID + " already got access");
-            return true;    // User already has access
-        }
-        return new InsertQuery("NoteShare", new String[]{"UserID", "NoteID"}, new String[]{String.valueOf(ID), String.valueOf(getID())}).Count() == 1;
     }
 }
