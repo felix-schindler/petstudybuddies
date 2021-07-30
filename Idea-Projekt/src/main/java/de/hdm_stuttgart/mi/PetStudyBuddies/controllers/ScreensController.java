@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -12,12 +13,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
-
+/**
+ * Controller for Handling Screencontrol
+ */
 public class ScreensController {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(ScreensController.class);
+    @FXML
     public static Stage window = new Stage();
-    private final HashMap<String, Stage> stages = new HashMap<>();
 
+    /**
+     * Sets new Stage
+     * @param title Name of Stage loaded
+     */
     public static void setStage(String title) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -33,10 +43,19 @@ public class ScreensController {
         }
     }
 
+    /**
+     * Sets new Stage with Correct Title
+     * @param newStage Stage to be loaded
+     */
     public static void setStage(Stage newStage) {
         setStage(newStage, "PetStudyBuddies");
     }
 
+    /**
+     * Sets a new Stage with a new Title
+     * @param newStage Stage to be loaded
+     * @param newTitle Name of Stage loaded
+     */
     public static void setStage(Stage newStage, String newTitle) {
         window = newStage;
         // Set application icon
@@ -53,11 +72,4 @@ public class ScreensController {
         window.show();
     }
 
-    public void addStage(String name, Stage screen) {
-        stages.put(name, screen);
-    }
-
-    public Stage getStage(String name) {
-        return stages.get(name);
-    }
 }

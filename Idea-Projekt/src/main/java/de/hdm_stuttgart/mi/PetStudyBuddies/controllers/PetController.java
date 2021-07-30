@@ -18,21 +18,33 @@ import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for Pet
+ */
 public class PetController extends Controller implements Initializable, ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private final static Logger log = LogManager.getLogger(PetController.class);
     @FXML
-    Image ImageObject = null;
+    private Image ImageObject = null;
     @FXML
-    Pane ImagePane;
+    private Pane ImagePane;
     @FXML
     private Label LabelPetname, LabelPetname2, LabelEmotion;
     @FXML
     private Button ButtonTakeCare, ButtonChangeName, ButtonDeletePet, ButtonEasterEgg;
     @FXML
     private ImageView PetPicture;
+    /**
+     * User Pet
+     */
     private Pet myPet;
 
+    /**
+     * Returns Pet of user
+     * @return Pet Object
+     */
     public static Pet getPet() {
         String id = new SelectQuery("Pet", "ID", "UserID=" + Account.getLoggedUser().getID()).fetch();
         log.debug("Getting pet of user...");
@@ -44,7 +56,11 @@ public class PetController extends Controller implements Initializable, Controll
     public static String getImage(String emotion) {
         return PictureFramework.pictures.get(emotion);
     }
-
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (getPet() == null) {
@@ -64,7 +80,10 @@ public class PetController extends Controller implements Initializable, Controll
             setPicture();
         }
     }
-
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     @FXML
     void filterButtons(ActionEvent actionEvent) {
         log.debug("Button Event Handler called");
@@ -83,6 +102,9 @@ public class PetController extends Controller implements Initializable, Controll
         }
     }
 
+    /**
+     * Sets Picture of Pet according to current Emotion
+     */
     public void setPicture() {
         switch (myPet.getEmotion()) {
             case "Happy" -> ImageObject = new Image(getImage(HappyPic));
@@ -98,6 +120,9 @@ public class PetController extends Controller implements Initializable, Controll
         PetPicture.setFitWidth(400);
     }
 
+    /**
+     * Sets Text fxml-fields
+     */
     public void setFields() {
         myPet = getPet();
         if (myPet != null) {

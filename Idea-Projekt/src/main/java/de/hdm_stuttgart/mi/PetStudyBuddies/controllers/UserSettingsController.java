@@ -13,7 +13,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for User Settings
+ */
 public class UserSettingsController extends Controller implements Initializable {
     /**
      * Logger object for smart (error) logging
@@ -24,16 +26,20 @@ public class UserSettingsController extends Controller implements Initializable 
      */
     private final User user = Account.getLoggedUser();
     @FXML
-    Label labelUsername;
+    private Label labelUsername;
     @FXML
-    TextField newEmailAddress;
+    private TextField newEmailAddress;
     @FXML
-    TextField newPassword;
+    private TextField newPassword;
     @FXML
-    TextField confirmNewPassword;
-
+    private TextField confirmNewPassword;
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         labelUsername.setText(user.getUsername());
     }
 

@@ -22,20 +22,30 @@ import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for Tasks Dashboard
+ */
 public class TaskListController extends Controller implements Initializable, ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(TaskListController.class);
+    /**
+     * Task currently edited
+     */
     protected static Task editTask;
 
     @FXML
-    Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask, ButtonDeleteTask;
+    private Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask, ButtonDeleteTask;
     @FXML
-    TableColumn<Object, Object> colContent, colUntil, colAssignedTo;
+    private TableColumn<Object, Object> colContent, colUntil, colAssignedTo;
     @FXML
-    TableView<Task> TaskTable;
+    private TableView<Task> TaskTable;
     @FXML
-    Label LabelToDoListName;
-
+    private Label LabelToDoListName;
+    /**
+     * Thread updating TableView
+     */
     Runnable updateTable = () -> {
         LabelToDoListName.setText(ToDoListController.getEditTodo().getTitle());
 
@@ -47,10 +57,18 @@ public class TaskListController extends Controller implements Initializable, Con
         log.debug("TaskList table updated");
     };
 
+    /**
+     * Returns currently edited Task
+     * @return edited Task
+     */
     public static Task getEditTask() {
         return editTask;
     }
-
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         new Thread(updateTable).start();
@@ -160,6 +178,9 @@ public class TaskListController extends Controller implements Initializable, Con
         new Thread(updateTable).start();
     }
 
+    /**
+     * Sets Colour of Button when (not) flagged
+     */
     public void setButtonFlagged() {
         if (ToDoListController.getEditTodo().getFlagged())
             ButtonSetFlag.setStyle("-fx-background-color: #8c78e3;");
@@ -167,6 +188,10 @@ public class TaskListController extends Controller implements Initializable, Con
             ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
     }
 
+    /**
+     * Returns Selected Task as Taskobject from Observable List
+     * @return Task currently selected
+     */
     public Task getSelectedTask() {
         ObservableList<Task> selectedTask = TaskTable.getSelectionModel().getSelectedItems();
         if (!selectedTask.isEmpty()) {

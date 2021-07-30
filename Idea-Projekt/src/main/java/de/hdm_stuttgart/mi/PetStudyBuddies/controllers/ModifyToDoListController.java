@@ -14,21 +14,33 @@ import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for Modifying To Do Lists
+ */
 public class ModifyToDoListController implements Initializable, ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(ModifyToDoListController.class);
     @FXML
-    Button ButtonBack, ButtonChangeTitle;
+    private Button ButtonBack, ButtonChangeTitle;
     @FXML
-    TextField TextFieldNewTitle;
+    private TextField TextFieldNewTitle;
     @FXML
-    Label LabelCurrentTitle;
-
+    private Label LabelCurrentTitle;
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelCurrentTitle.setText(ToDoListController.getEditTodo().getTitle());
     }
-
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonChangeTitle) {
             log.debug("Open create new Task dialog");

@@ -148,19 +148,19 @@ public class Task extends Model {
         sumAllTasks = new SelectQuery("Task", "*", null, null, null, true).Count();
     }
 
+    /**
+     * Returns Happiness-State of Pet
+     * @return Happiness-Balance
+     */
     public double getTaskBalance() {
         return taskBalance;
     }
 
-    public void setTaskBalance() {
-        try {
-            if (checkTasks())
-                taskBalance = tasksInFuture / sumAllTasks;
-        } catch (Exception o) {
-            log.debug("Invalid Tasks. Could not calculate Balance.");
-        }
-    }
 
+    /**
+     * Checks if Tasks
+     * @return true if Tasks exists
+     */
     private boolean checkTasks() {
         return tasksInFuture != -1 && (sumAllTasks != -1 || sumAllTasks != 0);
     }

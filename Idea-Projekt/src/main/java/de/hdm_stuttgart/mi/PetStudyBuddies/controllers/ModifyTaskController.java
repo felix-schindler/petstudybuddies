@@ -15,23 +15,37 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for Modifying Tasks
+ */
 public class ModifyTaskController implements Initializable, ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(ModifyTaskController.class);
     Task edit = TaskListController.getEditTask();
     @FXML
-    Button ButtonBack, ButtonCreateModifiedTask;
+    private Button ButtonBack, ButtonCreateModifiedTask;
     @FXML
-    TextField TextFieldModifyTask;
+    private TextField TextFieldModifyTask;
     @FXML
-    DatePicker DatePickerModifyTask;
+    private DatePicker DatePickerModifyTask;
 
+
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override // This method is called by the FXMLLoader when initialization is complete
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         TextFieldModifyTask.setText(edit.getContent());
         DatePickerModifyTask.setValue(edit.getUntil());
     }
-
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonCreateModifiedTask) {

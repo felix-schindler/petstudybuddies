@@ -8,10 +8,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+/**
+ * Interface for all Controllers using methods or variables init
+ */
 public interface ControlledScreen {
+    /**
+     * log object for error handling
+     */
     Logger log = LogManager.getLogger(ControlledScreen.class);
-
+    /**
+     * public Strings containing keyword to search Map for filepath
+     */
     String DashboardID = "Dashboard";
 
     String NoteID = "Note";
@@ -40,12 +47,21 @@ public interface ControlledScreen {
 
     String UserSettingsID = "User Settings";
 
+
+    /**
+     * Closes current second Window
+     * @param actionEvent fxml event e.g. ButtonBack
+     */
     default void closeSecondScene(ActionEvent actionEvent) {
         log.debug("Closing second scene...");
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
     }
 
+    /**
+     * Loads a second Scene above the current Scene
+     * @param title title of Scene
+     */
     default void loadSecondScene(String title) {
         try {
             Stage anotherStage = new Stage();

@@ -1,8 +1,13 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import java.util.HashMap;
-
+/**
+ * Framework containing Screens resources
+ */
 public class ScreensFramework {
+    /**
+     * HashMap containg Keywords for fxml-filepaths
+     */
     public static HashMap<String, String> screens = new HashMap<>();
 
     public static Runnable init = () -> {

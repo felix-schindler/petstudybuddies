@@ -11,15 +11,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+/**
+ * Controller for Adding To Do Lists
+ */
 public class AddToDoListController extends Controller implements ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(AddToDoListController.class);
     @FXML
-    Button ButtonCreateList, ButtonBack;
+    private Button ButtonCreateList, ButtonBack;
     @FXML
-    TextField TextFieldAddNewList;
+    private TextField TextFieldAddNewList;
 
-
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
         // Create new ToDoList
@@ -30,20 +38,6 @@ public class AddToDoListController extends Controller implements ControlledScree
                 new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), title});
 
                 closeSecondScene(actionEvent);
-
-                // TODO Update ToDoList Table
-                /*
-                ObservableList<ToDoList> newList = FXCollections.observableArrayList();
-                CachedRowSet newToDo = new SelectQuery("ToDoList","ID","UserID="+ Account.getLoggedUser().getID() + " AND Title= '" + eingabe + "'").fetchAll();
-                try {
-                    newList.add(new ToDoList(newToDo.getInt("ID")));
-                    ToDoListController.setSelectedListData(newList);
-                    closeSecondScene(actionEvent);
-                } catch (SQLException throwables) {
-                    log.catching(throwables);
-                    log.debug(("Created List could not be set as selected List"));
-                }
-                 */
             } else {
                 Dialog.showError("Please enter a new Title for your List!");
                 log.debug("No New Title entered, Dialog shown");

@@ -16,6 +16,9 @@ import org.apache.logging.log4j.Logger;
  * A simple controller providing a callback method {@link #login()}
  */
 public class LoginController extends Controller implements ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private final static Logger log = LogManager.getLogger(LoginController.class);
     @FXML
     private TextField emailField;

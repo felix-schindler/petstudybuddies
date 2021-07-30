@@ -10,24 +10,43 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for Main Dashboard
+ */
 public class DashboardController extends Controller implements Initializable, ControlledScreen {
-    public Label LabelUsername;
-    public Label LabelAllNotes;
-    public Button ButtonNotes;
-    public Label LabelAllToDoLists;
-    public Button ButtonToDoLists;
-    public Label LabelStatusPet;
-    public Button ButtonPet;
+    /**
+     * log object for error handling
+     */
+    private static final Logger log = LogManager.getLogger(DashboardController.class);
+    @FXML
+    private Label LabelUsername;
+    @FXML
+    private Label LabelAllNotes;
+    @FXML
+    private Button ButtonNotes;
+    @FXML
+    private Label LabelAllToDoLists;
+    @FXML
+    private Button ButtonToDoLists;
+    @FXML
+    private Label LabelStatusPet;
+    @FXML
+    private Button ButtonPet;
     @FXML
     private ImageView PetPicture;
 
     @FXML
     private Image ImageObject;
-
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelUsername.setText(Account.getLoggedUser().getUsername());
@@ -60,11 +79,12 @@ public class DashboardController extends Controller implements Initializable, Co
             log.debug("Filepath=" + ImageObject.getUrl());
             log.debug(ImageObject.getWidth());
             PetPicture.setImage(ImageObject);
-            /*PetPicture.setFitHeight(400);
-            PetPicture.setFitWidth(400);*/
         }
     }
-
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     @FXML
     public void handleButton(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonPet) {
