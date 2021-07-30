@@ -44,7 +44,7 @@ public class DeleteQuery extends Query {
      * @param table String containing the name of the table
      * @param where String containing the "WHERE"-clause of the SQL-statement
      */
-    public String BuildQuery(String table, String where) {
+    private String BuildQuery(String table, String where) {
         final StringBuilder query = new StringBuilder();
 
         query.append("DELETE FROM ").append(table);

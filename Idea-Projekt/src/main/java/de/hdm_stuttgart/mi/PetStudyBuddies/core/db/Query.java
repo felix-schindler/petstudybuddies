@@ -33,17 +33,6 @@ abstract class Query extends SQLiteJDBC {
      * Constructor - Doesn't do anything active
      */
     protected Query() {
-
-    }
-
-    /**
-     * Constructor - Sets the query string
-     * TODO remove as it is not needed anymore
-     *
-     * @param queryString Query as a string
-     */
-    public Query(String queryString) {
-        this.queryString = queryString;
     }
 
     /**

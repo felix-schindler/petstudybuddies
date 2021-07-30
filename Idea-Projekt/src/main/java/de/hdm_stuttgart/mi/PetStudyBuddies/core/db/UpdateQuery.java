@@ -90,7 +90,7 @@ public class UpdateQuery extends Query {
      * @param values String Array containing the  values which shall be updated
      * @param where  String containing the "WHERE"-clause of the SQL-statement
      */
-    public String BuildQuery(String table, String[] fields, String[] values, String where) {
+    private String BuildQuery(String table, String[] fields, String[] values, String where) {
         final StringBuilder query = new StringBuilder();
 
         int lengthFields = fields.length, lengthValues = values.length;
@@ -136,14 +136,14 @@ public class UpdateQuery extends Query {
      * @param where String containing the "WHERE"-clause of the SQL-statement
      * @return SQL-Query
      */
-    public String BuildQuery(String table, String field, String value, String where) {
+    private String BuildQuery(String table, String field, String value, String where) {
         StringBuilder query = new StringBuilder();
 
         query.append("UPDATE ").append(table).append(" SET ").append(field);
         if (value == null) {
-            query.append(" = NULL");
+            query.append("=NULL");
         } else {
-            query.append(" = '").append(value).append("'");
+            query.append("='").append(value).append("'");
         }
 
         if (where != null) {

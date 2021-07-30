@@ -14,7 +14,6 @@ public class InsertQuery extends Query {
      */
     int rows = -1;
 
-
     /**
      * Hands over parts of the SQL-Query Insert statement to the BuildQuery method and then calls SetQueryString
      *
