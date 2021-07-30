@@ -122,6 +122,7 @@ public class ToDoList extends Model implements Shareable {
     /**
      * @see Shareable#share(int)
      */
+    @Override
     public boolean share(int ID) {
         if (owner == ID)
             return false;   // User already has access

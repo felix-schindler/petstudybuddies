@@ -78,7 +78,7 @@ public class PetController extends Controller implements Initializable, Controll
         } else if (actionEvent.getSource() == ButtonDeletePet) {
             new DeleteQuery("Pet", "ID=" + myPet.getID());
             log.debug("Pet deleted");
-            ScreensController.setStage(PetDashboardID);
+            ScreensController.setStage(DashboardID);
         } else if (actionEvent.getSource() == ButtonEasterEgg) {
             new UpdateQuery("Pet", "Name", "Professor Kriha", "ID=" + myPet.getID());
             setFields();

@@ -19,7 +19,7 @@
                 <ImageView fitHeight="62.0" fitWidth="60.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@../../images/ToDoListDashboardImages/to-do-list.png"/>
+                        <Image url="@../../images/ToDoList/to-do-list.png"/>
                     </image>
                 </ImageView>
                 <Label layoutX="176.0" prefHeight="79.0" prefWidth="164.0" text="PetStuddyBuddies"
@@ -31,7 +31,7 @@
                 <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true"
                            preserveRatio="true">
                     <image>
-                        <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png"/>
+                        <Image url="@../../images/ToDoList/icons8-lehrplan-160.png"/>
                     </image>
                 </ImageView>
             </children>
@@ -42,7 +42,7 @@
                     prefHeight="66.0" prefWidth="80.0" styleClass="button3" text="Start" textFill="#a868a0">
                 <graphic>
                     <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/ToDoListDashboardImages/cat.png"/>
+                        <Image url="@../../images/Menu/cat.png"/>
                     </ImageView>
                 </graphic>
                 <font>
@@ -53,7 +53,7 @@
                     prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Notizen" textFill="#a868a0">
                 <graphic>
                     <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/ToDoListDashboardImages/time.png"/>
+                        <Image url="@../../images/Menu/time.png"/>
                     </ImageView>
                 </graphic>
                 <font>
@@ -64,7 +64,7 @@
                     prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Pet" textFill="#a868a0">
                 <graphic>
                     <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/ToDoListDashboardImages/cat.png"/>
+                        <Image url="@../../images/Menu/cat.png"/>
                     </ImageView>
                 </graphic>
                 <font>
@@ -75,7 +75,7 @@
                     prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="To Do" textFill="#a868a0">
                 <graphic>
                     <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/ToDoListDashboardImages/group.png"/>
+                        <Image url="@../../images/Menu/group.png"/>
                     </ImageView>
                 </graphic>
                 <font>
@@ -86,7 +86,7 @@
                     prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Settings" textFill="#a868a0">
                 <graphic>
                     <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/User/settings.png"/>
+                        <Image url="@../../images/Menu/settings.png"/>
                     </ImageView>
                 </graphic>
                 <font>
@@ -97,7 +97,7 @@
                     prefHeight="66.0" prefWidth="81.0" styleClass="button3" text="Logout" textFill="#a868a0">
                 <graphic>
                     <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@../../images/User/logout.png"/>
+                        <Image url="@../../images/Menu/logout.png"/>
                     </ImageView>
                 </graphic>
                 <font>
@@ -136,7 +136,7 @@
                         <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="9.0" layoutY="22.0" pickOnBounds="true"
                                    preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/icons8-heute-64.png"/>
+                                <Image url="@../../images/ToDoList/icons8-heute-64.png"/>
                             </image>
                         </ImageView>
                         <Label fx:id="LabelCountToDoToday" layoutX="110.0" layoutY="31.0" prefHeight="60.0"
@@ -150,7 +150,7 @@
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
+                                        <Image url="@../../images/ToDoList/icons8-winkel-rechts-50.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -168,7 +168,7 @@
                         <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="10.0" layoutY="24.0" pickOnBounds="true"
                                    preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/icons8-box-128.png"/>
+                                <Image url="@../../images/ToDoList/icons8-box-128.png"/>
                             </image>
                         </ImageView>
                         <Label fx:id="LabelCountToDoAll" layoutX="103.0" layoutY="33.0" prefHeight="60.0"
@@ -182,7 +182,7 @@
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
+                                        <Image url="@../../images/ToDoList/icons8-winkel-rechts-50.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -200,7 +200,7 @@
                         <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true"
                                    preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/icons8-flag-2-64.png"/>
+                                <Image url="@../../images/ToDoList/icons8-flag-2-64.png"/>
                             </image>
                         </ImageView>
                         <Label fx:id="LabelCountToDoFlagged" layoutX="98.0" layoutY="31.0" prefHeight="60.0"
@@ -214,7 +214,7 @@
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
+                                        <Image url="@../../images/ToDoList/icons8-winkel-rechts-50.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -232,7 +232,7 @@
                         <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true"
                                    preserveRatio="true">
                             <image>
-                                <Image url="@../../images/ToDoListDashboardImages/icons8-zeit-80.png"/>
+                                <Image url="@../../images/ToDoList/icons8-zeit-80.png"/>
                             </image>
                         </ImageView>
                         <Label fx:id="LabelCountToDoScheduled" layoutX="105.0" layoutY="31.0" prefHeight="60.0"
@@ -246,7 +246,7 @@
                             <graphic>
                                 <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
+                                        <Image url="@../../images/ToDoList/icons8-winkel-rechts-50.png"/>
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -265,7 +265,7 @@
                                         <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/ToDoListDashboardImages/add.png"/>
+                                                <Image url="@../../images/ToDoList/add.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -286,7 +286,7 @@
                                         <ImageView fitHeight="46.0" fitWidth="49.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/ToDoListView/icons8-titel-100.png"/>
+                                                <Image url="@../../images/TaskList/icons8-titel-100.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -324,7 +324,7 @@
                                         <ImageView fitHeight="46.0" fitWidth="49.0" pickOnBounds="true"
                                                    preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/ToDoListDashboardImages/icons8-eigenschaft-löschen-100.png"/>
+                                                <Image url="@../../images/ToDoList/icons8-eigenschaft-löschen-100.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
