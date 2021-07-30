@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="146.0" prefWidth="539.0" styleClass="linear-grad"
-            stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1"
+            stylesheets="@../../styles/FullStyling.css" xmlns="http://javafx.com/javafx/16"
             fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.AddPetController">
     <children>
         <HBox prefHeight="38.0" prefWidth="600.0">
