@@ -69,7 +69,7 @@ public class SelectQuery extends Query {
      * @param groupBy String containing the "GROUP BY"-clause of the SQL-statement
      * @return SQL-Query
      */
-    public String buildQuery(String table, String field, String where, String orderBy, String groupBy) {
+    private String buildQuery(String table, String field, String where, String orderBy, String groupBy) {
         final StringBuilder query = new StringBuilder();
 
         if (table == null || field == null) {
