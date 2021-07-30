@@ -78,14 +78,18 @@ public class NotesController extends Controller implements Initializable {
         ObservableList<Note> notes = FXCollections.observableArrayList();
         try {
             CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "DATETIME(LastEditedOn)", null).fetchAll();
-            do {
-                notes.add(new Note(notesSet.getInt("ID")));
-            } while (notesSet.next());
+            if (notesSet.size() > 0) {
+                do {
+                    notes.add(new Note(notesSet.getInt("ID")));
+                } while (notesSet.next());
+            }
 
             CachedRowSet sharedNotesSet = new SelectQuery("NoteShare", "NoteID", "UserID=" + Account.getLoggedUser().getID()).fetchAll();
-            do {
-                notes.add(new Note(sharedNotesSet.getInt("NoteID")));
-            } while (sharedNotesSet.next());
+            if (sharedNotesSet.size() > 0) {
+                do {
+                    notes.add(new Note(sharedNotesSet.getInt("NoteID")));
+                } while (sharedNotesSet.next());
+            }
         } catch (SQLException e) {
             log.catching(e);
             log.error("Failed to load notes");
