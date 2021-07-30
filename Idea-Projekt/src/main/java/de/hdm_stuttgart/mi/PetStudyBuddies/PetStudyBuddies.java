@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.PictureFramework;
 import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ScreensController;
 import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ScreensFramework;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
@@ -28,6 +29,7 @@ public class PetStudyBuddies extends Application implements ControlledScreen {
      */
     public static void main(String[] args) {
         new Thread(ScreensFramework.init).start();
+        new Thread(PictureFramework.init).start();
         //Account.setUser(new User(101));     // TODO REMOVE auto login!!!!
         launch(args);
     }

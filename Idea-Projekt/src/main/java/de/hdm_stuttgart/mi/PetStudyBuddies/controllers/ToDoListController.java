@@ -166,7 +166,7 @@ public class ToDoListController extends Controller implements Initializable, Con
 
         // Add new list (dialog)
         else if (actionEvent.getSource() == ButtonAddNewList) {
-            loadSecondScene("/fxml/ToDoList/ToDoListAddList.fxml");
+            loadSecondScene(ToDoListAddListID);
             ScreensController.setStage(ToDoListDashboardID);   // Hard reload
         }
 

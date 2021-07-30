@@ -26,6 +26,8 @@ public interface ControlledScreen {
     String AddPetID = "Add Pet";
     String PetDashboardID = "Pet";
 
+    String ChangePetnameID = "Change Petname";
+
     String ToDoListAddListID ="Add List";
 
     String ToDoListAddTaskID ="Add Task";
@@ -47,6 +49,16 @@ public interface ControlledScreen {
     String RegisterID= "Register";
 
     String UserSettingsID = "User Settings";
+
+    String HappyPic = "Happy";
+
+    String SadPic = "Sad";
+
+    String ContentPic = "Content";
+
+    String NoPetPic = "No Pet";
+
+
 
 
 

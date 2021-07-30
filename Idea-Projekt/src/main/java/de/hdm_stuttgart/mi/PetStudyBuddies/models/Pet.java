@@ -124,11 +124,11 @@ public class Pet extends Model {
 
 
         if (balance >= 1.1) {
-            this.emotion= "sad";
+            this.emotion= "Sad";
         } else if (balance < 1.1 && balance >= 0.9) {
-            this.emotion="content";
+            this.emotion="Content";
         } else {
-            this.emotion= "happy";
+            this.emotion= "Happy";
         }
         log.debug("Emotion " + emotion);
     }

@@ -10,6 +10,7 @@ public class ScreensFramework {
         screens.put("Edit Note", "/fxml/Notes/EditNote.fxml");
         screens.put("Note","/fxml/Notes/Notes.fxml");
         screens.put("Add Pet","/fxml/Pet/AddPet.fxml");
+        screens.put("Change Petname","/fxml/Pet/ChangePetname.fxml");
         screens.put("Pet","/fxml/Pet/PetDashboard.fxml");
         screens.put("Add List","/fxml/ToDoList/ToDoListAddList.fxml");
         screens.put("Add Task","/fxml/ToDoList/ToDoListAddTask.fxml");

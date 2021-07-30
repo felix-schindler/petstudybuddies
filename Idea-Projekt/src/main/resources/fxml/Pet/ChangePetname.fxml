@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="539.0" styleClass="linear-grad" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ChangePetNameController">
+    <children>
+        <HBox prefHeight="38.0" prefWidth="600.0">
+            <children>
+                <Button fx:id="ButtonBack" mnemonicParsing="false" onAction="#buttonAction" prefHeight="29.0" style="-fx-background-radius: 0 0 10 0;" styleClass="button3" text="Back" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/ToDoListAddModify/icons8-zurück-96.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Calibri" size="12.0" />
+                    </font>
+                </Button>
+                <Pane prefHeight="38.0" prefWidth="364.0">
+                    <children>
+                        <Label alignment="CENTER" layoutX="1.0" prefHeight="32.0" prefWidth="370.0" text="New Petname" textFill="#fff0f0">
+                            <font>
+                                <Font name="Calibri" size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Button fx:id="ButtonChangeName" mnemonicParsing="false" onAction="#buttonAction" prefHeight="28.0" prefWidth="111.0" style="-fx-background-radius: 0 0 0 10;" styleClass="button3" text="Change Name" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/ToDoListAddModify/icons8-neu-erstellen-96.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Calibri" size="12.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+        <Pane layoutX="29.0" layoutY="39.0" prefHeight="180.0" prefWidth="495.0">
+            <children>
+                <VBox prefHeight="219.0" prefWidth="494.0">
+                    <children>
+                        <Label prefHeight="222.0" prefWidth="494.0" text="New Petname" textFill="WHITE">
+                            <font>
+                                <Font name="Calibri" size="22.0" />
+                            </font>
+                        </Label>
+                        <Pane prefHeight="200.0" prefWidth="494.0" />
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <HBox prefHeight="25.0" prefWidth="494.0">
+                                    <children>
+                                        <Label prefHeight="17.0" prefWidth="350.0" text="Current Name:" textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="LabelCurrentName" prefHeight="25.0" prefWidth="427.0" text="Title of Petname" textFill="WHITE">
+                                            <font>
+                                                <Font name="Calibri Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="494.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Label prefHeight="28.0" prefWidth="182.0" text="New Name:" textFill="WHITE">
+                                    <font>
+                                        <Font name="Calibri" size="24.0" />
+                                    </font>
+                                </Label>
+                                <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="600.0">
+                                    <children>
+                                        <TextField fx:id="TextFieldNewName" prefHeight="27.0" prefWidth="389.0" promptText="Enter a name for your  Pet">
+                                            <font>
+                                                <Font name="Calibri" size="14.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="27.0" prefWidth="494.0" textFill="RED">
+                            <font>
+                                <Font name="Calibri Bold" size="22.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

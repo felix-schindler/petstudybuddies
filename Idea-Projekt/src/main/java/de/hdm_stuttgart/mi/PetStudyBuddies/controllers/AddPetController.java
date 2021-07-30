@@ -43,13 +43,18 @@ public class AddPetController extends Controller implements Initializable, Contr
                         new String[]{content,"content", String.valueOf(Account.getLoggedUser().getID())}
                 );
                 Pet mypet = PetController.getPet();
+                log.debug("Pet existing? " + mypet.getName());
                 mypet.setEmotion();
+                log.debug("Emotion set");
                 closeSecondScene(actionEvent);
+                log.debug("second Scene closed");
                 ScreensController.setStage(PetDashboardID);
+                log.debug("Stage set Pet Dashboard");
             }
         } else if (actionEvent.getSource() == ButtonBack) {
-            //closeSecondScene(actionEvent);
+            closeSecondScene(actionEvent);
             ScreensController.setStage(DashboardID);
+            log.debug("Stage set Dashboard");
         }
     }
 

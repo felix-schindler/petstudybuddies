@@ -111,21 +111,21 @@ public class TaskListController extends Controller implements Initializable, Con
         // Change ToDoList title (dialog)
         else if (event.getSource() == ButtonChangeTitle) {
             log.debug("ButtonChangeTitle was clicked");
-            loadSecondScene("/fxml/ToDoList/ToDoListModifyTitle.fxml");
+            loadSecondScene(ToDoListModifyTitleID);
             return;     // No reload
         }
 
         // Add task (dialog)
         else if (event.getSource() == ButtonAddNewTask) {
             log.debug("ButtonAddNewTask was clicked");
-            loadSecondScene("/fxml/ToDoList/ToDoListAddTask.fxml");
+            loadSecondScene(ToDoListAddTaskID);
         }
 
         // Modify Task (dialog)
         else if (event.getSource() == ButtonModifyTask) {
             log.debug("ButtonModifyTask was clicked");
             if (getSelectedTask() != null) {
-                loadSecondScene("/fxml/ToDoList/ToDoListModifyTask.fxml");
+                loadSecondScene(ToDoListModifyTaskID);
                 ScreensController.setStage(TaskListID);
                 return;     // Hard reload
             }
@@ -134,14 +134,14 @@ public class TaskListController extends Controller implements Initializable, Con
         // Share Task (dialog)
         else if (event.getSource() == ButtonShareList) {
             log.debug("ButtonShareList was clicked");
-            loadSecondScene("/fxml/ToDoList/ToDoListShare.fxml");
+            loadSecondScene(ToDoListShareListID);
         }
 
         // Assign Task (dialog)
         else if (event.getSource() == ButtonAssignTask) {
             log.debug("ButtonAssignTask was clicked");
             if (getSelectedTask() != null) {
-                loadSecondScene("/fxml/ToDoList/ToDoListAssignTask.fxml");
+                loadSecondScene(ToDoListAssignTaskID);
             }
         }
 

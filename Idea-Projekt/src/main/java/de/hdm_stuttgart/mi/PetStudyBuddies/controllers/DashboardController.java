@@ -8,6 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +24,11 @@ public class DashboardController extends Controller implements Initializable, Co
     public Button ButtonToDoLists;
     public Label LabelStatusPet;
     public Button ButtonPet;
+    @FXML
+    private ImageView PetPicture;
+
+    @FXML
+    private Image ImageObject;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,6 +45,25 @@ public class DashboardController extends Controller implements Initializable, Co
         Pet myPet = PetController.getPet();
         if (myPet != null) {
             LabelStatusPet.setText(myPet.getName());
+            myPet.setEmotion();
+            if (myPet.getEmotion() == "Happy") {
+                ImageObject = new Image(PetController.getImage(HappyPic));
+                log.debug("Happy Pet");
+            } else if (myPet.getEmotion() == "Content") {
+                ImageObject = new Image(PetController.getImage(ContentPic));
+                log.debug("Content Pet");
+            } else if (myPet.getEmotion() == "Sad") {
+                ImageObject = new Image(PetController.getImage(SadPic));
+                log.debug("Sad Pet");
+            } else {
+                ImageObject = new Image(PetController.getImage(NoPetPic));
+                log.debug("No Pet");
+            }
+            log.debug("Filepath=" + ImageObject.getUrl());
+            log.debug(ImageObject.getWidth());
+            PetPicture.setImage(ImageObject);
+            /*PetPicture.setFitHeight(400);
+            PetPicture.setFitWidth(400);*/
         }
     }
 
