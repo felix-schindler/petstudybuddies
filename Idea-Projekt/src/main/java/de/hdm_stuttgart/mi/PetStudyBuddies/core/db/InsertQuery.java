@@ -82,8 +82,8 @@ public class InsertQuery extends Query {
     }
 
     /**
-     * @see Query#WriteData()
      * @return 1 if successful
+     * @see Query#WriteData()
      */
     public int Count() {
         return rows;

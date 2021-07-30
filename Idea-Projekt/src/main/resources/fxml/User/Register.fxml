@@ -21,7 +21,8 @@
                 <Font name="Calibri" size="21.0"/>
             </font>
         </Label>
-        <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true"
+                   preserveRatio="true">
             <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png"/>
         </ImageView>
     </Pane>

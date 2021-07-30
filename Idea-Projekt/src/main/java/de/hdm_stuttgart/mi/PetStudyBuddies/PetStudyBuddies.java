@@ -5,15 +5,10 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.PictureFramework;
 import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ScreensController;
 import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ScreensFramework;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
-import de.hdm_stuttgart.mi.PetStudyBuddies.models.User;
 import javafx.application.Application;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class PetStudyBuddies extends Application implements ControlledScreen {
     /**

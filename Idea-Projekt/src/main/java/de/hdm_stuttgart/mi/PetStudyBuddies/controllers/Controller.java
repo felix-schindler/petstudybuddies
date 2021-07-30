@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-abstract class Controller implements ControlledScreen{
+abstract class Controller implements ControlledScreen {
     /**
      * Log object for error handling
      */

@@ -4,29 +4,34 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #030307;" stylesheets="@../../styles/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.DashboardController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            style="-fx-background-color: #030307;" stylesheets="@../../styles/fullpackstyling.css"
+            xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="de.hdm_stuttgart.mi.PetStudyBuddies.controllers.DashboardController">
     <children>
         <Pane layoutY="-1.0" prefHeight="79.0" prefWidth="995.0" styleClass="linear-grad">
             <children>
                 <Label layoutX="574.0" layoutY="1.0" prefHeight="79.0" prefWidth="340.0" text="PetStudyBuddies">
                     <font>
-                        <Font name="Calibri" size="43.0" />
+                        <Font name="Calibri" size="43.0"/>
                     </font>
                 </Label>
-                <ImageView fitHeight="60.0" fitWidth="75.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="60.0" fitWidth="75.0" layoutX="914.0" layoutY="10.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <image>
-                        <Image url="@../../images/Pet/iu-2.jpeg" />
+                        <Image url="@../../images/Pet/iu-2.jpeg"/>
                     </image>
                 </ImageView>
-                <Label layoutX="176.0" prefHeight="79.0" prefWidth="280.0" text="To keep your study organized!" textAlignment="CENTER">
+                <Label layoutX="176.0" prefHeight="79.0" prefWidth="280.0" text="To keep your study organized!"
+                       textAlignment="CENTER">
                     <font>
-                        <Font name="Calibri" size="21.0" />
+                        <Font name="Calibri" size="21.0"/>
                     </font>
                 </Label>
-                <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="75.0" fitWidth="79.0" layoutX="84.0" layoutY="1.0" pickOnBounds="true"
+                           preserveRatio="true">
                     <image>
-                        <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png" />
+                        <Image url="@../../images/ToDoListDashboardImages/icons8-lehrplan-160.png"/>
                     </image>
                 </ImageView>
             </children>
@@ -100,20 +105,23 @@
                 </font>
             </Button>
         </VBox>
-        <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0" style="-fx-background-color: #131022; -fx-background-radius: 10;">
+        <AnchorPane layoutX="91.0" layoutY="87.0" prefHeight="513.0" prefWidth="884.0"
+                    style="-fx-background-color: #131022; -fx-background-radius: 10;">
             <children>
                 <Pane prefHeight="50.0" prefWidth="884.0">
                     <children>
                         <HBox prefHeight="50.0" prefWidth="884.0">
                             <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="436.0" text="Welcome   " textFill="WHITE">
+                                <Label alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="436.0" text="Welcome   "
+                                       textFill="WHITE">
                                     <font>
-                                        <Font name="Calibri" size="51.0" />
+                                        <Font name="Calibri" size="51.0"/>
                                     </font>
                                 </Label>
-                                <Label fx:id="LabelUsername" prefHeight="59.0" prefWidth="454.0" text="Username" textFill="#a868a0">
+                                <Label fx:id="LabelUsername" prefHeight="59.0" prefWidth="454.0" text="Username"
+                                       textFill="#a868a0">
                                     <font>
-                                        <Font name="Calibri" size="63.0" />
+                                        <Font name="Calibri" size="63.0"/>
                                     </font>
                                 </Label>
                             </children>
@@ -122,57 +130,71 @@
                 </Pane>
                 <VBox layoutX="24.0" layoutY="68.0" prefHeight="451.0" prefWidth="417.0">
                     <children>
-                        <Pane prefHeight="192.0" prefWidth="399.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                        <Pane prefHeight="192.0" prefWidth="399.0"
+                              style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                             <children>
-                                <Label layoutX="28.0" layoutY="113.0" prefHeight="60.0" prefWidth="254.0" text="Notes" textFill="#d3cccc">
+                                <Label layoutX="28.0" layoutY="113.0" prefHeight="60.0" prefWidth="254.0" text="Notes"
+                                       textFill="#d3cccc">
                                     <font>
-                                        <Font name="Calibri" size="28.0" />
+                                        <Font name="Calibri" size="28.0"/>
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="99.0" fitWidth="103.0" layoutX="22.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="99.0" fitWidth="103.0" layoutX="22.0" layoutY="14.0"
+                                           pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/Dashboard/icons8-notiz-80.png" />
+                                        <Image url="@../../images/Dashboard/icons8-notiz-80.png"/>
                                     </image>
                                 </ImageView>
-                                <Label fx:id="LabelAllNotes" layoutX="236.0" layoutY="32.0" prefHeight="60.0" prefWidth="158.0" text="Number" textFill="#9e9797">
+                                <Label fx:id="LabelAllNotes" layoutX="236.0" layoutY="32.0" prefHeight="60.0"
+                                       prefWidth="158.0" text="Number" textFill="#9e9797">
                                     <font>
-                                        <Font name="Calibri" size="28.0" />
+                                        <Font name="Calibri" size="28.0"/>
                                     </font>
                                 </Label>
-                                <Button fx:id="ButtonNotes" layoutX="300.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="50.0" prefWidth="117.0" styleClass="button1">
+                                <Button fx:id="ButtonNotes" layoutX="300.0" layoutY="107.0" mnemonicParsing="false"
+                                        onAction="#handleButton" prefHeight="50.0" prefWidth="117.0"
+                                        styleClass="button1">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
+                                                <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
                             </children>
                         </Pane>
-                        <Pane prefHeight="43.0" prefWidth="417.0" />
-                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="192.0" prefWidth="399.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                        <Pane prefHeight="43.0" prefWidth="417.0"/>
+                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="192.0" prefWidth="399.0"
+                              style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                             <children>
-                                <Label layoutX="28.0" layoutY="113.0" prefHeight="60.0" prefWidth="254.0" text="ToDoLists" textFill="#d3cccc">
+                                <Label layoutX="28.0" layoutY="113.0" prefHeight="60.0" prefWidth="254.0"
+                                       text="ToDoLists" textFill="#d3cccc">
                                     <font>
-                                        <Font name="Calibri" size="28.0" />
+                                        <Font name="Calibri" size="28.0"/>
                                     </font>
                                 </Label>
-                                <ImageView fitHeight="99.0" fitWidth="103.0" layoutX="22.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="99.0" fitWidth="103.0" layoutX="22.0" layoutY="14.0"
+                                           pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../images/Dashboard/icons8-aufgabenliste-100.png" />
+                                        <Image url="@../../images/Dashboard/icons8-aufgabenliste-100.png"/>
                                     </image>
                                 </ImageView>
-                                <Label fx:id="LabelAllToDoLists" layoutX="236.0" layoutY="32.0" prefHeight="60.0" prefWidth="158.0" text="Number" textFill="#9e9797">
+                                <Label fx:id="LabelAllToDoLists" layoutX="236.0" layoutY="32.0" prefHeight="60.0"
+                                       prefWidth="158.0" text="Number" textFill="#9e9797">
                                     <font>
-                                        <Font name="Calibri" size="28.0" />
+                                        <Font name="Calibri" size="28.0"/>
                                     </font>
                                 </Label>
-                                <Button fx:id="ButtonToDoLists" layoutX="300.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleButton" prefHeight="50.0" prefWidth="117.0" styleClass="button1">
+                                <Button fx:id="ButtonToDoLists" layoutX="300.0" layoutY="107.0" mnemonicParsing="false"
+                                        onAction="#handleButton" prefHeight="50.0" prefWidth="117.0"
+                                        styleClass="button1">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="40.0" fitWidth="59.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
+                                                <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -181,44 +203,57 @@
                         </Pane>
                     </children>
                 </VBox>
-                <Pane layoutX="448.0" layoutY="68.0" prefHeight="428.0" prefWidth="417.0" style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
+                <Pane layoutX="448.0" layoutY="68.0" prefHeight="428.0" prefWidth="417.0"
+                      style="-fx-background-color: #1A172A; -fx-background-radius: 10;">
                     <children>
                         <GridPane fx:id="ImagePane" prefHeight="428.0" prefWidth="417.0">
                             <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="196.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="221.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0"
+                                                   prefWidth="196.0"/>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0"
+                                                   prefWidth="221.0"/>
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints maxHeight="291.0" minHeight="10.0" prefHeight="284.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="141.0" minHeight="6.0" prefHeight="13.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="291.0" minHeight="10.0" prefHeight="284.0"
+                                                vgrow="SOMETIMES"/>
+                                <RowConstraints maxHeight="141.0" minHeight="6.0" prefHeight="13.0" vgrow="SOMETIMES"/>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Label fx:id="LabelStatusPet" alignment="CENTER" prefHeight="60.0" prefWidth="259.0" text="No Pet Created Yet :(" textFill="#9e9797" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                <Label fx:id="LabelStatusPet" alignment="CENTER" prefHeight="60.0" prefWidth="259.0"
+                                       text="No Pet Created Yet :(" textFill="#9e9797" GridPane.columnSpan="2"
+                                       GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                                     <font>
-                                        <Font name="Calibri" size="28.0" />
+                                        <Font name="Calibri" size="28.0"/>
                                     </font>
                                 </Label>
-                                <Label prefHeight="70.0" prefWidth="78.0" text="Pet" textFill="#d3cccc" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                <Label prefHeight="70.0" prefWidth="78.0" text="Pet" textFill="#d3cccc"
+                                       GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                                     <font>
-                                        <Font name="Calibri" size="45.0" />
+                                        <Font name="Calibri" size="45.0"/>
                                     </font>
                                 </Label>
-                                <ImageView fx:id="PetPicture" fitHeight="232.0" fitWidth="259.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                <ImageView fx:id="PetPicture" fitHeight="232.0" fitWidth="259.0" pickOnBounds="true"
+                                           preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER"
+                                           GridPane.valignment="CENTER">
                                     <image>
-                                        <Image url="@../../images/Pet/iu-14.JPG" />
+                                        <Image url="@../../images/Pet/iu-14.JPG"/>
                                     </image>
                                 </ImageView>
-                                <Button fx:id="ButtonPet" mnemonicParsing="false" onAction="#handleButton" prefHeight="50.0" prefWidth="105.0" styleClass="button1" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                <Button fx:id="ButtonPet" mnemonicParsing="false" onAction="#handleButton"
+                                        prefHeight="50.0" prefWidth="105.0" styleClass="button1"
+                                        GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2"
+                                        GridPane.valignment="CENTER">
                                     <graphic>
-                                        <ImageView fitHeight="40.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="40.0" fitWidth="82.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png" />
+                                                <Image url="@../../images/ToDoListDashboardImages/icons8-winkel-rechts-50.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                                <Pane prefHeight="200.0" prefWidth="200.0"/>
                             </children>
                         </GridPane>
                     </children>

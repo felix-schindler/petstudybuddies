@@ -21,18 +21,16 @@ import java.util.ResourceBundle;
 
 public class PetController extends Controller implements Initializable, ControlledScreen {
     private final static Logger log = LogManager.getLogger(PetController.class);
-
+    @FXML
+    Image ImageObject = null;
+    @FXML
+    Pane ImagePane;
     @FXML
     private Label LabelPetname, LabelPetname2, LabelEmotion;
     @FXML
     private Button ButtonTakeCare, ButtonChangeName, ButtonDeletePet, ButtonEasterEgg;
     @FXML
     private ImageView PetPicture;
-    @FXML
-    Image ImageObject = null;
-    @FXML
-    Pane ImagePane;
-
     private Pet myPet;
 
     public static Pet getPet() {
@@ -41,6 +39,10 @@ public class PetController extends Controller implements Initializable, Controll
         if (id == null || id.isEmpty() || id.equalsIgnoreCase("null"))
             return null;
         return new Pet(Integer.parseInt(id));
+    }
+
+    public static String getImage(String emotion) {
+        return PictureFramework.pictures.get(emotion);
     }
 
     @Override
@@ -81,10 +83,6 @@ public class PetController extends Controller implements Initializable, Controll
         }
     }
 
-    public static String getImage(String emotion){
-        return PictureFramework.pictures.get(emotion);
-    }
-
     public void setPicture() {
         switch (myPet.getEmotion()) {
             case "Happy" -> ImageObject = new Image(getImage(HappyPic));
@@ -100,7 +98,7 @@ public class PetController extends Controller implements Initializable, Controll
         PetPicture.setFitWidth(400);
     }
 
-    public void setFields(){
+    public void setFields() {
         myPet = getPet();
         if (myPet != null) {
             myPet.setEmotion();

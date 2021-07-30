@@ -7,14 +7,10 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.models.Pet;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class AddPetController extends Controller implements ControlledScreen {
     private static final Logger log = LogManager.getLogger(AddToDoListController.class);
@@ -33,9 +29,9 @@ public class AddPetController extends Controller implements ControlledScreen {
                 Dialog.showError("Please enter a valid Petname!");
             } else {
                 InsertQuery q = new InsertQuery(
-                    "Pet",
-                    new String[]{"Name", "Emotion", "UserID"},
-                    new String[]{petName, "content", String.valueOf(Account.getLoggedUser().getID())}
+                        "Pet",
+                        new String[]{"Name", "Emotion", "UserID"},
+                        new String[]{petName, "content", String.valueOf(Account.getLoggedUser().getID())}
                 );
 
                 if (q.Count() == 1) {

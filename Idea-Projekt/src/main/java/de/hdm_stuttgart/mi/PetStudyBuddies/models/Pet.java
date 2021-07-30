@@ -28,7 +28,7 @@ public class Pet extends Model {
      */
     private String emotion;
 
-    private double balance=1;
+    private double balance = 1;
 
     /**
      * @param ID
@@ -79,7 +79,7 @@ public class Pet extends Model {
      * Sets the emotion
      */
     public void setEmotion() {
-        SelectQuery UserToDoLists = new SelectQuery("ToDoList","ID","UserID="+ Account.getLoggedUser().getID());
+        SelectQuery UserToDoLists = new SelectQuery("ToDoList", "ID", "UserID=" + Account.getLoggedUser().getID());
         List<String> IDsToDoLists = new ArrayList<String>();
 
         int nToDos = UserToDoLists.Count();
@@ -101,29 +101,29 @@ public class Pet extends Model {
         }
 
         if (!IDsToDoLists.isEmpty()) {
-            int nTasksOpen=IDsToDoLists.stream().mapToInt(ToDoListID -> new SelectQuery("Task", "*", "ToDoListID = " + ToDoListID + " AND Until >= CURRENT_DATE", null, null, true).Count()).sum(),
-                nTasksClosed= IDsToDoLists.stream().mapToInt(ToDoListID -> new SelectQuery("Task", "*", "ToDoListID = " + ToDoListID + " AND Until < CURRENT_DATE", null, null, true).Count()).sum();
+            int nTasksOpen = IDsToDoLists.stream().mapToInt(ToDoListID -> new SelectQuery("Task", "*", "ToDoListID = " + ToDoListID + " AND Until >= CURRENT_DATE", null, null, true).Count()).sum(),
+                    nTasksClosed = IDsToDoLists.stream().mapToInt(ToDoListID -> new SelectQuery("Task", "*", "ToDoListID = " + ToDoListID + " AND Until < CURRENT_DATE", null, null, true).Count()).sum();
             log.debug("Number open Tasks " + nTasksOpen + " Number closed Tasks" + nTasksClosed);
 
-            if (nTasksClosed!= 0 && nTasksOpen!= 0) {
-                balance = (double)nTasksOpen/nTasksClosed;
-            } else if(nTasksClosed == 0 && nTasksOpen == 0) {
-                balance=1;
-            } else if(nTasksClosed == 0) {
-                balance=1.1;
+            if (nTasksClosed != 0 && nTasksOpen != 0) {
+                balance = (double) nTasksOpen / nTasksClosed;
+            } else if (nTasksClosed == 0 && nTasksOpen == 0) {
+                balance = 1;
+            } else if (nTasksClosed == 0) {
+                balance = 1.1;
             }
-            log.debug(balance +" = balance");
+            log.debug(balance + " = balance");
         } else {
             log.debug("No ToDoLists.");
-            balance=1;
+            balance = 1;
         }
 
         if (balance >= 1.1) {
-            this.emotion= "Sad";
+            this.emotion = "Sad";
         } else if (balance < 1.1 && balance >= 0.9) {
-            this.emotion="Content";
+            this.emotion = "Content";
         } else {
-            this.emotion= "Happy";
+            this.emotion = "Happy";
         }
         log.debug("Emotion " + emotion);
     }
@@ -134,10 +134,10 @@ public class Pet extends Model {
     public boolean save() {
         log.debug("Trying to save");
         return new UpdateQuery(
-            getTable(),
-            new String[]{"Name", "Emotion"},
-            new String[]{name, emotion},
-            "ID=" + getID()
+                getTable(),
+                new String[]{"Name", "Emotion"},
+                new String[]{name, emotion},
+                "ID=" + getID()
         ).Count() == 1;
     }
 }

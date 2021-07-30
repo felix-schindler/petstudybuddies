@@ -2,7 +2,6 @@ package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Pet;
-import de.hdm_stuttgart.mi.PetStudyBuddies.models.ToDoList;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ChangePetNameController implements Initializable,ControlledScreen {
+public class ChangePetNameController implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(ChangePetNameController.class);
     @FXML
     Button ButtonBack, ButtonChangeName;

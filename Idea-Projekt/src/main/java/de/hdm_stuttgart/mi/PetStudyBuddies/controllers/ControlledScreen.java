@@ -1,7 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -26,18 +25,18 @@ public interface ControlledScreen {
     String ContentPic = "Content";
     String NoPetPic = "No Pet";
 
-    String TaskListID ="Lists";
-    String ToDoListAddTaskID ="Add Task";
-    String ToDoListAssignTaskID ="Assign Task";
-    String ToDoListModifyTaskID ="Modify Task";
+    String TaskListID = "Lists";
+    String ToDoListAddTaskID = "Add Task";
+    String ToDoListAssignTaskID = "Assign Task";
+    String ToDoListModifyTaskID = "Modify Task";
 
-    String ToDoListDashboardID ="ToDoList Dashboard";
-    String ToDoListAddListID ="Add List";
-    String ToDoListModifyTitleID ="Modify Title";
-    String ToDoListShareListID ="Share To Do List";
+    String ToDoListDashboardID = "ToDoList Dashboard";
+    String ToDoListAddListID = "Add List";
+    String ToDoListModifyTitleID = "Modify Title";
+    String ToDoListShareListID = "Share To Do List";
 
     String LoginID = "Login";
-    String RegisterID= "Register";
+    String RegisterID = "Register";
 
     String UserSettingsID = "User Settings";
 

@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.CoreTest.DBTest;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,7 +15,11 @@ public class InsertQueryTest {
     }
 
     @Test
-    public void testInsertNull() {
+    public void testInsert() {
+        Assert.assertEquals(1, new InsertQuery("User", new String[]{"Username", "EMail", "Password"}, new String[]{"TestUser555", "test555@example.com", Utils.sha1("password")}).Count());
+        Assert.assertEquals(1, new InsertQuery("User", new String[]{"Username", "EMail", "Password"}, new String[]{"TestUser666", "test666@example.com", Utils.sha1("password")}).Count());
+        new DeleteQuery("User", "Username='TestUser555'");
+        new DeleteQuery("User", "Username='TestUser666'");
         Assert.assertEquals("", new InsertQuery(null, null, null, false).GetQueryString());
     }
 }
