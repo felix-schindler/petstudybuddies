@@ -38,20 +38,22 @@ public class PetController extends Controller implements Initializable, Controll
     public static Pet getPet() {
         String id = new SelectQuery("Pet", "ID", "UserID=" + Account.getLoggedUser().getID()).fetch();
         log.debug("Getting pet of user...");
-        if (id == null)
+        if (id == null || id.isEmpty() || id.equalsIgnoreCase("null"))
             return null;
         return new Pet(Integer.parseInt(id));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        myPet = getPet();
+        if (getPet() == null) {
+            loadSecondScene(AddPetID);  // Create pet
 
-        if (myPet == null) {
-            loadSecondScene(AddPetID);
-            myPet = getPet();
+            if (getPet() == null) {     // No pet created
+                ScreensController.setStage(DashboardID);
+            }
         }
 
+        myPet = getPet();
         if (myPet != null) {
             myPet.setEmotion();
             LabelPetname.setText(myPet.getName());

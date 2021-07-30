@@ -28,6 +28,7 @@ public class PetStudyBuddies extends Application implements ControlledScreen {
      * @param args Command line arguments - gets passed to launch
      */
     public static void main(String[] args) {
+        // Initialize HashMaps of frameworks
         new Thread(ScreensFramework.init).start();
         new Thread(PictureFramework.init).start();
         launch(args);
@@ -44,11 +45,10 @@ public class PetStudyBuddies extends Application implements ControlledScreen {
         stage.setMinHeight(480);
         stage.setResizable(false);
         stage.setFullScreen(false);
-        if (Account.getLoggedUser() == null) {
+        if (Account.getLoggedUser() == null)
             ScreensController.setStage(LoginID);
-        } else {
+        else
             ScreensController.setStage(DashboardID);
-        }
         log.debug("PetStudyBuddies gestartet");
     }
 }

@@ -36,7 +36,7 @@ public class Utils {
      * @return the trimmed input string
      */
     public static String getInputString(TextField textField) {
-        if (textField.getText() == null || textField.getText().trim().length() == 0)
+        if (textField.getText() == null || textField.getText().trim().isEmpty())
             return null;
         return textField.getText().trim();
     }
@@ -47,7 +47,7 @@ public class Utils {
      * @return the trimmed input string
      */
     public static String getInputString(TextArea textField) {
-        if (textField.getText() == null || textField.getText().trim().length() == 0)
+        if (textField.getText() == null || textField.getText().trim().isEmpty())
             return null;
         return textField.getText().trim();
     }
@@ -58,7 +58,7 @@ public class Utils {
      * @return the input string
      */
     public static String getInputString(PasswordField textField) {
-        if (textField.getText() == null || textField.getText().length() == 0)
+        if (textField.getText() == null || textField.getText().isEmpty())
             return null;
         return textField.getText();
     }

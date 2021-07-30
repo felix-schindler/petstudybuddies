@@ -33,12 +33,12 @@ public class ChangePetNameController implements Initializable,ControlledScreen {
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonChangeName) {
             log.debug("Open Change Petname dialog");
-            String title = Utils.getInputString(TextFieldNewName);
-            if (title != null) {
-                Pet pet = PetController.getPet();
-                pet.setName(title);
+            String petName = Utils.getInputString(TextFieldNewName);
+            if (petName != null) {
+                Pet myPet = PetController.getPet();
+                myPet.setName(petName);
                 try {
-                    pet.save();
+                    myPet.save();
                 } catch (Exception e) {
                     log.catching(e);
                     log.error("Failed to save new Petname");

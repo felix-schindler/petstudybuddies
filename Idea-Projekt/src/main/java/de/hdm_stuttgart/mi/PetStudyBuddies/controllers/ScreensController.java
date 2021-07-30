@@ -27,7 +27,7 @@ public class ScreensController {
             Scene newScene = new Scene(loader.load());
             window.setScene(newScene);
             ScreensController.setStage(window, title);
-            log.debug("Scene was successfully loaded");
+            log.debug("Scene " + title + " was successfully loaded");
         } catch (IOException e) {
             log.catching(e);
             log.error("Error occurred while loading scene");

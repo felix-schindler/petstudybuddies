@@ -41,14 +41,13 @@ public interface ControlledScreen {
 
     String UserSettingsID = "User Settings";
 
-    @FXML
     default void closeSecondScene(ActionEvent actionEvent) {
+        log.debug("Closing second scene...");
         Stage secondStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         secondStage.close();
     }
 
-    @FXML
-    default void loadSecondScene(String title){
+    default void loadSecondScene(String title) {
         try {
             Stage anotherStage = new Stage();
             FXMLLoader secondPageLoader = new FXMLLoader(getClass().getResource(ScreensFramework.screens.get(title)));
@@ -57,6 +56,7 @@ public interface ControlledScreen {
             anotherStage.setScene(secondScene);
             anotherStage.requestFocus();
             anotherStage.showAndWait();
+            log.error("Opened second screen");
         } catch (Exception e) {
             log.catching(e);
             log.error("Failed to load input dialog");
