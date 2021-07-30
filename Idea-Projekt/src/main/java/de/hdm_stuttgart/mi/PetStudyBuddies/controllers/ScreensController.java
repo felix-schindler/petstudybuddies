@@ -21,7 +21,7 @@ public class ScreensController {
      * log object for error handling
      */
     private static final Logger log = LogManager.getLogger(ScreensController.class);
-    @FXML
+
     public static Stage window = new Stage();
 
     /**
