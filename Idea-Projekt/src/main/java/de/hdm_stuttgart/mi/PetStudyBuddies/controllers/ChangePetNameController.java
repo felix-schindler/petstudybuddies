@@ -15,8 +15,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for Changing the Petname
+ */
 public class ChangePetNameController implements Initializable, ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(ChangePetNameController.class);
     @FXML
     private Button ButtonBack, ButtonChangeName;
@@ -25,11 +30,19 @@ public class ChangePetNameController implements Initializable, ControlledScreen 
     @FXML
     private Label LabelCurrentName;
 
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelCurrentName.setText(PetController.getPet().getName());
     }
-
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonChangeName) {
             log.debug("Open Change Petname dialog");

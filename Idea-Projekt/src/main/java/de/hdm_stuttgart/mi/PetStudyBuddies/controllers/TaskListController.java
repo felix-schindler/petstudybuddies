@@ -24,9 +24,17 @@ import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for Tasks Dashboard
+ */
 public class TaskListController extends Controller implements Initializable {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(TaskListController.class);
+    /**
+     * Task currently edited
+     */
     protected static Task editTask;
 
     @FXML
@@ -38,6 +46,9 @@ public class TaskListController extends Controller implements Initializable {
     @FXML
     private Label LabelToDoListName;
 
+    /**
+     * Thread updating TableView
+     */
     private final Runnable updateTable = () -> {
         LabelToDoListName.setText(ToDoListController.getEditTodo().getTitle());
 
@@ -49,10 +60,18 @@ public class TaskListController extends Controller implements Initializable {
         log.debug("TaskList table updated");
     };
 
+    /**
+     * Returns currently edited Task
+     * @return edited Task
+     */
     public static Task getEditTask() {
         return editTask;
     }
-
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         new Thread(updateTable).start();
@@ -162,6 +181,9 @@ public class TaskListController extends Controller implements Initializable {
         new Thread(updateTable).start();
     }
 
+    /**
+     * Sets Colour of Button when (not) flagged
+     */
     public void setButtonFlagged() {
         if (ToDoListController.getEditTodo().getFlagged())
             ButtonSetFlag.setStyle("-fx-background-color: #8c78e3;");
@@ -169,6 +191,10 @@ public class TaskListController extends Controller implements Initializable {
             ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
     }
 
+    /**
+     * Returns Selected Task as Taskobject from Observable List
+     * @return Task currently selected
+     */
     private Task getSelectedTask() {
         ObservableList<Task> selectedTask = TaskTable.getSelectionModel().getSelectedItems();
         if (!selectedTask.isEmpty()) {

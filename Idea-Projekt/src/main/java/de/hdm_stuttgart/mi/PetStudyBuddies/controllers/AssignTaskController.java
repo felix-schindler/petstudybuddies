@@ -16,8 +16,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for Assigning Tasks
+ */
 public class AssignTaskController implements Initializable, ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(AssignTaskController.class);
     @FXML
     private Button ButtonBack, ButtonAssignTask;
@@ -26,12 +31,20 @@ public class AssignTaskController implements Initializable, ControlledScreen {
     @FXML
     private Label LabelNameTask;
 
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         log.debug("Open create new ToDoList dialog");
         LabelNameTask.setText(TaskListController.getEditTask().getContent());
     }
-
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
         // Assign a task to a user

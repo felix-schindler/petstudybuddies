@@ -15,6 +15,9 @@ import org.apache.logging.log4j.Logger;
  * A simple controller providing a callback method {@link #register()}
  */
 public class RegisterController extends Controller {
+    /**
+     * log object for error handling
+     */
     private final static Logger log = LogManager.getLogger(RegisterController.class);
     @FXML
     private TextField emailField, usernameField;

@@ -12,14 +12,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+/**
+ * Controller for Adding To Do Lists
+ */
 public class AddToDoListController implements ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(AddToDoListController.class);
     @FXML
-    Button ButtonCreateList, ButtonBack;
+    private Button ButtonCreateList, ButtonBack;
     @FXML
-    TextField TextFieldAddNewList;
+    private TextField TextFieldAddNewList;
 
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
         // Create new ToDoList

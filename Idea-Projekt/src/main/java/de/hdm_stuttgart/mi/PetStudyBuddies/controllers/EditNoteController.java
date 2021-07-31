@@ -14,16 +14,24 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for Editing Notes
+ */
 public class EditNoteController extends Controller implements Initializable {
+    /**
+     * log object for error handling
+     */
     private final static Logger log = LogManager.getLogger(EditNoteController.class);
     @FXML
     private TextField title;
     @FXML
     private TextArea content;
+    @FXML
     private Note note;
 
     /**
-     * @param url            URL location of the FXML file that was given to the FXMLLoader
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
      * @param resourceBundle ResourceBundle that was given to the FXMLLoader
      */
     @Override

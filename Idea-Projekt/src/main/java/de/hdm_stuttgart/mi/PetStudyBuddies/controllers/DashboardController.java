@@ -17,7 +17,13 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for Main Dashboard
+ */
 public class DashboardController extends Controller implements Initializable {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(DashboardController.class);
     @FXML
     public Label LabelUsername, LabelAllNotes, LabelAllToDoLists, LabelStatusPet;
@@ -27,7 +33,11 @@ public class DashboardController extends Controller implements Initializable {
     private ImageView PetPicture;
     @FXML
     private Image ImageObject;
-
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelUsername.setText(Account.getLoggedUser().getUsername());
@@ -62,7 +72,10 @@ public class DashboardController extends Controller implements Initializable {
             PetPicture.setImage(ImageObject);
         }
     }
-
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     @FXML
     public void handleButton(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonPet) {

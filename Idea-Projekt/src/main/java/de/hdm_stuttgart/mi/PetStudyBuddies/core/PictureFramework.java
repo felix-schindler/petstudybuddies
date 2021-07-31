@@ -1,8 +1,13 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.core;
 
 import java.util.HashMap;
-
+/**
+ * Framework containing Picture resources
+ */
 public class PictureFramework {
+    /**
+     * HashMap containg Keywords for pictures
+     */
     public static HashMap<String, String> pictures = new HashMap<>();
 
     public static Runnable init = () -> {

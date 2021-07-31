@@ -58,10 +58,19 @@ public class Dialog {
         alert.showAndWait();
     }
 
+    /**
+     * Shows Error Dialog
+     * @param msg message to be shown to user
+     */
     public static void showError(final String msg) {
         showError(null, msg);
     }
 
+    /**
+     * Opens new Alert InputScene
+     * @param title title of Scene
+     * @return String message to be displayed to User
+     */
     public static String showInput(String title) {
         final Alert alert = new Alert(AlertType.CONFIRMATION);
         loadStyle(alert);

@@ -13,11 +13,21 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Controller for Handling Screencontrol
+ */
 public class Screens {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(Screens.class);
     private static Stage window = new Stage();
     private final HashMap<String, Stage> stages = new HashMap<>();
 
+    /**
+     * Sets new Stage
+     * @param title Name of Stage loaded
+     */
     public static void setStage(String title) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -33,10 +43,19 @@ public class Screens {
         }
     }
 
+    /**
+     * Sets new Stage with Correct Title
+     * @param newStage Stage to be loaded
+     */
     public static void setStage(Stage newStage) {
         setStage(newStage, "PetStudyBuddies");
     }
 
+    /**
+     * Sets a new Stage with a new Title
+     * @param newStage Stage to be loaded
+     * @param newTitle Name of Stage loaded
+     */
     public static void setStage(Stage newStage, String newTitle) {
         window = newStage;
         // Set application icon
@@ -53,11 +72,4 @@ public class Screens {
         window.show();
     }
 
-    public void addStage(String name, Stage screen) {
-        stages.put(name, screen);
-    }
-
-    public Stage getStage(String name) {
-        return stages.get(name);
-    }
 }

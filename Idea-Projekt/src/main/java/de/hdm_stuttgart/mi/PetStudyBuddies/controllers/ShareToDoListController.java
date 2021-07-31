@@ -18,8 +18,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for Sharing To Do Lists
+ */
 public class ShareToDoListController implements Initializable, ControlledScreen {
+    /**
+     * log object for error handling
+     */
     private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
     @FXML
     private Button ButtonBack, ButtonShareList;
@@ -27,7 +32,13 @@ public class ShareToDoListController implements Initializable, ControlledScreen 
     private TextField TextFieldUsernameShare;
     @FXML
     private Label LabelNameToDoList;
+    @FXML
+    public ToDoList selectedList;
 
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonShareList) {
             log.debug("Open create new ToDoList dialog");
@@ -54,7 +65,11 @@ public class ShareToDoListController implements Initializable, ControlledScreen 
             closeSecondScene(actionEvent);
         }
     }
-
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelNameToDoList.setText(ToDoListController.getEditTodo().getTitle());

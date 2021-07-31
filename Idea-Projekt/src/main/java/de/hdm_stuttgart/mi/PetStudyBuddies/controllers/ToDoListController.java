@@ -24,7 +24,9 @@ import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+/**
+ * Controller for To Do Lists Dashboard
+ */
 public class ToDoListController extends Controller implements Initializable {
     /**
      * Log object for error handling
@@ -48,6 +50,9 @@ public class ToDoListController extends Controller implements Initializable {
     @FXML
     private TableColumn<Object, Object> colTitle;
 
+    /**
+     * Thread updating TableView
+     */
     private final Runnable updateUserToDoLists = () -> {
         log.debug("Updating ToDoList table...");
         TodoTable.setItems(getUserTodoLists());
@@ -61,6 +66,10 @@ public class ToDoListController extends Controller implements Initializable {
         return editTodo;
     }
 
+    /**
+     * Collects User To Do Lists and returns them as an Observable List
+     * @return Observable List containing User ToDoLists
+     */
     public ObservableList<ToDoList> getUserTodoLists() {
         ObservableList<ToDoList> todosList = FXCollections.observableArrayList();
         CachedRowSet todosSet = queryToDoLists.fetchAll();
@@ -84,9 +93,13 @@ public class ToDoListController extends Controller implements Initializable {
 
         return todosList;
     }
-
+    /**
+     * Sets parameters needed to initialize scene
+     * @param url URL location of the FXML file that was given to the FXMLLoader
+     * @param resourceBundle ResourceBundle that was given to the FXMLLoader
+     */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         LabelUsername.setText(Account.getLoggedUser().getUsername());
 
         new Thread(updateUserToDoLists).start();
@@ -110,6 +123,11 @@ public class ToDoListController extends Controller implements Initializable {
         return null;
     }
 
+    /**
+     * Sets Data in Table View according to database ressources
+     * @param queryResult database search
+     */
+    @FXML
     private void setTableData(CachedRowSet queryResult) {
         ObservableList<ToDoList> data = FXCollections.observableArrayList();
 
@@ -139,7 +157,10 @@ public class ToDoListController extends Controller implements Initializable {
         }
 
     }
-
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param actionEvent type of Button
+     */
     @FXML
     public void filterButtons(ActionEvent actionEvent) {
         log.debug("Button Event Handler called");

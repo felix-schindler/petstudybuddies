@@ -36,6 +36,11 @@ abstract class Model {
         return ID;
     }
 
+    /**
+     * Returns Field in database
+     * @param field
+     * @return
+     */
     protected String getField(String field) {
         return new SelectQuery(getTable(), field, "ID=" + ID, null, null).fetch();
     }

@@ -27,7 +27,9 @@ public class Pet extends Model {
      * Emotion of the pet
      */
     private String emotion;
-
+    /**
+     * balance for Happiness-State of Pet
+     */
     private double balance = 1;
 
     /**

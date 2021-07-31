@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+/**
+ * Abstract class with shared ressources of fxml-Controllers
+ */
 abstract class Controller implements ControlledScreen {
     /**
      * Log object for error handling
@@ -17,6 +19,10 @@ abstract class Controller implements ControlledScreen {
     @FXML
     protected Button ApplicationDashboard, NotesDashboard, PetDashboard, ToDoDashboard, SettingsView, LoginView, RegisterView;
 
+    /**
+     * Handles actionEvents coming from Buttons
+     * @param event type of Button
+     */
     @FXML
     private void handleMenu(ActionEvent event) {
         log.debug("Setting new stage...");
@@ -39,6 +45,9 @@ abstract class Controller implements ControlledScreen {
         }
     }
 
+    /**
+     * Handles User logout
+     */
     public void logout() {
         Account.setUser(null);
         Screens.setStage(LoginID);
