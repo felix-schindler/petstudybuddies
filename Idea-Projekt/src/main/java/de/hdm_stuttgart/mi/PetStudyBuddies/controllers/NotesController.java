@@ -40,8 +40,7 @@ public class NotesController extends Controller implements Initializable {
     private TableColumn<Note, String> colTitle, colContent, colLastEdited;
     @FXML
     private Label labelUsername;
-    @FXML
-    private TableView<Note> noteTable;
+
     /**
      * Thread updating View
      */
