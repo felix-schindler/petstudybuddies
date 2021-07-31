@@ -13,13 +13,12 @@ import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AddToDoListController extends Controller implements ControlledScreen {
+public class AddToDoListController implements ControlledScreen {
     private static final Logger log = LogManager.getLogger(AddToDoListController.class);
     @FXML
     Button ButtonCreateList, ButtonBack;
     @FXML
     TextField TextFieldAddNewList;
-
 
     @FXML
     public void buttonAction(ActionEvent actionEvent) {
@@ -29,22 +28,7 @@ public class AddToDoListController extends Controller implements ControlledScree
             String title = Utils.getInputString(TextFieldAddNewList);
             if (title != null && new SelectQuery("ToDoList", "ID", "Title='" + title + "' ").Count() == 0) {
                 new InsertQuery("ToDoList", new String[]{"UserID", "Title"}, new String[]{String.valueOf(Account.getLoggedUser().getID()), title});
-
                 closeSecondScene(actionEvent);
-
-                // TODO Update ToDoList Table
-                /*
-                ObservableList<ToDoList> newList = FXCollections.observableArrayList();
-                CachedRowSet newToDo = new SelectQuery("ToDoList","ID","UserID="+ Account.getLoggedUser().getID() + " AND Title= '" + eingabe + "'").fetchAll();
-                try {
-                    newList.add(new ToDoList(newToDo.getInt("ID")));
-                    ToDoListController.setSelectedListData(newList);
-                    closeSecondScene(actionEvent);
-                } catch (SQLException throwables) {
-                    log.catching(throwables);
-                    log.debug(("Created List could not be set as selected List"));
-                }
-                 */
             } else {
                 Dialog.showError("Please enter a new Title for your List!");
                 log.debug("No New Title entered, Dialog shown");

@@ -140,7 +140,7 @@ public class ToDoList extends Model implements Shareable {
      */
     public boolean save() throws Exception {
         log.debug("Trying to safe changes");
-        String realOwner = new SelectQuery("ToDoList", "UserID", "ID=" + getID()).fetch();
+        String realOwner = getField("UserID");
         if (!realOwner.equals(String.valueOf(owner))) {
             log.error("Owner of a note can't be changed!");
             log.info("Tried to change owner of ToDoList " + getID() + " from " + realOwner + " to " + owner);

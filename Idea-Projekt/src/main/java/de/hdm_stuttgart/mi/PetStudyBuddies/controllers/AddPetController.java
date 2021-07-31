@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
@@ -13,12 +14,12 @@ import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AddPetController extends Controller implements ControlledScreen {
+public class AddPetController implements ControlledScreen {
     private static final Logger log = LogManager.getLogger(AddToDoListController.class);
     @FXML
-    Button ButtonCreatePet, ButtonBack;
+    private Button ButtonCreatePet, ButtonBack;
     @FXML
-    TextField TextFieldAddPet;
+    private TextField TextFieldAddPet;
 
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonCreatePet) {
@@ -40,15 +41,14 @@ public class AddPetController extends Controller implements ControlledScreen {
                     log.debug("Pet existing? " + myPet.getName());
                     myPet.setEmotion();
                     closeSecondScene(actionEvent);
-                    ScreensController.setStage(PetDashboardID);
+                    Screens.setStage(PetDashboardID);
                 }else{
                     closeSecondScene(actionEvent);
-                    ScreensController.setStage(DashboardID);
+                    Screens.setStage(DashboardID);
                 }
             }
         } else if (actionEvent.getSource() == ButtonBack) {
             closeSecondScene(actionEvent);
-
         }
     }
 }

@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
@@ -24,7 +25,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class ToDoListController extends Controller implements Initializable, ControlledScreen {
+public class ToDoListController extends Controller implements Initializable {
     /**
      * Log object for error handling
      */
@@ -39,17 +40,15 @@ public class ToDoListController extends Controller implements Initializable, Con
     SelectQuery queryScheduledUserLists = new SelectQuery("ToDoList, Task", "DISTINCT(ToDoList.ID), ToDoList.UserID, ToDoList.Title", "ToDoList.UserID = " + Account.getLoggedUser().getID() + " AND date(datetime(Task.Until / 1000 , 'unixepoch')) AND Task.ToDoListID=ToDoList.ID");
     SelectQuery queryFlaggedUserLists = new SelectQuery("ToDoList", "*", "UserID = " + Account.getLoggedUser().getID() + " AND Flagged = '1'");
     @FXML
-    Label LabelUsername;
+    private Label LabelUsername, LabelCountToDoToday, LabelCountToDoScheduled, LabelCountToDoFlagged, LabelCountToDoAll;
     @FXML
-    Label LabelCountToDoToday, LabelCountToDoScheduled, LabelCountToDoFlagged, LabelCountToDoAll;
+    private Button ButtonToDoToday, ButtonToDoScheduled, ButtonToDoFlagged, ButtonToDoAll, ButtonAddNewList, ButtonViewList, ButtonDeleteList;
     @FXML
-    Button ButtonToDoToday, ButtonToDoScheduled, ButtonToDoFlagged, ButtonToDoAll, ButtonAddNewList, ButtonViewList, ButtonDeleteList;
+    private TableView<ToDoList> TodoTable;
     @FXML
-    TableView<ToDoList> TodoTable;
-    @FXML
-    TableColumn<Object, Object> colTitle;
+    private TableColumn<Object, Object> colTitle;
 
-    Runnable updateUserToDoLists = () -> {
+    private final Runnable updateUserToDoLists = () -> {
         log.debug("Updating ToDoList table...");
         TodoTable.setItems(getUserTodoLists());
         colTitle.setCellValueFactory(new PropertyValueFactory<>("Title"));
@@ -111,8 +110,7 @@ public class ToDoListController extends Controller implements Initializable, Con
         return null;
     }
 
-    @FXML
-    public void setTableData(CachedRowSet queryResult) {
+    private void setTableData(CachedRowSet queryResult) {
         ObservableList<ToDoList> data = FXCollections.observableArrayList();
 
         try {
@@ -143,7 +141,7 @@ public class ToDoListController extends Controller implements Initializable, Con
     }
 
     @FXML
-    void filterButtons(ActionEvent actionEvent) {
+    public void filterButtons(ActionEvent actionEvent) {
         log.debug("Button Event Handler called");
         if (actionEvent.getSource() == ButtonToDoAll) {
             setTableData(queryToDoLists.fetchAll());
@@ -162,13 +160,13 @@ public class ToDoListController extends Controller implements Initializable, Con
                 log.error("No list selected");
                 Dialog.showError("Please select a ToDo List.");
             } else
-                ScreensController.setStage(TaskListID);   // Hard reload
+                Screens.setStage(TaskListID);   // Hard reload
         }
 
         // Add new list (dialog)
         else if (actionEvent.getSource() == ButtonAddNewList) {
             loadSecondScene(ToDoListAddListID);
-            ScreensController.setStage(ToDoListDashboardID);   // Hard reload
+            Screens.setStage(ToDoListDashboardID);   // Hard reload
         }
 
         // Delete ToDoList
@@ -180,7 +178,7 @@ public class ToDoListController extends Controller implements Initializable, Con
                     log.error("Failed to delete ToDoList");
                     Dialog.showError("Failed to delete selected ToDoList, please try again.");
                 } else
-                    ScreensController.setStage(ToDoListDashboardID);
+                    Screens.setStage(ToDoListDashboardID);
             } else {
                 log.error("Nothing selected");
                 Dialog.showError("Please select a list.");

@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Pet;
@@ -11,21 +11,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DashboardController extends Controller implements Initializable, ControlledScreen {
-    public Label LabelUsername;
-    public Label LabelAllNotes;
-    public Button ButtonNotes;
-    public Label LabelAllToDoLists;
-    public Button ButtonToDoLists;
-    public Label LabelStatusPet;
-    public Button ButtonPet;
+public class DashboardController extends Controller implements Initializable {
+    private static final Logger log = LogManager.getLogger(DashboardController.class);
+    @FXML
+    public Label LabelUsername, LabelAllNotes, LabelAllToDoLists, LabelStatusPet;
+    @FXML
+    public Button ButtonNotes, ButtonToDoLists, ButtonPet;
     @FXML
     private ImageView PetPicture;
-
     @FXML
     private Image ImageObject;
 
@@ -45,13 +44,13 @@ public class DashboardController extends Controller implements Initializable, Co
         if (myPet != null) {
             LabelStatusPet.setText(myPet.getName());
             myPet.setEmotion();
-            if (myPet.getEmotion() == "Happy") {
+            if (myPet.getEmotion().equalsIgnoreCase("Happy")) {
                 ImageObject = new Image(PetController.getImage(HappyPic));
                 log.debug("Happy Pet");
-            } else if (myPet.getEmotion() == "Content") {
+            } else if (myPet.getEmotion().equalsIgnoreCase("Content")) {
                 ImageObject = new Image(PetController.getImage(ContentPic));
                 log.debug("Content Pet");
-            } else if (myPet.getEmotion() == "Sad") {
+            } else if (myPet.getEmotion().equalsIgnoreCase("Sad")) {
                 ImageObject = new Image(PetController.getImage(SadPic));
                 log.debug("Sad Pet");
             } else {
@@ -61,24 +60,21 @@ public class DashboardController extends Controller implements Initializable, Co
             log.debug("Filepath=" + ImageObject.getUrl());
             log.debug(ImageObject.getWidth());
             PetPicture.setImage(ImageObject);
-            /*PetPicture.setFitHeight(400);
-            PetPicture.setFitWidth(400);*/
         }
     }
 
     @FXML
     public void handleButton(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonPet) {
-            Pet mypet = PetController.getPet();
-            if(mypet !=null) {
-                ScreensController.setStage(PetDashboardID);
-            }else{
+            if (PetController.getPet() != null) {
+                Screens.setStage(PetDashboardID);
+            } else {
                 loadSecondScene(AddPetID);
             }
         } else if (actionEvent.getSource() == ButtonToDoLists) {
-            ScreensController.setStage(ToDoListDashboardID);
+            Screens.setStage(ToDoListDashboardID);
         } else if (actionEvent.getSource() == ButtonNotes) {
-            ScreensController.setStage(NoteID);
+            Screens.setStage(NoteID);
         }
     }
 }

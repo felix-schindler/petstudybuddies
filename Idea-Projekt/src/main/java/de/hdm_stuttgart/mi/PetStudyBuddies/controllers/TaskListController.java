@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Task;
@@ -24,20 +25,20 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class TaskListController extends Controller implements Initializable, ControlledScreen {
+public class TaskListController extends Controller implements Initializable {
     private static final Logger log = LogManager.getLogger(TaskListController.class);
     protected static Task editTask;
 
     @FXML
-    Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask, ButtonDeleteTask;
+    private Button ButtonSetFlag, ButtonShareList, ButtonChangeTitle, ButtonAddNewTask, ButtonModifyTask, ButtonAssignTask, ButtonDeleteTask;
     @FXML
-    TableColumn<Object, Object> colContent, colUntil, colAssignedTo;
+    private TableColumn<Object, Object> colContent, colUntil, colAssignedTo;
     @FXML
-    TableView<Task> TaskTable;
+    private TableView<Task> TaskTable;
     @FXML
-    Label LabelToDoListName;
+    private Label LabelToDoListName;
 
-    Runnable updateTable = () -> {
+    private final Runnable updateTable = () -> {
         LabelToDoListName.setText(ToDoListController.getEditTodo().getTitle());
 
         TaskTable.setItems(getTasks());
@@ -127,7 +128,7 @@ public class TaskListController extends Controller implements Initializable, Con
             log.debug("ButtonModifyTask was clicked");
             if (getSelectedTask() != null) {
                 loadSecondScene(ToDoListModifyTaskID);
-                ScreensController.setStage(TaskListID);
+                Screens.setStage(TaskListID);
                 return;     // Hard reload
             }
         }
@@ -168,7 +169,7 @@ public class TaskListController extends Controller implements Initializable, Con
             ButtonSetFlag.setStyle("-fx-background-color: #bc8abb;");
     }
 
-    public Task getSelectedTask() {
+    private Task getSelectedTask() {
         ObservableList<Task> selectedTask = TaskTable.getSelectionModel().getSelectedItems();
         if (!selectedTask.isEmpty()) {
             editTask = selectedTask.get(0);

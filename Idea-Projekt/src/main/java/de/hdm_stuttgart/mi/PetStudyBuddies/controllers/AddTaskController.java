@@ -15,11 +15,11 @@ import org.apache.logging.log4j.Logger;
 public class AddTaskController implements ControlledScreen {
     private static final Logger log = LogManager.getLogger(AddTaskController.class);
     @FXML
-    Button ButtonBack, ButtonCreateNewTask;
+    private Button ButtonBack, ButtonCreateNewTask;
     @FXML
-    TextField TextFieldAddNewTask;
+    private TextField TextFieldAddNewTask;
     @FXML
-    DatePicker DatePickerAddNewTask;
+    private DatePicker DatePickerAddNewTask;
 
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonCreateNewTask) {

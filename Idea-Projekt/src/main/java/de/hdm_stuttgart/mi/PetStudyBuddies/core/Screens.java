@@ -1,7 +1,6 @@
-package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
+package de.hdm_stuttgart.mi.PetStudyBuddies.core;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.PetStudyBuddies;
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.ScreensFramework;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -14,9 +13,9 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class ScreensController {
-    private static final Logger log = LogManager.getLogger(ScreensController.class);
-    public static Stage window = new Stage();
+public class Screens {
+    private static final Logger log = LogManager.getLogger(Screens.class);
+    private static Stage window = new Stage();
     private final HashMap<String, Stage> stages = new HashMap<>();
 
     public static void setStage(String title) {
@@ -26,7 +25,7 @@ public class ScreensController {
             log.debug("title is " + title + " Filename is " + ScreensFramework.screens.get(title));
             Scene newScene = new Scene(loader.load());
             window.setScene(newScene);
-            ScreensController.setStage(window, title);
+            Screens.setStage(window, title);
             log.debug("Scene " + title + " was successfully loaded");
         } catch (IOException e) {
             log.catching(e);

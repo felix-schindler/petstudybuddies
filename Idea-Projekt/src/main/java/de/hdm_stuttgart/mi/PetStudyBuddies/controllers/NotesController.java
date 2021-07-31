@@ -1,5 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.DeleteQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
@@ -20,7 +21,6 @@ import org.apache.logging.log4j.Logger;
 import javax.sql.rowset.CachedRowSet;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class NotesController extends Controller implements Initializable {
@@ -33,15 +33,11 @@ public class NotesController extends Controller implements Initializable {
      */
     private static Note editNote = null;
     @FXML
-    private TableColumn<Note, String> colTitle;
+    private TableView<Note> noteTable;
     @FXML
-    private TableColumn<Note, String> colContent;
-    @FXML
-    private TableColumn<Note, Date> colLastEdited;
+    private TableColumn<Note, String> colTitle, colContent, colLastEdited;
     @FXML
     private Label labelUsername;
-    @FXML
-    private TableView<Note> noteTable;
 
     Runnable updateView = () -> {
         log.debug("Updating view...");
@@ -74,7 +70,7 @@ public class NotesController extends Controller implements Initializable {
         new Thread(updateView).start();
     }
 
-    public ObservableList<Note> getNotes() {
+    private ObservableList<Note> getNotes() {
         ObservableList<Note> notes = FXCollections.observableArrayList();
         try {
             CachedRowSet notesSet = new SelectQuery("Note", "ID", "UserID=" + Account.getLoggedUser().getID(), "DATETIME(LastEditedOn)", null).fetchAll();
@@ -101,7 +97,7 @@ public class NotesController extends Controller implements Initializable {
      * @return The currently selected note from the list
      */
     @FXML
-    public Note getSelectedNote() {
+    private Note getSelectedNote() {
         ObservableList<Note> selectedNote = noteTable.getSelectionModel().getSelectedItems();
         if (!selectedNote.isEmpty()) {
             return selectedNote.get(0);
@@ -184,7 +180,7 @@ public class NotesController extends Controller implements Initializable {
     /**
      * Redirects the user to the edit note screen
      */
-    public void goToEditNote() {
-        ScreensController.setStage(EditNoteID);
+    private void goToEditNote() {
+        Screens.setStage(EditNoteID);
     }
 }

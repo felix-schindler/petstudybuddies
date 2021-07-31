@@ -19,13 +19,13 @@ import java.util.ResourceBundle;
 
 public class ModifyTaskController implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(ModifyTaskController.class);
-    Task edit = TaskListController.getEditTask();
+    private Task edit = TaskListController.getEditTask();
     @FXML
-    Button ButtonBack, ButtonCreateModifiedTask;
+    private Button ButtonBack, ButtonCreateModifiedTask;
     @FXML
-    TextField TextFieldModifyTask;
+    private TextField TextFieldModifyTask;
     @FXML
-    DatePicker DatePickerModifyTask;
+    private DatePicker DatePickerModifyTask;
 
     @Override // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,5 +65,4 @@ public class ModifyTaskController implements Initializable, ControlledScreen {
             closeSecondScene(actionEvent);
         }
     }
-
 }

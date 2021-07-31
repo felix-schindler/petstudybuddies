@@ -52,5 +52,4 @@ public class ModifyToDoListController implements Initializable, ControlledScreen
             closeSecondScene(actionEvent);
         }
     }
-
 }

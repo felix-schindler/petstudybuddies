@@ -1,24 +1,3 @@
--- Create tables
-CREATE TABLE IF NOT EXISTS Major
-(
-	ID INTEGER not null
-		constraint Major_pk
-			primary key autoincrement,
-	Title VARCHAR(255) not null
-);
-
-CREATE TABLE IF NOT EXISTS Lecture
-(
-	ID INTEGER
-		constraint Lecture_pk
-			primary key autoincrement,
-	Title VARCHAR(255) not null,
-	ECTS INTEGER DEFAULT 0,
-	MajorID INTEGER
-		references Major
-			on delete set null
-);
-
 CREATE TABLE IF NOT EXISTS User
 (
 	ID INTEGER not null
@@ -66,22 +45,6 @@ CREATE TABLE IF NOT EXISTS Pet
 	Emotion VARCHAR(255) DEFAULT 'Happy' not null,
 	UserID INTEGER
 		references User
-			on delete cascade
-);
-
-CREATE TABLE IF NOT EXISTS Studies
-(
-	ID INTEGER not null
-		constraint Studies_pk
-			primary key autoincrement,
-	UserID INTEGER not null
-		references User
-			on delete cascade,
-	MajorID INTEGER
-		references Major
-			on delete set null,
-	LectureID INTEGER not null
-		references Lecture
 			on delete cascade
 );
 

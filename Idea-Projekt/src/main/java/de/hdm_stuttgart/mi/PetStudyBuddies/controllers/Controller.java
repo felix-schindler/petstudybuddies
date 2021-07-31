@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,44 +15,32 @@ abstract class Controller implements ControlledScreen {
      */
     private static final Logger log = LogManager.getLogger(Controller.class);
     @FXML
-    protected Button ApplicationDashboard;
-    @FXML
-    protected Button NotesDashboard;
-    @FXML
-    protected Button PetDashboard;
-    @FXML
-    protected Button ToDoDashboard;
-    @FXML
-    protected Button SettingsView;
-    @FXML
-    protected Button LoginView;
-    @FXML
-    protected Button RegisterView;
-
-    public void logout() {
-        Account.setUser(null);
-        ScreensController.setStage(LoginID);
-    }
+    protected Button ApplicationDashboard, NotesDashboard, PetDashboard, ToDoDashboard, SettingsView, LoginView, RegisterView;
 
     @FXML
     private void handleMenu(ActionEvent event) {
         log.debug("Setting new stage...");
         if (event.getSource() == ApplicationDashboard) {
-            ScreensController.setStage(DashboardID);
+            Screens.setStage(DashboardID);
         } else if (event.getSource() == NotesDashboard) {
-            ScreensController.setStage(NoteID);
+            Screens.setStage(NoteID);
         } else if (event.getSource() == PetDashboard) {
-            ScreensController.setStage(PetDashboardID);
+            Screens.setStage(PetDashboardID);
         } else if (event.getSource() == ToDoDashboard) {
-            ScreensController.setStage(ToDoListDashboardID);
+            Screens.setStage(ToDoListDashboardID);
         } else if (event.getSource() == SettingsView) {
-            ScreensController.setStage(UserSettingsID);
+            Screens.setStage(UserSettingsID);
         } else if (event.getSource() == LoginView) {
-            ScreensController.setStage(LoginID);
+            Screens.setStage(LoginID);
         } else if (event.getSource() == RegisterView) {
-            ScreensController.setStage(RegisterID);
+            Screens.setStage(RegisterID);
         } else {
             log.error("No route specified");
         }
+    }
+
+    public void logout() {
+        Account.setUser(null);
+        Screens.setStage(LoginID);
     }
 }

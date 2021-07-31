@@ -36,7 +36,7 @@ abstract class Model {
         return ID;
     }
 
-    public String getField(String field) {
+    protected String getField(String field) {
         return new SelectQuery(getTable(), field, "ID=" + ID, null, null).fetch();
     }
 
@@ -46,7 +46,7 @@ abstract class Model {
      * @param field    Field in database to be updated
      * @param newValue New value to be set in the database
      */
-    public void setField(String field, String newValue) {
+    protected void setField(String field, String newValue) {
         new UpdateQuery(getTable(), field, newValue, null);
     }
 }

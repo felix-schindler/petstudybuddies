@@ -144,8 +144,8 @@ public class Task extends Model {
      * updates @tasksInFuture and @sumAllTasks with SelectQuery
      */
     public void updateTasks() {
-        tasksInFuture = new SelectQuery("Task", "*", "Until >= CURRENT_DATE", null, null, true).Count();
-        sumAllTasks = new SelectQuery("Task", "*", null, null, null, true).Count();
+        tasksInFuture = new SelectQuery("Task", "*", "Until >= CURRENT_DATE").Count();
+        sumAllTasks = new SelectQuery("Task", "*", null).Count();
     }
 
     public double getTaskBalance() {

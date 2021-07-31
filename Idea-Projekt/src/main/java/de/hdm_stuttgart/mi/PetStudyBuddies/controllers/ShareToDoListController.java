@@ -22,12 +22,11 @@ import java.util.ResourceBundle;
 public class ShareToDoListController implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(ShareToDoListController.class);
     @FXML
-    Button ButtonBack, ButtonShareList;
+    private Button ButtonBack, ButtonShareList;
     @FXML
-    TextField TextFieldUsernameShare;
+    private TextField TextFieldUsernameShare;
     @FXML
-    Label LabelNameToDoList;
-    ToDoList selectedList;
+    private Label LabelNameToDoList;
 
     public void buttonAction(ActionEvent actionEvent) {
         if (actionEvent.getSource() == ButtonShareList) {
@@ -58,7 +57,6 @@ public class ShareToDoListController implements Initializable, ControlledScreen 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        selectedList = ToDoListController.getEditTodo();
-        LabelNameToDoList.setText(selectedList.getTitle());
+        LabelNameToDoList.setText(ToDoListController.getEditTodo().getTitle());
     }
 }

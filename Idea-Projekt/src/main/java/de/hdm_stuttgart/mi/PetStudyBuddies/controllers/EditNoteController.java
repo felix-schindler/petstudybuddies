@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.models.Note;
 import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditNoteController extends Controller implements Initializable, ControlledScreen {
+public class EditNoteController extends Controller implements Initializable {
     private final static Logger log = LogManager.getLogger(EditNoteController.class);
     @FXML
     private TextField title;
@@ -37,7 +37,7 @@ public class EditNoteController extends Controller implements Initializable, Con
             log.error("Failed to get a note");
             log.info("Tipp: Check if you have set the ID");
             log.debug("Redirecting to note screen");
-            ScreensController.setStage(NoteID);
+            Screens.setStage(NoteID);
         }
     }
 
@@ -49,7 +49,7 @@ public class EditNoteController extends Controller implements Initializable, Con
         note.setContent(Utils.getInputString(content));
 
         if (note.save()) {
-            ScreensController.setStage(NoteID);
+            Screens.setStage(NoteID);
         } else {
             log.error("Failed to save note");
             Dialog.showError("Failed to save note");

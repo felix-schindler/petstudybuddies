@@ -24,13 +24,9 @@ public class UserSettingsController extends Controller implements Initializable 
      */
     private final User user = Account.getLoggedUser();
     @FXML
-    Label labelUsername;
+    private Label labelUsername;
     @FXML
-    TextField newEmailAddress;
-    @FXML
-    TextField newPassword;
-    @FXML
-    TextField confirmNewPassword;
+    private TextField newEmailAddress, newPassword, confirmNewPassword;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

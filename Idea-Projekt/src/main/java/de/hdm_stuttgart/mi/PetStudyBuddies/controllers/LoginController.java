@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.SelectQuery;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * A simple controller providing a callback method {@link #login()}
  */
-public class LoginController extends Controller implements ControlledScreen {
+public class LoginController extends Controller {
     private final static Logger log = LogManager.getLogger(LoginController.class);
     @FXML
     private TextField emailField;
@@ -28,7 +28,6 @@ public class LoginController extends Controller implements ControlledScreen {
     /**
      * Handle Login activity
      */
-    @FXML
     public void login() {
         final String eMail = Utils.getInputString(emailField);
         final String password = Utils.getInputString(passwordField);
@@ -59,7 +58,7 @@ public class LoginController extends Controller implements ControlledScreen {
                 Account.setUser(user);
 
                 // Redirect to Dashboard
-                ScreensController.setStage(DashboardID);
+                Screens.setStage(DashboardID);
             } else {
                 Dialog.showError("EMail or Password is incorrect.");
                 log.error("EMail or Password is incorrect.");

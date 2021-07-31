@@ -1,6 +1,6 @@
 package de.hdm_stuttgart.mi.PetStudyBuddies.controllers;
 
-import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.Utils;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.db.InsertQuery;
 import javafx.fxml.FXML;
@@ -14,16 +14,12 @@ import org.apache.logging.log4j.Logger;
 /**
  * A simple controller providing a callback method {@link #register()}
  */
-public class RegisterController extends Controller implements ControlledScreen {
+public class RegisterController extends Controller {
     private final static Logger log = LogManager.getLogger(RegisterController.class);
     @FXML
-    private TextField emailField;
+    private TextField emailField, usernameField;
     @FXML
-    private TextField usernameField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private PasswordField repeatPasswordField;
+    private PasswordField passwordField, repeatPasswordField;
     @FXML
     private Label statusLabel;
 
@@ -55,7 +51,7 @@ public class RegisterController extends Controller implements ControlledScreen {
                     Thread.sleep(1000);
                 } catch (InterruptedException ignored) {
                 }
-                ScreensController.setStage(LoginID);
+                Screens.setStage(LoginID);
             } else {
                 status.append("Registrierung war nicht erfolgreich, bitte versuch es später erneut.");
                 log.error("Failed to register");

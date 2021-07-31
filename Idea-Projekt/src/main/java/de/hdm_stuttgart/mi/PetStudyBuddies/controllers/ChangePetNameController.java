@@ -19,11 +19,11 @@ import java.util.ResourceBundle;
 public class ChangePetNameController implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(ChangePetNameController.class);
     @FXML
-    Button ButtonBack, ButtonChangeName;
+    private Button ButtonBack, ButtonChangeName;
     @FXML
-    TextField TextFieldNewName;
+    private TextField TextFieldNewName;
     @FXML
-    Label LabelCurrentName;
+    private Label LabelCurrentName;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,5 +52,4 @@ public class ChangePetNameController implements Initializable, ControlledScreen 
             closeSecondScene(actionEvent);
         }
     }
-
 }

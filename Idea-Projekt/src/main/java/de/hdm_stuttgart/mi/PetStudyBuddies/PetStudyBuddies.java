@@ -2,7 +2,7 @@ package de.hdm_stuttgart.mi.PetStudyBuddies;
 
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.ControlledScreen;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.PictureFramework;
-import de.hdm_stuttgart.mi.PetStudyBuddies.controllers.ScreensController;
+import de.hdm_stuttgart.mi.PetStudyBuddies.core.Screens;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.ScreensFramework;
 import de.hdm_stuttgart.mi.PetStudyBuddies.core.user.Account;
 import javafx.application.Application;
@@ -41,9 +41,9 @@ public class PetStudyBuddies extends Application implements ControlledScreen {
         stage.setResizable(false);
         stage.setFullScreen(false);
         if (Account.getLoggedUser() == null)
-            ScreensController.setStage(LoginID);
+            Screens.setStage(LoginID);
         else
-            ScreensController.setStage(DashboardID);
+            Screens.setStage(DashboardID);
         log.debug("PetStudyBuddies gestartet");
     }
 }

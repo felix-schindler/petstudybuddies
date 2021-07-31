@@ -20,11 +20,11 @@ import java.util.ResourceBundle;
 public class AssignTaskController implements Initializable, ControlledScreen {
     private static final Logger log = LogManager.getLogger(AssignTaskController.class);
     @FXML
-    Button ButtonBack, ButtonAssignTask;
+    private Button ButtonBack, ButtonAssignTask;
     @FXML
-    TextField TextFieldUsernameShare;
+    private TextField TextFieldUsernameShare;
     @FXML
-    Label LabelNameTask;
+    private Label LabelNameTask;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
