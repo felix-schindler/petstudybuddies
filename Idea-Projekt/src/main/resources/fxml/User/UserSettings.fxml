@@ -137,7 +137,7 @@
             <Font size="16.0"/>
         </font>
     </Label>
-    <TextField fx:id="newEmailAddress" layoutX="377.0" layoutY="198.0" promptText="new E-Mail address"/>
-    <TextField fx:id="newPassword" layoutX="378.0" layoutY="263.0" promptText="new password"/>
+    <TextField fx:id="newEmailAddress" layoutX="377.0" layoutY="198.0" promptText="New E-Mail address"/>
+    <TextField fx:id="newPassword" layoutX="378.0" layoutY="263.0" promptText="New password"/>
     <TextField fx:id="confirmNewPassword" layoutX="378.0" layoutY="329.0" promptText="Confirm new password"/>
 </AnchorPane>
