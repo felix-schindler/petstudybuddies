@@ -25,7 +25,7 @@ abstract class Controller implements ControlledScreen {
      */
     @FXML
     private void handleMenu(ActionEvent event) {
-        log.debug("Setting new stage...");
+        log.debug("Setting new stage to " + event.getSource().toString());
         if (event.getSource() == ApplicationDashboard) {
             Screens.setStage(DashboardID);
         } else if (event.getSource() == NotesDashboard) {
@@ -49,6 +49,7 @@ abstract class Controller implements ControlledScreen {
      * Handles User logout
      */
     public void logout() {
+        log.debug("User " + Account.getLoggedUser().getUsername() + " is logging out and being redirected.");
         Account.setUser(null);
         Screens.setStage(LoginID);
     }

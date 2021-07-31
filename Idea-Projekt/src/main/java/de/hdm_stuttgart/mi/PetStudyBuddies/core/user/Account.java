@@ -26,7 +26,7 @@ public class Account {
         if (user == null)
             return;
         Account.user = user;
-        log.info(user.getUsername() + " now logged in");
+        log.debug("User " + user.getUsername() + " is now logged in");
     }
 
     /**
