@@ -7,6 +7,7 @@ import de.hdm_stuttgart.mi.PetStudyBuddies.views.Dialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +29,9 @@ public class UserSettingsController extends Controller implements Initializable 
     @FXML
     private Label labelUsername;
     @FXML
-    private TextField newEmailAddress, newPassword, confirmNewPassword;
+    private TextField newEmailAddress;
+    @FXML
+    private PasswordField newPassword, confirmNewPassword;
 
     /**
      * Sets parameters needed to initialize scene
