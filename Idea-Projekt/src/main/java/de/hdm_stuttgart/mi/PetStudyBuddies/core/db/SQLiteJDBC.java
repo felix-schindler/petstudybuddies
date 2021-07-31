@@ -29,7 +29,7 @@ abstract class SQLiteJDBC {
 
 
     /**
-     * Constructor - Doesn't do anything active right now
+     * Constructor - Doesn't do anything active
      */
     protected SQLiteJDBC() {
     }

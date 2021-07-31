@@ -19,13 +19,16 @@ import java.util.Objects;
  * for further explanations.
  */
 public class Dialog {
+    /**
+     * Loads the dialog css
+     * @param alert Alert the style should be applied to
+     */
     private static void loadStyle(Alert alert) {
         alert.getDialogPane().getScene().getStylesheets().add(Dialog.class.getResource("/styles/Dialog.css").toString());
     }
 
     /**
      * Show a modal info box
-     *
      * @param msg A message to be displayed
      */
     public static void showInfo(final String title, final String msg) {
@@ -38,13 +41,16 @@ public class Dialog {
         alert.showAndWait();
     }
 
+    /**
+     * Shows an info dialog with title "Info"
+     * @param msg Message that should be displayed
+     */
     public static void showInfo(final String msg) {
         showInfo(null, msg);
     }
 
     /**
      * Show a modal error box
-     *
      * @param title A title to be displayed
      * @param msg   A message to be displayed
      */
@@ -60,6 +66,7 @@ public class Dialog {
 
     /**
      * Shows Error Dialog
+     *
      * @param msg message to be shown to user
      */
     public static void showError(final String msg) {

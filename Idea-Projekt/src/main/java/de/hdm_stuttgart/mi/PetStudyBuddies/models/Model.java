@@ -24,6 +24,8 @@ abstract class Model {
     public abstract String getTable();
 
     /**
+     * Updates all values of a model in the database
+     *
      * @return true if saved successfully, false otherwise
      * @throws Exception Throws exception when data is invalid
      */
@@ -37,9 +39,10 @@ abstract class Model {
     }
 
     /**
-     * Returns Field in database
-     * @param field
-     * @return
+     * Returns value of a field in the database
+     *
+     * @param field Name of Field in database
+     * @return Value of the field in db
      */
     protected String getField(String field) {
         return new SelectQuery(getTable(), field, "ID=" + ID, null, null).fetch();

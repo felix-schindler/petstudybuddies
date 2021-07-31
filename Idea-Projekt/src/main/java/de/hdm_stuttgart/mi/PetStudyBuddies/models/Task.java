@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 public class Task extends Model {
     /**
-     * log object for error handling
+     * Log object for error handling
      */
     private static final Logger log = LogManager.getLogger(Task.class);
     /**
@@ -31,18 +31,6 @@ public class Task extends Model {
      * UserID of the assigned person
      */
     private int assignedPerson;
-    /**
-     * Current Tasks in Future
-     */
-    private int tasksInFuture = -1;
-    /**
-     * sum of all User Tasks
-     */
-    private int sumAllTasks = -1;
-    /**
-     * average Task Balance
-     */
-    private double taskBalance = -1;
 
     /**
      * Creates a new task linked to the tasks database-entry via its ID
@@ -124,45 +112,6 @@ public class Task extends Model {
      */
     public void setAssignedPerson(int UserID) {
         assignedPerson = UserID;
-    }
-
-    /**
-     * returns Tasks in future
-     */
-    public int getTasksInFuture() {
-        return tasksInFuture;
-    }
-
-    /**
-     * returns Tasks in Past
-     */
-    public int getTasksInPast() {
-        return sumAllTasks - tasksInFuture;
-    }
-
-    /**
-     * updates @tasksInFuture and @sumAllTasks with SelectQuery
-     */
-    public void updateTasks() {
-        tasksInFuture = new SelectQuery("Task", "*", "Until >= CURRENT_DATE").Count();
-        sumAllTasks = new SelectQuery("Task", "*", null).Count();
-    }
-
-    /**
-     * Returns Happiness-State of Pet
-     * @return Happiness-Balance
-     */
-    public double getTaskBalance() {
-        return taskBalance;
-    }
-
-
-    /**
-     * Checks if Tasks
-     * @return true if Tasks exists
-     */
-    private boolean checkTasks() {
-        return tasksInFuture != -1 && (sumAllTasks != -1 || sumAllTasks != 0);
     }
 
     /**
