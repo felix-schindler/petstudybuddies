@@ -50,8 +50,6 @@ public class TaskListController extends Controller implements Initializable {
      * Thread updating TableView
      */
     private final Runnable updateTable = () -> {
-        LabelToDoListName.setText(ToDoListController.getEditTodo().getTitle());
-
         TaskTable.setItems(getTasks());
         colContent.setCellValueFactory(new PropertyValueFactory<>("Content"));
         colUntil.setCellValueFactory(new PropertyValueFactory<>("Until"));
@@ -74,6 +72,7 @@ public class TaskListController extends Controller implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        LabelToDoListName.setText(ToDoListController.getEditTodo().getTitle());
         new Thread(updateTable).start();
         setButtonFlagged();
     }
